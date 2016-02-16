@@ -44,6 +44,6 @@ public class ServiceLocator {
 	public static ServiceLocator getInstance(){
 		if(instance == null)
 			instance = new ServiceLocator();
-		return instance;
+		return instance;//retourne une seule instance
 	}
 }

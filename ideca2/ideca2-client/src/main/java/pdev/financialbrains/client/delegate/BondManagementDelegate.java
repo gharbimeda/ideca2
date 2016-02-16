@@ -14,6 +14,7 @@ public class BondManagementDelegate {
 	private static IBondCrudServicesRemote remote;
 	private static final String jndi="/ideca-ejb/ArticleCrudServices!pdev.financialbrains.ejb.contracts.IBondCrudServicesRemote";
 	
+
 	
 	private static IBondCrudServicesRemote getProxy(){
 		return (IBondCrudServicesRemote) ServiceLocator.getInstance().getProxy(jndi);
