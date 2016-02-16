@@ -3,6 +3,24 @@
 	<persistence-unit name="ideca2-ejb">
 		<jta-data-source>java:jboss/datasources/PDEVDS</jta-data-source>
 		<class>pdev.financialbrains.ejb.entities.Article</class>
+		<class>pdev.financialbrains.ejb.entities.BackOfficeUser</class>
+		<class>pdev.financialbrains.ejb.entities.Bond</class>
+		<class>pdev.financialbrains.ejb.entities.CapFloor</class>
+		<class>pdev.financialbrains.ejb.entities.CashInstrument</class>
+		<class>pdev.financialbrains.ejb.entities.Currency</class>
+		<class>pdev.financialbrains.ejb.entities.DerivativeInstrument</class>
+		<class>pdev.financialbrains.ejb.entities.EquityOption</class>
+		<class>pdev.financialbrains.ejb.entities.FinancialInstrument</class>
+		<class>pdev.financialbrains.ejb.entities.FixedIncomeSecuritie</class>
+		<class>pdev.financialbrains.ejb.entities.FloatingRateNote</class>
+		<class>pdev.financialbrains.ejb.entities.ForeignExchangeOption</class>
+		<class>pdev.financialbrains.ejb.entities.ForwardSwap</class>
+		<class>pdev.financialbrains.ejb.entities.Message</class>
+		<class>pdev.financialbrains.ejb.entities.Option</class>
+		<class>pdev.financialbrains.ejb.entities.Stock</class>
+		<class>pdev.financialbrains.ejb.entities.Swaption</class>
+		<class>pdev.financialbrains.ejb.entities.Trader</class>
+		<class>pdev.financialbrains.ejb.entities.User</class>
 		<properties>
 			<property name="hibernate.hbm2ddl.auto" value="create-drop"/>
 		</properties>
