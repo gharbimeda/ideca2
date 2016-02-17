@@ -23,7 +23,8 @@ public class MessageCrudServices implements IMessageCrudServicesLocal,IMessageCr
     /**
      * Default constructor. 
      */
-	@PersistenceContext
+	
+	@PersistenceContext(unitName="data")
 	private EntityManager entityManager;
     public MessageCrudServices() {
         // TODO Auto-generated constructor stub

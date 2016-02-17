@@ -23,7 +23,7 @@ public class BondCrudServices implements IBondCrudServicesRemote, IBondCrudServi
 	 * Default constructor.
 	 */
 
-	@PersistenceContext
+	@PersistenceContext(unitName="md")
 	private EntityManager entityManager;
 
 	public BondCrudServices() {
