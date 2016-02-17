@@ -7,7 +7,6 @@
 		<class>pdev.financialbrains.ejb.entities.Article</class>
 		<class>pdev.financialbrains.ejb.entities.BackOfficeUser</class>
 		<class>pdev.financialbrains.ejb.entities.CapFloor</class>
-		<class>pdev.financialbrains.ejb.entities.CashInstrument</class>
 		<class>pdev.financialbrains.ejb.entities.DerivativeInstrument</class>
 		<class>pdev.financialbrains.ejb.entities.EquityOption</class>
 		<class>pdev.financialbrains.ejb.entities.FinancialInstrument</class>
@@ -20,8 +19,7 @@
 		<class>pdev.financialbrains.ejb.entities.Swaption</class>
 		<class>pdev.financialbrains.ejb.entities.Trader</class>
 		<class>pdev.financialbrains.ejb.entities.User</class>
-				<exclude-unlisted-classes>true</exclude-unlisted-classes>
-		
+		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		<properties>
 			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
 			<property name="hibernate.show_sql" value="true" />
@@ -33,8 +31,7 @@
 		<class>pdev.financialbrains.ejb.entities.Currency</class>
 		<class>pdev.financialbrains.ejb.entities.Stock</class>
 		<class>pdev.financialbrains.ejb.entities.Bond</class>
-				<exclude-unlisted-classes>true</exclude-unlisted-classes>
-		
+		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		<properties>
 			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
 			<property name="hibernate.show_sql" value="true" />
