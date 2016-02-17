@@ -14,7 +14,7 @@ import pdev.financialbrains.ejb.entities.Stock;
 @Stateless
 public class StockCrudServices implements IStockCrudServicesLocal, IStockCrudServicesRemote {
 
-	@PersistenceContext
+	@PersistenceContext(unitName="md")
 	private EntityManager entityManager;
 
 	public StockCrudServices() {
@@ -27,8 +27,7 @@ public class StockCrudServices implements IStockCrudServicesLocal, IStockCrudSer
 
 	@Override
 	public void delete(Stock stock) {
-		Stock s = entityManager.find(Stock.class, stock.getId());
-		entityManager.remove(s);
+		entityManager.remove(entityManager.find(Stock.class, stock.getId()));
 	}
 
 	@Override
