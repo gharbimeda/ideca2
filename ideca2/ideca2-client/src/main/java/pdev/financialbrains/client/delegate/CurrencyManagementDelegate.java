@@ -35,15 +35,15 @@ public class CurrencyManagementDelegate {
 	}
 
 	public Currency doReadById(Integer id) {
-		proxy.readById(id);
+		return proxy.readById(id);
 	}
 
 	public List<Currency> doReadBySymbol(String symbol) {
-		proxy.readBySymbol(symbol);
+		return proxy.readBySymbol(symbol);
 	}
 
 	public List<Currency> doReadAll() {
-		proxy.readAll();
+		return proxy.readAll();
 	}
 
 }
