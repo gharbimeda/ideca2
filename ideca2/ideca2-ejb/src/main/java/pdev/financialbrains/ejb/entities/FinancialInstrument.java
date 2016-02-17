@@ -87,4 +87,11 @@ public abstract class FinancialInstrument implements Serializable {
 		return "FinancialInstrument [id=" + id + ", currentPrice=" + currentPrice + ", volatility=" + volatility + "]";
 	}
 
+	public FinancialInstrument(Integer id, Float currentPrice, Float volatility) {
+		super();
+		this.id = id;
+		this.currentPrice = currentPrice;
+		this.volatility = volatility;
+	}
+
 }

@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="t_bond")
+@Table(name = "t_bond")
 public class Bond extends CashInstrument {
 
 	private Date startDate;
@@ -184,13 +184,33 @@ public class Bond extends CashInstrument {
 		return true;
 	}
 
+	public Bond(Integer id, Float currentPrice, Float volatility, String symbol, Date startDate, Date endDate,
+			String coupon, Integer couponFreq, Integer steppedBound, Boolean rollDate, Boolean firstCoupon,
+			Integer dayCount, Integer yieldMethod, Integer yield) {
+		super(id, currentPrice, volatility, symbol);
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.coupon = coupon;
+		this.couponFreq = couponFreq;
+		this.steppedBound = steppedBound;
+		this.rollDate = rollDate;
+		this.firstCoupon = firstCoupon;
+		this.dayCount = dayCount;
+		this.yieldMethod = yieldMethod;
+		this.yield = yield;
+	}
+
 	@Override
 	public String toString() {
-		return "Bond [getId()=" + getId() + ", getVolatility()=" + getVolatility() + ", getCurrentPrice()="
-				+ getCurrentPrice() + ", getSymbol()=" + getSymbol() + ", startDate=" + startDate + ", endDate="
-				+ endDate + ", coupon=" + coupon + ", couponFreq=" + couponFreq + ", steppedBound=" + steppedBound
-				+ ", rollDate=" + rollDate + ", firstCoupon=" + firstCoupon + ", dayCount=" + dayCount
-				+ ", yieldMethod=" + yieldMethod + ", yield=" + yield + "]";
+		return "Bond [startDate=" + startDate + ", endDate=" + endDate + ", coupon=" + coupon + ", couponFreq="
+				+ couponFreq + ", steppedBound=" + steppedBound + ", rollDate=" + rollDate + ", firstCoupon="
+				+ firstCoupon + ", dayCount=" + dayCount + ", yieldMethod=" + yieldMethod + ", yield=" + yield
+				+ ", toString()=" + super.toString() + "]";
+	}
+
+	public Bond(Integer id, Float currentPrice, Float volatility, String symbol, String coupon) {
+		super(id, currentPrice, volatility, symbol);
+		this.coupon = coupon;
 	}
 
 }

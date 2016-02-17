@@ -50,8 +50,12 @@ public abstract class CashInstrument extends FinancialInstrument {
 
 	@Override
 	public String toString() {
-		return "CashInstrument [getId()=" + getId() + ", getCurrentPrice()=" + getCurrentPrice() + ", getVolatility()="
-				+ getVolatility() + ", symbol=" + symbol + "]";
+		return "CashInstrument [symbol=" + symbol + ", toString()=" + super.toString() + "]";
+	}
+
+	public CashInstrument(Integer id, Float currentPrice, Float volatility, String symbol) {
+		super(id, currentPrice, volatility);
+		this.symbol = symbol;
 	}
 
 }
