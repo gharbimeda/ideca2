@@ -100,6 +100,11 @@ public class Message implements Serializable {
 		this.userDest = userDest;
 		this.userSource = userSource;
 	}
+	public Message(Integer id, String texte) {
+		super();
+		this.id = id;
+		this.texte = texte;
+	}
 
 	
 }
