@@ -11,6 +11,7 @@ import javax.persistence.Query;
 import pdev.financialbrains.ejb.contracts.IMessageCrudServicesLocal;
 import pdev.financialbrains.ejb.contracts.IMessageCrudServicesRemote;
 import pdev.financialbrains.ejb.entities.Message;
+import pdev.financialbrains.ejb.entities.Stock;
 
 
 /**
@@ -38,7 +39,8 @@ public class MessageCrudServices implements IMessageCrudServicesLocal,IMessageCr
 
 	@Override
 	public void delete(Message message) {
-		entityManager.remove(message);
+		entityManager.remove(entityManager.find(Message.class, message.getId()));
+		
 		
 	}
 
@@ -49,8 +51,8 @@ public class MessageCrudServices implements IMessageCrudServicesLocal,IMessageCr
 	}
 
 	@Override
-	public Message readById(Integer id) {
-		return entityManager.find(Message.class, id);
+	public Message readById(Integer idMessage) {
+		return entityManager.find(Message.class, idMessage);
 	}
 
 	@Override
