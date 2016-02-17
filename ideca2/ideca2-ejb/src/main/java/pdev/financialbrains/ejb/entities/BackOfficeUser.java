@@ -13,6 +13,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="t_BOUser")
+@DiscriminatorValue(value="backoffuser")
 public class BackOfficeUser extends User implements Serializable {
 
 

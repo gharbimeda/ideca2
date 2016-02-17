@@ -11,7 +11,7 @@ import javax.naming.NamingException;
 public class ServiceLocator {
 
 	private static ServiceLocator instance;
-	private Context context;
+	private static Context context;
 	
 	private Map<String , Object> cache;
 	
@@ -20,7 +20,6 @@ public class ServiceLocator {
 		try {
 			context = new InitialContext();
 		} catch (NamingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -34,7 +33,6 @@ public class ServiceLocator {
 				proxy=context.lookup(jndi);
 				cache.put(jndi, proxy);
 			} catch (NamingException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		
