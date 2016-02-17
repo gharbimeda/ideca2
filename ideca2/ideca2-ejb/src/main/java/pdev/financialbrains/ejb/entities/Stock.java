@@ -14,7 +14,6 @@ public class Stock extends CashInstrument {
 	private static final long serialVersionUID = 1L;
 
 	public Stock() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public String getCompanyName() {

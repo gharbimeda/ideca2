@@ -17,7 +17,7 @@ import pdev.financialbrains.ejb.entities.Article;
 @LocalBean
 public class ArticleCrudServices implements IArticleCrudServicesLocal, IArticleCrudServicesRemote {
 
-	@PersistenceContext
+	@PersistenceContext(unitName="data")
 	private EntityManager entityManager;
 
 	public ArticleCrudServices() {
