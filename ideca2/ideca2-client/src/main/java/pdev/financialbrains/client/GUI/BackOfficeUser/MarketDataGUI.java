@@ -53,7 +53,7 @@ public class MarketDataGUI extends JFrame {
 		contentPane.add(marketDataLabel);
 		
 		JLabel addMDLabel = new JLabel("");
-		addMDLabel.setIcon(new ImageIcon("C:\\IDE\\images\\database-add-icon.png"));
+		addMDLabel.setIcon(new ImageIcon(MarketDataGUI.class.getResource("/pdev/financialbrains/client/pictures/add.png")));
 		addMDLabel.setBounds(1122, 556, 72, 82);
 		contentPane.add(addMDLabel);
 		
@@ -63,19 +63,19 @@ public class MarketDataGUI extends JFrame {
 		
 		stockTable = new JTable();
 		stockTable.setModel(new StockTableModel());
-		marketTabbedPane.addTab("Stock", new ImageIcon("C:\\IDE\\images\\Stock-icon.png"), stockTable, null);
+		marketTabbedPane.addTab("Stock", new ImageIcon(MarketDataGUI.class.getResource("/pdev/financialbrains/client/pictures/stock.png")), stockTable, null);
 		marketTabbedPane.setEnabledAt(0, true);
 		
 		bondTable = new JTable();
 		bondTable.setModel(new BondTableModel());
-		marketTabbedPane.addTab("Bond", new ImageIcon("C:\\IDE\\images\\bond-icon.png"), bondTable, null);
+		marketTabbedPane.addTab("Bond", new ImageIcon(MarketDataGUI.class.getResource("/pdev/financialbrains/client/pictures/bond.png")), bondTable, null);
 		
 		currencyTable = new JTable();
 		currencyTable.setModel(new CurrencyTableModel());
-		marketTabbedPane.addTab("Currency", new ImageIcon("C:\\IDE\\images\\currency-icon.png"), currencyTable, null);
+		marketTabbedPane.addTab("Currency", new ImageIcon(MarketDataGUI.class.getResource("/pdev/financialbrains/client/pictures/currency.png")), currencyTable, null);
 		
 		JLabel backgroundLabel = new JLabel("");
-		backgroundLabel.setIcon(new ImageIcon("C:\\IDE\\images\\backBouGrand2.PNG"));
+		backgroundLabel.setIcon(new ImageIcon(MarketDataGUI.class.getResource("/pdev/financialbrains/client/pictures/backBouGrand2.PNG")));
 		backgroundLabel.setBounds(0, 0, 1227, 687);
 		contentPane.add(backgroundLabel);
 	}

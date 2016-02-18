@@ -46,8 +46,4 @@ public class BondManagementDelegate {
 	public List<Bond> doReadAll() {
 		return proxy.readAll();
 	}
-
-	public static Bond doRead(Integer id) {
-		return getProxy().readById(id);
-	}
 }
