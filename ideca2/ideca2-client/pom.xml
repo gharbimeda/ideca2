@@ -5,6 +5,7 @@
     <artifactId>ideca2</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
+  
   <artifactId>ideca2-client</artifactId>
   
   
@@ -19,6 +20,11 @@
 			<artifactId>ideca2-ejb</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 			<type>ejb</type>
+		</dependency>
+		<dependency>
+		<groupId>net.java.dev.beansbinding</groupId>
+		<artifactId>beansbinding </artifactId>
+		<version>1.2.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>

@@ -12,7 +12,6 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name="t_trader") 
 
 public class Trader extends User implements Serializable {
 	
