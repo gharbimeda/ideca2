@@ -18,10 +18,10 @@ public class TestBond {
 	
 	public static void main(String[] args) throws NamingException {
 
-		try {
-			Context context = new InitialContext();
-			IBondCrudServicesRemote proxy = (IBondCrudServicesRemote) context
-					.lookup("/ideca2-ejb/BondCrudServices!pdev.financialbrains.ejb.contracts.IBondCrudServicesRemote");
+		//try {
+		//	Context context = new InitialContext();
+		//	IBondCrudServicesRemote proxy = (IBondCrudServicesRemote) context
+				//	.lookup("/ideca2-ejb/BondCrudServices!pdev.financialbrains.ejb.contracts.IBondCrudServicesRemote");
 
 			//Bond b = new Bond(1, 250.5f, 8.255f, "marioum", "mimi");
 			//BondManagementDelegate bondManagementDelegate = new BondManagementDelegate();
@@ -37,8 +37,10 @@ public class TestBond {
 			// System.out.println(proxy.readById(1));
 			// proxy.delete(b);
 			//BondManagementDelegate.doDelete(b2);
-		} catch (NamingException e) {
-			e.printStackTrace();
-		}
+	//	} catch (NamingException e) {
+		//	e.printStackTrace();
+		//}
+		//Bond b = new Bond();
+		//BondManagementDelegate.getInstance().docreate(b);
 	}
 }

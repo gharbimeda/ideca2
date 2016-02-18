@@ -1,4 +1,4 @@
-package pdev.financialbrains.client.GUI;
+package pdev.financialbrains.client.GUI.Administrator;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;

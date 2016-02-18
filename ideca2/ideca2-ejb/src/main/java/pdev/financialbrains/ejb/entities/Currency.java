@@ -13,7 +13,6 @@ public class Currency extends CashInstrument {
 	private static final long serialVersionUID = 1L;
 
 	public Currency() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public Float getOpeningPrice() {

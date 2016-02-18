@@ -11,6 +11,7 @@ import javax.persistence.Query;
 import pdev.financialbrains.ejb.contracts.IBondCrudServicesLocal;
 import pdev.financialbrains.ejb.contracts.IBondCrudServicesRemote;
 import pdev.financialbrains.ejb.entities.Bond;
+import pdev.financialbrains.ejb.entities.Message;
 
 /**
  * Session Bean implementation class BondCrudServices
@@ -23,7 +24,7 @@ public class BondCrudServices implements IBondCrudServicesRemote, IBondCrudServi
 	 * Default constructor.
 	 */
 
-	@PersistenceContext
+	@PersistenceContext(unitName="md")
 	private EntityManager entityManager;
 
 	public BondCrudServices() {
@@ -38,7 +39,8 @@ public class BondCrudServices implements IBondCrudServicesRemote, IBondCrudServi
 
 	@Override
 	public void delete(Bond b) {
-		entityManager.remove(b);
+		entityManager.remove(entityManager.find(Bond.class, b.getId()));
+
 
 	}
 

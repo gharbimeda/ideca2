@@ -16,7 +16,7 @@ public interface IMessageCrudServicesRemote {
 
 	void update(Message message);
 
-	Message readById(Integer id);
+	public Message readById(Integer idMessage);
 
 		List<Message> readAll();
 		public Message findByIdUser(int id);

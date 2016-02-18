@@ -20,6 +20,18 @@ public class FixedIncomeSecuritie extends DerivativeInstrument {
 		// TODO Auto-generated constructor stub
 	}
 
+	public FixedIncomeSecuritie(Integer notional, Integer couponFreq, Boolean steppedBond, Boolean rollDate,
+			Boolean firstCoupon, Boolean weekend, Integer yield) {
+		super();
+		this.notional = notional;
+		this.couponFreq = couponFreq;
+		this.steppedBond = steppedBond;
+		this.rollDate = rollDate;
+		this.firstCoupon = firstCoupon;
+		this.weekend = weekend;
+		this.yield = yield;
+	}
+
 	public Integer getNotional() {
 		return notional;
 	}

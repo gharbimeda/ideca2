@@ -12,8 +12,19 @@ import pdev.financialbrains.ejb.entities.Message;
 
 public class BondManagementDelegate {
 	private static IBondCrudServicesRemote remote;
-	private static final String jndi="/ideca-ejb/ArticleCrudServices!pdev.financialbrains.ejb.contracts.IBondCrudServicesRemote";
+	private static final String jndi="/ideca2-ejb/BondCrudServices!pdev.financialbrains.ejb.contracts.IBondCrudServicesRemote";
 	
+	public static BondManagementDelegate instance;
+
+	private BondManagementDelegate() {
+	}
+
+	public static BondManagementDelegate getInstance() {
+		if (instance == null) {
+			return new BondManagementDelegate();
+		}
+		return instance;
+	}
 	
 	private static IBondCrudServicesRemote getProxy(){
 		return (IBondCrudServicesRemote) ServiceLocator.getInstance().getProxy(jndi);
@@ -36,6 +47,9 @@ public class BondManagementDelegate {
 	}
 	public static List<Bond> doRead (){
 		return getProxy().readAll();
+	}
+	public static Bond doRead (Integer id){
+		return getProxy().readById(id);
 	}
 
 }
