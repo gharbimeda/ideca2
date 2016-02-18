@@ -1,3 +1,4 @@
+
 package pdev.financialbrains.ejb.entities;
 
 import java.io.Serializable;

@@ -77,4 +77,16 @@ public class User implements Serializable {
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+	public User(int idUser, String login, String password) {
+		super();
+		IdUser = idUser;
+		this.login = login;
+		this.password = password;
+	}
+
+	public User(int idUser) {
+		super();
+		IdUser = idUser;
 	}}

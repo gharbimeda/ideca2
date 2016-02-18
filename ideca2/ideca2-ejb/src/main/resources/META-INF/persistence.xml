@@ -6,6 +6,7 @@
 		<jta-data-source>java:jboss/datasources/PDEVDS</jta-data-source>
 		<class>pdev.financialbrains.ejb.entities.Article</class>
 		<class>pdev.financialbrains.ejb.entities.BackOfficeUser</class>
+		<class>pdev.financialbrains.ejb.entities.CashInstrument</class>
 		<class>pdev.financialbrains.ejb.entities.CapFloor</class>
 		<class>pdev.financialbrains.ejb.entities.DerivativeInstrument</class>
 		<class>pdev.financialbrains.ejb.entities.EquityOption</class>
@@ -21,7 +22,7 @@
 		<class>pdev.financialbrains.ejb.entities.User</class>
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		<properties>
-			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
 		</properties>

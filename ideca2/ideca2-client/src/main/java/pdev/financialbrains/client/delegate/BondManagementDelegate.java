@@ -7,8 +7,10 @@ import pdev.financialbrains.ejb.contracts.IBondCrudServicesRemote;
 import pdev.financialbrains.ejb.entities.Bond;
 
 public class BondManagementDelegate {
+
 	final String JNDINAME = "/ideca2-ejb/BondCrudServices!pdev.financialbrains.ejb.contracts.IBondCrudServicesRemote";
 	IBondCrudServicesRemote proxy = (IBondCrudServicesRemote) ServiceLocator.getInstance().getProxy(JNDINAME);
+
 	public static BondManagementDelegate instance;
 
 	private BondManagementDelegate() {
@@ -45,4 +47,7 @@ public class BondManagementDelegate {
 		return proxy.readAll();
 	}
 
+	public static Bond doRead(Integer id) {
+		return getProxy().readById(id);
+	}
 }

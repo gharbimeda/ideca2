@@ -12,6 +12,7 @@ public class CapFloor extends Option {
 	private Integer tenor;
 	private Integer lastFixing;
 	private Integer dayCount;
+	private Float notionalAmount;
 	private static final long serialVersionUID = 1L;
 
 	public CapFloor() {
@@ -58,6 +59,14 @@ public class CapFloor extends Option {
 		this.dayCount = dayCount;
 	}
 
+	public Float getNotionalAmount() {
+		return notionalAmount;
+	}
+
+	public void setNotionalAmount(Float notionalAmount) {
+		this.notionalAmount = notionalAmount;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -65,6 +74,7 @@ public class CapFloor extends Option {
 		result = prime * result + ((dayCount == null) ? 0 : dayCount.hashCode());
 		result = prime * result + ((firstPeriod == null) ? 0 : firstPeriod.hashCode());
 		result = prime * result + ((lastFixing == null) ? 0 : lastFixing.hashCode());
+		result = prime * result + ((notionalAmount == null) ? 0 : notionalAmount.hashCode());
 		result = prime * result + ((referenceIndex == null) ? 0 : referenceIndex.hashCode());
 		result = prime * result + ((tenor == null) ? 0 : tenor.hashCode());
 		return result;
@@ -94,6 +104,11 @@ public class CapFloor extends Option {
 				return false;
 		} else if (!lastFixing.equals(other.lastFixing))
 			return false;
+		if (notionalAmount == null) {
+			if (other.notionalAmount != null)
+				return false;
+		} else if (!notionalAmount.equals(other.notionalAmount))
+			return false;
 		if (referenceIndex == null) {
 			if (other.referenceIndex != null)
 				return false;
@@ -109,12 +124,10 @@ public class CapFloor extends Option {
 
 	@Override
 	public String toString() {
-		return "CapFloor [getId()=" + getId() + ", getVolatility()=" + getVolatility() + ", getCurrentPrice()="
-				+ getCurrentPrice() + ", getStartDate()=" + getStartDate() + ", getEndDate()=" + getEndDate()
-				+ ", getBuySell()=" + getBuySell() + ", getExpiration()=" + getExpiration() + ", getRiskFree()="
-				+ getRiskFree() + ", getStrikePrice()=" + getStrikePrice() + ", firstPeriod=" + firstPeriod
-				+ ", referenceIndex=" + referenceIndex + ", tenor=" + tenor + ", lastFixing=" + lastFixing
-				+ ", dayCount=" + dayCount + "]";
+		return "CapFloor [firstPeriod=" + firstPeriod + ", referenceIndex=" + referenceIndex + ", tenor=" + tenor
+				+ ", lastFixing=" + lastFixing + ", dayCount=" + dayCount + ", notionalAmount=" + notionalAmount + "]";
 	}
+
+	
 
 }
