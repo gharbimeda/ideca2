@@ -1,42 +1,48 @@
 package pdev.financialbrains.client.delegate;
 
-import java.util.Date;
 import java.util.List;
 
-import pdev.financialbrains.client.locator.ServiceLocator;
-import pdev.financialbrains.ejb.contracts.IArticleCrudServicesRemote;
+import pdev.financialbrains.client.utils.ServiceLocator;
 import pdev.financialbrains.ejb.contracts.IBondCrudServicesRemote;
-import pdev.financialbrains.ejb.entities.Article;
 import pdev.financialbrains.ejb.entities.Bond;
-import pdev.financialbrains.ejb.entities.Message;
 
 public class BondManagementDelegate {
-	private static IBondCrudServicesRemote remote;
-	private static final String jndi="/ideca-ejb/ArticleCrudServices!pdev.financialbrains.ejb.contracts.IBondCrudServicesRemote";
-	
+	final String JNDINAME = "/ideca2-ejb/BondCrudServices!pdev.financialbrains.ejb.contracts.IBondCrudServicesRemote";
+	IBondCrudServicesRemote proxy = (IBondCrudServicesRemote) ServiceLocator.getInstance().getProxy(JNDINAME);
+	public static BondManagementDelegate instance;
 
-	
-	private static IBondCrudServicesRemote getProxy(){
-		return (IBondCrudServicesRemote) ServiceLocator.getInstance().getProxy(jndi);
-	}
-	
-	public static void doCreate(Bond bond){
-		getProxy().create(bond);
+	private BondManagementDelegate() {
 	}
 
-	public static void doDelete(Bond bond){
-		getProxy().delete(bond);
+	public static BondManagementDelegate getInstance() {
+		if (instance == null) {
+			return new BondManagementDelegate();
+		}
+		return instance;
 	}
 
-	public static void doUpdate(Bond bond){
-		getProxy().update(bond);
+	public void doCreate(Bond bond) {
+		proxy.create(bond);
 	}
 
-	public List<Bond> readBySteppedCoupon(Integer steppedCoupon) {
-		return getProxy().readBySteppedCoupon(steppedCoupon);
+	public void doDelete(Bond bond) {
+		proxy.delete(bond);
 	}
-	public static List<Bond> doRead (){
-		return getProxy().readAll();
+
+	public void doUpdate(Bond bond) {
+		proxy.update(bond);
+	}
+
+	public Bond doReadById(Integer id) {
+		return proxy.readById(id);
+	}
+
+	public List<Bond> doReadBySteppedCoupon(Integer steppedCoupon) {
+		return proxy.readBySteppedCoupon(steppedCoupon);
+	}
+
+	public List<Bond> doReadAll() {
+		return proxy.readAll();
 	}
 
 }
