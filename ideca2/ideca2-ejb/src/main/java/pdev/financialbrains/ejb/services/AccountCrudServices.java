@@ -15,7 +15,7 @@ import pdev.financialbrains.ejb.entities.User;
 @LocalBean
 public class AccountCrudServices implements IAccountCrudServicesRemote,IAccountCrudServicesLocal{
 
-	@PersistenceContext
+	@PersistenceContext(unitName="data")
 	private EntityManager entityManger;
 	
 	public AccountCrudServices() {

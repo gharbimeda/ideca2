@@ -24,7 +24,7 @@ public class Main {
 
 		
 		
-		}
+		
 
 	public static void main(String[] args) throws Exception {
 		Currency currency = new Currency();
@@ -71,3 +71,4 @@ public class Main {
 		 * connection.disconnect();
 		 */
 	}
+}
