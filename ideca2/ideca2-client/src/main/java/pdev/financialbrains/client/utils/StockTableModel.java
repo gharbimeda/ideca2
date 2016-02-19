@@ -52,8 +52,14 @@ public class StockTableModel extends AbstractTableModel {
 		}
 	}
 
-	public String getColumnString(int column) {
-		return entete[column];
+	@Override
+	public String getColumnName(int arg0) {
+		return entete[arg0];
+	};
+	
+	@Override
+	public void fireTableRowsUpdated(int arg0, int arg1) {
+		super.fireTableRowsUpdated(arg0, arg1);
 	}
 
 }

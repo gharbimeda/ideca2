@@ -7,155 +7,112 @@ import javax.persistence.Table;
 @Table(name="t_fixedIncomeSecuritie")
 public class FixedIncomeSecuritie extends DerivativeInstrument {
 
-	private Integer notional;
-	private Integer couponFreq;
-	private Boolean steppedBond;
-	private Boolean rollDate;
-	private Boolean firstCoupon;
-	private Boolean weekend;
-	private Integer yield;
-	private static final long serialVersionUID = 1L;
+	// private Integer notional;
+		private Integer timeMaturity;
+		private Integer couponFreq;
+		// private Boolean steppedBond;
+		// private Boolean rollDate;
+		// private Boolean firstCoupon;
+		private Float faceValue;
+		// private Boolean weekend;
+		private Float couponRate;
+		private Float yield;
+		private Float currentYield;
+		private Float bondPrice;
+		private static final long serialVersionUID = 1L;
 
-	public FixedIncomeSecuritie() {
-		// TODO Auto-generated constructor stub
-	}
+		public Integer getTimeMaturity() {
+			return timeMaturity;
+		}
 
-	public FixedIncomeSecuritie(Integer notional, Integer couponFreq, Boolean steppedBond, Boolean rollDate,
-			Boolean firstCoupon, Boolean weekend, Integer yield) {
-		super();
-		this.notional = notional;
-		this.couponFreq = couponFreq;
-		this.steppedBond = steppedBond;
-		this.rollDate = rollDate;
-		this.firstCoupon = firstCoupon;
-		this.weekend = weekend;
-		this.yield = yield;
-	}
+		public void setTimeMaturity(Integer timeMaturity) {
+			this.timeMaturity = timeMaturity;
+		}
 
-	public Integer getNotional() {
-		return notional;
-	}
+		public Integer getCouponFreq() {
+			return couponFreq;
+		}
 
-	public void setNotional(Integer notional) {
-		this.notional = notional;
-	}
+		public void setCouponFreq(Integer couponFreq) {
+			this.couponFreq = couponFreq;
+		}
 
-	public Integer getCouponFreq() {
-		return couponFreq;
-	}
+		public Float getFaceValue() {
+			return faceValue;
+		}
 
-	public void setCouponFreq(Integer couponFreq) {
-		this.couponFreq = couponFreq;
-	}
+		public void setFaceValue(Float faceValue) {
+			this.faceValue = faceValue;
+		}
 
-	public Boolean getSteppedBond() {
-		return steppedBond;
-	}
+		public Float getCouponRate() {
+			return couponRate;
+		}
 
-	public void setSteppedBond(Boolean steppedBond) {
-		this.steppedBond = steppedBond;
-	}
+		public void setCouponRate(Float couponRate) {
+			this.couponRate = couponRate;
+		}
 
-	public Boolean getRollDate() {
-		return rollDate;
-	}
+		public Float getYield() {
+			return yield;
+		}
 
-	public void setRollDate(Boolean rollDate) {
-		this.rollDate = rollDate;
-	}
+		public void setYield(Float yield) {
+			this.yield = yield;
+		}
 
-	public Boolean getFirstCoupon() {
-		return firstCoupon;
-	}
+		public Float getCurrentYield() {
+			return currentYield;
+		}
 
-	public void setFirstCoupon(Boolean firstCoupon) {
-		this.firstCoupon = firstCoupon;
-	}
+		public void setCurrentYield(Float currentYield) {
+			this.currentYield = currentYield;
+		}
 
-	public Boolean getWeekend() {
-		return weekend;
-	}
+		public Float getBondPrice() {
+			return bondPrice;
+		}
 
-	public void setWeekend(Boolean weekend) {
-		this.weekend = weekend;
-	}
+		public void setBondPrice(Float bondPrice) {
+			this.bondPrice = bondPrice;
+		}
 
-	public Integer getYield() {
-		return yield;
-	}
+		public static long getSerialversionuid() {
+			return serialVersionUID;
+		}
 
-	public void setYield(Integer yield) {
-		this.yield = yield;
-	}
+		public FixedIncomeSecuritie(Integer timeMaturity, Integer couponFreq, Float faceValue, Float couponRate,
+				Float yield, Float currentYield, Float bondPrice) {
+			super();
+			this.timeMaturity = timeMaturity;
+			this.couponFreq = couponFreq;
+			this.faceValue = faceValue;
+			this.couponRate = couponRate;
+			this.yield = yield;
+			this.currentYield = currentYield;
+			this.bondPrice = bondPrice;
+		}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + ((couponFreq == null) ? 0 : couponFreq.hashCode());
-		result = prime * result + ((firstCoupon == null) ? 0 : firstCoupon.hashCode());
-		result = prime * result + ((notional == null) ? 0 : notional.hashCode());
-		result = prime * result + ((rollDate == null) ? 0 : rollDate.hashCode());
-		result = prime * result + ((steppedBond == null) ? 0 : steppedBond.hashCode());
-		result = prime * result + ((weekend == null) ? 0 : weekend.hashCode());
-		result = prime * result + ((yield == null) ? 0 : yield.hashCode());
-		return result;
-	}
+		public FixedIncomeSecuritie() {
+			super();
+		}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (!super.equals(obj))
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		FixedIncomeSecuritie other = (FixedIncomeSecuritie) obj;
-		if (couponFreq == null) {
-			if (other.couponFreq != null)
-				return false;
-		} else if (!couponFreq.equals(other.couponFreq))
-			return false;
-		if (firstCoupon == null) {
-			if (other.firstCoupon != null)
-				return false;
-		} else if (!firstCoupon.equals(other.firstCoupon))
-			return false;
-		if (notional == null) {
-			if (other.notional != null)
-				return false;
-		} else if (!notional.equals(other.notional))
-			return false;
-		if (rollDate == null) {
-			if (other.rollDate != null)
-				return false;
-		} else if (!rollDate.equals(other.rollDate))
-			return false;
-		if (steppedBond == null) {
-			if (other.steppedBond != null)
-				return false;
-		} else if (!steppedBond.equals(other.steppedBond))
-			return false;
-		if (weekend == null) {
-			if (other.weekend != null)
-				return false;
-		} else if (!weekend.equals(other.weekend))
-			return false;
-		if (yield == null) {
-			if (other.yield != null)
-				return false;
-		} else if (!yield.equals(other.yield))
-			return false;
-		return true;
-	}
+		@Override
+		public String toString() {
+			return "FixedIncomeSecuritie [timeMaturity=" + timeMaturity + ", couponFreq=" + couponFreq + ", faceValue="
+					+ faceValue + ", couponRate=" + couponRate + ", yield=" + yield + ", currentYield=" + currentYield
+					+ ", bondPrice=" + bondPrice + ", toString()=" + super.toString() + "]";
+		}
 
-	@Override
-	public String toString() {
-		return "FixedIncomeSecuritie [getId()=" + getId() + ", getVolatility()=" + getVolatility()
-				+ ", getCurrentPrice()=" + getCurrentPrice() + ", getStartDate()=" + getStartDate() + ", getEndDate()="
-				+ getEndDate() + ", notional=" + notional + ", couponFreq=" + couponFreq + ", steppedBond="
-				+ steppedBond + ", rollDate=" + rollDate + ", firstCoupon=" + firstCoupon + ", weekend=" + weekend
-				+ ", yield=" + yield + "]";
-	}
-
+		public FixedIncomeSecuritie(Integer id, Float currentPrice, Float volatility, Integer timeMaturity,
+				Integer couponFreq, Float faceValue, Float couponRate, Float yield, Float currentYield, Float bondPrice) {
+			super(id, currentPrice, volatility);
+			this.timeMaturity = timeMaturity;
+			this.couponFreq = couponFreq;
+			this.faceValue = faceValue;
+			this.couponRate = couponRate;
+			this.yield = yield;
+			this.currentYield = currentYield;
+			this.bondPrice = bondPrice;
+		}
 }
