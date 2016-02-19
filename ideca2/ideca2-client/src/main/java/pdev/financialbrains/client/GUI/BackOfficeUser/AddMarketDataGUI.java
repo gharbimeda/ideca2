@@ -2,13 +2,16 @@ package pdev.financialbrains.client.GUI.BackOfficeUser;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.Font;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import pdev.financialbrains.client.delegate.BondManagementDelegate;
 import pdev.financialbrains.client.delegate.CurrencyManagementDelegate;
 import pdev.financialbrains.client.delegate.StockManagementDelegate;
+import pdev.financialbrains.ejb.entities.Bond;
 import pdev.financialbrains.ejb.entities.Currency;
 import pdev.financialbrains.ejb.entities.Stock;
 
@@ -23,19 +26,26 @@ import java.awt.event.MouseEvent;
 public class AddMarketDataGUI extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField tfCompanyName;
-	private JTextField tfSymbol;
-	private JTextField tfCurrentPrice;
-	private JTextField tfOpeningPrice;
-	private JTextField tfClosingPrice;
-	private JTextField tfVolume;
-	private JTextField tfVolatility;
-	private JTextField textFSymbol;
-	private JTextField textFCurrentPrice;
-	private JTextField textFVolatility;
-	private JTextField textFOpPrice;
-	private JTextField textFCloPrice;
-	private JTextField textFVolume;
+	private JTextField stockCompanyName;
+	private JTextField stockSymbol;
+	private JTextField stockCurrentPrice;
+	private JTextField stockOpeningPrice;
+	private JTextField stockClosingPrice;
+	private JTextField stockVolume;
+	private JTextField stockVolatility;
+	private JTextField currSymbol;
+	private JTextField currCurrentPrice;
+	private JTextField currVolatility;
+	private JTextField currOpPrice;
+	private JTextField currCloPrice;
+	private JTextField currVolume;
+	private JTextField bondVolatility;
+	private JTextField bondCurrentPrice;
+	private JTextField bondSymbol;
+	private JTextField bondStartDate;
+	private JTextField bondEndDate;
+	private JTextField bondCouponFreq;
+	private JTextField bondYield;
 
 	/**
 	 * Launch the application.
@@ -76,66 +86,73 @@ public class AddMarketDataGUI extends JFrame {
 
 		JLabel lblCompanyName = new JLabel("Company Name");
 		lblCompanyName.setBounds(307, 37, 122, 25);
+		lblCompanyName.setFont(new Font("Berlin Sans FB", Font.PLAIN, 12));
 		Stockpanel.add(lblCompanyName);
 
-		tfCompanyName = new JTextField();
-		tfCompanyName.setBounds(439, 37, 162, 25);
-		Stockpanel.add(tfCompanyName);
-		tfCompanyName.setColumns(10);
+		stockCompanyName = new JTextField();
+		stockCompanyName.setBounds(439, 37, 162, 25);
+		Stockpanel.add(stockCompanyName);
+		stockCompanyName.setColumns(10);
 
 		JLabel lblSymbol = new JLabel("Symbol");
+		lblSymbol.setFont(new Font("Berlin Sans FB", Font.PLAIN, 12));
 		lblSymbol.setBounds(307, 84, 122, 25);
 		Stockpanel.add(lblSymbol);
 
-		tfSymbol = new JTextField();
-		tfSymbol.setBounds(439, 84, 162, 25);
-		Stockpanel.add(tfSymbol);
-		tfSymbol.setColumns(10);
+		stockSymbol = new JTextField();
+		stockSymbol.setBounds(439, 84, 162, 25);
+		Stockpanel.add(stockSymbol);
+		stockSymbol.setColumns(10);
 
 		JLabel lblCurrentPrice = new JLabel("Current Price");
+		lblCurrentPrice.setFont(new Font("Berlin Sans FB", Font.PLAIN, 12));
 		lblCurrentPrice.setBounds(307, 132, 122, 25);
 		Stockpanel.add(lblCurrentPrice);
 
-		tfCurrentPrice = new JTextField();
-		tfCurrentPrice.setColumns(10);
-		tfCurrentPrice.setBounds(439, 129, 162, 31);
-		Stockpanel.add(tfCurrentPrice);
+		stockCurrentPrice = new JTextField();
+		stockCurrentPrice.setColumns(10);
+		stockCurrentPrice.setBounds(439, 129, 162, 31);
+		Stockpanel.add(stockCurrentPrice);
 
 		JLabel lblOpeningPrice = new JLabel("Opening Price");
+		lblOpeningPrice.setFont(new Font("Berlin Sans FB", Font.PLAIN, 12));
 		lblOpeningPrice.setBounds(307, 179, 122, 25);
 		Stockpanel.add(lblOpeningPrice);
 
-		tfOpeningPrice = new JTextField();
-		tfOpeningPrice.setColumns(10);
-		tfOpeningPrice.setBounds(439, 179, 162, 25);
-		Stockpanel.add(tfOpeningPrice);
+		stockOpeningPrice = new JTextField();
+		stockOpeningPrice.setColumns(10);
+		stockOpeningPrice.setBounds(439, 179, 162, 25);
+		Stockpanel.add(stockOpeningPrice);
 
 		JLabel lblClosingPrice = new JLabel("Closing Price");
+		lblClosingPrice.setFont(new Font("Berlin Sans FB", Font.PLAIN, 12));
 		lblClosingPrice.setBounds(307, 223, 122, 25);
 		Stockpanel.add(lblClosingPrice);
 
-		tfClosingPrice = new JTextField();
-		tfClosingPrice.setColumns(10);
-		tfClosingPrice.setBounds(439, 223, 162, 25);
-		Stockpanel.add(tfClosingPrice);
+		stockClosingPrice = new JTextField();
+		stockClosingPrice.setColumns(10);
+		stockClosingPrice.setBounds(439, 223, 162, 25);
+		Stockpanel.add(stockClosingPrice);
 
 		JLabel lblVolume = new JLabel("Volume");
+		lblVolume.setFont(new Font("Berlin Sans FB", Font.PLAIN, 12));
 		lblVolume.setBounds(307, 259, 122, 25);
 		Stockpanel.add(lblVolume);
 
-		tfVolume = new JTextField();
-		tfVolume.setColumns(10);
-		tfVolume.setBounds(439, 259, 162, 25);
-		Stockpanel.add(tfVolume);
+		stockVolume = new JTextField();
+		stockVolume.setColumns(10);
+		stockVolume.setBounds(439, 259, 162, 25);
+		Stockpanel.add(stockVolume);
 
 		JLabel lblVolatility = new JLabel("Volatility");
+		lblVolatility.setFont(new Font("Berlin Sans FB", Font.PLAIN, 12));
 		lblVolatility.setBounds(307, 295, 120, 20);
 		Stockpanel.add(lblVolatility);
 
-		tfVolatility = new JTextField();
-		tfVolatility.setColumns(10);
-		tfVolatility.setBounds(439, 295, 162, 25);
-		Stockpanel.add(tfVolatility);
+		stockVolatility = new JTextField();
+		stockVolatility.setColumns(10);
+		stockVolatility.setBounds(439, 295, 162, 25);
+		Stockpanel.add(stockVolatility);
 
 		JLabel AddStock = new JLabel("");
 		AddStock.setBounds(917, 263, 64, 63);
@@ -144,13 +161,13 @@ public class AddMarketDataGUI extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				Stock stock = new Stock();
-				stock.setCompanyName(tfCompanyName.getText());
-				stock.setSymbol(tfSymbol.getText());
-				stock.setCurrentPrice(Float.parseFloat(tfCurrentPrice.getText()));
-				stock.setOpeningPrice(Float.parseFloat(tfOpeningPrice.getText()));
-				stock.setClosingPrice(Float.parseFloat(tfClosingPrice.getText()));
-				stock.setVolume(Double.parseDouble(tfVolume.getText()));
-				stock.setVolatility(Float.parseFloat(tfVolatility.getText()));
+				stock.setCompanyName(stockCompanyName.getText());
+				stock.setSymbol(stockSymbol.getText());
+				stock.setCurrentPrice(Float.parseFloat(stockCurrentPrice.getText()));
+				stock.setOpeningPrice(Float.parseFloat(stockOpeningPrice.getText()));
+				stock.setClosingPrice(Float.parseFloat(stockClosingPrice.getText()));
+				stock.setVolume(Double.parseDouble(stockVolume.getText()));
+				stock.setVolatility(Float.parseFloat(stockVolatility.getText()));
 				try {
 					StockManagementDelegate.getInstance().doCreate(stock);
 					JOptionPane.showMessageDialog(null, "Ajout Réussi");
@@ -158,7 +175,7 @@ public class AddMarketDataGUI extends JFrame {
 					frame.setVisible(true);
 				} catch (Exception erreur) {
 					erreur.printStackTrace();
-					JOptionPane.showMessageDialog(null, "Ajout non éffectué");
+					JOptionPane.showMessageDialog(null, "Ajout non effectué");
 				}
 
 			}
@@ -171,6 +188,99 @@ public class AddMarketDataGUI extends JFrame {
 				new ImageIcon(AddMarketDataGUI.class.getResource("/pdev/financialbrains/client/pictures/bond.png")),
 				Bondpanel, null);
 		Bondpanel.setLayout(null);
+		
+		JLabel label = new JLabel("Volatility");
+		label.setBounds(30, 260, 120, 20);
+		Bondpanel.add(label);
+		
+		bondVolatility = new JTextField();
+		bondVolatility.setColumns(10);
+		bondVolatility.setBounds(162, 255, 162, 25);
+		Bondpanel.add(bondVolatility);
+		
+		JLabel label_1 = new JLabel("Current Price");
+		label_1.setBounds(30, 69, 122, 25);
+		Bondpanel.add(label_1);
+		
+		bondCurrentPrice = new JTextField();
+		bondCurrentPrice.setColumns(10);
+		bondCurrentPrice.setBounds(162, 66, 162, 28);
+		Bondpanel.add(bondCurrentPrice);
+		
+		JLabel label_2 = new JLabel("Symbol");
+		label_2.setFont(new Font("Berlin Sans FB", Font.PLAIN, 12));
+		label_2.setBounds(30, 21, 122, 25);
+		Bondpanel.add(label_2);
+		
+		bondSymbol = new JTextField();
+		bondSymbol.setColumns(10);
+		bondSymbol.setBounds(162, 21, 162, 25);
+		Bondpanel.add(bondSymbol);
+		
+		JLabel lblStartDate = new JLabel("Start Date");
+		lblStartDate.setFont(new Font("Berlin Sans FB", Font.PLAIN, 12));
+		lblStartDate.setBounds(30, 117, 64, 20);
+		Bondpanel.add(lblStartDate);
+		
+		bondStartDate = new JTextField();
+		bondStartDate.setColumns(10);
+		bondStartDate.setBounds(162, 112, 162, 25);
+		Bondpanel.add(bondStartDate);
+		
+		JLabel lblEndDate = new JLabel("End Date");
+		lblEndDate.setFont(new Font("Berlin Sans FB", Font.PLAIN, 12));
+		lblEndDate.setBounds(31, 162, 63, 20);
+		Bondpanel.add(lblEndDate);
+		
+		bondEndDate = new JTextField();
+		bondEndDate.setColumns(10);
+		bondEndDate.setBounds(162, 162, 162, 25);
+		Bondpanel.add(bondEndDate);
+		
+		JLabel lblCouponFreq = new JLabel("Coupon Freq");
+		lblCouponFreq.setFont(new Font("Berlin Sans FB", Font.PLAIN, 12));
+		lblCouponFreq.setBounds(30, 209, 64, 25);
+		Bondpanel.add(lblCouponFreq);
+		
+		bondCouponFreq = new JTextField();
+		bondCouponFreq.setColumns(10);
+		bondCouponFreq.setBounds(162, 209, 162, 25);
+		Bondpanel.add(bondCouponFreq);
+		
+		JLabel lblYield = new JLabel("Yield");
+		lblYield.setFont(new Font("Berlin Sans FB", Font.PLAIN, 12));
+		lblYield.setBounds(30, 312, 64, 14);
+		Bondpanel.add(lblYield);
+		
+		bondYield = new JTextField();
+		bondYield.setColumns(10);
+		bondYield.setBounds(162, 307, 162, 25);
+		Bondpanel.add(bondYield);
+		
+		JLabel addBond = new JLabel("");
+		addBond.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				Bond bond = new Bond();
+				bond.setSymbol(bondSymbol.getText());
+				bond.setCurrentPrice(Float.parseFloat(bondCurrentPrice.getText()));
+				bond.setCouponFreq(Integer.parseInt(bondCouponFreq.getText()));
+				bond.setVolatility(Float.parseFloat(bondVolatility.getText()));
+				bond.setYield(Integer.parseInt(bondYield.getText()));
+				try{
+					BondManagementDelegate.getInstance().doCreate(bond);
+					JOptionPane.showMessageDialog(null, "Ajout Réussi");
+					MarketDataGUI frame = new MarketDataGUI();
+					frame.setVisible(true);
+				}catch(Exception erreur){
+					erreur.printStackTrace();
+					JOptionPane.showMessageDialog(null, "Ajout non effectué");
+				}
+			}
+		});
+		addBond.setIcon(new ImageIcon(AddMarketDataGUI.class.getResource("/pdev/financialbrains/client/pictures/addIcon.png")));
+		addBond.setBounds(915, 260, 53, 63);
+		Bondpanel.add(addBond);
 
 		JPanel Currencypanel = new JPanel();
 		AddtabbedPane.addTab("Currency",
@@ -179,69 +289,75 @@ public class AddMarketDataGUI extends JFrame {
 		Currencypanel.setLayout(null);
 
 		JLabel symbolLabel = new JLabel("Symbol");
+		symbolLabel.setFont(new Font("Berlin Sans FB", Font.PLAIN, 12));
 		symbolLabel.setBounds(338, 26, 122, 25);
 		Currencypanel.add(symbolLabel);
 
-		textFSymbol = new JTextField();
-		textFSymbol.setColumns(10);
-		textFSymbol.setBounds(470, 26, 162, 25);
-		Currencypanel.add(textFSymbol);
+		currSymbol = new JTextField();
+		currSymbol.setColumns(10);
+		currSymbol.setBounds(470, 26, 162, 25);
+		Currencypanel.add(currSymbol);
 
 		JLabel curPriceLabel = new JLabel("Current Price");
+		curPriceLabel.setFont(new Font("Berlin Sans FB", Font.PLAIN, 12));
 		curPriceLabel.setBounds(338, 65, 122, 25);
 		Currencypanel.add(curPriceLabel);
 
-		textFCurrentPrice = new JTextField();
-		textFCurrentPrice.setColumns(10);
-		textFCurrentPrice.setBounds(470, 62, 162, 28);
-		Currencypanel.add(textFCurrentPrice);
+		currCurrentPrice = new JTextField();
+		currCurrentPrice.setColumns(10);
+		currCurrentPrice.setBounds(470, 62, 162, 28);
+		Currencypanel.add(currCurrentPrice);
 
 		JLabel volatilityLabel = new JLabel("Volatility");
+		volatilityLabel.setFont(new Font("Berlin Sans FB", Font.PLAIN, 12));
 		volatilityLabel.setBounds(338, 104, 120, 20);
 		Currencypanel.add(volatilityLabel);
 
-		textFVolatility = new JTextField();
-		textFVolatility.setColumns(10);
-		textFVolatility.setBounds(470, 104, 162, 25);
-		Currencypanel.add(textFVolatility);
+		currVolatility = new JTextField();
+		currVolatility.setColumns(10);
+		currVolatility.setBounds(470, 104, 162, 25);
+		Currencypanel.add(currVolatility);
 
 		JLabel opPriceLabel = new JLabel("Opening Price");
+		opPriceLabel.setFont(new Font("Berlin Sans FB", Font.PLAIN, 12));
 		opPriceLabel.setBounds(338, 145, 122, 25);
 		Currencypanel.add(opPriceLabel);
 
-		textFOpPrice = new JTextField();
-		textFOpPrice.setColumns(10);
-		textFOpPrice.setBounds(470, 145, 162, 25);
-		Currencypanel.add(textFOpPrice);
+		currOpPrice = new JTextField();
+		currOpPrice.setColumns(10);
+		currOpPrice.setBounds(470, 145, 162, 25);
+		Currencypanel.add(currOpPrice);
 
 		JLabel cloPriceLabel = new JLabel("Closing Price");
+		cloPriceLabel.setFont(new Font("Berlin Sans FB", Font.PLAIN, 12));
 		cloPriceLabel.setBounds(338, 189, 122, 25);
 		Currencypanel.add(cloPriceLabel);
 
-		textFCloPrice = new JTextField();
-		textFCloPrice.setColumns(10);
-		textFCloPrice.setBounds(470, 189, 162, 25);
-		Currencypanel.add(textFCloPrice);
+		currCloPrice = new JTextField();
+		currCloPrice.setColumns(10);
+		currCloPrice.setBounds(470, 189, 162, 25);
+		Currencypanel.add(currCloPrice);
 
 		JLabel volumeLabel = new JLabel("Volume");
+		volumeLabel.setFont(new Font("Berlin Sans FB", Font.PLAIN, 12));
 		volumeLabel.setBounds(338, 225, 122, 25);
 		Currencypanel.add(volumeLabel);
 
-		textFVolume = new JTextField();
-		textFVolume.setColumns(10);
-		textFVolume.setBounds(470, 225, 162, 25);
-		Currencypanel.add(textFVolume);
+		currVolume = new JTextField();
+		currVolume.setColumns(10);
+		currVolume.setBounds(470, 225, 162, 25);
+		Currencypanel.add(currVolume);
 
 		JLabel AddCurrency = new JLabel("");
 		AddCurrency.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				Currency currency = new Currency();
-				currency.setSymbol(textFSymbol.getText());
-				currency.setCurrentPrice(Float.parseFloat(textFCurrentPrice.getText()));
-				currency.setVolatility(Float.parseFloat(textFVolatility.getText()));
-				currency.setOpeningPrice(Float.parseFloat(tfOpeningPrice.getText()));
-				currency.setClosingPrice(Float.parseFloat(textFCloPrice.getText()));
+				currency.setSymbol(currSymbol.getText());
+				currency.setCurrentPrice(Float.parseFloat(currCurrentPrice.getText()));
+				currency.setVolatility(Float.parseFloat(currVolatility.getText()));
+				currency.setOpeningPrice(Float.parseFloat(stockOpeningPrice.getText()));
+				currency.setClosingPrice(Float.parseFloat(currCloPrice.getText()));
 				try {
 					CurrencyManagementDelegate.getInstance().doCreate(currency);
 					JOptionPane.showMessageDialog(null, "Ajout Réussi");
@@ -249,7 +365,7 @@ public class AddMarketDataGUI extends JFrame {
 					frame.setVisible(true);
 				} catch (Exception erreur) {
 					erreur.printStackTrace();
-					JOptionPane.showMessageDialog(null, "Ajout non éffectué");
+					JOptionPane.showMessageDialog(null, "Ajout non effectué");
 				}
 			}
 		});

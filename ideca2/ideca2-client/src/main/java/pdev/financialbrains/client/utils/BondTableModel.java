@@ -54,7 +54,9 @@ public class BondTableModel extends AbstractTableModel {
 		}
 	}
 
-	public String getColumnString(int column) {
+	
+	@Override
+	public String getColumnName(int column) {
 		return entete[column];
 	}
 
