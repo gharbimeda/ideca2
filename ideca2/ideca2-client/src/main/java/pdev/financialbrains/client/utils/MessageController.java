@@ -1,15 +1,17 @@
 package pdev.financialbrains.client.utils;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
+import pdev.financialbrains.client.delegate.MessageManagementDelegate;
 import pdev.financialbrains.ejb.entities.Message;
 
-public class MessageController  extends AbstractTableModel{
-List<Message> subjectlist = new ArrayList<Message>();
-	
-	String[] header = { "id","Date","Content", "Destination" };
+public class MessageController extends AbstractTableModel {
+	List<Message> subjectlist = new ArrayList<Message>();
+
+	String[] header = { "id", "Date", "Content", "Destination" };
 
 	@Override
 	public int getRowCount() {
@@ -19,6 +21,10 @@ List<Message> subjectlist = new ArrayList<Message>();
 	@Override
 	public int getColumnCount() {
 		return header.length;
+	}
+
+	public MessageController() {
+		subjectlist = MessageManagementDelegate.getInstance().doRead(1);
 	}
 
 	@Override
@@ -32,15 +38,14 @@ List<Message> subjectlist = new ArrayList<Message>();
 			return subjectlist.get(rowIndex).getTexte();
 		case 3:
 			return subjectlist.get(rowIndex).getUserDest();
-		
 
 		default:
 			return null;
 		}
 	}
+
 	public String getColumnName(int column) {
-        return header[column];
-    }
+		return header[column];
+	}
 
 }
-

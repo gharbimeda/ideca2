@@ -46,16 +46,20 @@ public class TestMessage {
 		m.setUserSource(u1);
 		messageDeletage.doCreate(m);
 	}
-
+@Test
+public  void show()
+{
+	messageDeletage.doRead();
+}
 	@Test
 	public void udapteMessage() {
-		Message m = MessageManagementDelegate.doRead(7);
+		List<Message> m = MessageManagementDelegate.doRead(1);
 		User u = new User(1);
 		User u1 = new User(2);
 
-		m.setTexte("chaima");
-		m.setDate(new Date("2015/02/03"));
-		messageDeletage.doUpdate(m);
+		//m.setTexte("chaima");
+		//m.setDate(new Date("2015/02/03"));
+		//messageDeletage.doUpdate(m);
 
 	}
 
@@ -69,8 +73,7 @@ public class TestMessage {
 
 	@Test
 	public void addBond() {
-		Bond b = new Bond(1, 125.5f, 5.5f, "symbole", "50");
-
+		Bond b = new Bond(1,125.5f, 5.5f, "symbole", "50");
 		bondDeletage.doCreate(b);
 	}
 

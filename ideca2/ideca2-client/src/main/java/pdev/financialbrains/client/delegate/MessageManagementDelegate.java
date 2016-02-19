@@ -41,7 +41,7 @@ public class MessageManagementDelegate {
 		getProxy().update(Message);
 	}
 
-	public static Message doRead (Integer id){
+	public static List<Message> doRead (Integer id){
 		return getProxy().readById(id);
 	}
 	
