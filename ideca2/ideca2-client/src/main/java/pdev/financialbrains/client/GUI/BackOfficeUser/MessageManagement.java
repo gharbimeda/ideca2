@@ -103,12 +103,12 @@ public class MessageManagement extends JFrame {
 		table_1.setModel(new MessageController());
 		//MessageManagementDelegate.doRead();
 		messageTabbedPane.addTab("All Messages",
-				new ImageIcon(MessageManagement.class.getResource("/pdev/financialbrains/client/pictures/menu-button.png")),
+				new ImageIcon(MessageManagement.class.getResource("")),
 				table_1, null);
 		messageTabbedPane.setEnabledAt(0, true);
 		
 		JLayeredPane panel = new JLayeredPane();
-		messageTabbedPane.addTab("Send", new ImageIcon(MessageManagement.class.getResource("/pdev/financialbrains/client/pictures/msg.png")), panel, null);
+		messageTabbedPane.addTab("Send", new ImageIcon(MessageManagement.class.getResource("")), panel, null);
 		panel.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Content");

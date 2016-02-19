@@ -37,7 +37,7 @@ public class MessageController extends AbstractTableModel {
 		case 2:
 			return subjectlist.get(rowIndex).getTexte();
 		case 3:
-			return subjectlist.get(rowIndex).getUserDest();
+			return subjectlist.get(rowIndex).getUserDest().getLogin();
 
 		default:
 			return null;
