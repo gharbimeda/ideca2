@@ -71,4 +71,20 @@ public abstract class DerivativeInstrument extends FinancialInstrument {
 				+ ", getVolatility()=" + getVolatility() + ", startDate=" + startDate + ", endDate=" + endDate + "]";
 	}
 
+	public DerivativeInstrument(Integer id, Float currentPrice, Float volatility, Date startDate, Date endDate) {
+		super(id, currentPrice, volatility);
+		this.startDate = startDate;
+		this.endDate = endDate;
+	}
+
+	public DerivativeInstrument(Integer id, Float currentPrice, Float volatility) {
+		super(id, currentPrice, volatility);
+	}
+
+	public DerivativeInstrument(Date startDate, Date endDate) {
+		super();
+		this.startDate = startDate;
+		this.endDate = endDate;
+	}
+
 }
