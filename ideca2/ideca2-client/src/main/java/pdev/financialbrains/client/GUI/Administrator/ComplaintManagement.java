@@ -22,12 +22,21 @@ import org.jdesktop.swingbinding.JTableBinding;
 import org.jdesktop.swingbinding.SwingBindings;
 import org.jdesktop.beansbinding.AutoBinding.UpdateStrategy;
 import org.jdesktop.beansbinding.BeanProperty;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import java.awt.Color;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.JTextField;
+import javax.swing.JButton;
 
 public class ComplaintManagement extends JFrame {
 
 	private JPanel contentPane;
 	private JTable table;
      List <Complaint> complaint;
+     Complaint complaints;
+     private JTextField tf_text;
+     private JTextField tf_object;
 	/**
 	 * Launch the application.
 	 */
@@ -56,41 +65,112 @@ public class ComplaintManagement extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
-		
-		JLabel label = new JLabel("");
-		
-			label.setBounds(0, 0, 908, 681);
-			contentPane.add(label);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(373, 239, 488, 298);
-		contentPane.add(panel);
 		
 		JScrollPane scrollPane = new JScrollPane();
+		
+		table = new JTable();
+		table.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				
+				complaints = complaint.get(table.getSelectedRow());
+				tf_object.setText(complaints.getObject());
+				tf_text.setText(complaints.getText());
+				
+			}
+		});
+		scrollPane.setViewportView(table);
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
-					.addGap(27)
-					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 418, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(43, Short.MAX_VALUE))
+					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 463, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(335, Short.MAX_VALUE))
 		);
 		gl_panel.setVerticalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
-					.addGap(28)
+					.addGap(67)
 					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 197, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(73, Short.MAX_VALUE))
+					.addContainerGap(34, Short.MAX_VALUE))
 		);
-		
-		table = new JTable();
-		scrollPane.setViewportView(table);
 		panel.setLayout(gl_panel);
 		
-		JLabel label_1 = new JLabel("");
-		label_1.setBounds(92, 92, 46, 14);
-		contentPane.add(label_1);
+		tf_text = new JTextField();
+		tf_text.setColumns(10);
+		
+		tf_object = new JTextField();
+		tf_object.setColumns(10);
+		
+		JLabel label = new JLabel("");
+		
+		JLabel deletea = new JLabel("");
+		deletea.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				complaints.setObject(tf_object.getText());
+				complaints.setText(tf_text.getText());
+				ComplaintManagementDelegate.doDelete(complaints);
+				
+				tf_object.setText("");
+				tf_text.setText("");
+				complaint = ComplaintManagementDelegate.doReadAll();
+				
+				
+				initDataBindings();
+				
+				
+			}
+		});
+		deletea.setIcon(new ImageIcon("C:\\IDE\\images\\Delete_Icopn.png"));
+		GroupLayout gl_contentPane = new GroupLayout(contentPane);
+		gl_contentPane.setHorizontalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(280)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addGap(256)
+									.addComponent(tf_text, GroupLayout.PREFERRED_SIZE, 291, GroupLayout.PREFERRED_SIZE))
+								.addComponent(tf_object, GroupLayout.PREFERRED_SIZE, 214, GroupLayout.PREFERRED_SIZE)
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addGap(394)
+									.addComponent(label)
+									.addGap(26)
+									.addComponent(deletea))))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(334)
+							.addComponent(panel, GroupLayout.PREFERRED_SIZE, 488, GroupLayout.PREFERRED_SIZE)))
+					.addGap(720))
+		);
+		gl_contentPane.setVerticalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(156)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addGap(308)
+									.addComponent(tf_text, GroupLayout.PREFERRED_SIZE, 87, GroupLayout.PREFERRED_SIZE)
+									.addGap(34)
+									.addComponent(deletea, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE))
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addGap(308)
+									.addComponent(tf_object, GroupLayout.PREFERRED_SIZE, 87, GroupLayout.PREFERRED_SIZE))
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addGap(440)
+									.addComponent(label))))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(155)
+							.addComponent(panel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+					.addGap(38))
+		);
+		contentPane.setLayout(gl_contentPane);
 		initDataBindings();
 	}
 	protected void initDataBindings() {

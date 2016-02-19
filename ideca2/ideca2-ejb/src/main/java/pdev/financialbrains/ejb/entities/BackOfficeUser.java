@@ -13,6 +13,7 @@ import javax.persistence.*;
  */
 @Entity
 
+
 public class BackOfficeUser extends User implements Serializable {
 
 
