@@ -5,6 +5,7 @@ import java.lang.Integer;
 import java.lang.String;
 import java.util.Date;
 import javax.persistence.*;
+import javax.resource.spi.AuthenticationMechanism;
 
 /**
  * Entity implementation class for Entity: Article
@@ -16,6 +17,7 @@ import javax.persistence.*;
 public class Article implements Serializable {
 
 	@Id
+	@GeneratedValue
 	private Integer id;
 	private String title;
 	private String author;
@@ -25,7 +27,7 @@ public class Article implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	public Article() {
-		super();
+	
 	}   
 	public Integer getId() {
 		return this.id;
@@ -69,5 +71,12 @@ public class Article implements Serializable {
 	public void setUrl(String url) {
 		this.url = url;
 	}
+
+	@Override
+	public String toString() {
+		return "Article [id=" + id + ", title=" + title + ", author=" + author + ", text=" + text + ", date=" + date
+				+ ", url=" + url + "]";
+	}
+
    
 }
