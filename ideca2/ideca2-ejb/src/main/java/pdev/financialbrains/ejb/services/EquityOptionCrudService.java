@@ -12,13 +12,13 @@ import pdev.financialbrains.ejb.contracts.IEquityOptionCrudServicesRemote;
 public class EquityOptionCrudService implements IEquityOptionCrudServicesLocal , IEquityOptionCrudServicesRemote {
 
 	@Override
-	public double BlackScholes(char CallPutFlag, double S, double X, double T, double r, double v) {
-		double d1, d2;
+	public Double BlackScholes(String CallPutFlag, Double S, Double X, Double T, Double r, Double v) {
+		Double d1, d2;
 
 		d1=(Math.log(S/X)+(r+v*v/2)*T)/(v*Math.sqrt(T));
 		d2=d1-v*Math.sqrt(T);
 
-		if (CallPutFlag=='1')
+		if (CallPutFlag=="Call")
 		{
 			System.out.println("call"+CallPutFlag);
 		return S*CND(d1)-X*Math.exp(-r*T)*CND(d2);
@@ -30,9 +30,9 @@ public class EquityOptionCrudService implements IEquityOptionCrudServicesLocal ,
 	}
 
 	@Override
-	public double CND(double X) {
-		double L, K, w ;
-		double a1 = 0.31938153, a2 = -0.356563782, a3 = 1.781477937, a4 = -1.821255978, a5 = 1.330274429;
+	public Double CND(Double X) {
+		Double L, K, w ;
+		Double a1 = 0.31938153, a2 = -0.356563782, a3 = 1.781477937, a4 = -1.821255978, a5 = 1.330274429;
 
 		L = Math.abs(X);
 		System.out.println("l est"+L);

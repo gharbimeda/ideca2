@@ -15,14 +15,14 @@ public class EquityOptionManagementDelegate {
 
 }
 	
-	public static double doBlackScholes(char CallPutFlag, double S, double X, double T, double r, double v){
+	public static Double doBlackScholes(String CallPutFlag, Double S, Double X, Double T, Double r, Double v){
 		return getProxy().BlackScholes(CallPutFlag, S, X, T, r, v);
 		
 		
 		
 	}
 	
-	public static double doCND(double X){
+	public static Double doCND(Double X ){
 		return getProxy().CND(X);
 		
 		
