@@ -1,5 +1,6 @@
 package pdev.financialbrains.ejb.services;
 
+import javax.ejb.Stateful;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -8,7 +9,7 @@ import javax.persistence.Query;
 import pdev.financialbrains.ejb.contracts.IUserCrudServiceLocal;
 import pdev.financialbrains.ejb.contracts.IUserCrudServiceRemote;
 import pdev.financialbrains.ejb.entities.User;
-@Stateless
+@Stateful
 public class UserCrudServices  implements IUserCrudServiceLocal, IUserCrudServiceRemote{
 	
 	
