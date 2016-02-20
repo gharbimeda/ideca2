@@ -20,6 +20,8 @@ import pdev.financialbrains.client.utils.StockTableModel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JScrollPane;
+import java.awt.Font;
+import java.awt.Color;
 
 public class MarketDataGUI extends JFrame {
 
@@ -31,6 +33,7 @@ public class MarketDataGUI extends JFrame {
 	private JScrollPane CurrencyScrollPane;
 	private JScrollPane BondScrollPane;
 	private JScrollPane StockScrollPane;
+	private JLabel titreLabel;
 
 	/**
 	 * Launch the application.
@@ -52,6 +55,8 @@ public class MarketDataGUI extends JFrame {
 	 * Create the frame.
 	 */
 	public MarketDataGUI() {
+//		setLocationRelativeTo(null);
+//		setUndecorated(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1243, 726);
 		contentPane = new JPanel();
@@ -64,7 +69,7 @@ public class MarketDataGUI extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				MarketDataGUI frame = new MarketDataGUI();
-				frame.repaint();
+				recharger();
 
 			}
 		});
@@ -77,6 +82,7 @@ public class MarketDataGUI extends JFrame {
 			public void mouseClicked(MouseEvent arg0) {
 				AddMarketDataGUI frame = new AddMarketDataGUI(); 
 				frame.setVisible(true);
+				fermer();
 			}
 		});
 		addMDLabel.setIcon(
@@ -93,9 +99,9 @@ public class MarketDataGUI extends JFrame {
 						StockManagementDelegate.getInstance().doDelete(StockManagementDelegate.getInstance()
 								.doReadById((int) stockTable.getValueAt(stockTable.getSelectedRow(), 0)));
 						JOptionPane.showMessageDialog(null, "Suppression effectué !");
+						stockTable.setModel(new StockTableModel());
 						
 					} catch (Exception erreur) {
-						erreur.printStackTrace();
 						JOptionPane.showMessageDialog(null, "Suppression non effectué !");
 					}
 				} else if (bondTable.getSelectedRow() != -1) {
@@ -103,9 +109,8 @@ public class MarketDataGUI extends JFrame {
 						BondManagementDelegate.getInstance().doDelete(BondManagementDelegate.getInstance()
 								.doReadById((int) bondTable.getValueAt(bondTable.getSelectedRow(), 0)));
 						JOptionPane.showMessageDialog(null, "Suppression éffectué !");
-						bondTable.repaint();
+						bondTable.setModel(new BondTableModel());
 					} catch (Exception erreur) {
-						erreur.printStackTrace();
 						JOptionPane.showMessageDialog(null, "Suppression non effectué !");
 					}
 				} else if (currencyTable.getSelectedRow() != -1) {
@@ -113,9 +118,8 @@ public class MarketDataGUI extends JFrame {
 						CurrencyManagementDelegate.getInstance().doDelete(CurrencyManagementDelegate.getInstance()
 								.doReadById((int) currencyTable.getValueAt(currencyTable.getSelectedRow(), 0)));
 						JOptionPane.showMessageDialog(null, "Suppression effectué !");
-						currencyTable.repaint();
+						currencyTable.setModel(new CurrencyTableModel());
 					} catch (Exception erreur) {
-						erreur.printStackTrace();
 						JOptionPane.showMessageDialog(null, "Suppression non effectué !");
 					}
 				}
@@ -153,11 +157,36 @@ public class MarketDataGUI extends JFrame {
 		marketTabbedPane.addTab("Currency",
 				new ImageIcon(MarketDataGUI.class.getResource("/pdev/financialbrains/client/pictures/currency.png")),
 				CurrencyScrollPane, null);
+		
+		JLabel settlementLabel = new JLabel("");
+		settlementLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				SettlementGUI frame = new SettlementGUI();
+				frame.setVisible(true);
+				fermer();
+			}
+		});
+		settlementLabel.setBounds(10, 466, 207, 45);
+		contentPane.add(settlementLabel);
+		
+		titreLabel = new JLabel("Home / Market Data");
+		titreLabel.setForeground(Color.WHITE);
+		titreLabel.setFont(new Font("Berlin Sans FB", Font.BOLD, 16));
+		titreLabel.setBounds(300, 107, 344, 22);
+		contentPane.add(titreLabel);
 
 		JLabel backgroundLabel = new JLabel("");
 		backgroundLabel.setIcon(new ImageIcon(
 				MarketDataGUI.class.getResource("/pdev/financialbrains/client/pictures/backBouGrand2.PNG")));
 		backgroundLabel.setBounds(0, 0, 1227, 687);
 		contentPane.add(backgroundLabel);
+	}
+	
+	private void fermer(){
+		this.setVisible(false);
+	}
+	private void recharger(){
+		this.repaint();
 	}
 }
