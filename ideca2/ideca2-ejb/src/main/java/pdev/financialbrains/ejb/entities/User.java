@@ -22,10 +22,13 @@ public class User implements Serializable {
 	private int IdUser;
 	private String login;
 	private String password;
+	
+	@OneToMany(mappedBy="user")
+	private List <Complaint>complaint;
 	private static final long serialVersionUID = 1L;
 	@OneToMany(mappedBy = "userDest")
-	List<Message> messages;
-	@OneToMany(mappedBy = "userSource")
+	List<Message> messages; 
+	@OneToMany(mappedBy = "userSource") 
 	List<Message> messages2;
 
 	public User(String login, String password) {
@@ -92,3 +95,4 @@ public class User implements Serializable {
 		super();
 		IdUser = idUser;
 	}}
+

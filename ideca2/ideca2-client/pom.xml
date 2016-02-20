@@ -21,6 +21,13 @@
 			<artifactId>ideca2-ejb</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 			<type>ejb</type>
+
+
+		</dependency>
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4</version>
 		</dependency>
 		<dependency>
 			<groupId>net.java.dev.beansbinding</groupId>
@@ -53,9 +60,9 @@
 			<artifactId>jfreechart</artifactId>
 			<version>1.0.19</version>
 		</dependency>
-		
-		
-		
+
+
+
 
 	</dependencies>
 </project>
