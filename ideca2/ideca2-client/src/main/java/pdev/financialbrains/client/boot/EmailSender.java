@@ -42,7 +42,7 @@ public class EmailSender {
             for (int i=0;i<toAddress.length;i++){
                 mimeMessage.addRecipient(Message.RecipientType.TO, toAddress[i]);
             }
-            mimeMessage.setSubject("[CMD] Validation du compte");
+            mimeMessage.setSubject("[Intelixx] Complaint Response");
             mimeMessage.setText(message);
             Transport transport = session.getTransport("smtp");
             transport.connect(host,from,password);
