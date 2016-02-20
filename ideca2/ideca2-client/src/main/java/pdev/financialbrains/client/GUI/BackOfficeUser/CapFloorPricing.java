@@ -10,30 +10,61 @@ import javax.swing.ImageIcon;
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.border.TitledBorder;
+
+import com.toedter.calendar.JCalendar;
+import com.toedter.calendar.JDateChooser;
+
+import pdev.financialbrains.ejb.entities.CapFloorTable;
+import pdev.financialbrains.ejb.services.CalculCapFloor;
+
 import javax.swing.UIManager;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.SystemColor;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+import java.util.Random;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import java.awt.BorderLayout;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.math.*;
-import java.util.Random;
+import org.jdesktop.beansbinding.ObjectProperty;
+import org.jdesktop.beansbinding.AutoBinding;
+import org.jdesktop.beansbinding.Bindings;
+import org.jdesktop.beansbinding.AutoBinding.UpdateStrategy;
+import org.jdesktop.swingbinding.JTableBinding;
+import org.jdesktop.swingbinding.SwingBindings;
+import org.jdesktop.beansbinding.BeanProperty;
 
 public class CapFloorPricing extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField tf_startDate;
-	private JTextField tf_EndDate;
+	private JDateChooser tf_startDate;
+	private JDateChooser tf_EndDate;
 	private JTextField tf_days;
 	private JTextField tf_notionalAmount;
 	private JTextField tf_FRate;
 	private JTextField tf_rfr;
 	private JTextField tf_Strike;
 	private JTextField tf_volatility;
-	private JTextField tf_cap;
-	private JTextField tf_floor;
+	private JComboBox<Integer> cb_Tenor;
+	private JTable table;
+	private List<CapFloorTable> list = new ArrayList <>();
+	private JScrollPane scrollPane;
+	private JDateChooser valDate;
+	private Integer nd;
 
 	/**
 	 * Launch the application.
@@ -51,10 +82,17 @@ public class CapFloorPricing extends JFrame {
 		});
 	}
 	
-	private double N(){
-		Random random = new Random();
-		random.nextGaussian();
-		return 0.0;
+	private double nbPeriode(){
+		
+		Integer tenor = (Integer) cb_Tenor.getSelectedItem();
+		 return nDays()/tenor;
+	}
+	
+	private Integer nDays(){
+		Date date1 = tf_startDate.getDate();
+		Date date2 = tf_EndDate.getDate();
+		Integer nbJour = Math.abs((date2.getYear() - date1.getYear())*12 + (date2.getMonth() - date1.getMonth())) ;
+		return nbJour;
 	}
 
 	/**
@@ -71,28 +109,74 @@ public class CapFloorPricing extends JFrame {
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(SystemColor.window);
 		panel_1.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel_1.setBounds(661, 188, 546, 431);
+		panel_1.setBounds(661, 188, 546, 450);
 		contentPane.add(panel_1);
-		panel_1.setLayout(null);
 		
-		tf_cap = new JTextField();
-		tf_cap.setBounds(99, 22, 86, 20);
-		panel_1.add(tf_cap);
-		tf_cap.setColumns(10);
-		
-		tf_floor = new JTextField();
-		tf_floor.setBounds(99, 72, 86, 20);
-		panel_1.add(tf_floor);
-		tf_floor.setColumns(10);
-		
-		JButton btnPricing = new JButton("Pricing");
-		btnPricing.addActionListener(new ActionListener() {
+		JPanel panel_2 = new JPanel();
+		cb_Tenor = new JComboBox();
+		cb_Tenor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+				 nd = CalculCapFloor.nDays((Integer) cb_Tenor.getSelectedItem());
+				tf_days.setText(nd+"");
 			}
 		});
-		btnPricing.setBounds(34, 397, 89, 23);
-		panel_1.add(btnPricing);
+		cb_Tenor.setFont(new Font("Berlin Sans FB", Font.PLAIN, 12));
+		cb_Tenor.setBounds(258, 112, 73, 20);
+		cb_Tenor.setModel(new DefaultComboBoxModel(new Integer[] {3, 6, 12}));
+		
+		JButton btnPricing = new JButton("Pricing");
+		btnPricing.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				//tf_rfr.setText(tf_EndDate.getDate()+"");
+				//tf_FRate.setText(nbPeriode()+"");
+				SimpleDateFormat formater = null;
+				formater = new SimpleDateFormat("dd/MM/yyyy");
+				
+				Calendar date1 = tf_startDate.getCalendar();
+				Calendar date2 = valDate.getCalendar();
+				Integer n = 0;
+				List<CapFloorTable> capFloorTables = new ArrayList<>();
+				for (int i=1 ; i<= nbPeriode(); i++){
+					CapFloorTable capFloorTable = new CapFloorTable();
+					capFloorTable.setStartDate(formater.format(date1.getTime()));
+					date1.add(Calendar.DATE, nd);
+					capFloorTable.setEndDate(formater.format(date1.getTime()));
+					n = Math.abs((date2.getTime().getYear() - date1.getTime().getYear())*12 + (date2.getTime().getMonth() - date1.getTime().getMonth()));
+					capFloorTable.setMaturity(n/365.0);
+					capFloorTables.add(capFloorTable);
+				}
+				list = capFloorTables;
+				initDataBindings();
+			}
+		});
+		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
+		gl_panel_1.setHorizontalGroup(
+			gl_panel_1.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_1.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
+						.addComponent(panel_2, GroupLayout.DEFAULT_SIZE, 522, Short.MAX_VALUE)
+						.addComponent(btnPricing, Alignment.TRAILING))
+					.addContainerGap())
+		);
+		gl_panel_1.setVerticalGroup(
+			gl_panel_1.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_1.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 302, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+					.addComponent(btnPricing)
+					.addGap(25))
+		);
+		panel_2.setLayout(new BorderLayout(0, 0));
+		
+		scrollPane = new JScrollPane();
+		panel_2.add(scrollPane, BorderLayout.CENTER);
+		
+		table = new JTable();
+		scrollPane.setViewportView(table);
+		panel_1.setLayout(gl_panel_1);
 		
 		JLabel lblHomeFianancial = new JLabel("Home / Fianancial Instrument / Cap and Floor");
 		lblHomeFianancial.setForeground(Color.WHITE);
@@ -104,7 +188,7 @@ public class CapFloorPricing extends JFrame {
 		panel.setBackground(SystemColor.window);
 		panel.setFont(new Font("Berlin Sans FB", Font.PLAIN, 14));
 		panel.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-		panel.setBounds(250, 188, 375, 431);
+		panel.setBounds(250, 188, 375, 450);
 		contentPane.add(panel);
 		
 		JLabel lblInputs = new JLabel("INPUTS");
@@ -113,7 +197,7 @@ public class CapFloorPricing extends JFrame {
 		
 		JLabel lblStartDate = new JLabel("Start Date");
 		lblStartDate.setFont(new Font("Berlin Sans FB", Font.PLAIN, 12));
-		lblStartDate.setBounds(20, 43, 68, 14);
+		lblStartDate.setBounds(26, 40, 68, 14);
 		
 		JLabel lblEndDate = new JLabel("End Date");
 		lblEndDate.setFont(new Font("Berlin Sans FB", Font.PLAIN, 12));
@@ -125,7 +209,7 @@ public class CapFloorPricing extends JFrame {
 		
 		JLabel lblTenor = new JLabel("Tenor");
 		lblTenor.setFont(new Font("Berlin Sans FB", Font.PLAIN, 12));
-		lblTenor.setBounds(26, 153, 120, 14);
+		lblTenor.setBounds(211, 115, 45, 14);
 		
 		JLabel lblNumberOfDays = new JLabel("Number of days");
 		lblNumberOfDays.setFont(new Font("Berlin Sans FB", Font.PLAIN, 12));
@@ -165,28 +249,26 @@ public class CapFloorPricing extends JFrame {
 		cb_capFloor.setModel(new DefaultComboBoxModel(new String[] {"Choice", "Cap", "Floor"}));
 		cb_capFloor.setToolTipText("");
 		
-		tf_startDate = new JTextField();
+		tf_startDate = new JDateChooser();
 		tf_startDate.setFont(new Font("Berlin Sans FB", Font.PLAIN, 12));
 		tf_startDate.setBounds(156, 40, 167, 20);
-		tf_startDate.setColumns(10);
 		
-		tf_EndDate = new JTextField();
+		
+		tf_EndDate = new JDateChooser();
 		tf_EndDate.setFont(new Font("Berlin Sans FB", Font.PLAIN, 12));
 		tf_EndDate.setBounds(156, 80, 168, 20);
-		tf_EndDate.setText("");
-		tf_EndDate.setColumns(10);
+		
+		//tf_EndDate.setColumns(10);
 		
 		JComboBox cb_dayConv = new JComboBox();
 		cb_dayConv.setFont(new Font("Berlin Sans FB", Font.PLAIN, 12));
-		cb_dayConv.setBounds(157, 111, 73, 20);
+		cb_dayConv.setBounds(118, 112, 73, 20);
 		cb_dayConv.setModel(new DefaultComboBoxModel(new String[] {"act/360", "act/365", "30/360"}));
 		
-		JComboBox cb_Tenor = new JComboBox();
-		cb_Tenor.setFont(new Font("Berlin Sans FB", Font.PLAIN, 12));
-		cb_Tenor.setBounds(157, 149, 73, 20);
-		cb_Tenor.setModel(new DefaultComboBoxModel(new String[] {"3", "6", "12"}));
+	    
 		
 		tf_days = new JTextField();
+		tf_days.setEnabled(false);
 		tf_days.setFont(new Font("Berlin Sans FB", Font.PLAIN, 12));
 		tf_days.setBounds(156, 184, 74, 20);
 		tf_days.setColumns(10);
@@ -246,9 +328,45 @@ public class CapFloorPricing extends JFrame {
 		panel.add(tf_volatility);
 		tf_volatility.setColumns(10);
 		
+		JLabel lblValuationDate = new JLabel("Valuation Date");
+		lblValuationDate.setFont(new Font("Berlin Sans FB", Font.PLAIN, 12));
+		lblValuationDate.setBounds(26, 155, 120, 14);
+		panel.add(lblValuationDate);
+		
+	    valDate = new JDateChooser();
+		valDate.setFont(new Font("Berlin Sans FB", Font.PLAIN, 12));
+		valDate.setBounds(156, 153, 167, 20);
+		panel.add(valDate);
+		
 		JLabel BackGround = new JLabel("");
 		BackGround.setIcon(new ImageIcon("C:\\IDE\\images\\backBouGrand2.PNG"));
 		BackGround.setBounds(5, 0, 1235, 689);
 		contentPane.add(BackGround);
+		initDataBindings();
+		
+	}
+	protected void initDataBindings() {
+		ObjectProperty<JScrollPane> jScrollPaneObjectProperty = ObjectProperty.create();
+		AutoBinding<List<CapFloorTable>, List<CapFloorTable>, JScrollPane, JScrollPane> autoBinding = Bindings.createAutoBinding(UpdateStrategy.READ, list, scrollPane, jScrollPaneObjectProperty);
+		autoBinding.bind();
+		//
+		JTableBinding<CapFloorTable, List<CapFloorTable>, JTable> jTableBinding = SwingBindings.createJTableBinding(UpdateStrategy.READ, list, table);
+		//
+		BeanProperty<CapFloorTable, Calendar> capFloorTableBeanProperty = BeanProperty.create("startDate");
+		jTableBinding.addColumnBinding(capFloorTableBeanProperty).setColumnName("Start Date");
+		//
+		BeanProperty<CapFloorTable, Calendar> capFloorTableBeanProperty_1 = BeanProperty.create("endDate");
+		jTableBinding.addColumnBinding(capFloorTableBeanProperty_1).setColumnName("End Date");
+		//
+		BeanProperty<CapFloorTable, Double> capFloorTableBeanProperty_2 = BeanProperty.create("maturity");
+		jTableBinding.addColumnBinding(capFloorTableBeanProperty_2).setColumnName("Maturity");
+		//
+		BeanProperty<CapFloorTable, Double> capFloorTableBeanProperty_3 = BeanProperty.create("d1");
+		jTableBinding.addColumnBinding(capFloorTableBeanProperty_3).setColumnName("d 1");
+		//
+		BeanProperty<CapFloorTable, Double> capFloorTableBeanProperty_4 = BeanProperty.create("cap");
+		jTableBinding.addColumnBinding(capFloorTableBeanProperty_4).setColumnName("Cap/Floor");
+		//
+		jTableBinding.bind();
 	}
 }
