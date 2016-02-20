@@ -13,7 +13,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="t_user")
+@Table(name = "t_user")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class User implements Serializable {
 
@@ -22,13 +22,13 @@ public class User implements Serializable {
 	private int IdUser;
 	private String login;
 	private String password;
-	
-	@OneToMany(mappedBy="user")
-	private List <Complaint>complaint;
+
+	@OneToMany(mappedBy = "user")
+	private List<Complaint> complaint;
 	private static final long serialVersionUID = 1L;
 	@OneToMany(mappedBy = "userDest")
-	List<Message> messages; 
-	@OneToMany(mappedBy = "userSource") 
+	List<Message> messages;
+	@OneToMany(mappedBy = "userSource")
 	List<Message> messages2;
 
 	public User(String login, String password) {
@@ -94,5 +94,5 @@ public class User implements Serializable {
 	public User(int idUser) {
 		super();
 		IdUser = idUser;
-	}}
-
+	}
+}

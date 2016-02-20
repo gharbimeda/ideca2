@@ -12,30 +12,27 @@ import javax.persistence.*;
  *
  */
 @Entity
-@Table(name="t_complaint")
+@Table(name = "t_complaint")
 
 public class Complaint implements Serializable {
-	   
-		@Id
-		private int id;
-		private String object;
-		private String text;
-		private Date date;
-		@ManyToOne
-		private User user;
-	
-	
+
+	@Id
+	private int id;
+	private String object;
+	private String text;
+	private Date date;
+	@ManyToOne
+	private User user;
+
 	public Complaint(String object, String text, Date date) {
-			super();
-			this.object = object;
-			this.text = text;
-			this.date = date;
-		}
+		super();
+		this.object = object;
+		this.text = text;
+		this.date = date;
+	}
 
 	private static final long serialVersionUID = 1L;
 
-	
-	
 	public Complaint(String object, String text) {
 		super();
 		this.object = object;
@@ -83,5 +80,5 @@ public class Complaint implements Serializable {
 		return "Complaint [id=" + id + ", object=" + object + ", text=" + text + ", date=" + date + ", user=" + user
 				+ "]";
 	}
-	
+
 }
