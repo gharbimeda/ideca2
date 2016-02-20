@@ -115,6 +115,9 @@ public class SettlementGUI extends JFrame {
 					trade.setStatus(1);
 					TradeManagementDelegate.getInstance().doUpdate(trade);
 					JOptionPane.showMessageDialog(null, "Trade accepeté");
+					pending.setModel(new TradePendTableModel("PENDING"));
+					allSettlement.setModel(new TradePendTableModel("ALL"));
+					settled.setModel(new TradePendTableModel("MANAGED"));
 				} catch (Exception erreur) {
 					JOptionPane.showMessageDialog(null, "Selectionnez un trade");
 				}
@@ -135,6 +138,9 @@ public class SettlementGUI extends JFrame {
 					trade.setStatus(0);
 					TradeManagementDelegate.getInstance().doUpdate(trade);
 					JOptionPane.showMessageDialog(null, "Trade refusé");
+					pending.setModel(new TradePendTableModel("PENDING"));
+					allSettlement.setModel(new TradePendTableModel("ALL"));
+					settled.setModel(new TradePendTableModel("MANAGED"));
 				} catch (Exception erreur) {
 					JOptionPane.showMessageDialog(null, "Selectionnez un trade");
 				}
@@ -144,11 +150,33 @@ public class SettlementGUI extends JFrame {
 				new ImageIcon(SettlementGUI.class.getResource("/pdev/financialbrains/client/pictures/decline.png")));
 		decline.setBounds(205, 108, 48, 52);
 		panelNotSett.add(decline);
+		
+		JLabel mdLabel = new JLabel("");
+		mdLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				MarketDataGUI frame = new MarketDataGUI(); 
+				frame.setVisible(true);
+				fermer();
+			}
+		});
+		
+		JLabel titreLabel = new JLabel("Home / Settlement");
+		titreLabel.setForeground(Color.WHITE);
+		titreLabel.setFont(new Font("Berlin Sans FB", Font.BOLD, 16));
+		titreLabel.setBounds(307, 114, 153, 22);
+		contentPane.add(titreLabel);
+		mdLabel.setBounds(10, 378, 204, 55);
+		contentPane.add(mdLabel);
 
 		JLabel label = new JLabel("");
 		label.setIcon(new ImageIcon(
 				SettlementGUI.class.getResource("/pdev/financialbrains/client/pictures/backBouGrand2.PNG")));
 		label.setBounds(0, 0, 1235, 694);
 		contentPane.add(label);
+	}
+
+	private void fermer() {
+		this.setVisible(false);
 	}
 }

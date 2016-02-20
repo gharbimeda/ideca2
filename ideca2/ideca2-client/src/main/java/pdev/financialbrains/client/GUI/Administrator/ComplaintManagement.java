@@ -101,6 +101,7 @@ public class ComplaintManagement extends JFrame {
 	            }
 			}
 		});
+
 		contentPane.setLayout(null);
 		
 		JPanel panel = new JPanel();
@@ -196,5 +197,8 @@ public class ComplaintManagement extends JFrame {
 		//
 		jTableBinding.bind();
 	}
-}
+
+
+	}
+
 
