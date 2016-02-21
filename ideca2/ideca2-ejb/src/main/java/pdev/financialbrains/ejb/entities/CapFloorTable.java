@@ -6,9 +6,7 @@ public class CapFloorTable {
 	private String endDate;
 	private Double maturity;
 	private Double cap;
-	private Double floor;
-	private Double d1;
-	private Double d2;
+	private Integer period;
 
 	public CapFloorTable() {
 	}
@@ -37,36 +35,20 @@ public class CapFloorTable {
 		this.cap = cap;
 	}
 
-	public Double getFloor() {
-		return floor;
-	}
-
-	public void setFloor(Double floor) {
-		this.floor = floor;
-	}
-
-	public Double getD1() {
-		return d1;
-	}
-
-	public void setD1(Double d1) {
-		this.d1 = d1;
-	}
-
-	public Double getD2() {
-		return d2;
-	}
-
-	public void setD2(Double d2) {
-		this.d2 = d2;
-	}
-
 	public Double getMaturity() {
 		return maturity;
 	}
 
 	public void setMaturity(Double maturity) {
 		this.maturity = maturity;
+	}
+
+	public Integer getPeriod() {
+		return period;
+	}
+
+	public void setPeriod(Integer period) {
+		this.period = period;
 	}
 
 }

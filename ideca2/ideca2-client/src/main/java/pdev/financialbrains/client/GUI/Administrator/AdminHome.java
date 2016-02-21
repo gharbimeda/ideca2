@@ -41,7 +41,7 @@ public class AdminHome extends JFrame {
 	 */
 	public AdminHome() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1226, 721);
+		setBounds(100, 100, 1226, 728);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -49,68 +49,57 @@ public class AdminHome extends JFrame {
 		
 		JLabel lblDashoard = new JLabel("Dashoard");
 		lblDashoard.setForeground(Color.WHITE);
-		lblDashoard.setFont(new Font("Berlin Sans FB", Font.BOLD, 17));
-		lblDashoard.setBounds(320, 98, 139, 22);
+		lblDashoard.setFont(new Font("Berlin Sans FB Demi", Font.BOLD, 20));
+		lblDashoard.setBounds(95, 115, 139, 22);
 		contentPane.add(lblDashoard);
 		
-		JLabel lbl_dash = new JLabel("");
-		lbl_dash.addMouseListener(new MouseAdapter() {
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				new AccountManagement().setVisible(true);
 				fermer();
-				new AdminHome().setVisible(true);
 			}
 		});
-		lbl_dash.setBounds(10, 98, 211, 37);
-		contentPane.add(lbl_dash);
+		lblNewLabel.setBounds(22, 279, 336, 142);
+		contentPane.add(lblNewLabel);
 		
-		JLabel lbl_account = new JLabel("");
-		lbl_account.addMouseListener(new MouseAdapter() {
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				fermer();
-				//new AccountManagement().setVisible(true);
-			}
-		});
-		lbl_account.setBounds(10, 162, 211, 37);
-		contentPane.add(lbl_account);
-		
-		JLabel lblcomplaint = new JLabel("");
-		lblcomplaint.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				fermer();
-				new ComplaintManagement().setVisible(true);
-			}
-		});
-		lblcomplaint.setBounds(10, 228, 211, 47);
-		contentPane.add(lblcomplaint);
-		
-		JLabel lbl_article = new JLabel("");
-		lbl_article.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				fermer();
 				new ArticlesManagement().setVisible(true);
+				fermer();
 			}
 		});
-		lbl_article.setBounds(10, 297, 211, 47);
-		contentPane.add(lbl_article);
+		lblNewLabel_1.setBounds(408, 273, 336, 147);
+		contentPane.add(lblNewLabel_1);
 		
-		JLabel signout = new JLabel("");
-		signout.addMouseListener(new MouseAdapter() {
+		JLabel lblNewLabel_2 = new JLabel("");
+		lblNewLabel_2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				new ComplaintManagement().setVisible(true);
 				fermer();
-				new Authentification().setVisible(true);
 			}
 		});
-		signout.setBounds(182, 645, 46, 26);
-		contentPane.add(signout);
+		lblNewLabel_2.setBounds(829, 279, 342, 142);
+		contentPane.add(lblNewLabel_2);
+		
+		JLabel lblNewLabel_3 = new JLabel("");
+		lblNewLabel_3.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				new Authentification().setVisible(true);
+				fermer();
+			}
+		});
+		lblNewLabel_3.setBounds(0, 651, 46, 27);
+		contentPane.add(lblNewLabel_3);
 		
 		JLabel background = new JLabel("New label");
-		background.setIcon(new ImageIcon(AdminHome.class.getResource("/pdev/financialbrains/client/pictures/backAdminGrand2.PNG")));
-		background.setBounds(0, 0, 1216, 688);
+		background.setIcon(new ImageIcon(AdminHome.class.getResource("/pdev/financialbrains/client/pictures/backAdminHome.PNG")));
+		background.setBounds(-13, -11, 1229, 710);
 		contentPane.add(background);
 	}
 	private void fermer(){

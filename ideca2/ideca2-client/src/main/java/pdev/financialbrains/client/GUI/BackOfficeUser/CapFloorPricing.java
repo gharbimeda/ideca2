@@ -42,8 +42,9 @@ import org.jdesktop.swingbinding.SwingBindings;
 
 import com.toedter.calendar.JDateChooser;
 
+import pdev.financialbrains.client.delegate.CapFloorManagementDelegate;
 import pdev.financialbrains.ejb.entities.CapFloorTable;
-import pdev.financialbrains.ejb.services.CalculCapFloor;
+
 
 public class CapFloorPricing extends JFrame {
 
@@ -62,6 +63,8 @@ public class CapFloorPricing extends JFrame {
 	private JScrollPane scrollPane;
 	private JDateChooser valDate;
 	private Integer nd;
+	private JComboBox cb_capFloor;
+	private JTextField tf_result;
 
 	/**
 	 * Launch the application.
@@ -113,7 +116,7 @@ public class CapFloorPricing extends JFrame {
 		cb_Tenor = new JComboBox();
 		cb_Tenor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				 nd = CalculCapFloor.nDays((Integer) cb_Tenor.getSelectedItem());
+				 nd = CapFloorManagementDelegate.nDays((Integer) cb_Tenor.getSelectedItem());
 				tf_days.setText(nd+"");
 			}
 		});
@@ -133,38 +136,58 @@ public class CapFloorPricing extends JFrame {
 				Calendar date1 = tf_startDate.getCalendar();
 				Calendar date2 = valDate.getCalendar();
 				Integer n = 0;
+				Double somme = 0.0;
 				List<CapFloorTable> capFloorTables = new ArrayList<>();
 				for (int i=1 ; i<= nbPeriode(); i++){
 					CapFloorTable capFloorTable = new CapFloorTable();
 					capFloorTable.setStartDate(formater.format(date1.getTime()));
 					date1.add(Calendar.DATE, nd);
 					capFloorTable.setEndDate(formater.format(date1.getTime()));
+					capFloorTable.setPeriod(i);
 					n = Math.abs((date2.getTime().getYear() - date1.getTime().getYear())*12 + (date2.getTime().getMonth() - date1.getTime().getMonth()));
 					capFloorTable.setMaturity(n/365.0);
+					capFloorTable.setCap(CapFloorManagementDelegate.pricingCapFloor(Double.parseDouble(tf_notionalAmount.getText()), (String) cb_capFloor.getSelectedItem(), nd,i, 360, Double.parseDouble(tf_FRate.getText()), Double.parseDouble(tf_Strike.getText()), Double.parseDouble(tf_volatility.getText()), capFloorTable.getMaturity(), Double.parseDouble(tf_rfr.getText())));
 					capFloorTables.add(capFloorTable);
+					somme += capFloorTable.getCap();
 				}
 				list = capFloorTables;
+				tf_result.setText(somme+"");
 				initDataBindings();
 			}
 		});
+		
+		JLabel lblCapOrFloor = new JLabel("Caplet or floorlet results");
+		lblCapOrFloor.setFont(new Font("Berlin Sans FB", Font.PLAIN, 12));
+		
+		tf_result = new JTextField();
+		tf_result.setColumns(10);
 		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
 		gl_panel_1.setHorizontalGroup(
 			gl_panel_1.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_1.createSequentialGroup()
 					.addContainerGap()
-					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
-						.addComponent(panel_2, GroupLayout.DEFAULT_SIZE, 522, Short.MAX_VALUE)
-						.addComponent(btnPricing, Alignment.TRAILING))
+					.addComponent(panel_2, GroupLayout.DEFAULT_SIZE, 522, Short.MAX_VALUE)
 					.addContainerGap())
+				.addGroup(Alignment.TRAILING, gl_panel_1.createSequentialGroup()
+					.addGap(23)
+					.addComponent(lblCapOrFloor)
+					.addGap(18)
+					.addComponent(tf_result, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED, 209, Short.MAX_VALUE)
+					.addComponent(btnPricing)
+					.addGap(26))
 		);
 		gl_panel_1.setVerticalGroup(
 			gl_panel_1.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_1.createSequentialGroup()
 					.addContainerGap()
 					.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 302, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
-					.addComponent(btnPricing)
-					.addGap(25))
+					.addPreferredGap(ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
+					.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
+						.addComponent(btnPricing)
+						.addComponent(lblCapOrFloor)
+						.addComponent(tf_result, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(33))
 		);
 		panel_2.setLayout(new BorderLayout(0, 0));
 		
@@ -240,7 +263,7 @@ public class CapFloorPricing extends JFrame {
 		lblCapFloor.setBounds(169, 11, 74, 18);
 		lblCapFloor.setFont(new Font("Berlin Sans FB", Font.BOLD, 14));
 		
-		JComboBox cb_capFloor = new JComboBox();
+	    cb_capFloor = new JComboBox();
 		cb_capFloor.setFont(new Font("Berlin Sans FB", Font.PLAIN, 12));
 		cb_capFloor.setBounds(261, 10, 70, 20);
 		cb_capFloor.setModel(new DefaultComboBoxModel(new String[] {"Choice", "Cap", "Floor"}));
@@ -335,6 +358,61 @@ public class CapFloorPricing extends JFrame {
 		valDate.setBounds(156, 153, 167, 20);
 		panel.add(valDate);
 		
+		JLabel lbl_home = new JLabel("\r\n");
+		lbl_home.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				new BackHome().setVisible(true);
+				fermer();
+			}
+		});
+		lbl_home.setBounds(10, 129, 157, 38);
+		contentPane.add(lbl_home);
+		
+		JLabel lbl_instrument = new JLabel("");
+		lbl_instrument.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				new FinancialInstrument().setVisible(true);
+				fermer();
+			}
+		});
+		lbl_instrument.setBounds(10, 213, 191, 56);
+		contentPane.add(lbl_instrument);
+		
+		JLabel lbl_marketdata = new JLabel("");
+		lbl_marketdata.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				new MarketDataGUI().setVisible(true);
+				fermer();
+			}
+		});
+		lbl_marketdata.setBounds(10, 373, 208, 56);
+		contentPane.add(lbl_marketdata);
+		
+		JLabel lbl_set = new JLabel("");
+		lbl_set.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				new SettlementGUI().setVisible(true);
+				fermer();
+			}
+		});
+		lbl_set.setBounds(10, 461, 191, 56);
+		contentPane.add(lbl_set);
+		
+		JLabel lbl_msg = new JLabel("");
+		lbl_msg.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				new MessageManagement().setVisible(true);
+				fermer();
+			}
+		});
+		lbl_msg.setBounds(1080, 34, 46, 38);
+		contentPane.add(lbl_msg);
+		
 		JLabel BackGround = new JLabel("");
 		BackGround.setIcon(new ImageIcon("C:\\IDE\\images\\backBouGrand2.PNG"));
 		BackGround.setBounds(5, 0, 1235, 689);
@@ -349,21 +427,24 @@ public class CapFloorPricing extends JFrame {
 		//
 		JTableBinding<CapFloorTable, List<CapFloorTable>, JTable> jTableBinding = SwingBindings.createJTableBinding(UpdateStrategy.READ, list, table);
 		//
-		BeanProperty<CapFloorTable, Calendar> capFloorTableBeanProperty = BeanProperty.create("startDate");
+		BeanProperty<CapFloorTable, String> capFloorTableBeanProperty = BeanProperty.create("startDate");
 		jTableBinding.addColumnBinding(capFloorTableBeanProperty).setColumnName("Start Date");
 		//
-		BeanProperty<CapFloorTable, Calendar> capFloorTableBeanProperty_1 = BeanProperty.create("endDate");
+		BeanProperty<CapFloorTable, String> capFloorTableBeanProperty_1 = BeanProperty.create("endDate");
 		jTableBinding.addColumnBinding(capFloorTableBeanProperty_1).setColumnName("End Date");
 		//
-		BeanProperty<CapFloorTable, Double> capFloorTableBeanProperty_2 = BeanProperty.create("maturity");
-		jTableBinding.addColumnBinding(capFloorTableBeanProperty_2).setColumnName("Maturity");
+		BeanProperty<CapFloorTable, Integer> capFloorTableBeanProperty_2 = BeanProperty.create("period");
+		jTableBinding.addColumnBinding(capFloorTableBeanProperty_2).setColumnName("Period");
 		//
-		BeanProperty<CapFloorTable, Double> capFloorTableBeanProperty_3 = BeanProperty.create("d1");
-		jTableBinding.addColumnBinding(capFloorTableBeanProperty_3).setColumnName("d 1");
+		BeanProperty<CapFloorTable, Double> capFloorTableBeanProperty_3 = BeanProperty.create("maturity");
+		jTableBinding.addColumnBinding(capFloorTableBeanProperty_3).setColumnName("Maturity");
 		//
 		BeanProperty<CapFloorTable, Double> capFloorTableBeanProperty_4 = BeanProperty.create("cap");
 		jTableBinding.addColumnBinding(capFloorTableBeanProperty_4).setColumnName("Cap/Floor");
 		//
 		jTableBinding.bind();
+	}
+	private void fermer(){
+		this.setVisible(false);
 	}
 }
