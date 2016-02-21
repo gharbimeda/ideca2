@@ -62,7 +62,7 @@ public class MessageManagement extends JFrame {
 	private Message message;
 	List<User> users;
 	private User user;
-
+	public static User userconnect;
 
 	private JPanel contentPane;
 	private JTable table;
@@ -98,6 +98,7 @@ public class MessageManagement extends JFrame {
 		messages = MessageManagementDelegate.doRead();
 		//users = UserManagementDelegate.doRead(1);
 		//List<User> list = UserManagementDelegate.doRead(1);
+		
       
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1243, 726);
@@ -155,7 +156,7 @@ table_1.setFont(new Font("Berlin Sans FB", Font.PLAIN, 11));
 						User user = (User) comboBox.getSelectedItem();
 					     
 						m.setUserDest(user);
-						m.setUserSource(user); // Source avec authentification
+						m.setUserSource(userconnect); // Source avec authentification
 						MessageManagementDelegate.doCreate(m);
 						JOptionPane.showMessageDialog(null, "Your message has been sent");
 						table_1.setModel(new MessageController());

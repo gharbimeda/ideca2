@@ -11,6 +11,7 @@ import pdev.financialbrains.ejb.entities.User;
 
 public class MessageController extends AbstractTableModel {
 	List<Message> subjectlist = new ArrayList<Message>();
+	public static User userconnect;
 
 	String[] header = { "id", "Date", "Content", "Destination" };
 
@@ -25,7 +26,7 @@ public class MessageController extends AbstractTableModel {
 	}
 
 	public MessageController() {
-		subjectlist = MessageManagementDelegate.getInstance().doRead(1);
+		subjectlist = MessageManagementDelegate.getInstance().doRead(userconnect.getIdUser());
 	}
 
 	@Override
