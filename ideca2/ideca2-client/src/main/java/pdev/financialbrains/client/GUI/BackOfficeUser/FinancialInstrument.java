@@ -65,7 +65,7 @@ public class FinancialInstrument extends JFrame {
 			}
 		});
 		lbl_zerocoupon.setIcon(new ImageIcon(FinancialInstrument.class.getResource("/pdev/financialbrains/client/pictures/ZCO.PNG")));
-		lbl_zerocoupon.setBounds(423, 292, 258, 92);
+		lbl_zerocoupon.setBounds(271, 288, 258, 92);
 		contentPane.add(lbl_zerocoupon);
 		
 		lbl_treasury = new JLabel("");
@@ -77,7 +77,7 @@ public class FinancialInstrument extends JFrame {
 			}
 		});
 		lbl_treasury.setIcon(new ImageIcon(FinancialInstrument.class.getResource("/pdev/financialbrains/client/pictures/treasury.PNG")));
-		lbl_treasury.setBounds(423, 406, 258, 55);
+		lbl_treasury.setBounds(271, 403, 258, 55);
 		contentPane.add(lbl_treasury);
 		
 		lbl_corporate = new JLabel("");
@@ -89,7 +89,7 @@ public class FinancialInstrument extends JFrame {
 			}
 		});
 		lbl_corporate.setIcon(new ImageIcon(FinancialInstrument.class.getResource("/pdev/financialbrains/client/pictures/corporate.PNG")));
-		lbl_corporate.setBounds(423, 519, 258, 50);
+		lbl_corporate.setBounds(271, 500, 258, 50);
 		contentPane.add(lbl_corporate);
 		
 		lbl_fxOption = new JLabel("");
@@ -101,7 +101,7 @@ public class FinancialInstrument extends JFrame {
 			}
 		});
 		lbl_fxOption.setIcon(new ImageIcon(FinancialInstrument.class.getResource("/pdev/financialbrains/client/pictures/fxoption.PNG")));
-		lbl_fxOption.setBounds(893, 406, 258, 52);
+		lbl_fxOption.setBounds(948, 391, 258, 52);
 		contentPane.add(lbl_fxOption);
 		
 	    lbl_equity = new JLabel("");
@@ -113,7 +113,7 @@ public class FinancialInstrument extends JFrame {
 	    	}
 	    });
 		lbl_equity.setIcon(new ImageIcon(FinancialInstrument.class.getResource("/pdev/financialbrains/client/pictures/equity.PNG")));
-		lbl_equity.setBounds(893, 308, 258, 50);
+		lbl_equity.setBounds(948, 310, 258, 50);
 		contentPane.add(lbl_equity);
 		
 		lbl_cap = new JLabel("");
@@ -125,7 +125,7 @@ public class FinancialInstrument extends JFrame {
 			}
 		});
 		lbl_cap.setIcon(new ImageIcon(FinancialInstrument.class.getResource("/pdev/financialbrains/client/pictures/cap.PNG")));
-		lbl_cap.setBounds(893, 505, 258, 64);
+		lbl_cap.setBounds(948, 489, 258, 64);
 		contentPane.add(lbl_cap);
 		lbl_cap.setVisible(false);
 		lbl_equity.setVisible(false);
@@ -216,7 +216,7 @@ public class FinancialInstrument extends JFrame {
 				lbl_corporate.setVisible(true);
 			}
 		});
-		lblNewLabel_7.setBounds(281, 175, 349, 106);
+		lblNewLabel_7.setBounds(282, 167, 243, 106);
 		contentPane.add(lblNewLabel_7);
 		
 		JLabel lblNewLabel_8 = new JLabel("");
@@ -228,13 +228,24 @@ public class FinancialInstrument extends JFrame {
 				lbl_cap.setVisible(true);
 			}
 		});
-		lblNewLabel_8.setBounds(822, 175, 356, 98);
+		lblNewLabel_8.setBounds(930, 167, 294, 106);
 		contentPane.add(lblNewLabel_8);
+		
+		JLabel lblNewLabel_9 = new JLabel("");
+		lblNewLabel_9.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				
+				fermer();
+			}
+		});
+		lblNewLabel_9.setBounds(592, 160, 294, 113);
+		contentPane.add(lblNewLabel_9);
 		
 		
 		
 		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon(FinancialInstrument.class.getResource("/pdev/financialbrains/client/pictures/finanInstrument.PNG")));
+		lblNewLabel.setIcon(new ImageIcon(FinancialInstrument.class.getResource("/pdev/financialbrains/client/pictures/finanInstrument2.PNG")));
 		lblNewLabel.setBounds(0, 0, 1234, 679);
 		contentPane.add(lblNewLabel);
 	}
@@ -242,5 +253,4 @@ public class FinancialInstrument extends JFrame {
 	private void fermer(){
 		this.setVisible(false);
 	}
-
 }
