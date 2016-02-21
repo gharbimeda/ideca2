@@ -31,8 +31,8 @@ public class ArticleCrudServices implements IArticleCrudServicesLocal, IArticleC
 	}
 
 	@Override
-	public void delete(Article article) {
-		entityManager.remove(article);
+	public void delete(Integer id) {
+		entityManager.remove(entityManager.find(Article.class, id));
 
 	}
 
@@ -51,9 +51,15 @@ public class ArticleCrudServices implements IArticleCrudServicesLocal, IArticleC
 	@SuppressWarnings("unchecked")
 	public List<Article> read(Date date) {
 		
-		Query query = entityManager.createQuery("SELECT a from t_article where date= :d");
+		Query query = entityManager.createQuery("SELECT a from article where date= :d");
 		query.setParameter("d", date);
 		return query.getResultList();
+	}
+
+	@Override
+	public List<Article> readAll() {
+
+		return entityManager.createQuery("select a from Article a", Article.class).getResultList();
 	}
 
 }
