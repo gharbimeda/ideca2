@@ -61,13 +61,18 @@ User user = UserManagementDelegate.doAuthentification(tf_login.getText(),new Str
 				//if (user  != null ){
 					
 					if (user  instanceof  BackOfficeUser ) {
-						 JOptionPane.showMessageDialog(null, "hello");
-						new BackHome().setVisible(true);}
+						 
+						new BackHome().setVisible(true);
+						fermer();
+					}
 						
 						
 					 if ( tf_login.getText().equals("admin") && tf_password.getText().equals("admin")){
-						 JOptionPane.showMessageDialog(null, "hello");
-							new AdminHome().setVisible(true);}
+							new AdminHome().setVisible(true);
+							fermer();
+					 
+					 
+					 }
 					
 					else JOptionPane.showMessageDialog(null, " check your login or password");
 						
@@ -95,5 +100,8 @@ User user = UserManagementDelegate.doAuthentification(tf_login.getText(),new Str
 		label.setIcon(new ImageIcon("C:\\IDE\\images\\12729239_1151112541565691_6708753397514368497_n (1).jpg"));
 		label.setBounds(0, 0, 883, 476);
 		contentPane.add(label);
+	}
+	private void fermer(){
+		this.setVisible(false);
 	}
 }
