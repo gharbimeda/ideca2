@@ -7,7 +7,6 @@
 		<class>pdev.financialbrains.ejb.entities.Article</class>
 		<class>pdev.financialbrains.ejb.entities.CapFloor</class>
 		<class>pdev.financialbrains.ejb.entities.CashInstrument</class>
-		<class>pdev.financialbrains.ejb.entities.Complaint</class>
 		<class>pdev.financialbrains.ejb.entities.DerivativeInstrument</class>
 		<class>pdev.financialbrains.ejb.entities.EquityOption</class>
 		<class>pdev.financialbrains.ejb.entities.FinancialInstrument</class>
@@ -19,7 +18,6 @@
 		<class>pdev.financialbrains.ejb.entities.Generic</class>
 		<class>pdev.financialbrains.ejb.entities.Swaption</class>
 		<class>pdev.financialbrains.ejb.entities.Trade</class>
-		<class>pdev.financialbrains.ejb.entities.User</class>
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		<properties>
 			<property name="hibernate.hbm2ddl.auto" value="update" />

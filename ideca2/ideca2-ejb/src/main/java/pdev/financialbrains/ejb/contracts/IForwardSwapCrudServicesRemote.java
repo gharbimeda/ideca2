@@ -18,4 +18,6 @@ public interface IForwardSwapCrudServicesRemote {
 	ForwardSwap readById(Integer id);
 
 	List<ForwardSwap> readAll();
+	
+	Double priceForwardSwap(Float strikeRate, Float rate, Float notional, Float period, Float expiryTime, Float volatility);
 }

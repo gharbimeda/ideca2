@@ -16,7 +16,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "t_user")
-@DiscriminatorColumn(name="DTYPE")
+@DiscriminatorColumn(name = "DTYPE")
 
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class User implements Serializable {
@@ -103,6 +103,7 @@ public class User implements Serializable {
 	public String toString1() {
 		return "User [IdUser=" + IdUser + ", login=" + login + ", password=" + password + "]";
 	}
+
 	public String toString() {
 		return login;
 	}
