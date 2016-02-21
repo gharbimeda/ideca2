@@ -8,6 +8,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class BackHome extends JFrame {
 
@@ -40,10 +42,26 @@ public class BackHome extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				MessageManagement m = new MessageManagement();
+				m.setVisible(true);
+				fermer();
+			}
+		});
+		lblNewLabel_1.setBounds(1070, 34, 54, 37);
+		contentPane.add(lblNewLabel_1);
+		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(BackHome.class.getResource("/pdev/financialbrains/client/pictures/HomeBou.PNG")));
 		lblNewLabel.setBounds(0, 0, 1210, 694);
 		contentPane.add(lblNewLabel);
+	}
+	private void fermer()
+	{
+		this.setVisible(false);
 	}
 
 }

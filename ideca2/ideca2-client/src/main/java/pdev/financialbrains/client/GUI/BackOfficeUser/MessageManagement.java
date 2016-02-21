@@ -16,7 +16,7 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 
-
+import pdev.financialbrains.client.GUI.Administrator.Authentification;
 import pdev.financialbrains.client.delegate.MessageManagementDelegate;
 import pdev.financialbrains.client.delegate.UserManagementDelegate;
 import pdev.financialbrains.client.utils.BondTableModel;
@@ -107,8 +107,9 @@ public class MessageManagement extends JFrame {
 		contentPane.setLayout(null);
 
 		JTabbedPane messageTabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		messageTabbedPane.setBounds(233, 150, 994, 395);
+		messageTabbedPane.setBounds(233, 200, 994, 395);
 		contentPane.add(messageTabbedPane);table_1 = new JTable();
+table_1.setFont(new Font("Berlin Sans FB", Font.PLAIN, 11));
 		table_1.setModel(new MessageController());
 		//MessageManagementDelegate.doRead();
 		messageTabbedPane.addTab("All Messages",
@@ -122,7 +123,7 @@ public class MessageManagement extends JFrame {
 		panel.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Content");
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblNewLabel.setFont(new Font("Berlin Sans FB", Font.PLAIN, 16));
 		lblNewLabel.setBounds(31, 104, 129, 54);
 		panel.add(lblNewLabel);
 		
@@ -132,7 +133,7 @@ public class MessageManagement extends JFrame {
 		tf_content.setColumns(10);
 		
 		JLabel lblDestination = new JLabel("Destination");
-		lblDestination.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblDestination.setFont(new Font("Berlin Sans FB", Font.PLAIN, 16));
 		lblDestination.setBounds(31, 234, 129, 54);
 		panel.add(lblDestination);
 				
@@ -152,17 +153,12 @@ public class MessageManagement extends JFrame {
 						m.setTexte(tf_content.getText());
 						m.setDate(new Date());
 						User user = (User) comboBox.getSelectedItem();
-					     // cham = chDao.getChambreByNum(Integer.parseInt( combo_chambre.getSelectedItem().toString()));
-//List<User> user = UserManagementDelegate.doRead((Integer.parseInt(comboBox.getSelectedItem().toString()));
-						//List<User> u = UserManagementDelegate.doRead(Integer.parseInt(comboBox.getSelectedItem().toString()));
-						//user.getLogin();
-						//m.getUserDest().getIdUser();
-						//m.getUserDest().getLogin();	
-						//contentPane.add(comboBox);//m.setUserDest(u.getLogin());
-						//m.getUserDest().getLogin();
+					     
 						m.setUserDest(user);
 						m.setUserSource(user); // Source avec authentification
 						MessageManagementDelegate.doCreate(m);
+						JOptionPane.showMessageDialog(null, "Your message has been sent");
+						table_1.setModel(new MessageController());
 						
 					}
 				});
@@ -179,11 +175,98 @@ public class MessageManagement extends JFrame {
 						
 					}
 				});
-				btnDelete.setBounds(451, 556, 79, 45);
+				btnDelete.setBounds(406, 606, 79, 39);
 				contentPane.add(btnDelete);
+				
+				JLabel lblHomemanageMessages = new JLabel("Home/Manage Messages");
+				lblHomemanageMessages.setForeground(Color.WHITE);
+				lblHomemanageMessages.setFont(new Font("Berlin Sans FB", Font.PLAIN, 16));
+				lblHomemanageMessages.setBounds(323, 102, 267, 54);
+				contentPane.add(lblHomemanageMessages);
+				
+				JLabel lb_homeback = new JLabel("");
+				lb_homeback.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent arg0) {
+						BackHome b = new BackHome();
+						b.setVisible(true);
+						fermer();
+					}
+				});
+				lb_homeback.setBounds(-8, 129, 153, 54);
+				contentPane.add(lb_homeback);
+				
+				JLabel lb_financialinstrument = new JLabel("");
+				lb_financialinstrument.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent arg0) {
+						FinancialInstrument f = new FinancialInstrument();
+						f.setVisible(false);
+						fermer();
+					}
+				});
+				lb_financialinstrument.setBounds(-8, 210, 192, 70);
+				contentPane.add(lb_financialinstrument);
+				
+				JLabel lblNewLabel_1 = new JLabel("");
+				lblNewLabel_1.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent arg0) {
+					}
+				});
+				lblNewLabel_1.setBounds(-8, 306, 205, 54);
+				contentPane.add(lblNewLabel_1);
+				
+				JLabel lblNewLabel_2 = new JLabel("");
+				lblNewLabel_2.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent arg0) {
+						MarketDataGUI m = new MarketDataGUI();
+						m.setVisible(true);
+						fermer();
+					}
+				});
+				lblNewLabel_2.setBounds(2, 376, 205, 60);
+				contentPane.add(lblNewLabel_2);
+				
+				JLabel lblNewLabel_3 = new JLabel("");
+				lblNewLabel_3.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent arg0) {
+						SettlementGUI s = new SettlementGUI();
+						s.setVisible(true);
+						fermer();
+					}
+				});
+				lblNewLabel_3.setBounds(2, 460, 182, 70);
+				contentPane.add(lblNewLabel_3);
+				
+				JLabel lb_msg = new JLabel("");
+				lb_msg.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent arg0) {
+						MessageManagement m = new MessageManagement();
+						m.setVisible(true);
+						fermer();
+					}
+				});
+				lb_msg.setBounds(1066, 36, 46, 39);
+				contentPane.add(lb_msg);
+				
+				JLabel lb_exit = new JLabel("");
+				lb_exit.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						Authentification a = new Authentification();
+						a.setVisible(true);
+						fermer();
+					}
+				});
+				lb_exit.setBounds(175, 647, 52, 41);
+				contentPane.add(lb_exit);
 		
 				JLabel backgroundLabel = new JLabel("");
-				backgroundLabel.setIcon(new ImageIcon("C:\\IDE\\images\\backBouGrand2.PNG"));
+				backgroundLabel.setIcon(new ImageIcon(MessageManagement.class.getResource("/pdev/financialbrains/client/pictures/backBouGrand2.PNG")));
 				backgroundLabel.setBounds(-8, 0, 1235, 705);
 				contentPane.add(backgroundLabel);
 				initDataBindings();

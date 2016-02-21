@@ -14,9 +14,12 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import pdev.financialbrains.client.GUI.Administrator.Authentification;
 import pdev.financialbrains.client.delegate.FixedIncomeSecurityManagementDelegate;
 import pdev.financialbrains.ejb.entities.FixedIncomeSecuritie;
 import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class PricingCorporateBond extends JFrame {
 
@@ -61,7 +64,7 @@ public class PricingCorporateBond extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JLabel faceValue = new JLabel("Face Value");
-		faceValue.setFont(new Font("Tahoma", Font.BOLD, 14));
+		faceValue.setFont(new Font("Berlin Sans FB", Font.PLAIN, 16));
 		faceValue.setForeground(Color.DARK_GRAY);
 		faceValue.setBounds(243, 224, 130, 43);
 		contentPane.add(faceValue);
@@ -72,7 +75,7 @@ public class PricingCorporateBond extends JFrame {
 		tf_faceValue.setColumns(10);
 		
 		JLabel lblTimeToMaturity = new JLabel("Coupon Rate");
-		lblTimeToMaturity.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblTimeToMaturity.setFont(new Font("Berlin Sans FB", Font.PLAIN, 16));
 		lblTimeToMaturity.setForeground(Color.DARK_GRAY);
 		lblTimeToMaturity.setBounds(243, 301, 130, 43);
 		contentPane.add(lblTimeToMaturity);
@@ -83,7 +86,7 @@ public class PricingCorporateBond extends JFrame {
 		contentPane.add(tf_couponRate);
 		
 		JLabel lblInterestRateOn = new JLabel("Interest Rate On Bond");
-		lblInterestRateOn.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblInterestRateOn.setFont(new Font("Berlin Sans FB", Font.PLAIN, 16));
 		lblInterestRateOn.setForeground(Color.DARK_GRAY);
 		lblInterestRateOn.setBounds(724, 224, 158, 43);
 		contentPane.add(lblInterestRateOn);
@@ -91,7 +94,7 @@ public class PricingCorporateBond extends JFrame {
 
 		
 		JLabel lblPriceofTheBond = new JLabel("Price Of The Bond");
-		lblPriceofTheBond.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblPriceofTheBond.setFont(new Font("Berlin Sans FB", Font.PLAIN, 16));
 		lblPriceofTheBond.setForeground(Color.DARK_GRAY);
 		lblPriceofTheBond.setBounds(724, 575, 158, 43);
 		contentPane.add(lblPriceofTheBond);
@@ -130,16 +133,16 @@ public class PricingCorporateBond extends JFrame {
 		lblNewLabel_1.setBounds(474, 560, 46, 45);
 		contentPane.add(lblNewLabel_1);
 		
-		JLabel lblPricingCorporateBonds = new JLabel("Pricing Corporate Bonds");
-		lblPricingCorporateBonds.setForeground(new Color(0, 102, 102));
-		lblPricingCorporateBonds.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 18));
-		lblPricingCorporateBonds.setBounds(325, 109, 345, 41);
+		JLabel lblPricingCorporateBonds = new JLabel("Home/Fixed Income Securities/Pricing Corporate Bonds");
+		lblPricingCorporateBonds.setForeground(Color.WHITE);
+		lblPricingCorporateBonds.setFont(new Font("Berlin Sans FB", Font.PLAIN, 18));
+		lblPricingCorporateBonds.setBounds(325, 109, 478, 41);
 		contentPane.add(lblPricingCorporateBonds);
 		btnCalculate.setBounds(452, 552, 80, 60);
 		contentPane.add(btnCalculate);
 		
 		JLabel lblTimeToMaturity_1 = new JLabel("Time To Maturity ");
-		lblTimeToMaturity_1.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblTimeToMaturity_1.setFont(new Font("Berlin Sans FB", Font.PLAIN, 16));
 		lblTimeToMaturity_1.setForeground(Color.DARK_GRAY);
 		lblTimeToMaturity_1.setBounds(243, 412, 145, 43);
 		contentPane.add(lblTimeToMaturity_1);
@@ -155,7 +158,7 @@ public class PricingCorporateBond extends JFrame {
 		contentPane.add(tf_interest);
 		
 		JLabel lblMonthsUntilNext = new JLabel("Months Until Next Coupon");
-		lblMonthsUntilNext.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblMonthsUntilNext.setFont(new Font("Berlin Sans FB", Font.PLAIN, 16));
 		lblMonthsUntilNext.setForeground(Color.DARK_GRAY);
 		lblMonthsUntilNext.setBounds(724, 308, 183, 43);
 		contentPane.add(lblMonthsUntilNext);
@@ -166,7 +169,7 @@ public class PricingCorporateBond extends JFrame {
 		contentPane.add(tf_months);
 		
 		JLabel lblFrequence = new JLabel("Frequency");
-		lblFrequence.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblFrequence.setFont(new Font("Berlin Sans FB", Font.PLAIN, 16));
 		lblFrequence.setForeground(Color.DARK_GRAY);
 		lblFrequence.setBounds(724, 412, 158, 43);
 		contentPane.add(lblFrequence);
@@ -176,10 +179,97 @@ public class PricingCorporateBond extends JFrame {
 		tf_frequency.setBounds(923, 421, 239, 29);
 		contentPane.add(tf_frequency);
 		
+		JLabel lb_home = new JLabel("");
+		lb_home.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				BackHome b = new BackHome();
+				b.setVisible(true);
+				fermer();
+			}
+		});
+		lb_home.setBounds(0, 124, 166, 54);
+		contentPane.add(lb_home);
+		
+		JLabel lb_financial = new JLabel("");
+		lb_financial.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				FinancialInstrument f = new FinancialInstrument();
+				f.setVisible(true);
+				fermer();
+			}
+		});
+		lb_financial.setBounds(0, 213, 183, 67);
+		contentPane.add(lb_financial);
+		
+		JLabel lb_newproduct = new JLabel("");
+		lb_newproduct.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+			}
+		});
+		lb_newproduct.setBounds(0, 308, 194, 54);
+		contentPane.add(lb_newproduct);
+		
+		JLabel lb_marketdata = new JLabel("");
+		lb_marketdata.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				MarketDataGUI m = new MarketDataGUI();
+				m.setVisible(true);
+				fermer();
+				
+			}
+		});
+		
+		JLabel lblNewLabel_2 = new JLabel("");
+		lblNewLabel_2.setBounds(0, 470, 194, 54);
+		contentPane.add(lblNewLabel_2);
+		lb_marketdata.setBounds(0, 385, 208, 54);
+		contentPane.add(lb_marketdata);
+		
 		
 		JLabel backgroundLabel = new JLabel("");
-		backgroundLabel.setIcon(new ImageIcon("C:\\IDE\\images\\backBouGrand2.PNG"));
+		backgroundLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				SettlementGUI s = new SettlementGUI();
+				s.setVisible(true);
+				fermer();
+			}
+		});
+		
+		JLabel lb_exit = new JLabel("");
+		lb_exit.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Authentification a = new Authentification();
+				a.setVisible(true);
+				fermer();
+				
+			}
+		});
+		lb_exit.setBounds(170, 645, 55, 43);
+		contentPane.add(lb_exit);
+		
+		JLabel lb_msg = new JLabel("");
+		lb_msg.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				MessageManagement m = new MessageManagement();
+				m.setVisible(true);
+				fermer();
+			}
+		});
+		lb_msg.setBounds(1061, 42, 55, 30);
+		contentPane.add(lb_msg);
+		backgroundLabel.setIcon(new ImageIcon(PricingCorporateBond.class.getResource("/pdev/financialbrains/client/pictures/backBouGrand2.PNG")));
 		backgroundLabel.setBounds(-8, 0, 1235, 705);
 		contentPane.add(backgroundLabel, BorderLayout.CENTER);
 		
-	}}
+	}private void fermer()
+	{
+		this.setVisible(false);
+	}
+	}

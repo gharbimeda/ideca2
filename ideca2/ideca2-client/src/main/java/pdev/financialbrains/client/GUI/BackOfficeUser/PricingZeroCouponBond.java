@@ -15,9 +15,12 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import pdev.financialbrains.client.GUI.Administrator.Authentification;
 import pdev.financialbrains.client.delegate.FixedIncomeSecurityManagementDelegate;
 import pdev.financialbrains.ejb.entities.FixedIncomeSecuritie;
 import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class PricingZeroCouponBond extends JFrame {
 
@@ -56,7 +59,7 @@ public class PricingZeroCouponBond extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JLabel faceValue = new JLabel("Face Value");
-		faceValue.setFont(new Font("Tahoma", Font.BOLD, 14));
+		faceValue.setFont(new Font("Berlin Sans FB", Font.PLAIN, 16));
 		faceValue.setForeground(Color.DARK_GRAY);
 		faceValue.setBounds(243, 213, 130, 43);
 		contentPane.add(faceValue);
@@ -67,15 +70,15 @@ public class PricingZeroCouponBond extends JFrame {
 		tf_faceValue.setColumns(10);
 		
 		JLabel lblTimeToMaturity = new JLabel("Time To Maturity");
-		lblTimeToMaturity.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblTimeToMaturity.setFont(new Font("Berlin Sans FB", Font.PLAIN, 16));
 		lblTimeToMaturity.setForeground(Color.DARK_GRAY);
 		lblTimeToMaturity.setBounds(243, 313, 130, 43);
 		contentPane.add(lblTimeToMaturity);
 		
-		JLabel lblPricingZeroCoupon = new JLabel("Pricing Zero Coupon  Bonds");
-		lblPricingZeroCoupon.setForeground(new Color(0, 102, 102));
-		lblPricingZeroCoupon.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 18));
-		lblPricingZeroCoupon.setBounds(346, 113, 365, 41);
+		JLabel lblPricingZeroCoupon = new JLabel("Home/Fixed Income Securities/Pricing Zero Coupon  Bonds");
+		lblPricingZeroCoupon.setForeground(Color.WHITE);
+		lblPricingZeroCoupon.setFont(new Font("Berlin Sans FB", Font.PLAIN, 18));
+		lblPricingZeroCoupon.setBounds(315, 114, 503, 41);
 		contentPane.add(lblPricingZeroCoupon);
 		
 		tf_time = new JTextField();
@@ -84,14 +87,14 @@ public class PricingZeroCouponBond extends JFrame {
 		contentPane.add(tf_time);
 		
 		JLabel lblInterestRateOn = new JLabel("Interest Rate On Bond");
-		lblInterestRateOn.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblInterestRateOn.setFont(new Font("Berlin Sans FB", Font.PLAIN, 16));
 		lblInterestRateOn.setForeground(Color.DARK_GRAY);
 		lblInterestRateOn.setBounds(243, 401, 176, 43);
 		contentPane.add(lblInterestRateOn);
 		
 		JLabel lblInYears = new JLabel("(In years)");
 		lblInYears.setForeground(Color.DARK_GRAY);
-		lblInYears.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblInYears.setFont(new Font("Berlin Sans FB", Font.PLAIN, 16));
 		lblInYears.setBounds(688, 315, 130, 43);
 		contentPane.add(lblInYears);
 		
@@ -101,7 +104,7 @@ public class PricingZeroCouponBond extends JFrame {
 		contentPane.add(tf_rate);
 		
 		JLabel lblPriceofTheBond = new JLabel("Price Of The Bond");
-		lblPriceofTheBond.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblPriceofTheBond.setFont(new Font("Berlin Sans FB", Font.PLAIN, 16));
 		lblPriceofTheBond.setForeground(Color.DARK_GRAY);
 		lblPriceofTheBond.setBounds(843, 510, 153, 43);
 		contentPane.add(lblPriceofTheBond);
@@ -113,7 +116,7 @@ public class PricingZeroCouponBond extends JFrame {
 		
 		JLabel label = new JLabel("%");
 		label.setForeground(Color.DARK_GRAY);
-		label.setFont(new Font("Tahoma", Font.BOLD, 11));
+		label.setFont(new Font("Berlin Sans FB", Font.PLAIN, 16));
 		label.setBounds(693, 401, 46, 43);
 		contentPane.add(label);
 		
@@ -145,11 +148,97 @@ public class PricingZeroCouponBond extends JFrame {
 		btnCalculate.setBounds(725, 507, 68, 58);
 		contentPane.add(btnCalculate);
 		
+		JLabel lb_home = new JLabel("");
+		lb_home.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				BackHome b = new BackHome();
+				b.setVisible(true);
+				fermer();
+			}
+		});
+		lb_home.setBounds(-8, 124, 176, 63);
+		contentPane.add(lb_home);
+		
+		JLabel lb_financial = new JLabel("");
+		lb_financial.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				FinancialInstrument f = new FinancialInstrument();
+				f.setVisible(true);
+				fermer();
+			}
+		});
+		lb_financial.setBounds(-8, 213, 204, 67);
+		contentPane.add(lb_financial);
+		
+		JLabel lb_prod = new JLabel("");
+		lb_prod.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			}
+		});
+		lb_prod.setBounds(-8, 305, 204, 58);
+		contentPane.add(lb_prod);
+		
 		
 		JLabel backgroundLabel = new JLabel("");
-		backgroundLabel.setIcon(new ImageIcon("C:\\IDE\\images\\backBouGrand2.PNG"));
+		
+		
+		JLabel lb_marketdata = new JLabel("");
+		lb_marketdata.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				MarketDataGUI m = new MarketDataGUI();
+				m.setVisible(true);
+				fermer();
+			}
+		});
+		lb_marketdata.setBounds(2, 383, 204, 63);
+		contentPane.add(lb_marketdata);
+		
+		JLabel lb_set = new JLabel("");
+		lb_set.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				SettlementGUI s = new SettlementGUI();
+				s.setVisible(true);
+				fermer();
+			}
+		});
+		lb_set.setBounds(2, 468, 194, 58);
+		contentPane.add(lb_set);
+		
+		JLabel lb_exit = new JLabel("");
+		lb_exit.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Authentification a = new Authentification();
+				a.setVisible(true);
+				fermer();
+			}
+		});
+		lb_exit.setBounds(175, 646, 46, 42);
+		contentPane.add(lb_exit);
+		
+		JLabel lb_msg = new JLabel("");
+		lb_msg.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				MessageManagement m = new MessageManagement();
+				m.setVisible(true);
+				fermer();
+			}
+		});
+		lb_msg.setBounds(1065, 38, 46, 43);
+		contentPane.add(lb_msg);
+		backgroundLabel.setIcon(new ImageIcon(PricingZeroCouponBond.class.getResource("/pdev/financialbrains/client/pictures/backBouGrand2.PNG")));
 		backgroundLabel.setBounds(-8, 0, 1235, 705);
 		contentPane.add(backgroundLabel, BorderLayout.CENTER);
 		
+	}
+	public void fermer()
+	{
+		this.setVisible(false);
 	}
 }
