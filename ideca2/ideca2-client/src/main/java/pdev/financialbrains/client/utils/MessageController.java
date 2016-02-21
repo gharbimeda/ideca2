@@ -7,6 +7,7 @@ import javax.swing.table.AbstractTableModel;
 
 import pdev.financialbrains.client.delegate.MessageManagementDelegate;
 import pdev.financialbrains.ejb.entities.Message;
+import pdev.financialbrains.ejb.entities.User;
 
 public class MessageController extends AbstractTableModel {
 	List<Message> subjectlist = new ArrayList<Message>();

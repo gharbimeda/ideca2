@@ -97,8 +97,8 @@ public  void show()
 	public void createSecurity() {
 		// FixedIncomeSecuritie f = new FixedIncomeSecuritie(1, 122.5f, 0.5f, 1,
 		// 2, 100f, 0.3f, 0.23f, 45.2f, 1002f);
-		FixedIncomeSecuritie f = new FixedIncomeSecuritie(1,2.5f, 0.06f, 30, 2, 100.5f, 0.26f, 1.5f, 2.5f, 1000f);
-		fixedSecurDeletage.doCreate(f);
+	//	FixedIncomeSecuritie f = new FixedIncomeSecuritie(1,2.5f, 0.06f, 30, 2, 100.5f, 0.26f, 1.5f, 2.5f, 1000f);
+	//	fixedSecurDeletage.doCreate(f);
 	}
 
 	@Test
@@ -122,8 +122,8 @@ public  void show()
 		// Double bondPrice = null;
 		FixedIncomeSecuritie f = fixedSecurDeletage.doRead(1);
 
-		System.out.println(
-				fixedSecurDeletage.doPriceZeroCouponBond(f.getFaceValue(), f.getTimeMaturity(), f.getCurrentYield()));
+		//System.out.println(
+			//	fixedSecurDeletage.doPriceZeroCouponBond(f.getFaceValue(), f.getTimeMaturity(), f.getCurrentYield()));
 
 	}
 }

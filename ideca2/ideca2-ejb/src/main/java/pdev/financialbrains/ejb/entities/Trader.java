@@ -13,7 +13,7 @@ import javax.persistence.Table;
 
 
 @Entity
-
+@DiscriminatorValue(value="trader")
 public class Trader extends User implements Serializable {
 	
 

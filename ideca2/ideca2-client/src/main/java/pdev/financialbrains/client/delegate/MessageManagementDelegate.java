@@ -33,6 +33,9 @@ public class MessageManagementDelegate {
 		getProxy().create(Message);
 	} 
 
+	public static void doDeleteById(Message Message){
+		getProxy().deleteById(Message);
+	}
 	public static void doDelete(Message Message){
 		getProxy().delete(Message);
 	}

@@ -35,6 +35,10 @@ public class MessageCrudServices implements IMessageCrudServicesLocal, IMessageC
 	public void create(Message message) {
 		entityManager.persist(message);
 
+	}@Override
+	public void deleteById(Message message) {
+		entityManager.remove(entityManager.find(Message.class, message.getId()));
+		
 	}
 
 	@Override

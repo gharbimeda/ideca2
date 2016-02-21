@@ -18,6 +18,7 @@ import javax.swing.border.TitledBorder;
 
 
 import pdev.financialbrains.client.delegate.MessageManagementDelegate;
+import pdev.financialbrains.client.delegate.UserManagementDelegate;
 import pdev.financialbrains.client.utils.BondTableModel;
 import pdev.financialbrains.client.utils.CurrencyTableModel;
 import pdev.financialbrains.client.utils.MessageController;
@@ -28,6 +29,8 @@ import pdev.financialbrains.ejb.entities.Message;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.ejb.EJB;
+import javax.swing.ComboBoxModel;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.ImageIcon;
@@ -53,9 +56,12 @@ import org.jdesktop.beansbinding.AutoBinding;
 import org.jdesktop.beansbinding.Bindings;
 
 public class MessageManagement extends JFrame {
+	private JComboBoxBinding<User, List<User>, JComboBox> login;
 
 	List<Message> messages;
-	
+	private Message message;
+	List<User> users;
+	private User user;
 
 
 	private JPanel contentPane;
@@ -64,6 +70,7 @@ public class MessageManagement extends JFrame {
 	private JTable table_1;
 	private JTextField tf_content;
 	private JComboBox comboBox;
+	
 
 	/**
 	 * Launch the application.
@@ -85,9 +92,13 @@ public class MessageManagement extends JFrame {
 	 * Create the frame.
 	 */
 	public MessageManagement() {
+		users = UserManagementDelegate.doReadAll();
+		System.out.println(users);
 		messages = new ArrayList<Message>();
 		messages = MessageManagementDelegate.doRead();
-	
+		//users = UserManagementDelegate.doRead(1);
+		//List<User> list = UserManagementDelegate.doRead(1);
+      
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1243, 726);
 		contentPane = new JPanel();
@@ -97,22 +108,22 @@ public class MessageManagement extends JFrame {
 
 		JTabbedPane messageTabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		messageTabbedPane.setBounds(233, 150, 994, 395);
-		contentPane.add(messageTabbedPane);
-
-		table_1 = new JTable();
+		contentPane.add(messageTabbedPane);table_1 = new JTable();
 		table_1.setModel(new MessageController());
 		//MessageManagementDelegate.doRead();
 		messageTabbedPane.addTab("All Messages",
-				new ImageIcon(MessageManagement.class.getResource("")),
+				new ImageIcon(MessageManagement.class.getResource("/pdev/financialbrains/client/pictures/menu-button.png")),
 				table_1, null);
+	
 		messageTabbedPane.setEnabledAt(0, true);
 		
 		JLayeredPane panel = new JLayeredPane();
-		messageTabbedPane.addTab("Send", new ImageIcon(MessageManagement.class.getResource("")), panel, null);
+		messageTabbedPane.addTab("Send", new ImageIcon(MessageManagement.class.getResource("/pdev/financialbrains/client/pictures/msg.png")), panel, null);
 		panel.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Content");
-		lblNewLabel.setBounds(31, 70, 129, 54);
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblNewLabel.setBounds(31, 104, 129, 54);
 		panel.add(lblNewLabel);
 		
 		tf_content = new JTextField();
@@ -121,23 +132,55 @@ public class MessageManagement extends JFrame {
 		tf_content.setColumns(10);
 		
 		JLabel lblDestination = new JLabel("Destination");
-		lblDestination.setBounds(31, 226, 129, 54);
+		lblDestination.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblDestination.setBounds(31, 234, 129, 54);
 		panel.add(lblDestination);
 				
-				JButton btnSendMessage = new JButton("Send message");
-				btnSendMessage.setBounds(855, 333, 124, 23);
+				JButton btnSendMessage = new JButton("");
+				btnSendMessage.setIcon(new ImageIcon(MessageManagement.class.getResource("/pdev/financialbrains/client/pictures/addIcon.png")));
+				btnSendMessage.setBounds(762, 187, 89, 54);
 				panel.add(btnSendMessage);
 				
 				comboBox = new JComboBox();
-				comboBox.setBounds(203, 243, 330, 20);
+				comboBox.setBounds(203, 243, 330, 37);
 				panel.add(comboBox);
 				btnSendMessage.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
-						Message m = new Message();
+						Message m = new Message(); 
+						//User u = new User();
+						
 						m.setTexte(tf_content.getText());
+						m.setDate(new Date());
+						User user = (User) comboBox.getSelectedItem();
+					     // cham = chDao.getChambreByNum(Integer.parseInt( combo_chambre.getSelectedItem().toString()));
+//List<User> user = UserManagementDelegate.doRead((Integer.parseInt(comboBox.getSelectedItem().toString()));
+						//List<User> u = UserManagementDelegate.doRead(Integer.parseInt(comboBox.getSelectedItem().toString()));
+						//user.getLogin();
+						//m.getUserDest().getIdUser();
+						//m.getUserDest().getLogin();	
+						//contentPane.add(comboBox);//m.setUserDest(u.getLogin());
+						//m.getUserDest().getLogin();
+						m.setUserDest(user);
+						m.setUserSource(user); // Source avec authentification
 						MessageManagementDelegate.doCreate(m);
+						
 					}
 				});
+				
+				JButton btnDelete = new JButton("");
+				btnDelete.setIcon(new ImageIcon(MessageManagement.class.getResource("/pdev/financialbrains/client/pictures/cross.png")));
+				btnDelete.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent arg0) {
+						
+						message = messages.get(table_1.getSelectedRow());
+						
+						messages= MessageManagementDelegate.doRead();
+						MessageManagementDelegate.doDelete(message);
+						
+					}
+				});
+				btnDelete.setBounds(451, 556, 79, 45);
+				contentPane.add(btnDelete);
 		
 				JLabel backgroundLabel = new JLabel("");
 				backgroundLabel.setIcon(new ImageIcon("C:\\IDE\\images\\backBouGrand2.PNG"));
@@ -146,7 +189,11 @@ public class MessageManagement extends JFrame {
 				initDataBindings();
 	}
 	protected void initDataBindings() {
-		JComboBoxBinding<Message, List<Message>, JComboBox> jComboBinding = SwingBindings.createJComboBoxBinding(UpdateStrategy.READ, messages, comboBox);
-		jComboBinding.bind();
+		login = SwingBindings.createJComboBoxBinding(UpdateStrategy.READ_WRITE, users, comboBox);
+		login.bind();
+	}
+	private void fermer()
+	{
+		this.setVisible(false);
 	}
 }
