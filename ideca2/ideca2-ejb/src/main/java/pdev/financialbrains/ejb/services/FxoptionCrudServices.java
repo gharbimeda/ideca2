@@ -49,26 +49,26 @@ public class FxoptionCrudServices implements IFxoptionCrudServicesLocal,IFxoptio
 		return entityManager.createQuery("select f from t_foreignExchangeOption f",ForeignExchangeOption.class).getResultList();
 	}
 	@Override
-	public Double Pricing(String callPut, Integer currentSpotPrice, Integer dRisk, Integer fRisk, Integer time,
+	public Double Pricing(Integer callPut, Integer currentSpotPrice, Integer dRisk, Integer fRisk, Integer time,
 			Float strikePrice, Float volatilite) {
 		
-		Double price ;
-		price =1.22545298;
+		Double price = null ;
+		//price =1.22545298;
 		
 		double d1=(Math.log(currentSpotPrice/strikePrice)+(dRisk-fRisk+volatilite*volatilite*0.5)*time )/(volatilite*Math.sqrt(time ));
 		double d2=d1-volatilite*Math.sqrt(time );
-		if(callPut=="call")
-		{
+		if(callPut==0)
+		{ 
 			//price=1.35;
 			price=currentSpotPrice*Math.exp(-fRisk*time)*N(d1)-strikePrice*Math.exp(-dRisk *time)*N(d2);
 			//System.out.println(price);
-			return price;
+			//return price;
 		}
-	     if (callPut=="put"){
+	     if (callPut==1){
 			//price=5.5;
 			price=strikePrice*Math.exp(-dRisk *time)*N(-d2)-currentSpotPrice*Math.exp(-fRisk*time)*N(-d1);
 			//System.out.println(price);
-			return price;
+			//return price;
 		}
 		
 		return price;

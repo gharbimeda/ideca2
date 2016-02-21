@@ -8,7 +8,7 @@ import javax.persistence.Table;
 public class ForeignExchangeOption extends Option {
 
 	private Integer spotFx;
-	private String callPut;
+	private Integer callPut;
 	private Float volatilite;
 	private Integer domesticRiskFree;
 	private Integer MaturityDate;
@@ -90,11 +90,11 @@ public class ForeignExchangeOption extends Option {
 		MaturityDate = maturityDate;
 	}
 
-	public String getCallPut() {
+	public Integer getCallPut() {
 		return callPut;
 	}
 
-	public void setCallPut(String callPut) {
+	public void setCallPut(Integer callPut) {
 		this.callPut = callPut;
 	}
 

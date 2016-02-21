@@ -14,6 +14,6 @@ public interface IFxoptionCrudServicesRemote {
 	void delete(ForeignExchangeOption fxoption);
 	ForeignExchangeOption read(Integer id);
 	List<ForeignExchangeOption> readAll();
-	Double Pricing(String callPut , Integer currentSpotPrice, Integer dRisk,Integer fRisk,Integer time,Float strikePrice,Float volatilite);
+	Double Pricing(Integer callPut , Integer currentSpotPrice, Integer dRisk,Integer fRisk,Integer time,Float strikePrice,Float volatilite);
 	 double N(double z);
 }

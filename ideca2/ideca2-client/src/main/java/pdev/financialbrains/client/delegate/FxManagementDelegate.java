@@ -46,7 +46,7 @@ public class FxManagementDelegate {
 		return proxy.readAll();
 	}
 	
-	public Double Price(String callPut , Integer currentSpotPrice, Integer dRisk,Integer fRisk,Integer time,Float strikePrice,Float volatilite) {
+	public Double Price(Integer callPut , Integer currentSpotPrice, Integer dRisk,Integer fRisk,Integer time,Float strikePrice,Float volatilite) {
 		return proxy.Pricing(callPut, currentSpotPrice, dRisk, fRisk, time, strikePrice, volatilite);
 		
 	}
