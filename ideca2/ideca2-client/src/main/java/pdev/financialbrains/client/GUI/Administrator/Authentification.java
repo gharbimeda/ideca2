@@ -15,6 +15,7 @@ import javax.swing.border.EmptyBorder;
 
 import pdev.financialbrains.client.GUI.BackOfficeUser.BackHome;
 import pdev.financialbrains.client.delegate.UserManagementDelegate;
+import pdev.financialbrains.client.utils.Util;
 import pdev.financialbrains.ejb.entities.BackOfficeUser;
 import pdev.financialbrains.ejb.entities.User;
 
@@ -62,7 +63,8 @@ User user = UserManagementDelegate.doAuthentification(tf_login.getText(),new Str
 					
 					if (user  instanceof  BackOfficeUser ) {
 						 JOptionPane.showMessageDialog(null, "hello");
-						new BackHome().setVisible(true);}
+						new BackHome().setVisible(true);
+						Util.userConnect= user;}
 						
 						
 					 if ( tf_login.getText().equals("admin") && tf_password.getText().equals("admin")){
