@@ -54,4 +54,13 @@ public class FixedIncomeSecurityManagementDelegate {
 	{
 		return getProxy().priceZeroCouponBond(faceValue, timeMaturity, currentYield);
 	}
+	public static Double doPriceTtreasuryBond(Float faceValue,Integer timeMaturity, Float currentYield,Integer frequency,Float couponRate)
+	{
+		return getProxy().priceTreasuryBond(faceValue, timeMaturity, currentYield, frequency, couponRate);
+	}
+	public static Double doPriceCorpBond(Float faceValue,Integer timeMaturity, Float currentYield,Integer frequency,Float couponRate,Integer months)
+	{
+		return getProxy().priceCorpBond(faceValue, timeMaturity, currentYield, frequency, couponRate, months);
+
+	}
 }
