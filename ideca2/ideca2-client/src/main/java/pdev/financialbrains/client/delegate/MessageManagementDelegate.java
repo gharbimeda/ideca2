@@ -11,7 +11,7 @@ import pdev.financialbrains.ejb.entities.Message;
 public class MessageManagementDelegate {
 
 	private static IMessageCrudServicesRemote remote;
-	private static final String jndi="/ideca2-ear/ideca2-ejb/MessageCrudServices!pdev.financialbrains.ejb.contracts.IMessageCrudServicesRemote";
+	private static final String jndi="/ideca2-ejb/MessageCrudServices!pdev.financialbrains.ejb.contracts.IMessageCrudServicesRemote";
 	public static MessageManagementDelegate instance;
 	
 	

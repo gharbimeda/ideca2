@@ -26,7 +26,7 @@ public class MessageController extends AbstractTableModel {
 	}
 
 	public MessageController() {
-		subjectlist = MessageManagementDelegate.getInstance().doRead(userconnect.getIdUser());
+		subjectlist = MessageManagementDelegate.getInstance().doRead(Util.userConnect.getIdUser());
 	}
 
 	@Override

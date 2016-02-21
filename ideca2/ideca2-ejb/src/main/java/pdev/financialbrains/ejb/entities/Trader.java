@@ -3,6 +3,7 @@ package pdev.financialbrains.ejb.entities;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 @Entity
