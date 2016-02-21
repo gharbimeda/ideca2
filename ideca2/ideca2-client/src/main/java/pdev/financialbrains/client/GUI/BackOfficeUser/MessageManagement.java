@@ -23,6 +23,7 @@ import pdev.financialbrains.client.utils.BondTableModel;
 import pdev.financialbrains.client.utils.CurrencyTableModel;
 import pdev.financialbrains.client.utils.MessageController;
 import pdev.financialbrains.client.utils.StockTableModel;
+import pdev.financialbrains.client.utils.Util;
 import pdev.financialbrains.ejb.contracts.IMessageCrudServicesRemote;
 import pdev.financialbrains.ejb.entities.Message;
 
@@ -62,7 +63,7 @@ public class MessageManagement extends JFrame {
 	private Message message;
 	List<User> users;
 	private User user;
-	public static User userconnect;
+	
 
 	private JPanel contentPane;
 	private JTable table;
@@ -101,14 +102,14 @@ public class MessageManagement extends JFrame {
 		
       
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1243, 726);
+		setBounds(100, 100, 1245, 726);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
 		JTabbedPane messageTabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		messageTabbedPane.setBounds(233, 200, 994, 395);
+		messageTabbedPane.setBounds(256, 200, 937, 395);
 		contentPane.add(messageTabbedPane);table_1 = new JTable();
 table_1.setFont(new Font("Berlin Sans FB", Font.PLAIN, 11));
 		table_1.setModel(new MessageController());
@@ -156,7 +157,7 @@ table_1.setFont(new Font("Berlin Sans FB", Font.PLAIN, 11));
 						User user = (User) comboBox.getSelectedItem();
 					     
 						m.setUserDest(user);
-						m.setUserSource(userconnect); // Source avec authentification
+						m.setUserSource(Util.userConnect); // Source avec authentification
 						MessageManagementDelegate.doCreate(m);
 						JOptionPane.showMessageDialog(null, "Your message has been sent");
 						table_1.setModel(new MessageController());
@@ -176,7 +177,7 @@ table_1.setFont(new Font("Berlin Sans FB", Font.PLAIN, 11));
 						
 					}
 				});
-				btnDelete.setBounds(406, 606, 79, 39);
+				btnDelete.setBounds(1114, 606, 79, 39);
 				contentPane.add(btnDelete);
 				
 				JLabel lblHomemanageMessages = new JLabel("Home/Manage Messages");
@@ -268,7 +269,7 @@ table_1.setFont(new Font("Berlin Sans FB", Font.PLAIN, 11));
 		
 				JLabel backgroundLabel = new JLabel("");
 				backgroundLabel.setIcon(new ImageIcon(MessageManagement.class.getResource("/pdev/financialbrains/client/pictures/backBouGrand2.PNG")));
-				backgroundLabel.setBounds(-8, 0, 1235, 705);
+				backgroundLabel.setBounds(2, 0, 1235, 694);
 				contentPane.add(backgroundLabel);
 				initDataBindings();
 	}

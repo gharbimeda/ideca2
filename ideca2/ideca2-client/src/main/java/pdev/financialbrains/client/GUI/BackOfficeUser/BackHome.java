@@ -46,8 +46,7 @@ public class BackHome extends JFrame {
 		lblNewLabel_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				MessageManagement m = new MessageManagement();
-				m.setVisible(true);
+				new MessageManagement().setVisible(true);
 				fermer();
 			}
 		});

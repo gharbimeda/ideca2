@@ -58,10 +58,11 @@ public class MessageCrudServices implements IMessageCrudServicesLocal, IMessageC
 		// return entityManager.find(Message.class, idMessage);
 		// return entityManager.createQuery("select m from Message m where
 		// m.userDest=:idMessage",Message.class).getResultList();
-		String jpql = "select m from Message m where m.userDest.IdUser = :idMessage";
-		Query query = entityManager.createQuery(jpql);
+		String jpql = "select m from Message m where m.userSource.id=:idMessage";
+		Query query = entityManager.createQuery(jpql, Message.class);
 		query.setParameter("idMessage",idMessage);
-		return query.getResultList();
+		return 
+				query.getResultList();
 
 	}
 
