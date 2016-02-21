@@ -28,6 +28,7 @@ public class User implements Serializable {
 	@OneToMany(mappedBy = "userSource")
 	List<Message> messages2;
 
+	
 	public User(String login, String password) {
 		super();
 		this.login = login;
@@ -91,4 +92,9 @@ public class User implements Serializable {
 	public User(int idUser) {
 		super();
 		IdUser = idUser;
+	}
+
+	@Override
+	public String toString() {
+		return "User [IdUser=" + IdUser + ", login=" + login + ", password=" + password + "]";
 	}}

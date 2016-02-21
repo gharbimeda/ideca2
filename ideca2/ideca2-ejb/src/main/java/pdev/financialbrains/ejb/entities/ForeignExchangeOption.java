@@ -8,7 +8,11 @@ import javax.persistence.Table;
 public class ForeignExchangeOption extends Option {
 
 	private Integer spotFx;
+	private String callPut;
+	private Float volatilite;
 	private Integer domesticRiskFree;
+	private Integer MaturityDate;
+	
 	private static final long serialVersionUID = 1L;
 
 	public ForeignExchangeOption() {
@@ -26,9 +30,16 @@ public class ForeignExchangeOption extends Option {
 	public Integer getDomesticRiskFree() {
 		return domesticRiskFree;
 	}
-
 	public void setDomesticRiskFree(Integer domesticRiskFree) {
 		this.domesticRiskFree = domesticRiskFree;
+	}
+
+	public Float getVolatilite() {
+		return volatilite;
+	}
+
+	public void setVolatilite(Float volatilite) {
+		this.volatilite = volatilite;
 	}
 
 	@Override
@@ -69,6 +80,22 @@ public class ForeignExchangeOption extends Option {
 				+ getEndDate() + ", getBuySell()=" + getBuySell() + ", getExpiration()=" + getExpiration()
 				+ ", getRiskFree()=" + getRiskFree() + ", getStrikePrice()=" + getStrikePrice() + ", spotFx=" + spotFx
 				+ ", domesticRiskFree=" + domesticRiskFree + "]";
+	}
+
+	public Integer getMaturityDate() {
+		return MaturityDate;
+	}
+
+	public void setMaturityDate(Integer maturityDate) {
+		MaturityDate = maturityDate;
+	}
+
+	public String getCallPut() {
+		return callPut;
+	}
+
+	public void setCallPut(String callPut) {
+		this.callPut = callPut;
 	}
 
 }
