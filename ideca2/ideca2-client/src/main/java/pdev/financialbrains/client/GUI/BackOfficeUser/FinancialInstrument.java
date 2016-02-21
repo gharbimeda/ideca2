@@ -42,6 +42,7 @@ public class FinancialInstrument extends JFrame {
 			}
 		});
 	}
+	
 
 	/**
 	 * Create the frame.
