@@ -36,10 +36,11 @@ public class Complaint implements Serializable {
 
 	
 	
-	public Complaint(String object, String text) {
+	public Complaint(String object, String text , User user , Date date) {
 		super();
 		this.object = object;
 		this.text = text;
+		this.user=user;
 	}
 
 	public Complaint() {

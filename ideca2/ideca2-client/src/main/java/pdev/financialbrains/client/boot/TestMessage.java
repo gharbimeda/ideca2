@@ -46,16 +46,20 @@ public class TestMessage {
 		m.setUserSource(u1);
 		messageDeletage.doCreate(m);
 	}
-
+@Test
+public  void show()
+{
+	messageDeletage.doRead();
+}
 	@Test
 	public void udapteMessage() {
-		Message m = MessageManagementDelegate.doRead(7);
+		List<Message> m = MessageManagementDelegate.doRead(1);
 		User u = new User(1);
 		User u1 = new User(2);
 
-		m.setTexte("chaima");
-		m.setDate(new Date("2015/02/03"));
-		messageDeletage.doUpdate(m);
+		//m.setTexte("chaima");
+		//m.setDate(new Date("2015/02/03"));
+		//messageDeletage.doUpdate(m);
 
 	}
 
@@ -69,8 +73,7 @@ public class TestMessage {
 
 	@Test
 	public void addBond() {
-		Bond b = new Bond(1, 125.5f, 5.5f, "symbole", "50");
-
+		Bond b = new Bond(1,125.5f, 5.5f, "symbole", "50");
 		bondDeletage.doCreate(b);
 	}
 
@@ -94,8 +97,8 @@ public class TestMessage {
 	public void createSecurity() {
 		// FixedIncomeSecuritie f = new FixedIncomeSecuritie(1, 122.5f, 0.5f, 1,
 		// 2, 100f, 0.3f, 0.23f, 45.2f, 1002f);
-		FixedIncomeSecuritie f = new FixedIncomeSecuritie(1,2.5f, 0.06f, 30, 2, 100.5f, 0.26f, 1.5f, 2.5f, 1000f);
-		fixedSecurDeletage.doCreate(f);
+	//	FixedIncomeSecuritie f = new FixedIncomeSecuritie(1,2.5f, 0.06f, 30, 2, 100.5f, 0.26f, 1.5f, 2.5f, 1000f);
+	//	fixedSecurDeletage.doCreate(f);
 	}
 
 	@Test
@@ -119,8 +122,8 @@ public class TestMessage {
 		// Double bondPrice = null;
 		FixedIncomeSecuritie f = fixedSecurDeletage.doRead(1);
 
-		System.out.println(
-				fixedSecurDeletage.doPriceZeroCouponBond(f.getFaceValue(), f.getTimeMaturity(), f.getCurrentYield()));
+		//System.out.println(
+			//	fixedSecurDeletage.doPriceZeroCouponBond(f.getFaceValue(), f.getTimeMaturity(), f.getCurrentYield()));
 
 	}
 }

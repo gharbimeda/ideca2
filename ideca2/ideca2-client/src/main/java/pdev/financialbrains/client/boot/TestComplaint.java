@@ -28,11 +28,12 @@ public class TestComplaint {
 			//b=ComplaintManagementDelegate.doRead(1);
 			b.setObject("rererer");
 			b.setText("hello");
+			b.setDate(new Date());
 			b.setId(2);
 			//System.out.println(	ComplaintManagementDelegate.getInstance().doSend());
 			ComplaintManagementDelegate.getInstance().doSend(b);
 			
-			System.out.println(ComplaintManagementDelegate.getInstance().doReadAll());
+			//System.out.println(ComplaintManagementDelegate.getInstance().doReadAll());
 			//ComplaintManagementDelegate.doDelete(b);
 			
 			

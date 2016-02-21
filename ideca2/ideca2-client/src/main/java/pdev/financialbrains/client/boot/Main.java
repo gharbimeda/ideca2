@@ -6,6 +6,25 @@ import pdev.financialbrains.client.delegate.StockManagementDelegate;
 import pdev.financialbrains.client.delegate.TradeManagementDelegate;
 import pdev.financialbrains.ejb.entities.Bond;
 import pdev.financialbrains.ejb.entities.Currency;
+
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+
+import pdev.financialbrains.ejb.contracts.IStockCrudServicesRemote;
+
 import pdev.financialbrains.ejb.entities.Stock;
 import pdev.financialbrains.ejb.entities.Trade;
 
@@ -78,6 +97,37 @@ public class Main {
 		 * 
 		 * connection.disconnect();
 		 */
+		String nextLine;
+	       URL url = null;
+	       URLConnection urlConn = null;
+	       InputStreamReader  inStream = null;
+	       BufferedReader buff = null;
+	       try{
+	          // Create the URL obect that points
+	          // at the default file index.html
+	          url  = new URL("http://finance.yahoo.com" );
+	          urlConn = url.openConnection();
+	         inStream = new InputStreamReader( 
+	                           urlConn.getInputStream());
+	           buff= new BufferedReader(inStream);
+	        
+	       // Read and print the lines from index.html
+	        while (true){
+	            nextLine =buff.readLine();  
+	            if (nextLine !=null){
+	                System.out.println(nextLine); 
+	            }
+	            else{
+	               break;
+	            } 
+	        }
+	     } catch(MalformedURLException e){
+	       System.out.println("Please check the URL:" + 
+	                                           e.toString() );
+	     } catch(IOException  e1){
+	      System.out.println("Can't read  from the Internet: "+ 
+	                                          e1.toString() ); 
+	  }
+	 }
 	}
 
-}

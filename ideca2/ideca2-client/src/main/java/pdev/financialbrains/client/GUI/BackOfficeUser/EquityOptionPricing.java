@@ -17,6 +17,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.awt.Color;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class EquityOptionPricing extends JFrame {
 
@@ -52,7 +54,7 @@ public class EquityOptionPricing extends JFrame {
 	 */
 	public EquityOptionPricing() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 988, 734);
+		setBounds(100, 100, 1226, 734);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -79,6 +81,54 @@ public class EquityOptionPricing extends JFrame {
 				
 			}
 		});
+		
+		JLabel lb_home = new JLabel("");
+		lb_home.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				
+				new BackHome().setVisible(true);
+				fermer();
+			}
+		});
+		
+		JLabel lb_fininst = new JLabel("");
+		lb_fininst.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			}
+		});
+		
+		JLabel lb_sett = new JLabel("");
+		lb_sett.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				new SettlementGUI().setVisible(true);
+				fermer();
+			}
+		});
+		lb_sett.setBounds(0, 464, 217, 57);
+		contentPane.add(lb_sett);
+		
+		JLabel lb_marketdata = new JLabel("");
+		lb_marketdata.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				new MarketDataGUI().setVisible(true);
+				fermer();
+			}
+		});
+		lb_marketdata.setBounds(10, 378, 215, 57);
+		contentPane.add(lb_marketdata);
+		lb_fininst.setBounds(10, 216, 215, 66);
+		contentPane.add(lb_fininst);
+		
+		JLabel lb_newproduct = new JLabel("");
+		lb_newproduct.setBounds(10, 299, 215, 57);
+		contentPane.add(lb_newproduct);
+		lb_home.setBounds(10, 118, 207, 57);
+		contentPane.add(lb_home);
 		
 		JLabel lblEquityOption = new JLabel("Equity option ");
 		lblEquityOption.setFont(new Font("Algerian", Font.BOLD, 17));
@@ -161,7 +211,7 @@ public class EquityOptionPricing extends JFrame {
 		JLabel label = new JLabel("");
 		label.setIcon(new ImageIcon("C:\\IDE\\images\\backBouGrand2.PNG"));
 		
-		label.setBounds(0, 0, 972, 695);
+		label.setBounds(0, 0, 1210, 695);
 		contentPane.add(label);
 		
 		JLabel label_1 = new JLabel("");
@@ -176,5 +226,9 @@ public class EquityOptionPricing extends JFrame {
 		JLabel label_3 = new JLabel("");
 		label_3.setBounds(171, 390, 46, 14);
 		contentPane.add(label_3);
+	}
+	
+	private void fermer(){
+		this.setVisible(false);
 	}
 }

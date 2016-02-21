@@ -94,11 +94,12 @@ public class User implements Serializable {
 	public User(int idUser) {
 		super();
 		IdUser = idUser;
-
 	}
 
-	@Override
-	public String toString() {
+	public String toString1() {
 		return "User [IdUser=" + IdUser + ", login=" + login + ", password=" + password + "]";
+	}
+	public String toString() {
+		return login;
 	}
 }

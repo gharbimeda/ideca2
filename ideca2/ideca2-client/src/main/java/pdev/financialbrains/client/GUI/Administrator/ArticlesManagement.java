@@ -317,6 +317,50 @@ public class ArticlesManagement extends JFrame {
 						lbl_add.setIcon(new ImageIcon(ArticlesManagement.class.getResource("/pdev/financialbrains/client/pictures/addIcon.png")));
 						lbl_add.setBounds(297, 285, 58, 67);
 						panel_3.add(lbl_add);
+		
+		JLabel dashbord = new JLabel("");
+		dashbord.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				new AdminHome().setVisible(true);
+				fermer();
+			}
+		});
+		dashbord.setBounds(20, 98, 225, 37);
+		contentPane.add(dashbord);
+		
+		JLabel lbl_account = new JLabel("");
+		lbl_account.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			//	new AccountManagement().setVisible(true);
+				fermer();
+			}
+		});
+		lbl_account.setBounds(20, 168, 225, 42);
+		contentPane.add(lbl_account);
+		
+		JLabel lbl_complaint = new JLabel("");
+		lbl_complaint.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				fermer();
+				new ComplaintManagement().setVisible(true);
+			}
+		});
+		lbl_complaint.setBounds(20, 233, 205, 47);
+		contentPane.add(lbl_complaint);
+		
+		JLabel lbl_article = new JLabel("");
+		lbl_article.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				new ArticlesManagement().setVisible(true);
+				fermer();
+			}
+		});
+		lbl_article.setBounds(20, 304, 205, 47);
+		contentPane.add(lbl_article);
 						
 						
 						

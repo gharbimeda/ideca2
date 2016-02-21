@@ -9,6 +9,7 @@ import javax.persistence.PersistenceContext;
 
 import pdev.financialbrains.ejb.contracts.IFixedIncomeSecurityLocal;
 import pdev.financialbrains.ejb.contracts.IFixedIncomeSecurityRemote;
+import pdev.financialbrains.ejb.entities.Bond;
 import pdev.financialbrains.ejb.entities.FixedIncomeSecuritie;
 import pdev.financialbrains.ejb.entities.Message;
 
@@ -64,6 +65,21 @@ public class FixedIncomeSecurityCrudServices implements IFixedIncomeSecurityRemo
 		// TODO Auto-generated method stub
 		Double  Price;
 		return Price = faceValue/(Math.pow(1+currentYield, timeMaturity));
+	}
+
+	@Override
+	public Double priceTreasuryBond(Float faceValue, Integer timeMaturity, Float currentYield, Integer frequency,
+			Float couponRate) {
+		Double Price ; 
+		return Price = couponRate*(faceValue/frequency)*(1-(Math.pow(1+currentYield, (1/frequency)-1))+faceValue/Math.pow(1+currentYield, timeMaturity));
+	}
+
+	@Override
+	public Double priceCorpBond(Float faceValue, Integer timeMaturity, Float currentYield, Integer frequency,
+			Float couponRate, Integer months) {
+		Double Price;
+		
+		return Price = (couponRate*(faceValue/frequency))*(1-(1+Math.pow(Math.pow(1+currentYield,(1/frequency)-1), 0-(timeMaturity*frequency))))+faceValue/Math.pow(1+currentYield,(timeMaturity+months)/12)+((faceValue*couponRate)/(frequency/Math.pow(1+currentYield,months/12)));
 	}
 
 }

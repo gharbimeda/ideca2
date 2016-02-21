@@ -1,5 +1,6 @@
 package pdev.financialbrains.ejb.contracts;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.Remote;
@@ -22,5 +23,7 @@ public interface IFixedIncomeSecurityRemote {
 
 	List<FixedIncomeSecuritie> readAll();
   Double priceZeroCouponBond(Float faceValue,Integer timeMaturity,Float currentYield);
+  Double priceTreasuryBond(Float faceValue,Integer timeMaturity, Float currentYield,Integer frequency,Float couponRate);
+  Double priceCorpBond(Float faceValue,Integer timeMaturity, Float currentYield,Integer frequency,Float couponRate,Integer months);
 
 }

@@ -33,6 +33,9 @@ public class MessageManagementDelegate {
 		getProxy().create(Message);
 	} 
 
+	public static void doDeleteById(Message Message){
+		getProxy().deleteById(Message);
+	}
 	public static void doDelete(Message Message){
 		getProxy().delete(Message);
 	}
@@ -41,7 +44,7 @@ public class MessageManagementDelegate {
 		getProxy().update(Message);
 	}
 
-	public static Message doRead (Integer id){
+	public static List<Message> doRead (Integer id){
 		return getProxy().readById(id);
 	}
 	
