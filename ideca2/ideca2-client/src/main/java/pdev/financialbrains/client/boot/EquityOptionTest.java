@@ -19,8 +19,8 @@ public class EquityOptionTest {
 			IEquityOptionCrudServicesRemote  proxy  = (IEquityOptionCrudServicesRemote) context.lookup("/ideca2-ejb/EquityOptionCrudService!pdev.financialbrains.ejb.contracts.IEquityOptionCrudServicesRemote");
 			
 			
-			System.out.println(EquityOptionManagementDelegate.doCND(-20));
-			System.out.println(EquityOptionManagementDelegate.doBlackScholes('1', 50, 60, 10, 0.5, 0.2));
+			//System.out.println(EquityOptionManagementDelegate.doCND(-20));
+			//System.out.println(EquityOptionManagementDelegate.doBlackScholes(CallPutFlag, S, X, T, r, v)("call", 50, 60, 10, 0.5, 0.2));
 			
 			
 		} catch (NamingException  e) {
