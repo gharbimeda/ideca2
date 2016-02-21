@@ -5,7 +5,9 @@ import javax.ejb.Remote;
 @Remote
 public interface IEquityOptionCrudServicesRemote {
 	
-	public double BlackScholes(char CallPutFlag, double S, double X, double T, double r, double v);
-	public double CND(double X);
+
+	public Double BlackScholes(String CallPutFlag, Double S, Double X, Double T, Double r, Double v);
+	public Double CND(Double X);
+
 
 }

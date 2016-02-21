@@ -13,7 +13,6 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "t_complaint")
-
 public class Complaint implements Serializable {
 
 	@Id
@@ -33,10 +32,11 @@ public class Complaint implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	public Complaint(String object, String text) {
+	public Complaint(String object, String text, User user, Date date) {
 		super();
 		this.object = object;
 		this.text = text;
+		this.user = user;
 	}
 
 	public Complaint() {

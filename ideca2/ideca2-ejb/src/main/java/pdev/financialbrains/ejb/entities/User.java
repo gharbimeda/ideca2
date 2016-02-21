@@ -95,4 +95,12 @@ public class User implements Serializable {
 		super();
 		IdUser = idUser;
 	}
+
+	public String toString1() {
+		return "User [IdUser=" + IdUser + ", login=" + login + ", password=" + password + "]";
+	}
+	public String toString() {
+		return login;
+	}
+
 }

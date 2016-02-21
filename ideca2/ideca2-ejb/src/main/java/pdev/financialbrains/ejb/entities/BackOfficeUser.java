@@ -12,6 +12,7 @@ import javax.persistence.*;
  *
  */
 @Entity
+@DiscriminatorValue(value="backoffuser")
 public class BackOfficeUser extends User implements Serializable {
 
 	private Date dateOfBirth;

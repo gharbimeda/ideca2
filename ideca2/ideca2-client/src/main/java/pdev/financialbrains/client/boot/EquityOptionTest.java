@@ -9,25 +9,21 @@ import pdev.financialbrains.ejb.contracts.IEquityOptionCrudServicesRemote;
 import pdev.financialbrains.ejb.services.EquityOptionCrudService;
 
 public class EquityOptionTest {
-	
-	
-	
+
 	public static void main(String[] args) throws NamingException {
 		try {
 			Context context = new InitialContext();
-		
-			IEquityOptionCrudServicesRemote  proxy  = (IEquityOptionCrudServicesRemote) context.lookup("/ideca2-ejb/EquityOptionCrudService!pdev.financialbrains.ejb.contracts.IEquityOptionCrudServicesRemote");
-			
-			
-			System.out.println(EquityOptionManagementDelegate.doCND(-20));
-			System.out.println(EquityOptionManagementDelegate.doBlackScholes('1', 50, 60, 10, 0.5, 0.2));
-			
-			
-		} catch (NamingException  e) {
+
+			IEquityOptionCrudServicesRemote proxy = (IEquityOptionCrudServicesRemote) context.lookup(
+					"/ideca2-ejb/EquityOptionCrudService!pdev.financialbrains.ejb.contracts.IEquityOptionCrudServicesRemote");
+
+			// System.out.println(EquityOptionManagementDelegate.doCND(-20));
+			// System.out.println(EquityOptionManagementDelegate.doBlackScholes(CallPutFlag,
+			// S, X, T, r, v)("call", 50, 60, 10, 0.5, 0.2));
+
+		} catch (NamingException e) {
 			e.printStackTrace();
 		}
-	
 
-		
-		
-}}
+	}
+}

@@ -24,6 +24,7 @@ public class AccountCrudServices implements IAccountCrudServicesRemote,IAccountC
 	
 	@Override
 	public void create(User user) {
+		
 		entityManger.persist(user);
 		
 	}
@@ -36,7 +37,7 @@ public class AccountCrudServices implements IAccountCrudServicesRemote,IAccountC
 
 	@Override
 	public void delete(User user) {
-		entityManger.remove(user);
+		entityManger.remove(entityManger.find(User.class, user.getIdUser()));
 		
 	}
 
@@ -51,5 +52,11 @@ public class AccountCrudServices implements IAccountCrudServicesRemote,IAccountC
 		return entityManger.createQuery("select c from User c  ",User.class).getResultList();
 		
 
+	}
+
+	@Override
+	public void delete(Integer id) {
+		entityManger.remove(entityManger.find(User.class, id));
+		
 	}
 }

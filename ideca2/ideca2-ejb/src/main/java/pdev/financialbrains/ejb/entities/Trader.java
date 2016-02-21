@@ -6,6 +6,7 @@ import java.util.Date;
 import javax.persistence.Entity;
 
 @Entity
+@DiscriminatorValue(value="trader")
 public class Trader extends User implements Serializable {
 
 	private Integer cin;

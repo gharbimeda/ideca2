@@ -11,6 +11,7 @@ public interface IAccountCrudServicesRemote {
 	void create (User user) ;
 	void update(User user);
 	void delete(User user );
+	void delete(Integer id);
 	User read(Integer IdUser);
 	List<User> readAll() ;
 }

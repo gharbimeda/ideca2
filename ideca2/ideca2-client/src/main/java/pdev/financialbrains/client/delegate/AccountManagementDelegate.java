@@ -23,6 +23,9 @@ public class AccountManagementDelegate {
 		public static void doDelete(User user){
 			getProxy().delete(user);
 		}
+		public static void doDelete(Integer id){
+			getProxy().delete(id);
+		}
 
 		public static void doUpdate(User user){
 			getProxy().update(user);

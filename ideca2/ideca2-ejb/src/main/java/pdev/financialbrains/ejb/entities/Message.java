@@ -124,5 +124,11 @@ public class Message implements Serializable {
 		this.id = id;
 		this.texte = texte;
 	}
+	public Message(String texte, Date date, User userDest) {
+		super();
+		this.texte = texte;
+		this.date = date;
+		this.userDest = userDest;
+	}
 
 }
