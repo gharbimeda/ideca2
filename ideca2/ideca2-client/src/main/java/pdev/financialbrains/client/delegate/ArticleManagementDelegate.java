@@ -23,7 +23,7 @@ public class ArticleManagementDelegate {
 	}
 
 	public static void doDelete(Article article){
-		getProxy().delete(article);
+		getProxy().delete(article.getId());
 	}
 
 	public static void doUpdate(Article article){
@@ -36,6 +36,10 @@ public class ArticleManagementDelegate {
 	
 	public static List<Article> doRead (Date date){
 		return getProxy().read(date);
+	}
+	
+	public static List<Article> doReadAll(){
+		return getProxy().readAll();
 	}
 	
 }
