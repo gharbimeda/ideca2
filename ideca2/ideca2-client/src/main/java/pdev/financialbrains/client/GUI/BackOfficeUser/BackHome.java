@@ -53,7 +53,40 @@ public class BackHome extends JFrame {
 		lblNewLabel_1.setBounds(1070, 34, 54, 37);
 		contentPane.add(lblNewLabel_1);
 		
+		JLabel lblNewLabel_3 = new JLabel("");
+		lblNewLabel_3.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				new MarketDataGUI().setVisible(true);
+				fermer();
+				}
+		});
+		lblNewLabel_3.setBounds(694, 219, 348, 144);
+		contentPane.add(lblNewLabel_3);
+		
+		JLabel lblNewLabel_2 = new JLabel("");
+		lblNewLabel_2.setBounds(158, 219, 348, 144);
+		contentPane.add(lblNewLabel_2);
+		
 		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				new FinancialInstrument().setVisible(true);
+				fermer();
+			}
+		});
+		
+		JLabel lblNewLabel_4 = new JLabel("");
+		lblNewLabel_4.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				new SettlementGUI().setVisible(true);
+				fermer();
+			}
+		});
+		lblNewLabel_4.setBounds(694, 432, 348, 151);
+		contentPane.add(lblNewLabel_4);
 		lblNewLabel.setIcon(new ImageIcon(BackHome.class.getResource("/pdev/financialbrains/client/pictures/HomeBou.PNG")));
 		lblNewLabel.setBounds(0, 0, 1210, 694);
 		contentPane.add(lblNewLabel);

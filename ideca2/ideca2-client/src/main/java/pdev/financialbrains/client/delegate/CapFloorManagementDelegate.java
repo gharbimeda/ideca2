@@ -34,4 +34,24 @@ public class CapFloorManagementDelegate {
 	public static List<CapFloor> doReadAll(){
 		return getProxy().readAll();
 	}
+	
+	public static Double CNDF(double x){
+		return getProxy().CNDF(x);
+	}
+
+	public static Integer nDays(Integer tenor){
+		return getProxy().nDays(tenor);
+	}
+
+	public static double europeanOption(boolean operationType, boolean cF, float s, float k, double r, float q, float v, float t){
+		return getProxy().europeanOption(operationType, cF, s, k, r, q, v, t);
+	}
+
+	public static double calculD1(Double cap_floor, float s, float rfr, Double maturity, Double volatility){
+		return getProxy().calculD1(cap_floor,s,rfr,maturity,volatility);
+	}
+	public static double pricingCapFloor(Double amount, String cap_floor, Integer nDays, Integer period, Integer daysYear, Double f_rate,
+			Double strike, Double vol, Double maturity, Double rfr) {
+		return getProxy().pricingCapFloor(amount, cap_floor, nDays, period, daysYear, f_rate, strike, vol, maturity, rfr);
+	}
 }

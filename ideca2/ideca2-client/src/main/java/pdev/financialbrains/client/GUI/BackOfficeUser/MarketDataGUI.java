@@ -173,7 +173,7 @@ public class MarketDataGUI extends JFrame {
 		titreLabel = new JLabel("Home / Market Data");
 		titreLabel.setForeground(Color.WHITE);
 		titreLabel.setFont(new Font("Berlin Sans FB", Font.BOLD, 16));
-		titreLabel.setBounds(300, 107, 344, 22);
+		titreLabel.setBounds(298, 117, 344, 22);
 		contentPane.add(titreLabel);
 
 		JLabel backgroundLabel = new JLabel("");
