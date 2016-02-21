@@ -32,6 +32,7 @@ import org.jdesktop.beansbinding.AutoBinding.UpdateStrategy;
 import org.jdesktop.beansbinding.BeanProperty;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.Font;
 
 public class ComplaintManagement extends JFrame {
 
@@ -73,17 +74,17 @@ public class ComplaintManagement extends JFrame {
 		setContentPane(contentPane);
 		
 		tf_response = new JTextField();
-		tf_response.setBounds(357, 518, 159, 47);
+		tf_response.setBounds(357, 478, 159, 47);
 		tf_response.setColumns(10);
 		
 		tf_mail = new JTextField();
-		tf_mail.setBounds(593, 518, 188, 46);
+		tf_mail.setBounds(593, 478, 188, 46);
 		tf_mail.setColumns(10);
 		
 		JButton btnNewButton = new JButton("");
 		btnNewButton.setBackground(Color.LIGHT_GRAY);
 		btnNewButton.setIcon(new ImageIcon(ComplaintManagement.class.getResource("/pdev/financialbrains/client/pictures/response.png")));
-		btnNewButton.setBounds(510, 575, 188, 83);
+		btnNewButton.setBounds(520, 543, 136, 76);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -103,6 +104,32 @@ public class ComplaintManagement extends JFrame {
 		});
 
 		contentPane.setLayout(null);
+		
+		JLabel lblEmail = new JLabel("Email");
+		lblEmail.setFont(new Font("Algerian", Font.BOLD, 15));
+		lblEmail.setBounds(526, 488, 63, 24);
+		contentPane.add(lblEmail);
+		
+		JLabel lblNewLabel = new JLabel("Response");
+		lblNewLabel.setFont(new Font("Algerian", Font.BOLD, 15));
+		lblNewLabel.setBounds(248, 494, 79, 14);
+		contentPane.add(lblNewLabel);
+		
+		JLabel lblText = new JLabel("Text");
+		lblText.setFont(new Font("Algerian", Font.BOLD, 15));
+		lblText.setBounds(526, 403, 58, 24);
+		contentPane.add(lblText);
+		
+		JLabel lblObject = new JLabel("Object");
+		lblObject.setFont(new Font("Algerian", Font.BOLD, 15));
+		lblObject.setBounds(258, 408, 63, 14);
+		contentPane.add(lblObject);
+		
+		JLabel lblComplaintManagement = new JLabel("Complaint Management");
+		lblComplaintManagement.setForeground(new Color(72, 61, 139));
+		lblComplaintManagement.setFont(new Font("Algerian", Font.BOLD, 18));
+		lblComplaintManagement.setBounds(387, 104, 324, 24);
+		contentPane.add(lblComplaintManagement);
 		
 		JPanel panel = new JPanel();
 		panel.setBounds(316, 194, 543, 144);
@@ -182,7 +209,7 @@ public class ComplaintManagement extends JFrame {
 		
 		JLabel label = new JLabel("");
 		label.setIcon(new ImageIcon(ComplaintManagement.class.getResource("/pdev/financialbrains/client/pictures/backAdminGrand2.PNG")));
-		label.setBounds(40, 11, 889, 699);
+		label.setBounds(-10, 0, 897, 699);
 		contentPane.add(label);
 		initDataBindings();
 	}	
@@ -197,8 +224,6 @@ public class ComplaintManagement extends JFrame {
 		//
 		jTableBinding.bind();
 	}
-
-
 	}
 
 
