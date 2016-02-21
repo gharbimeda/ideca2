@@ -1,52 +1,49 @@
 package pdev.financialbrains.client.GUI.BackOfficeUser;
 
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import javax.swing.ImageIcon;
-import java.awt.Font;
+import java.awt.BorderLayout;
 import java.awt.Color;
-import javax.swing.border.TitledBorder;
-
-import com.toedter.calendar.JCalendar;
-import com.toedter.calendar.JDateChooser;
-
-import pdev.financialbrains.ejb.entities.CapFloorTable;
-import pdev.financialbrains.ejb.services.CalculCapFloor;
-
-import javax.swing.UIManager;
-import javax.swing.JComboBox;
-import javax.swing.DefaultComboBoxModel;
+import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.SystemColor;
-import javax.swing.JTextField;
-import javax.swing.JButton;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.Random;
+
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
-import java.awt.BorderLayout;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import org.jdesktop.beansbinding.ObjectProperty;
+import javax.swing.UIManager;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.TitledBorder;
+
 import org.jdesktop.beansbinding.AutoBinding;
-import org.jdesktop.beansbinding.Bindings;
 import org.jdesktop.beansbinding.AutoBinding.UpdateStrategy;
+import org.jdesktop.beansbinding.BeanProperty;
+import org.jdesktop.beansbinding.Bindings;
+import org.jdesktop.beansbinding.ObjectProperty;
 import org.jdesktop.swingbinding.JTableBinding;
 import org.jdesktop.swingbinding.SwingBindings;
-import org.jdesktop.beansbinding.BeanProperty;
+
+import com.toedter.calendar.JDateChooser;
+
+import pdev.financialbrains.ejb.entities.CapFloorTable;
+import pdev.financialbrains.ejb.services.CalculCapFloor;
 
 public class CapFloorPricing extends JFrame {
 

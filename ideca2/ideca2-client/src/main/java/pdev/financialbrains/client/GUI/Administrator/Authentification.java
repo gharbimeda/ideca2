@@ -1,24 +1,22 @@
 package pdev.financialbrains.client.GUI.Administrator;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import pdev.financialbrains.client.GUI.BackOfficeUser.BOUserHome;
+import pdev.financialbrains.client.GUI.BackOfficeUser.BackHome;
 import pdev.financialbrains.client.delegate.UserManagementDelegate;
 import pdev.financialbrains.ejb.entities.BackOfficeUser;
 import pdev.financialbrains.ejb.entities.User;
-
-import javax.swing.JTextField;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.ImageIcon;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import javax.swing.JPasswordField;
 
 public class Authentification extends JFrame {
 
@@ -64,7 +62,7 @@ User user = UserManagementDelegate.doAuthentification(tf_login.getText(),new Str
 					
 					if (user  instanceof  BackOfficeUser ) {
 						 JOptionPane.showMessageDialog(null, "hello");
-						new BOUserHome().setVisible(true);}
+						new BackHome().setVisible(true);}
 						
 						
 					 if ( tf_login.getText().equals("admin") && tf_password.getText().equals("admin")){

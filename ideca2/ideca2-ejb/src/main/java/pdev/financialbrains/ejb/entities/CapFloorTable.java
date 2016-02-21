@@ -1,8 +1,5 @@
 package pdev.financialbrains.ejb.entities;
 
-import java.util.Calendar;
-import java.util.Date;
-
 public class CapFloorTable {
 
 	private String startDate;
