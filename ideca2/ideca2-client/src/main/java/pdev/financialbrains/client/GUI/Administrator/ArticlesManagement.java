@@ -271,8 +271,6 @@ public class ArticlesManagement extends JFrame {
 						        if (image.isFile()) {
 						            System.out.println(image.getAbsolutePath());
 						            
-						      
-						           //***Mta3b  URL
 						          // article.setUrl(url);
 						        
 						            BufferedImage myPicture2;
@@ -307,11 +305,10 @@ public class ArticlesManagement extends JFrame {
 								article1.setText(tf_text.getText());
 								//SimpleDateFormat d= new SimpleDateFormat("dd/MM/yyyy");
 								Date date = new Date();
-								article1.setDate(date);
-								 
-								
-								
-							//ArticleManagementDelegate.doCreate(article);
+								article1.setDate(date);	
+							ArticleManagementDelegate.doCreate(article1);
+							articles = ArticleManagementDelegate.doReadAll();
+							initDataBindings();
 							}
 						});
 						lbl_add.setIcon(new ImageIcon(ArticlesManagement.class.getResource("/pdev/financialbrains/client/pictures/addIcon.png")));
