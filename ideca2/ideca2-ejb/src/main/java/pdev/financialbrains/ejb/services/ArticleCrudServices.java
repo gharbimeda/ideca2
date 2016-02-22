@@ -17,25 +17,34 @@ import pdev.financialbrains.ejb.entities.Article;
 @LocalBean
 public class ArticleCrudServices implements IArticleCrudServicesLocal, IArticleCrudServicesRemote {
 
-	@PersistenceContext(unitName="data")
+	@PersistenceContext(unitName = "data")
 	private EntityManager entityManager;
 
 	public ArticleCrudServices() {
 
 	}
 
+	/**
+	 * add new article
+	 */
 	@Override
 	public void create(Article article) {
 		entityManager.persist(article);
 
 	}
 
+	/**
+	 * delete an article with finding it by id
+	 */
 	@Override
 	public void delete(Integer id) {
 		entityManager.remove(entityManager.find(Article.class, id));
 
 	}
 
+	/**
+	 * update an article
+	 */
 	@Override
 	public void update(Article article) {
 		entityManager.merge(article);
@@ -50,12 +59,15 @@ public class ArticleCrudServices implements IArticleCrudServicesLocal, IArticleC
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<Article> read(Date date) {
-		
+
 		Query query = entityManager.createQuery("SELECT a from article where date= :d");
 		query.setParameter("d", date);
 		return query.getResultList();
 	}
 
+	/**
+	 * recover all the article in the database
+	 */
 	@Override
 	public List<Article> readAll() {
 

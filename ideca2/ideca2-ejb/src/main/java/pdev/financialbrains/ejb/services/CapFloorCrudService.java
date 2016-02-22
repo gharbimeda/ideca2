@@ -19,6 +19,10 @@ public class CapFloorCrudService implements ICapFloorServiceLocal, ICapFloorServ
 	@PersistenceContext(unitName = "data")
 	private EntityManager entityManager;
 
+	
+	/**
+	 * add a cap or a floor
+	 */
 	@Override
 	public void create(CapFloor capFloor) {
 		entityManager.persist(capFloor);
@@ -47,6 +51,9 @@ public class CapFloorCrudService implements ICapFloorServiceLocal, ICapFloorServ
 		return query.getResultList();
 	}
 
+	/**
+	 * method used for the normal distribution 
+	 */
 	@Override
 	public Double CNDF(double x) {
 		int neg = (x < 0d) ? 1 : 0;
@@ -59,6 +66,10 @@ public class CapFloorCrudService implements ICapFloorServiceLocal, ICapFloorServ
 
 		return (1d - neg) * y + neg * (1d - y);
 	}
+	
+	/**
+	 * return number of days according to a tenor
+	 */
 
 	@Override
 	public Integer nDays(Integer tenor) {
@@ -74,6 +85,9 @@ public class CapFloorCrudService implements ICapFloorServiceLocal, ICapFloorServ
 		return 0;
 	}
 
+	/**
+	 * return the european option
+	 */
 	@Override
 	public double europeanOption(boolean operationType, boolean cF, float s, float k, double r, float q, float v,
 			float t) {
