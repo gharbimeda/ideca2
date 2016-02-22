@@ -176,6 +176,9 @@ public class PricingZeroCouponBond extends JFrame {
 		lb_prod.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				NewFinancailInstrument frame = new NewFinancailInstrument();
+				frame.setVisible(true);
+				fermer();
 			}
 		});
 		lb_prod.setBounds(-8, 305, 204, 58);

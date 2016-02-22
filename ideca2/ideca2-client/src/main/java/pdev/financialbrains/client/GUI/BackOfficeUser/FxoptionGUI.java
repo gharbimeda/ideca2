@@ -209,6 +209,8 @@ public class FxoptionGUI extends JFrame {
 		lbl.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
+				NewFinancailInstrument frame = new NewFinancailInstrument();
+				frame.setVisible(true);
 				fermer();
 			}
 		});

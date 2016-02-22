@@ -214,6 +214,9 @@ table_1.setFont(new Font("Berlin Sans FB", Font.PLAIN, 11));
 				lblNewLabel_1.addMouseListener(new MouseAdapter() {
 					@Override
 					public void mouseClicked(MouseEvent arg0) {
+						NewFinancailInstrument frame = new NewFinancailInstrument();
+						frame.setVisible(true);
+						fermer();
 					}
 				});
 				lblNewLabel_1.setBounds(-8, 306, 205, 54);

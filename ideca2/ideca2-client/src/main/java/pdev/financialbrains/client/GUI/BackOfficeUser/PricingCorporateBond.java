@@ -207,6 +207,9 @@ public class PricingCorporateBond extends JFrame {
 		lb_newproduct.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
+				NewFinancailInstrument frame = new NewFinancailInstrument();
+				frame.setVisible(true);
+				fermer();
 			}
 		});
 		lb_newproduct.setBounds(0, 308, 194, 54);

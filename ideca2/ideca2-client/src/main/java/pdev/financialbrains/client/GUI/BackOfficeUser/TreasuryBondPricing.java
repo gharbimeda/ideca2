@@ -184,6 +184,9 @@ public class TreasuryBondPricing extends JFrame {
 		lb_newproduct.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				NewFinancailInstrument frame = new NewFinancailInstrument();
+				frame.setVisible(true);
+				fermer();
 			}
 		});
 		lb_newproduct.setBounds(0, 321, 197, 49);

@@ -125,6 +125,14 @@ public class EquityOptionPricing extends JFrame {
 		contentPane.add(lb_fininst);
 		
 		JLabel lb_newproduct = new JLabel("");
+		lb_newproduct.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				NewFinancailInstrument frame = new NewFinancailInstrument();
+				frame.setVisible(true);
+				fermer();
+			}
+		});
 		lb_newproduct.setBounds(10, 299, 215, 57);
 		contentPane.add(lb_newproduct);
 		lb_home.setBounds(10, 118, 207, 57);

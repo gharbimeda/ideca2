@@ -366,6 +366,18 @@ public class CapFloorPricing extends JFrame {
 				fermer();
 			}
 		});
+		
+		JLabel labelNewProduct = new JLabel("");
+		labelNewProduct.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				NewFinancailInstrument frame = new NewFinancailInstrument();
+				frame.setVisible(true);
+				fermer();
+			}
+		});
+		labelNewProduct.setBounds(10, 298, 208, 56);
+		contentPane.add(labelNewProduct);
 		lbl_home.setBounds(10, 129, 157, 38);
 		contentPane.add(lbl_home);
 		

@@ -50,6 +50,18 @@ public class BackHome extends JFrame {
 				fermer();
 			}
 		});
+		
+		JLabel labelNewProduct = new JLabel("");
+		labelNewProduct.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				NewFinancailInstrument frame = new NewFinancailInstrument();
+				frame.setVisible(true);
+				fermer();
+			}
+		});
+		labelNewProduct.setBounds(156, 432, 350, 151);
+		contentPane.add(labelNewProduct);
 		lblNewLabel_1.setBounds(1070, 34, 54, 37);
 		contentPane.add(lblNewLabel_1);
 		
