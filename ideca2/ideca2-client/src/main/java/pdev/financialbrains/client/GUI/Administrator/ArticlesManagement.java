@@ -52,6 +52,7 @@ public class ArticlesManagement extends JFrame {
 	List<Article> articles = new ArrayList<Article>();
 	private JTextField tf_title_update;
 	private JTextField tf_author_update;
+	Article article1 = new Article();
 
 	/**
 	 * Launch the application.
@@ -271,7 +272,7 @@ public class ArticlesManagement extends JFrame {
 						        if (image.isFile()) {
 						            System.out.println(image.getAbsolutePath());
 						            
-						          // article.setUrl(url);
+						          
 						        
 						            BufferedImage myPicture2;
 						            try {
@@ -285,6 +286,7 @@ public class ArticlesManagement extends JFrame {
 						            } catch (IOException ex) {
 						                System.out.println(ex);
 						            }
+						            article1.setUrl(image.getAbsolutePath());
 						        }
 							}
 						
@@ -299,7 +301,7 @@ public class ArticlesManagement extends JFrame {
 						lbl_add.addMouseListener(new MouseAdapter() {
 							@Override
 							public void mouseClicked(MouseEvent arg0) {
-								Article article1 = new Article();
+								
 								article1.setTitle(tf_title.getText());
 								article1.setAuthor(tf_author.getText());
 								article1.setText(tf_text.getText());
@@ -309,6 +311,11 @@ public class ArticlesManagement extends JFrame {
 							ArticleManagementDelegate.doCreate(article1);
 							articles = ArticleManagementDelegate.doReadAll();
 							initDataBindings();
+							tf_title.setText("");
+							tf_author.setText("");
+							tf_text.setText("");
+							lbl_photo.removeAll();
+							
 							}
 						});
 						lbl_add.setIcon(new ImageIcon(ArticlesManagement.class.getResource("/pdev/financialbrains/client/pictures/addIcon.png")));

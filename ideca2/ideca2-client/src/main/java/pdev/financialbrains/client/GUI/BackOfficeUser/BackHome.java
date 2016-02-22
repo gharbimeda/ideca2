@@ -10,6 +10,8 @@ import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.Color;
+import java.awt.Font;
 
 public class BackHome extends JFrame {
 
@@ -99,6 +101,12 @@ public class BackHome extends JFrame {
 		});
 		lblNewLabel_4.setBounds(694, 432, 348, 151);
 		contentPane.add(lblNewLabel_4);
+		
+		JLabel lblHome = new JLabel("Home");
+		lblHome.setFont(new Font("Berlin Sans FB", Font.BOLD, 20));
+		lblHome.setForeground(Color.WHITE);
+		lblHome.setBounds(61, 117, 94, 14);
+		contentPane.add(lblHome);
 		lblNewLabel.setIcon(new ImageIcon(BackHome.class.getResource("/pdev/financialbrains/client/pictures/HomeBou.PNG")));
 		lblNewLabel.setBounds(0, 0, 1210, 694);
 		contentPane.add(lblNewLabel);

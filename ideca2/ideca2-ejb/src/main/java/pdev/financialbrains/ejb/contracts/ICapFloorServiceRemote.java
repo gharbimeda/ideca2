@@ -28,4 +28,6 @@ public interface ICapFloorServiceRemote {
 	double calculD1(Double cap_floor, float s, float rfr, Double maturity, Double volatility);
 	
 	double pricingCapFloor(Double amount,String cap_floor, Integer nDays, Integer period, Integer daysYear, Double f_rate, Double strike, Double vol, Double maturity, Double rfr);
+	
+	
 }

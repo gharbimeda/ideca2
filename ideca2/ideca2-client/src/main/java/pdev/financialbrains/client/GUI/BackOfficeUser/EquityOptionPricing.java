@@ -138,39 +138,39 @@ public class EquityOptionPricing extends JFrame {
 		lb_home.setBounds(10, 118, 207, 57);
 		contentPane.add(lb_home);
 		
-		JLabel lblEquityOption = new JLabel("Equity option ");
-		lblEquityOption.setFont(new Font("Algerian", Font.BOLD, 17));
-		lblEquityOption.setForeground(new Color(95, 158, 160));
-		lblEquityOption.setBounds(425, 109, 285, 29);
+		JLabel lblEquityOption = new JLabel("Home/Financial Instrument/Equity option ");
+		lblEquityOption.setFont(new Font("Berlin Sans FB", Font.BOLD, 17));
+		lblEquityOption.setForeground(Color.WHITE);
+		lblEquityOption.setBounds(301, 113, 418, 29);
 		contentPane.add(lblEquityOption);
 		
 		JLabel lblOptionPrice = new JLabel("Option Price");
-		lblOptionPrice.setFont(new Font("Algerian", Font.BOLD, 16));
-		lblOptionPrice.setBounds(624, 573, 159, 29);
+		lblOptionPrice.setFont(new Font("Berlin Sans FB", Font.PLAIN, 13));
+		lblOptionPrice.setBounds(674, 572, 109, 29);
 		contentPane.add(lblOptionPrice);
 		
 		JLabel lblStockReturnVolatility = new JLabel("Stock Return Volatility");
-		lblStockReturnVolatility.setFont(new Font("Algerian", Font.BOLD, 15));
-		lblStockReturnVolatility.setBounds(645, 406, 215, 29);
+		lblStockReturnVolatility.setFont(new Font("Berlin Sans FB", Font.PLAIN, 13));
+		lblStockReturnVolatility.setBounds(673, 316, 166, 29);
 		contentPane.add(lblStockReturnVolatility);
 		
 		JLabel lblNewLabel_1 = new JLabel("Risk Free Rate");
-		lblNewLabel_1.setFont(new Font("Algerian", Font.BOLD, 15));
-		lblNewLabel_1.setBounds(684, 296, 166, 41);
+		lblNewLabel_1.setFont(new Font("Berlin Sans FB", Font.PLAIN, 13));
+		lblNewLabel_1.setBounds(673, 244, 166, 41);
 		contentPane.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel = new JLabel("Remaining Time to expiry");
-		lblNewLabel.setFont(new Font("Algerian", Font.BOLD, 15));
-		lblNewLabel.setBounds(268, 454, 245, 47);
+		lblNewLabel.setFont(new Font("Berlin Sans FB", Font.PLAIN, 13));
+		lblNewLabel.setBounds(279, 454, 150, 47);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblStrikzPrice = new JLabel("Strike Price");
-		lblStrikzPrice.setFont(new Font("Algerian", Font.BOLD, 15));
-		lblStrikzPrice.setBounds(348, 378, 121, 21);
+		lblStrikzPrice.setFont(new Font("Berlin Sans FB", Font.PLAIN, 13));
+		lblStrikzPrice.setBounds(279, 381, 121, 21);
 		contentPane.add(lblStrikzPrice);
 		
 		tf_strike = new JTextField();
-		tf_strike.setBounds(512, 378, 123, 29);
+		tf_strike.setBounds(436, 378, 123, 29);
 		contentPane.add(tf_strike);
 		tf_strike.setColumns(10);
 		
@@ -178,45 +178,46 @@ public class EquityOptionPricing extends JFrame {
 		tf_resultat.setBounds(793, 573, 109, 29);
 		contentPane.add(tf_resultat);
 		tf_resultat.setColumns(10);
-		btnCalculate.setBounds(482, 558, 109, 66);
+		btnCalculate.setBounds(994, 549, 77, 75);
 		contentPane.add(btnCalculate);
 		
 		tf_volatility = new JTextField();
-		tf_volatility.setBounds(860, 407, 112, 29);
+		tf_volatility.setBounds(849, 317, 112, 29);
 		contentPane.add(tf_volatility);
 		tf_volatility.setColumns(10);
 		
 		tf_rate = new JTextField();
-		tf_rate.setBounds(860, 303, 112, 29);
+		tf_rate.setBounds(849, 251, 112, 29);
 		contentPane.add(tf_rate);
 		tf_rate.setColumns(10);
 		
 		tf_date = new JTextField();
-		tf_date.setBounds(512, 464, 123, 29);
+		tf_date.setBounds(436, 464, 123, 29);
 		contentPane.add(tf_date);
 		tf_date.setColumns(10);
 		
 		JLabel lblStockPrice = new JLabel("Stock Price ");
-		lblStockPrice.setFont(new Font("Algerian", Font.BOLD, 15));
-		lblStockPrice.setBounds(348, 316, 135, 29);
+		lblStockPrice.setFont(new Font("Berlin Sans FB", Font.PLAIN, 13));
+		lblStockPrice.setBounds(279, 316, 135, 29);
 		contentPane.add(lblStockPrice);
 		
 		tf_stock = new JTextField();
-		tf_stock.setBounds(512, 312, 123, 29);
+		tf_stock.setBounds(436, 317, 123, 29);
 		contentPane.add(tf_stock);
 		tf_stock.setColumns(10);
 		
 		tf_cp = new JTextField();
-		tf_cp.setBounds(512, 251, 123, 29);
+		tf_cp.setBounds(436, 251, 123, 29);
 		contentPane.add(tf_cp);
 		tf_cp.setColumns(10);
 		
 		JLabel lb_call = new JLabel("Call  / Put ");
-		lb_call.setFont(new Font("Algerian", Font.BOLD, 16));
-		lb_call.setBounds(346, 245, 123, 39);
+		lb_call.setFont(new Font("Berlin Sans FB", Font.PLAIN, 13));
+		lb_call.setBounds(279, 243, 123, 39);
 		contentPane.add(lb_call);
 		
 		JLabel label = new JLabel("");
+		label.setFont(new Font("Berlin Sans FB", Font.PLAIN, 13));
 		label.setIcon(new ImageIcon("C:\\IDE\\images\\backBouGrand2.PNG"));
 		
 		label.setBounds(0, 0, 1210, 695);
