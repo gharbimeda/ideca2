@@ -1,4 +1,3 @@
-
 package pdev.financialbrains.ejb.entities;
 
 import java.io.Serializable;
@@ -14,9 +13,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "t_message")
-
 public class Message implements Serializable {
-
 	/**
 	 * 
 	 */
@@ -124,6 +121,7 @@ public class Message implements Serializable {
 		this.id = id;
 		this.texte = texte;
 	}
+
 	public Message(String texte, Date date, User userDest) {
 		super();
 		this.texte = texte;

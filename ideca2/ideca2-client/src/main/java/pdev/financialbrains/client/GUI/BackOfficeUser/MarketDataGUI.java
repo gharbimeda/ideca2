@@ -11,12 +11,15 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 
+import pdev.financialbrains.client.GUI.Administrator.Authentification;
 import pdev.financialbrains.client.delegate.BondManagementDelegate;
 import pdev.financialbrains.client.delegate.CurrencyManagementDelegate;
 import pdev.financialbrains.client.delegate.StockManagementDelegate;
 import pdev.financialbrains.client.utils.BondTableModel;
 import pdev.financialbrains.client.utils.CurrencyTableModel;
 import pdev.financialbrains.client.utils.StockTableModel;
+import pdev.financialbrains.client.utils.Util;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JScrollPane;
@@ -34,6 +37,10 @@ public class MarketDataGUI extends JFrame {
 	private JScrollPane BondScrollPane;
 	private JScrollPane StockScrollPane;
 	private JLabel titreLabel;
+	private JLabel labelNewProduct;
+	private JLabel labelFinancialInstrument;
+	private JLabel labelHome;
+	private JLabel labelDisconnect;
 
 	/**
 	 * Launch the application.
@@ -85,6 +92,46 @@ public class MarketDataGUI extends JFrame {
 				fermer();
 			}
 		});
+		
+		labelFinancialInstrument = new JLabel("");
+		labelFinancialInstrument.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				FinancialInstrument frame = new FinancialInstrument();
+				frame.setVisible(true);
+				fermer();
+			}
+		});
+		
+		labelHome = new JLabel("");
+		labelHome.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				BackHome frame = new BackHome();
+				frame.setVisible(true);
+				fermer();
+			}
+		});
+		
+		labelDisconnect = new JLabel("");
+		labelDisconnect.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Util.userConnect=null;
+				new Authentification().setVisible(true);
+				fermer();
+			}
+		});
+		labelDisconnect.setBounds(185, 640, 46, 36);
+		contentPane.add(labelDisconnect);
+		labelHome.setBounds(0, 122, 217, 53);
+		contentPane.add(labelHome);
+		labelFinancialInstrument.setBounds(0, 207, 217, 61);
+		contentPane.add(labelFinancialInstrument);
+		
+		labelNewProduct = new JLabel("");
+		labelNewProduct.setBounds(0, 292, 217, 61);
+		contentPane.add(labelNewProduct);
 		addMDLabel.setIcon(
 				new ImageIcon(MarketDataGUI.class.getResource("/pdev/financialbrains/client/pictures/add.png")));
 		addMDLabel.setBounds(1122, 556, 72, 82);
@@ -177,6 +224,14 @@ public class MarketDataGUI extends JFrame {
 		contentPane.add(titreLabel);
 
 		JLabel backgroundLabel = new JLabel("");
+		backgroundLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				NewFinancailInstrument frame = new NewFinancailInstrument();
+				frame.setVisible(true);
+				fermer();
+			}
+		});
 		backgroundLabel.setIcon(new ImageIcon(
 				MarketDataGUI.class.getResource("/pdev/financialbrains/client/pictures/backBouGrand2.PNG")));
 		backgroundLabel.setBounds(0, 0, 1227, 687);

@@ -25,6 +25,9 @@ import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import java.awt.SystemColor;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import java.awt.Font;
 
 public class NewFinancailInstrument extends JFrame implements ActionListener {
 	JPanel panel;
@@ -33,16 +36,14 @@ public class NewFinancailInstrument extends JFrame implements ActionListener {
 	JTextArea area;
 	JComboBox box;
 	Generic generic = new Generic();
+	private JTable tableNewProduct;
 
 	public NewFinancailInstrument() {
 		getContentPane().setLayout(null);
-		panel = new JPanel();
-		panel.setBounds(489, 167, 365, 386);
-		panel.setBackground(new Color(211, 211, 211));
-		panel.setLayout(new FlowLayout());
-		getContentPane().add(panel);
-		JButton btnAdd = new JButton("Add");
-		btnAdd.setBounds(1012, 574, 73, 53);
+		JButton btnAdd = new JButton("");
+		btnAdd.setIcon(new ImageIcon(
+				NewFinancailInstrument.class.getResource("/pdev/financialbrains/client/pictures/addListIcon.png")));
+		btnAdd.setBounds(347, 574, 73, 53);
 		btnAdd.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -56,10 +57,27 @@ public class NewFinancailInstrument extends JFrame implements ActionListener {
 			}
 
 		});
+
+		JLabel lblName = new JLabel("Name");
+		lblName.setFont(new Font("Berlin Sans FB", Font.BOLD, 14));
+		lblName.setBounds(315, 165, 58, 17);
+		getContentPane().add(lblName);
+
+		JLabel lblValue = new JLabel("Value");
+		lblValue.setFont(new Font("Berlin Sans FB", Font.BOLD, 14));
+		lblValue.setBounds(432, 165, 67, 17);
+		getContentPane().add(lblValue);
+
+		JLabel lblType = new JLabel("Type");
+		lblType.setFont(new Font("Berlin Sans FB", Font.BOLD, 14));
+		lblType.setBounds(542, 165, 73, 17);
+		getContentPane().add(lblType);
 		getContentPane().add(btnAdd);
 
-		JButton button2 = new JButton("Send");
-		button2.setBounds(1101, 574, 57, 53);
+		JButton button2 = new JButton("");
+		button2.setIcon(new ImageIcon(
+				NewFinancailInstrument.class.getResource("/pdev/financialbrains/client/pictures/saveIcon.png")));
+		button2.setBounds(468, 574, 67, 53);
 		button2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -83,11 +101,33 @@ public class NewFinancailInstrument extends JFrame implements ActionListener {
 					}
 				}
 				// System.out.println(generic);
-				GenericManagementDelegate.getInstance().doCreate(generic);
-				System.out.println(GenericManagementDelegate.getInstance().doReadById(2));
+				GenericManagementDelegate.getInstance().doUpdate(generic);
+				System.out.println(generic.getId());
+
+				// System.out.println(GenericManagementDelegate.getInstance().doReadById(2));
+				// String[] entete = { "Name", "Value", "Type" };
+				// String[] s =
+				// GenericManagementDelegate.getInstance().doReadById(generic.getId()).toString()
+				// .split(" : ");
+				// String[][] fill = null;
+				// for (int j = 0; j < (s.length) / 3; j++) {
+				// for (int i = 0; i < s.length; i = i + 3) {
+				// fill[j][i] = s[i];
+				// }
+				// }
+				// tableNewProduct = new JTable(fill,entete);
+				// tableNewProduct.setBounds(780, 530, 365, -348);
+				// getContentPane().add(tableNewProduct);
+
 			}
 		});
 		getContentPane().add(button2);
+
+		panel = new JPanel();
+		panel.setBounds(262, 181, 365, 382);
+		panel.setBackground(new Color(211, 211, 211));
+		panel.setLayout(new FlowLayout());
+		getContentPane().add(panel);
 
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(

@@ -7,6 +7,8 @@
 		<class>pdev.financialbrains.ejb.entities.Article</class>
 		<class>pdev.financialbrains.ejb.entities.CapFloor</class>
 		<class>pdev.financialbrains.ejb.entities.CashInstrument</class>
+		<class>pdev.financialbrains.ejb.entities.Message</class>
+		<class>pdev.financialbrains.ejb.entities.Complaint</class>
 		<class>pdev.financialbrains.ejb.entities.DerivativeInstrument</class>
 		<class>pdev.financialbrains.ejb.entities.EquityOption</class>
 		<class>pdev.financialbrains.ejb.entities.FinancialInstrument</class>

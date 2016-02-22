@@ -8,9 +8,11 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import pdev.financialbrains.client.GUI.Administrator.Authentification;
 import pdev.financialbrains.client.delegate.BondManagementDelegate;
 import pdev.financialbrains.client.delegate.CurrencyManagementDelegate;
 import pdev.financialbrains.client.delegate.StockManagementDelegate;
+import pdev.financialbrains.client.utils.Util;
 import pdev.financialbrains.ejb.entities.Bond;
 import pdev.financialbrains.ejb.entities.Currency;
 import pdev.financialbrains.ejb.entities.Stock;
@@ -405,8 +407,56 @@ public class AddMarketDataGUI extends JFrame {
 				fermer();
 			}
 		});
+		
+		JLabel labelNewProduct = new JLabel("");
+		labelNewProduct.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				NewFinancailInstrument frame = new NewFinancailInstrument();
+				frame.setVisible(true);
+				fermer();
+			}
+		});
+		
+		JLabel labelDisconnect = new JLabel("");
+		labelDisconnect.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Util.userConnect=null;
+				new Authentification().setVisible(true);
+				fermer();
+			}
+		});
+		labelDisconnect.setBounds(183, 641, 46, 37);
+		contentPane.add(labelDisconnect);
+		labelNewProduct.setBounds(10, 304, 202, 50);
+		contentPane.add(labelNewProduct);
+		
+		JLabel labelFinancialInstrument = new JLabel("");
+		labelFinancialInstrument.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				FinancialInstrument frame = new FinancialInstrument();
+				frame.setVisible(true);
+				fermer();
+			}
+		});
+		labelFinancialInstrument.setBounds(0, 215, 212, 55);
+		contentPane.add(labelFinancialInstrument);
 		settLabel.setBounds(10, 463, 202, 50);
 		contentPane.add(settLabel);
+		
+		JLabel labelHome = new JLabel("");
+		labelHome.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				BackHome frame = new BackHome();
+				frame.setVisible(true);
+				fermer();
+			}
+		});
+		labelHome.setBounds(0, 121, 212, 61);
+		contentPane.add(labelHome);
 		
 		JLabel titreLabel = new JLabel("Home / Market Data / Add");
 		titreLabel.setForeground(Color.WHITE);

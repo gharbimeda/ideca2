@@ -148,6 +148,30 @@ public class FinancialInstrument extends JFrame {
 				fermer();
 			}
 		});
+		
+		JLabel labelForwardRateSwap = new JLabel("");
+		labelForwardRateSwap.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ForwardSwapPricing frame = new ForwardSwapPricing();
+				frame.setVisible(true);
+				fermer();
+			}
+		});
+		labelForwardRateSwap.setBounds(592, 159, 294, 119);
+		contentPane.add(labelForwardRateSwap);
+		
+		JLabel labelNewProduct = new JLabel("");
+		labelNewProduct.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				NewFinancailInstrument frame = new NewFinancailInstrument(); 
+				frame.setVisible(true);
+				fermer();
+			}
+		});
+		labelNewProduct.setBounds(0, 300, 213, 50);
+		contentPane.add(labelNewProduct);
 		lblNewLabel_1.setBounds(10, 117, 185, 45);
 		contentPane.add(lblNewLabel_1);
 		
@@ -230,17 +254,6 @@ public class FinancialInstrument extends JFrame {
 		});
 		lblNewLabel_8.setBounds(930, 167, 294, 106);
 		contentPane.add(lblNewLabel_8);
-		
-		JLabel lblNewLabel_9 = new JLabel("");
-		lblNewLabel_9.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				
-				fermer();
-			}
-		});
-		lblNewLabel_9.setBounds(592, 160, 294, 113);
-		contentPane.add(lblNewLabel_9);
 		
 		
 		

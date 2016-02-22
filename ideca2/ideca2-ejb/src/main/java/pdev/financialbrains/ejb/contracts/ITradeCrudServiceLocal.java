@@ -10,17 +10,21 @@ import pdev.financialbrains.ejb.entities.Trade;
 public interface ITradeCrudServiceLocal {
 
 	void create(Trade trade);
-	
-	void delete(Trade trade); 
-	
-	void update(Trade trade); 
-	
-	Trade readById(Integer id); 
-	
-	List<Trade> readAll(); 
-	
-	List<Trade> readCanApp(); 
-	
+
+	void delete(Trade trade);
+
+	void update(Trade trade);
+
+	Trade readById(Integer id);
+
+	List<Trade> readAll();
+
+	List<Trade> readCanApp();
+
 	List<Trade> readPending();
+
+	Integer readAccepted();
 	
+	Integer readRefused();
+
 }

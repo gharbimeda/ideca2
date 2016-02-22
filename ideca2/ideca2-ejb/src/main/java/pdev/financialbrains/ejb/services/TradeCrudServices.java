@@ -57,4 +57,18 @@ public class TradeCrudServices implements ITradeCrudServiceLocal, ITradeCrudServ
 		return query.getResultList();
 	}
 
+	@Override
+	public Integer readAccepted() {
+		Query query = entityManager.createQuery("select t from Trade t where t.status=:x");
+		query.setParameter("x", 1);
+		return query.getResultList().size();
+	}
+
+	@Override
+	public Integer readRefused() {
+		Query query = entityManager.createQuery("select t from Trade t where t.status=:x");
+		query.setParameter("x", 0);
+		return query.getResultList().size();
+	}
+
 }

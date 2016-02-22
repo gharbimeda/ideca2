@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.DiscriminatorColumn;
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,16 +16,13 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "t_user")
 @DiscriminatorColumn(name = "DTYPE")
-
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class User implements Serializable {
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int IdUser;
 	private String login;
 	private String password;
-
 	@OneToMany(mappedBy = "user")
 	private List<Complaint> complaint;
 	private static final long serialVersionUID = 1L;
@@ -107,5 +103,4 @@ public class User implements Serializable {
 	public String toString() {
 		return login;
 	}
-
 }

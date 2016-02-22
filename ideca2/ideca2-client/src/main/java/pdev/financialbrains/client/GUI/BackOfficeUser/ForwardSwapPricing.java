@@ -7,7 +7,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import pdev.financialbrains.client.GUI.Administrator.Authentification;
 import pdev.financialbrains.client.delegate.ForwardSwapManagementDelegate;
+import pdev.financialbrains.client.utils.Util;
 
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
@@ -62,8 +64,8 @@ public class ForwardSwapPricing extends JFrame {
 		lblHomeFinancial.setBounds(318, 107, 363, 41);
 		contentPane.add(lblHomeFinancial);
 		
-		JLabel label = new JLabel("");
-		label.addMouseListener(new MouseAdapter() {
+		JLabel labelSettlement = new JLabel("");
+		labelSettlement.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				SettlementGUI frame = new SettlementGUI(); 
@@ -71,8 +73,68 @@ public class ForwardSwapPricing extends JFrame {
 				fermer();
 			}
 		});
-		label.setBounds(10, 460, 183, 58);
-		contentPane.add(label);
+		
+		JLabel labelMarketData = new JLabel("");
+		labelMarketData.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				MarketDataGUI frame = new MarketDataGUI() ; 
+				frame.setVisible(true);
+				fermer();
+			}
+		});
+		
+		JLabel labelNewProduct = new JLabel("");
+		labelNewProduct.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				NewFinancailInstrument frame = new NewFinancailInstrument();
+				frame.setVisible(true);
+				fermer();
+			}
+		});
+		labelNewProduct.setBounds(10, 300, 204, 61);
+		contentPane.add(labelNewProduct);
+		
+		JLabel labelFinancialInstrument = new JLabel("");
+		labelFinancialInstrument.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				FinancialInstrument frame = new FinancialInstrument();
+				frame.setVisible(true);
+				fermer();
+			}
+		});
+		
+		JLabel labelHome = new JLabel("");
+		labelHome.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				BackHome frame = new BackHome();
+				frame.setVisible(true);
+				fermer();
+			}
+		});
+		
+		JLabel labelDisconnect = new JLabel("");
+		labelDisconnect.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Util.userConnect=null;
+				new Authentification().setVisible(true);
+				fermer();
+			}
+		});
+		labelDisconnect.setBounds(184, 641, 46, 35);
+		contentPane.add(labelDisconnect);
+		labelHome.setBounds(10, 121, 204, 58);
+		contentPane.add(labelHome);
+		labelFinancialInstrument.setBounds(10, 209, 204, 63);
+		contentPane.add(labelFinancialInstrument);
+		labelMarketData.setBounds(10, 372, 204, 64);
+		contentPane.add(labelMarketData);
+		labelSettlement.setBounds(10, 460, 204, 58);
+		contentPane.add(labelSettlement);
 
 		JTextArea textAreaPrice = new JTextArea();
 		textAreaPrice.setBounds(898, 380, 135, 50);

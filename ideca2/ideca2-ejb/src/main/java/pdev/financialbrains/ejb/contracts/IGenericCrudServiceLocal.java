@@ -18,4 +18,6 @@ public interface IGenericCrudServiceLocal {
 	Generic readById(Integer id);
 
 	List<Generic> readAll();
+	
+	Integer readLastId();
 }

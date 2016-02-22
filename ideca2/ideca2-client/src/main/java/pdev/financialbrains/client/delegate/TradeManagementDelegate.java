@@ -48,4 +48,13 @@ public class TradeManagementDelegate {
 	public List<Trade> doReadPending() {
 		return proxy.readPending();
 	}
+
+	public Integer doReadAccepted() {
+		return proxy.readAccepted();
+	}
+
+	public Integer doReadRefused() {
+		return proxy.readRefused();
+	}
+
 }

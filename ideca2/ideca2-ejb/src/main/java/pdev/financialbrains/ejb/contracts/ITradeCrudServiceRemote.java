@@ -22,4 +22,8 @@ public interface ITradeCrudServiceRemote {
 	List<Trade> readCanApp();
 
 	List<Trade> readPending();
+
+	Integer readAccepted();
+
+	Integer readRefused();
 }

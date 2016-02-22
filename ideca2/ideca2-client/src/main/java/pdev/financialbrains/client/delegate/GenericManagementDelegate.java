@@ -40,4 +40,8 @@ public class GenericManagementDelegate {
 	public List<Generic> doReadAll() {
 		return proxy.readAll();
 	}
+	
+	public Integer doReadLastId(){
+		return proxy.readLastId();
+	}
 }

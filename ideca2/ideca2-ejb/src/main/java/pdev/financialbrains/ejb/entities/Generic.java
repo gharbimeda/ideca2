@@ -77,16 +77,16 @@ public class Generic extends FinancialInstrument {
 	public String toString() {
 		String str = "";
 		for (Map.Entry<String, Integer> e : propertiesInteger.entrySet()) {
-			str = str + e.getKey() + " : " + e.getValue() + "\n";
+			str = str + e.getKey() + " : " + e.getValue() + " : " + " Integer " + "\n";
 		}
 		for (Map.Entry<String, Float> e : propertiesFloat.entrySet()) {
-			str = str + e.getKey() + " : " + e.getValue() + "\n";
+			str = str + e.getKey() + " : " + e.getValue() + " : " + " Float " + "\n";
 		}
 		for (Map.Entry<String, String> e : propertiesString.entrySet()) {
-			str = str + e.getKey() + " : " + e.getValue() + "\n";
+			str = str + e.getKey() + " : " + e.getValue() + " : " + " String " + "\n";
 		}
 		for (Map.Entry<String, Boolean> e : propertiesBoolean.entrySet()) {
-			str = str + e.getKey() + " : " + e.getValue() + "\n";
+			str = str + e.getKey() + " : " + e.getValue() + " : " + " Boolean " + "\n";
 		}
 		return str;
 	}

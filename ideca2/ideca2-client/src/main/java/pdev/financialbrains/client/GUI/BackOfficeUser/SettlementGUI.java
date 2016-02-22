@@ -8,8 +8,10 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import pdev.financialbrains.client.GUI.Administrator.Authentification;
 import pdev.financialbrains.client.delegate.TradeManagementDelegate;
 import pdev.financialbrains.client.utils.TradePendTableModel;
+import pdev.financialbrains.client.utils.Util;
 import pdev.financialbrains.ejb.entities.Trade;
 
 import javax.swing.JLabel;
@@ -54,6 +56,46 @@ public class SettlementGUI extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		JLabel labelFinancialInstrument = new JLabel("");
+		labelFinancialInstrument.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				FinancialInstrument frame = new FinancialInstrument();
+				frame.setVisible(true);
+				fermer();
+			}
+		});
+		labelFinancialInstrument.setBounds(0, 218, 214, 55);
+		contentPane.add(labelFinancialInstrument);
+		
+		JLabel labelDisconnect = new JLabel("");
+		labelDisconnect.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Util.userConnect=null;
+				new Authentification().setVisible(true);
+				fermer();
+			}
+		});
+		labelDisconnect.setBounds(182, 642, 46, 35);
+		contentPane.add(labelDisconnect);
+		
+		JLabel labelHome = new JLabel("");
+		labelHome.setBounds(0, 129, 214, 53);
+		contentPane.add(labelHome);
+		
+		JLabel labelNewProduct = new JLabel("");
+		labelNewProduct.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				NewFinancailInstrument frame = new NewFinancailInstrument();
+				frame.setVisible(true);
+				fermer();
+			}
+		});
+		labelNewProduct.setBounds(0, 300, 214, 55);
+		contentPane.add(labelNewProduct);
 
 		JLabel allLabel = new JLabel("All Settlement");
 		allLabel.setFont(new Font("Berlin Sans FB", Font.BOLD, 16));
@@ -151,6 +193,19 @@ public class SettlementGUI extends JFrame {
 		decline.setBounds(205, 108, 48, 52);
 		panelNotSett.add(decline);
 		
+		JLabel label_1 = new JLabel("");
+		label_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ChartSettlement frame = new ChartSettlement();
+				frame.setVisible(true);
+				fermer();
+			}
+		});
+		label_1.setIcon(new ImageIcon(SettlementGUI.class.getResource("/pdev/financialbrains/client/pictures/pieIcon.png")));
+		label_1.setBounds(10, 6, 105, 106);
+		panelNotSett.add(label_1);
+		
 		JLabel mdLabel = new JLabel("");
 		mdLabel.addMouseListener(new MouseAdapter() {
 			@Override
@@ -170,6 +225,14 @@ public class SettlementGUI extends JFrame {
 		contentPane.add(mdLabel);
 
 		JLabel label = new JLabel("");
+		label.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				BackHome frame = new BackHome();
+				frame.setVisible(true);
+				fermer();
+			}
+		});
 		label.setIcon(new ImageIcon(
 				SettlementGUI.class.getResource("/pdev/financialbrains/client/pictures/backBouGrand2.PNG")));
 		label.setBounds(0, 0, 1235, 694);
