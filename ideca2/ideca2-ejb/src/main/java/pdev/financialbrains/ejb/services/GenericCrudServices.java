@@ -47,7 +47,9 @@ public class GenericCrudServices implements IGenericCrudServiceLocal, IGenericCr
 
 	@Override
 	public Integer readLastId() {
-		return entityManager.createQuery("select max(g.id) from Generic g", Integer.class).getSingleResult();
+		Integer a = entityManager.createQuery("select max(g.id) from Generic g", Integer.class).getSingleResult();
+		System.out.println(a);
+		return a;
 	}
 
 }

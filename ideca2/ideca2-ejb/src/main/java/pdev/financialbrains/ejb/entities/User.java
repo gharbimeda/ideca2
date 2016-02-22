@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,18 +19,19 @@ import javax.persistence.Table;
 @DiscriminatorColumn(name = "DTYPE")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class User implements Serializable {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int IdUser;
 	private String login;
 	private String password;
-	@OneToMany(mappedBy = "user")
-	private List<Complaint> complaint;
+	@OneToMany(mappedBy = "user",fetch=FetchType.LAZY)
+	private List<Complaint> complaints;
+	@OneToMany(mappedBy = "userDest",fetch=FetchType.LAZY)
+	private List<Message> messages;
+	@OneToMany(mappedBy = "userSource",fetch=FetchType.LAZY)
+	private List<Message> messages2;
 	private static final long serialVersionUID = 1L;
-	@OneToMany(mappedBy = "userDest")
-	List<Message> messages;
-	@OneToMany(mappedBy = "userSource")
-	List<Message> messages2;
 
 	public User(String login, String password) {
 		super();

@@ -25,6 +25,14 @@ public class Complaint implements Serializable {
 		private User user;
 	
 	
+	public User getUser() {
+			return user;
+		}
+
+		public void setUser(User user) {
+			this.user = user;
+		}
+
 	public Complaint(String object, String text, Date date) {
 			super();
 			this.object = object;
