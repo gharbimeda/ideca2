@@ -4,36 +4,37 @@
 	xmlns:h="http://java.sun.com/jsf/html">
 
 <h:head>
-<meta charset="utf-8">
+<meta charset="utf-8"></meta>
 <title>Intellix |<ui:insert name="titleName"></ui:insert></title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black">
-<meta name="description" content="">
-<meta name="author" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0"></meta>
+<meta name="apple-mobile-web-app-capable" content="yes"></meta>
+<meta name="apple-mobile-web-app-status-bar-style" content="black"></meta>
+<meta name="description" content=""></meta>
+<meta name="author" content=""></meta>
 
 <!-- Le styles -->
-<link href="#{request.contextPath}/resources/backResources/css/lib/bootstrap.css" rel="stylesheet">
-<link href="#{request.contextPath}/resources/backResources/css/css/lib/bootstrap-responsive.css" rel="stylesheet">
-<link href="#{request.contextPath}/resources/backResources/css/boo-extension.css" rel="stylesheet">
-<link href="#{request.contextPath}/resources/backResources/css/css/boo.css" rel="stylesheet">
-<link href="#{request.contextPath}/resources/backResources/css/css/style.css" rel="stylesheet">
-<link href="#{request.contextPath}/resources/backResources/css/css/boo-coloring.css" rel="stylesheet">
-<link href="#{request.contextPath}/resources/backResources/css/boo-utility.css" rel="stylesheet">
+ <link href="#{request.contextPath}/resources/backResources/css/lib/bootstrap.css" rel="stylesheet"></link>
+
+<link href="#{request.contextPath}/resources/backResources/css/lib/bootstrap-responsive.css" rel="stylesheet"></link>
+<link href="#{request.contextPath}/resources/backResources/css/boo-extension.css" rel="stylesheet"></link>
+<link href="#{request.contextPath}/resources/backResources/css/boo.css" rel="stylesheet"></link>
+<link href="#{request.contextPath}/resources/backResources/css/style.css" rel="stylesheet"></link>
+<link href="#{request.contextPath}/resources/backResources/css/boo-coloring.css" rel="stylesheet"></link>
+<link href="#{request.contextPath}/resources/backResources/css/boo-utility.css" rel="stylesheet"></link>
 
 <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
 	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <script src="#{request.contextPath}/resources/plugins/selectivizr/selectivizr-min.js"></script>
-    <script src="#{request.contextPath}/resources/plugins/flot/excanvas.min.js"></script>
+    <script src="assets/plugins/selectivizr/selectivizr-min.js"></script>
+    <script src="assets/plugins/flot/excanvas.min.js"></script>
 <![endif]-->
 
 <!-- Le fav and touch icons -->
-<link rel="shortcut icon" href="#{request.contextPath}/resources/backResources/ico/favicon.ico">
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="#{request.contextPath}/resources/backResources//ico/apple-touch-icon-144-precomposed.png">
-<link rel="apple-touch-icon-precomposed" sizes="114x114" href="#{request.contextPath}/resources/backResources//ico/apple-touch-icon-114-precomposed.png">
-<link rel="apple-touch-icon-precomposed" sizes="72x72" href="#{request.contextPath}/resources/backResources//ico/apple-touch-icon-72-precomposed.png">
-<link rel="apple-touch-icon-precomposed" href="#{request.contextPath}/resources/backResources//ico/apple-touch-icon-57-precomposed.png">
+<link rel="shortcut icon" href="#{request.contextPath}/resources/backResources/ico/favicon.ico"></link>
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="#{request.contextPath}/resources/backResources//ico/apple-touch-icon-144-precomposed.png"></link>
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="#{request.contextPath}/resources/backResources//ico/apple-touch-icon-114-precomposed.png"></link>
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="#{request.contextPath}/resources/backResources//ico/apple-touch-icon-72-precomposed.png"></link>
+<link rel="apple-touch-icon-precomposed" href="#{request.contextPath}/resources/backResources//ico/apple-touch-icon-57-precomposed.png"></link>
 </h:head>
 
 <body class="sidebar-left ">
@@ -44,7 +45,7 @@
                 <div class="navbar-inner">
                     <div class="container-fluid">
                         <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-                        <a class="brand" href="javascript:void(0);"><img src="assets/img/demo/logo-brand.png"></a>
+                        <a class="brand" href="javascript:void(0);"><img src="#{request.contextPath}/resources/backResources/img/demo/logo-brand.png"></img></a>
                        
                        
                     </div>
@@ -57,10 +58,13 @@
                 <!-- // Resposive navigation -->
                 <div class="breadcrumbs-nav hidden-phone">
                     <ul id="breadcrumbs" class="breadcrumb">
-                        <li class="dropdown"><a href="javascript:void(0);">Table </a> <span class="divider">/</span>
-                           
+                        <li><a href="javascript:void(0);"><i class="fontello-icon-home f12"></i> Dashboard</a> <span class="divider">/</span></li>
+                        <li class="dropdown"><a href="javascript:void(0);"> </a> <span class="divider">/</span>
+                            <ul class="dropdown-menu">
+                               
+                            </ul>
                         </li>
-                        <li class="active">Back Office User </li>
+                        <li class="active">BackOffice User </li>
                     </ul>
                 </div>
                 <!-- // breadcrumbs --> 
@@ -74,7 +78,7 @@
         <div id="main-sidebar" class="sidebar sidebar-inverse">
             <div class="sidebar-item">
                 <div class="media profile">
-                    <div class="media-thumb media-left thumb-bordereb"> <a class="img-shadow" href="javascript:void(0);"><img class="thumb" src="assets/img/demo/demo-avatar9604.jpg"></a> </div>
+                    <div class="media-thumb media-left thumb-bordereb"> <a class="img-shadow" href="javascript:void(0);"><img class="thumb" src="#{request.contextPath}/resources/backResources/img/demo/demo-avatar9604.jpg"></img></a> </div>
                     <div class="media-body">
                         <h5 class="media-heading">Name :<small>as BackOffice User</small></h5>
                         <p class="data">Last Access: </p>
