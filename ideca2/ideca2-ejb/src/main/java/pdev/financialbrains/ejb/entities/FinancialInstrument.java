@@ -20,8 +20,7 @@ public class FinancialInstrument implements Serializable {
 	private Integer id;
 	private Float currentPrice;
 	private Float volatility;
-	@OneToMany(mappedBy="financialInstrument")
-	private List<Trade> trades;
+	
 	private static final long serialVersionUID = 1L;
 
 	public FinancialInstrument() {

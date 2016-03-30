@@ -1,32 +1,39 @@
 package pdev.financialbrains.ejb.entities;
 
 import java.io.Serializable;
+import java.util.Date;
 
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "t_trade")
 public class Trade implements Serializable {
 
-	@EmbeddedId
-    private TradePK tradePK;
+	@Id
+	private Integer id;
+	
+	private Date date;
 	private String name;
 	private Double value;
 	private Integer status;
-	@ManyToOne
-	@JoinColumn(referencedColumnName="idUser", name="idUser", updatable=false, insertable=false)
-	private Trader trader;
-	@ManyToOne
-	@JoinColumn(referencedColumnName="id", name="id", updatable=false, insertable=false)
-	private FinancialInstrument financialInstrument;
+	
+	
 	private static final long serialVersionUID = 1L;
 
-	public Trade() {
+	public Trade(){
 		// TODO Auto-generated constructor stub
+	}
+
+
+	public Integer getId() {
+		return id;
+	}
+
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 
@@ -62,6 +69,16 @@ public class Trade implements Serializable {
 
 	public void setStatus(Integer status) {
 		this.status = status;
+	}
+
+
+	public Date getDate() {
+		return date;
+	}
+
+
+	public void setDate(Date date) {
+		this.date = date;
 	}
 
 

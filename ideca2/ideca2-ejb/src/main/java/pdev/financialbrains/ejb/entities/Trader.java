@@ -22,9 +22,6 @@ public class Trader extends User implements Serializable {
 	private String job;
 	private String nationality;
 	private String phoneNumber;
-	@OneToMany(mappedBy="trader")
-	private List<Trade> trades;
-
 	private static final long serialVersionUID = 1L;
 
 
