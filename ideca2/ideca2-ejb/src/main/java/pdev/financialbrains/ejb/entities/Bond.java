@@ -213,4 +213,9 @@ public class Bond extends CashInstrument {
 		this.coupon = coupon;
 	}
 
+	public Bond(Integer couponFreq) {
+		super();
+		this.couponFreq = couponFreq;
+	}
+
 }
