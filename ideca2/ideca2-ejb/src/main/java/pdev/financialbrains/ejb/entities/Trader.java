@@ -2,9 +2,11 @@ package pdev.financialbrains.ejb.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 
 @Entity
 @DiscriminatorValue(value="trader")
@@ -20,12 +22,11 @@ public class Trader extends User implements Serializable {
 	private String job;
 	private String nationality;
 	private String phoneNumber;
+	@OneToMany(mappedBy="trader")
+	private List<Trade> trades;
 
 	private static final long serialVersionUID = 1L;
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
 
 	public Trader() {
 		super();

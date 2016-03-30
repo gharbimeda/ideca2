@@ -5,17 +5,6 @@
 	<persistence-unit name="data">
 		<jta-data-source>java:jboss/datasources/PDEVDS</jta-data-source>
 		<class>pdev.financialbrains.ejb.entities.Article</class>
-		<class>pdev.financialbrains.ejb.entities.Bond</class>
-		<class>pdev.financialbrains.ejb.entities.CapFloor</class>
-		<class>pdev.financialbrains.ejb.entities.CashInstrument</class>
-		<class>pdev.financialbrains.ejb.entities.Currency</class>
-		<class>pdev.financialbrains.ejb.entities.DerivativeInstrument</class>
-		<class>pdev.financialbrains.ejb.entities.EquityOption</class>
-		<class>pdev.financialbrains.ejb.entities.FinancialInstrument</class>
-		<class>pdev.financialbrains.ejb.entities.FixedIncomeSecuritie</class>
-		<class>pdev.financialbrains.ejb.entities.FloatingRateNote</class>
-		<class>pdev.financialbrains.ejb.entities.ForeignExchangeOption</class>
-		<class>pdev.financialbrains.ejb.entities.ForwardSwap</class>
 		<class>pdev.financialbrains.ejb.entities.Generic</class>
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		<properties>
