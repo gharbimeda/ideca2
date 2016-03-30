@@ -18,6 +18,7 @@
 		<class>pdev.financialbrains.ejb.entities.Currency</class>
 		<class>pdev.financialbrains.ejb.entities.Stock</class>
 		<class>pdev.financialbrains.ejb.entities.Bond</class>
+		<class>pdev.financialbrains.ejb.entities.Quote</class>
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		<properties>
 			<property name="hibernate.hbm2ddl.auto" value="update" />

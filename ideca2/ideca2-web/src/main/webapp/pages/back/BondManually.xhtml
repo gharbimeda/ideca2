@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:p="http://primefaces.org/ui"
+	
+	template="/WEB-INF/templates/backTemplate/backOfficeUserTemp.xhtml">
+
+	<ui:define name="titleName"> Market Data </ui:define>
+	<ui:define name="pageLocalisation"> / Market Data </ui:define>
+	<ui:define name="pageActive"> Bonds</ui:define>
+	<ui:define name="pageDefinition">
+		<h2 class="page-title">
+			<i class="fontello-icon-database"></i> Market Data
+		</h2>
+		<div class="page-bar"></div>
+	</ui:define>
+	
+	<ui:define name="pageContent">
+	
+<h:form>
+<h:outputText value="Coupon Frequency" />
+					<p:inputText value="#{mdbondBean.bond.couponFreq}" />
+					
+<p:commandButton actionListener="#{mdbondBean.doUpdate()}" value="add" />
+</h:form>
+	</ui:define>
+</ui:composition>
