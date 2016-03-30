@@ -3,6 +3,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
 	template="/WEB-INF/templates/backTemplate/backOfficeUserTemp.xhtml">
 
 	<ui:define name="titleName"> TRADES</ui:define>
@@ -15,7 +16,28 @@
 		<div class="page-bar"></div>
 	</ui:define>
 	<ui:define name="pageContent">
-	
-	<!--  7ot 5edmtek lina ma ghir body -->
+		<section>
+		<br />
+		<div class="row-fluid">
+			<h:form>
+				<p:dataTable class="table table-striped table-hover">
+					<f:facet name="header">
+						<h:outputText value="all travels" />
+					</f:facet>
+
+					<p:column headerText="id">
+						<h:outputText value=" " />
+					</p:column>
+
+					<p:column headerText="name">
+						<h:outputText value=" " />
+					</p:column>
+					<p:column headerText="description">
+						<h:outputText value=" " />
+					</p:column>
+				</p:dataTable>
+			</h:form>
+		</div>
+		</section>
 	</ui:define>
 </ui:composition>
