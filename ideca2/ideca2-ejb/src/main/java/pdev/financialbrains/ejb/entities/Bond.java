@@ -1,9 +1,12 @@
 package pdev.financialbrains.ejb.entities;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "t_bond")
@@ -21,6 +24,7 @@ public class Bond extends CashInstrument {
 	private Integer yield;
 	private static final long serialVersionUID = 1L;
 
+
 	public Bond(Integer id, Float currentPrice, Float volatility,
 			String symbol, Date startDate, Date endDate, Integer couponFreq,
 			Integer steppedBound, Boolean rollDate, Integer yield) {
@@ -36,7 +40,7 @@ public class Bond extends CashInstrument {
 	public Bond() {
 		// TODO Auto-generated constructor stub
 	}
-
+    @Temporal(TemporalType.DATE)
 	public Date getStartDate() {
 		return startDate;
 	}
@@ -44,7 +48,7 @@ public class Bond extends CashInstrument {
 	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
 	}
-
+	 @Temporal(TemporalType.DATE)
 	public Date getEndDate() {
 		return endDate;
 	}

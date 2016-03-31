@@ -111,7 +111,344 @@
 			<i class="fa fa-chevron-right"></i>
 		</a> </section>
 	</ui:define>
-	<ui:define name="PageName">Add Currency</ui:define>
+	<ui:define name="PageName">YAHOO QUOTES
+	<br/>
+		<h:form id="form_1">
+		
+			<h:dataTable value="#{mdBean.quotes}" var="quote" styleClass="table table-bordered">
+					<h:column>
+				<f:facet name="header">
+						<h:outputText value="COMPANY NAME" />
+					</f:facet>
+					<h:outputText value="#{quote.name}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="ASK" />
+					</f:facet>
+					<h:outputText value="#{quote.ask}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="VOLUME" />
+					</f:facet>
+					<h:outputText value="#{quote.volume}" />
+				</h:column>
+				<h:column>
+				<f:facet name="header">
+						<h:outputText value="CHANGE" />
+					</f:facet>
+					<h:outputText value="#{quote.change}" />
+				</h:column>
+			</h:dataTable>
+		</h:form>
+		<h:form id="form_2" >
+			
+			<h:dataTable styleClass="table table-bordered"  value="#{mdBean.quotess}" var="quote">
+			<h:column>
+					<f:facet name="header">
+						<h:outputText value="COMPANY NAME" />
+					</f:facet>
+					<h:outputText value="#{quote.name}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="ASK" />
+					</f:facet>
+					<h:outputText value="#{quote.ask}" />
+					<h:column>
+					<f:facet name="header">
+						<h:outputText value="VOLUME" />
+					</f:facet>
+					<h:outputText value="#{quote.volume}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="CHANGE" />
+					</f:facet>
+					<h:outputText value="#{quote.change}" />
+				</h:column>
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="VOLUME" />
+					</f:facet>
+					<h:outputText value="#{quote.volume}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="CHANGE" />
+					</f:facet>
+					<h:outputText value="#{quote.change}" />
+				</h:column>
+				
+			</h:dataTable>
+		</h:form>
+				<h:form id="form_3">
+			
+			<h:dataTable value="#{mdBean.quotesss}" var="quote" styleClass="table table-bordered" >
+			<h:column>
+					<f:facet name="header">
+						<h:outputText value="COMPANY NAME" />
+					</f:facet>
+					<h:outputText value="#{quote.name}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="ASK" />
+					</f:facet>
+					<h:outputText value="#{quote.ask}" />
+					<h:column>
+					<f:facet name="header">
+						<h:outputText value="VOLUME" />
+					</f:facet>
+					<h:outputText value="#{quote.volume}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="CHANGE" />
+					</f:facet>
+					<h:outputText value="#{quote.change}" />
+				</h:column>
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="VOLUME" />
+					</f:facet>
+					<h:outputText value="#{quote.volume}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="CHANGE" />
+					</f:facet>
+					<h:outputText value="#{quote.change}" />
+				</h:column>
+				
+			</h:dataTable>
+		</h:form>
+		
+		<h:form id="form_4">
+			
+			<h:dataTable value="#{mdBean.quotessss}" var="quote" styleClass="table table-bordered" >
+			<h:column>
+					<f:facet name="header">
+						<h:outputText value="COMPANY NAME" />
+					</f:facet>
+					<h:outputText value="#{quote.name}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="ASK" />
+					</f:facet>
+					<h:outputText value="#{quote.ask}" />
+					<h:column>
+					<f:facet name="header">
+						<h:outputText value="VOLUME" />
+					</f:facet>
+					<h:outputText value="#{quote.volume}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="CHANGE" />
+					</f:facet>
+					<h:outputText value="#{quote.change}" />
+				</h:column>
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="VOLUME" />
+					</f:facet>
+					<h:outputText value="#{quote.volume}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="CHANGE" />
+					</f:facet>
+					<h:outputText value="#{quote.change}" />
+				</h:column>
+				
+			</h:dataTable>
+		</h:form>
+		
+		<h:form id="form_5">
+			
+			<h:dataTable value="#{mdBean.quotes4}" var="quote" styleClass="table table-bordered" >
+			<h:column>
+					<f:facet name="header">
+						<h:outputText value="COMPANY NAME" />
+					</f:facet>
+					<h:outputText value="#{quote.name}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="ASK" />
+					</f:facet>
+					<h:outputText value="#{quote.ask}" />
+					<h:column>
+					<f:facet name="header">
+						<h:outputText value="VOLUME" />
+					</f:facet>
+					<h:outputText value="#{quote.volume}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="CHANGE" />
+					</f:facet>
+					<h:outputText value="#{quote.change}" />
+				</h:column>
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="VOLUME" />
+					</f:facet>
+					<h:outputText value="#{quote.volume}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="CHANGE" />
+					</f:facet>
+					<h:outputText value="#{quote.change}" />
+				</h:column>
+				
+			</h:dataTable>
+		</h:form>
+		
+		<h:form id="form_6">
+			
+			<h:dataTable value="#{mdBean.quotes1}" var="quote" styleClass="table table-bordered" >
+			<h:column>
+					<f:facet name="header">
+						<h:outputText value="COMPANY NAME" />
+					</f:facet>
+					<h:outputText value="#{quote.name}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="ASK" />
+					</f:facet>
+					<h:outputText value="#{quote.ask}" />
+					<h:column>
+					<f:facet name="header">
+						<h:outputText value="VOLUME" />
+					</f:facet>
+					<h:outputText value="#{quote.volume}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="CHANGE" />
+					</f:facet>
+					<h:outputText value="#{quote.change}" />
+				</h:column>
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="VOLUME" />
+					</f:facet>
+					<h:outputText value="#{quote.volume}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="CHANGE" />
+					</f:facet>
+					<h:outputText value="#{quote.change}" />
+				</h:column>
+				
+			</h:dataTable>
+		</h:form>
+		<h:form id="form_7">
+			
+			<h:dataTable value="#{mdBean.quotes2}" var="quote" styleClass="table table-bordered" >
+			<h:column>
+					<f:facet name="header">
+						<h:outputText value="COMPANY NAME" />
+					</f:facet>
+					<h:outputText value="#{quote.name}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="ASK" />
+					</f:facet>
+					<h:outputText value="#{quote.ask}" />
+					<h:column>
+					<f:facet name="header">
+						<h:outputText value="VOLUME" />
+					</f:facet>
+					<h:outputText value="#{quote.volume}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="CHANGE" />
+					</f:facet>
+					<h:outputText value="#{quote.change}" />
+				</h:column>
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="VOLUME" />
+					</f:facet>
+					<h:outputText value="#{quote.volume}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="CHANGE" />
+					</f:facet>
+					<h:outputText value="#{quote.change}" />
+				</h:column>
+				
+			</h:dataTable>
+		</h:form>
+		
+		<h:form id="form_8">
+			
+			<h:dataTable value="#{mdBean.quotes3}" var="quote" styleClass="table table-bordered" >
+			<h:column>
+					<f:facet name="header">
+						<h:outputText value="COMPANY NAME" />
+					</f:facet>
+					<h:outputText value="#{quote.name}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="ASK" />
+					</f:facet>
+					<h:outputText value="#{quote.ask}" />
+					<h:column>
+					<f:facet name="header">
+						<h:outputText value="VOLUME" />
+					</f:facet>
+					<h:outputText value="#{quote.volume}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="CHANGE" />
+					</f:facet>
+					<h:outputText value="#{quote.change}" />
+				</h:column>
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="VOLUME" />
+					</f:facet>
+					<h:outputText value="#{quote.volume}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="CHANGE" />
+					</f:facet>
+					<h:outputText value="#{quote.change}" />
+				</h:column>
+				
+			</h:dataTable>
+		</h:form>
+		
+	</ui:define>
 	<ui:define name="ScriptAdd">
 		<!-- Mine -->
 		<script
