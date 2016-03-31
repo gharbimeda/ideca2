@@ -8,7 +8,7 @@ import javax.persistence.InheritanceType;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public abstract class Option extends DerivativeInstrument {
+public class Option extends DerivativeInstrument {
 
 	private Boolean buySell;
 	private Date expiration;

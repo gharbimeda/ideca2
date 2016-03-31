@@ -6,7 +6,7 @@ import javax.persistence.InheritanceType;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public abstract class CashInstrument extends FinancialInstrument {
+public class CashInstrument extends FinancialInstrument {
 
 	private String symbol;
 	private static final long serialVersionUID = 1L;
