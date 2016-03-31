@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/backTemplate/backOfficeUserTemp.xhtml">
+
+	<ui:define name="titleName"> Yahoo Finance Market Data </ui:define>
+	<ui:define name="pageLocalisation"> / Market Data </ui:define>
+	<ui:define name="pageActive"> Stocks</ui:define>
+	<ui:define name="pageDefinition">
+		<h2 class="page-title">
+			<i class="fontello-icon-database"></i> Market Data
+		</h2>
+		<div class="page-bar"></div>
+	</ui:define>
+
+	<ui:define name="pageContent">
+		<h:form id="form_1">
+	
+				
+			<h:dataTable value="#{mdBean.quotes}" var="quote" styleClass="table table-bordered">
+					<h:column>
+				<f:facet name="header">
+						<h:outputText value="COMPANY NAME" />
+					</f:facet>
+					<h:outputText value="#{quote.name}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="ASK" />
+					</f:facet>
+					<h:outputText value="#{quote.ask}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="VOLUME" />
+					</f:facet>
+					<h:outputText value="#{quote.volume}" />
+				</h:column>
+				<h:column>
+				<f:facet name="header">
+						<h:outputText value="CHANGE" />
+					</f:facet>
+					<h:outputText value="#{quote.change}" />
+				</h:column>
+			</h:dataTable>
+		</h:form>
+		<h:form id="form_2" >
+			
+			<h:dataTable styleClass="table table-bordered"  value="#{mdBean.quotess}" var="quote">
+			<h:column>
+					<f:facet name="header">
+						<h:outputText value="COMPANY NAME" />
+					</f:facet>
+					<h:outputText value="#{quote.name}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="ASK" />
+					</f:facet>
+					<h:outputText value="#{quote.ask}" />
+					<h:column>
+					<f:facet name="header">
+						<h:outputText value="VOLUME" />
+					</f:facet>
+					<h:outputText value="#{quote.volume}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="CHANGE" />
+					</f:facet>
+					<h:outputText value="#{quote.change}" />
+				</h:column>
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="VOLUME" />
+					</f:facet>
+					<h:outputText value="#{quote.volume}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="CHANGE" />
+					</f:facet>
+					<h:outputText value="#{quote.change}" />
+				</h:column>
+				
+			</h:dataTable>
+		</h:form>
+				<h:form id="form_3">
+			
+			<h:dataTable value="#{mdBean.quotesss}" var="quote" styleClass="table table-bordered" >
+			<h:column>
+					<f:facet name="header">
+						<h:outputText value="COMPANY NAME" />
+					</f:facet>
+					<h:outputText value="#{quote.name}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="ASK" />
+					</f:facet>
+					<h:outputText value="#{quote.ask}" />
+					<h:column>
+					<f:facet name="header">
+						<h:outputText value="VOLUME" />
+					</f:facet>
+					<h:outputText value="#{quote.volume}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="CHANGE" />
+					</f:facet>
+					<h:outputText value="#{quote.change}" />
+				</h:column>
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="VOLUME" />
+					</f:facet>
+					<h:outputText value="#{quote.volume}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="CHANGE" />
+					</f:facet>
+					<h:outputText value="#{quote.change}" />
+				</h:column>
+				
+			</h:dataTable>
+		</h:form>
+		
+
+	</ui:define>
+</ui:composition>

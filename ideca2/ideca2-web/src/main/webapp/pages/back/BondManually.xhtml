@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/backTemplate/backOfficeUserTemp.xhtml">
+
+	<ui:define name="titleName"> Market Data </ui:define>
+	<ui:define name="pageLocalisation"> / Market Data </ui:define>
+	<ui:define name="pageActive"> Bonds</ui:define>
+	<ui:define name="pageDefinition">
+		<h2 class="page-title">
+			<i class="fontello-icon-database"></i> Market Data
+		</h2>
+		<div class="page-bar"></div>
+	</ui:define>
+
+	<ui:define name="pageContent">
+
+		<h1>Add A Bond</h1>
+		<h:form>
+			<h:panelGrid columns="2">
+				<h:outputText value="Symbol" />
+				<p:inputText value="#{mdbondBean.bond.symbol}" />
+				<h:outputText value="Current Price" />
+				<p:inputText value="#{mdbondBean.bond.currentPrice}" />
+				<h:outputText value="Start Date" />
+				<p:inputText value="#{mdbondBean.bond.startDate}" />
+				<h:outputText value="End Date" />
+				<p:inputText value="#{mdbondBean.bond.endDate}" />
+				<h:outputText value="Coupon Frequency" />
+				<p:inputText value="#{mdbondBean.bond.couponFreq}" />
+				<h:outputText value="Volatility" />
+				<p:inputText value="#{mdbondBean.bond.volatility}" />
+				<h:outputText value="Yield" />
+				<p:inputText value="#{mdbondBean.bond.yield}" />
+			</h:panelGrid>
+			<p:commandButton action="#{mdbondBean.doUpdate()}" value="add" />
+		</h:form>
+		
+	</ui:define>
+</ui:composition>

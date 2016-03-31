@@ -20,4 +20,8 @@ public interface IStockCrudServicesLocal {
 	List<Stock> readByCompanyName(String companyName);
 
 	List<Stock> readAll();
+
+	public Boolean delete2(Stock b);
+	public Boolean update2(Stock b);
+	public Boolean add(Stock b);
 }

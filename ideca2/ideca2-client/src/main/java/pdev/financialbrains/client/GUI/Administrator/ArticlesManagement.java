@@ -52,6 +52,7 @@ public class ArticlesManagement extends JFrame {
 	List<Article> articles = new ArrayList<Article>();
 	private JTextField tf_title_update;
 	private JTextField tf_author_update;
+	Article article1 = new Article();
 
 	/**
 	 * Launch the application.
@@ -286,36 +287,160 @@ public class ArticlesManagement extends JFrame {
 					} catch (IOException ex) {
 						System.out.println(ex);
 					}
-				}
-			}
-
-		});
-		lblNewLabel_1.setIcon(new ImageIcon(
-				ArticlesManagement.class.getResource("/pdev/financialbrains/client/pictures/Upload Picture.png")));
-		lblNewLabel_1.setBounds(88, 53, 46, 32);
-		panel_3.add(lblNewLabel_1);
-
-		JLabel lbl_add = new JLabel("");
-		lbl_add.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				Article article1 = new Article();
-				article1.setTitle(tf_title.getText());
-				article1.setAuthor(tf_author.getText());
-				article1.setText(tf_text.getText());
-				// SimpleDateFormat d= new SimpleDateFormat("dd/MM/yyyy");
-				Date date = new Date();
-				article1.setDate(date);
-				ArticleManagementDelegate.doCreate(article1);
-				articles = ArticleManagementDelegate.doReadAll();
-				initDataBindings();
-			}
-		});
-		lbl_add.setIcon(new ImageIcon(
-				ArticlesManagement.class.getResource("/pdev/financialbrains/client/pictures/addIcon.png")));
-		lbl_add.setBounds(297, 285, 58, 67);
-		panel_3.add(lbl_add);
-
+				});
+				delete.setIcon(new ImageIcon(ArticlesManagement.class.getResource("/pdev/financialbrains/client/pictures/delete.png")));
+				delete.setBounds(268, 322, 64, 62);
+				panel_5.add(delete);
+				
+				JLabel update = new JLabel("");
+				update.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						article.setText(tf_text_update.getText());
+						article.setAuthor(tf_author_update.getText());
+						article.setTitle(tf_title_update.getText());
+						ArticleManagementDelegate.doUpdate(article);
+						articles = ArticleManagementDelegate.doReadAll();
+						initDataBindings();
+					}
+				});
+				update.setIcon(new ImageIcon(ArticlesManagement.class.getResource("/pdev/financialbrains/client/pictures/add.png")));
+				update.setBounds(345, 309, 78, 80);
+				panel_5.add(update);
+				
+				table = new JTable();
+				table.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						article = articles.get(table.getSelectedRow());
+						tf_title_update.setText(article.getTitle());
+						tf_author_update.setText(article.getAuthor());
+						tf_text_update.setText(article.getText());
+					}
+				});
+				scrollPane.setViewportView(table);
+				panel_4.setLayout(gl_panel_4);
+				
+						JPanel panel_2 = new JPanel();
+						panel_2.setBackground(UIManager.getColor("Button.highlight"));
+						tabbedPane.addTab("New Article", null, panel_2, null);
+						panel_2.setLayout(null);
+						
+						JPanel panel = new JPanel();
+						panel.setOpaque(false);
+						panel.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+						panel.setBounds(30, 22, 342, 363);
+						panel_2.add(panel);
+						panel.setLayout(null);
+						
+						JLabel lblTitle = new JLabel("Title");
+						lblTitle.setFont(new Font("Berlin Sans FB", Font.PLAIN, 13));
+						lblTitle.setBounds(38, 62, 46, 14);
+						panel.add(lblTitle);
+						
+						JLabel lblAuthor = new JLabel("Author");
+						lblAuthor.setFont(new Font("Berlin Sans FB", Font.PLAIN, 13));
+						lblAuthor.setBounds(38, 111, 46, 14);
+						panel.add(lblAuthor);
+						
+						JLabel lblText = new JLabel("Text");
+						lblText.setFont(new Font("Berlin Sans FB", Font.PLAIN, 13));
+						lblText.setBounds(38, 160, 46, 14);
+						panel.add(lblText);
+						
+						tf_title = new JTextField();
+						tf_title.setBounds(94, 54, 217, 25);
+						panel.add(tf_title);
+						tf_title.setColumns(10);
+						
+						tf_author = new JTextField();
+						tf_author.setBounds(94, 108, 217, 22);
+						panel.add(tf_author);
+						tf_author.setColumns(10);
+						
+						JTextArea tf_text = new JTextArea();
+						
+						tf_text.setBackground(SystemColor.control);
+						tf_text.setBounds(94, 156, 217, 196);
+						panel.add(tf_text);
+						
+						JPanel panel_3 = new JPanel();
+						panel_3.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+						panel_3.setOpaque(false);
+						panel_3.setBounds(395, 22, 380, 363);
+						panel_2.add(panel_3);
+						panel_3.setLayout(null);
+						
+						JLabel lblNewLabel = new JLabel("Photo");
+						lblNewLabel.setFont(new Font("Berlin Sans FB", Font.PLAIN, 13));
+						lblNewLabel.setBounds(32, 61, 46, 14);
+						panel_3.add(lblNewLabel);
+						
+						JLabel lbl_photo = new JLabel("");
+						lbl_photo.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+						lbl_photo.setBounds(136, 99, 179, 121);
+						panel_3.add(lbl_photo);
+						
+						JLabel lblNewLabel_1 = new JLabel("");
+						lblNewLabel_1.addMouseListener(new MouseAdapter() {
+							@Override
+							public void mouseClicked(MouseEvent e) {
+								JFileChooser fc = new JFileChooser();
+						        int returnVal = fc.showDialog(null, "Ajouter");
+						        image = fc.getSelectedFile();
+						        if (image.isFile()) {
+						            System.out.println(image.getAbsolutePath());
+						            
+						          
+						        
+						            BufferedImage myPicture2;
+						            try {
+						                myPicture2 = ImageIO.read(new File(image.getAbsolutePath()));
+						                JLabel picLabel2 = new JLabel(new ImageIcon(myPicture2));
+						                lbl_photo.removeAll();
+						                lbl_photo.add(picLabel2);
+						                lbl_photo.repaint();
+						                lbl_photo.revalidate();
+						                lbl_photo.setIcon(new ImageIcon(myPicture2));
+						            } catch (IOException ex) {
+						                System.out.println(ex);
+						            }
+						            article1.setUrl(image.getAbsolutePath());
+						        }
+							}
+						
+						});
+						lblNewLabel_1.setIcon(new ImageIcon(ArticlesManagement.class.getResource("/pdev/financialbrains/client/pictures/Upload Picture.png")));
+						lblNewLabel_1.setBounds(88, 53, 46, 32);
+						panel_3.add(lblNewLabel_1);
+						
+						
+						
+						JLabel lbl_add = new JLabel("");
+						lbl_add.addMouseListener(new MouseAdapter() {
+							@Override
+							public void mouseClicked(MouseEvent arg0) {
+								
+								article1.setTitle(tf_title.getText());
+								article1.setAuthor(tf_author.getText());
+								article1.setText(tf_text.getText());
+								//SimpleDateFormat d= new SimpleDateFormat("dd/MM/yyyy");
+								Date date = new Date();
+								article1.setDate(date);	
+							ArticleManagementDelegate.doCreate(article1);
+							articles = ArticleManagementDelegate.doReadAll();
+							initDataBindings();
+							tf_title.setText("");
+							tf_author.setText("");
+							tf_text.setText("");
+							lbl_photo.removeAll();
+							
+							}
+						});
+						lbl_add.setIcon(new ImageIcon(ArticlesManagement.class.getResource("/pdev/financialbrains/client/pictures/addIcon.png")));
+						lbl_add.setBounds(297, 285, 58, 67);
+						panel_3.add(lbl_add);
+		
 		JLabel dashbord = new JLabel("");
 		dashbord.addMouseListener(new MouseAdapter() {
 			@Override

@@ -24,7 +24,7 @@ public class TradeCrudServices implements ITradeCrudServiceLocal, ITradeCrudServ
 
 	@Override
 	public void delete(Trade trade) {
-		entityManager.remove(entityManager.find(Trade.class, trade.getId()));
+		//entityManager.remove(entityManager.find(Trade.class, trade.getId()));
 	}
 
 	@Override

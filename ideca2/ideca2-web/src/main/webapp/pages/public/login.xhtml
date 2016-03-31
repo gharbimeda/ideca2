@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/WEB-INF/templates/traderTemplate/publicTemplate.xhtml">
+	<ui:define name="titleName">LOGIN</ui:define>
+	<ui:define name="menuContent">
+		<li><a href="#{request.contextPath}/pages/public/index.xhtml">HOME</a></li>
+		<li><a
+			href="#{request.contextPath}/pages/public/menuProduct.xhtml">FINANCIAL
+				PRODUCTS</a></li>
+		<li><a class="menu-top-active"
+			href="#{request.contextPath}/pages/public/login.xhtml">LOGIN</a></li>
+	</ui:define>
+	<ui:define name="PageName">PLEASE LOGIN TO ENTER</ui:define>
+	<ui:define name="PageContent">
+
+		<!-- TACHE HBAIB -->
+		<div class="col-md-6">
+			<h4>
+				Login with <strong>INTELLIXX ACCOUNT :</strong>
+			</h4>
+			<br /> 
+			<label>Enter Login : </label> 
+			<input type="text" class="form-control" /> 
+			<label>Enter Password : </label> 
+			<input type="password" class="form-control" />
+			<hr />
+			<a href="#{request.contextPath}/pages/public/index.xhtml"
+				class="btn btn-info"><span class="glyphicon glyphicon-user"></span>
+				&nbsp;Log Me In </a>&nbsp;
+		</div>
+
+        <div class="col-md-6">
+		<div class="alert alert-info">
+			IF YOU WANT TO HAVE AN ACCOUNT. <br /> <strong> YOU SHOULD
+				SEND A REQUEST </strong> 
+				<br />
+				<a href="#{request.contextPath}/pages/public/request.xhtml"
+				class="btn btn-info"> &nbsp;SEND REQUEST </a>&nbsp;
+</div>
+		</div>
+
+	</ui:define>
+</ui:composition>

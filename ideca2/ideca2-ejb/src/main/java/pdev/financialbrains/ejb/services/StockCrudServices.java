@@ -9,6 +9,7 @@ import javax.persistence.Query;
 
 import pdev.financialbrains.ejb.contracts.IStockCrudServicesLocal;
 import pdev.financialbrains.ejb.contracts.IStockCrudServicesRemote;
+import pdev.financialbrains.ejb.entities.Bond;
 import pdev.financialbrains.ejb.entities.Stock;
 
 @Stateless
@@ -52,4 +53,33 @@ public class StockCrudServices implements IStockCrudServicesLocal, IStockCrudSer
 		return entityManager.createQuery("select s from Stock s", Stock.class).getResultList();
 	}
 
+	@Override
+	public Boolean delete2(Stock b) {
+		try {
+			entityManager.remove(entityManager.find(Stock.class, b.getId()));
+			return true;
+		} catch (Exception e) {
+			System.err.println("Couldn't find the Stock!");
+		}
+		return false;
+	}
+
+	@Override
+	public Boolean update2(Stock b) {
+		try {
+			entityManager.merge(b);
+			return true;
+		} catch (Exception e) {
+			System.err.println("The Stock update is not set.");
+		}
+		return false;
+	}
+
+
+
+	@Override
+	public Boolean add(Stock b) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

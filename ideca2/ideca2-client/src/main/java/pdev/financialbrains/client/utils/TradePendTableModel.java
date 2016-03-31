@@ -36,13 +36,13 @@ public class TradePendTableModel extends AbstractTableModel {
 	public Object getValueAt(int arg0, int arg1) {
 		switch (arg1) {
 		case 0:
-			return trades.get(arg0).getId();
+			//return trades.get(arg0).getId();
 		case 1:
 			return trades.get(arg0).getName();
 		case 2:
 			return trades.get(arg0).getValue();
 		case 3:
-			return trades.get(arg0).getDate();
+			//return trades.get(arg0).getDate();
 		case 4:
 			return trades.get(arg0).getStatusString();
 

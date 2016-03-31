@@ -57,10 +57,9 @@ public class ArticleCrudServices implements IArticleCrudServicesLocal, IArticleC
 	}
 
 	@Override
-	@SuppressWarnings("unchecked")
 	public List<Article> read(Date date) {
 
-		Query query = entityManager.createQuery("SELECT a from article where date= :d");
+		Query query = entityManager.createQuery("SELECT a from article where date= :d",Article.class);
 		query.setParameter("d", date);
 		return query.getResultList();
 	}

@@ -70,4 +70,34 @@ public class BondCrudServices implements IBondCrudServicesRemote, IBondCrudServi
 
 	}
 
+	@Override
+	public Boolean delete2(Bond b) {
+		try {
+			entityManager.remove(entityManager.find(Bond.class, b.getId()));
+			return true;
+		} catch (Exception e) {
+			System.err.println("Couldn't find the Bond!");
+		}
+		return false;
+	}
+
+	@Override
+	public Boolean update2(Bond b) {
+		try {
+			entityManager.merge(b);
+			return true;
+		} catch (Exception e) {
+			System.err.println("The Bond update is not set.");
+		}
+		return false;
+	}
+
+
+
+	@Override
+	public Boolean add(Bond b) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

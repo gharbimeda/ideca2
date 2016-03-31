@@ -10,6 +10,7 @@ import javax.persistence.Query;
 import pdev.financialbrains.ejb.contracts.ICurrencyCrudServicesLocal;
 import pdev.financialbrains.ejb.contracts.ICurrencyCrudServicesRemote;
 import pdev.financialbrains.ejb.entities.Currency;
+import pdev.financialbrains.ejb.entities.Stock;
 
 @Stateless
 public class CurrencyCrudServices implements ICurrencyCrudServicesRemote, ICurrencyCrudServicesLocal {
@@ -50,6 +51,35 @@ public class CurrencyCrudServices implements ICurrencyCrudServicesRemote, ICurre
 	@Override
 	public List<Currency> readAll() {
 		return entityManager.createQuery("select c from Currency c", Currency.class).getResultList();
+	}
+	@Override
+	public Boolean delete2(Currency b) {
+		try {
+			entityManager.remove(entityManager.find(Currency.class, b.getId()));
+			return true;
+		} catch (Exception e) {
+			System.err.println("Couldn't find the Currency!");
+		}
+		return false;
+	}
+
+	@Override
+	public Boolean update2(Currency b) {
+		try {
+			entityManager.merge(b);
+			return true;
+		} catch (Exception e) {
+			System.err.println("The Currency update is not set.");
+		}
+		return false;
+	}
+
+
+
+	@Override
+	public Boolean add(Currency b) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
