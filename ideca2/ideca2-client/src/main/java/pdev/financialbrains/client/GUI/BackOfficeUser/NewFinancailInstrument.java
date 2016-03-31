@@ -111,10 +111,12 @@ public class NewFinancailInstrument extends JFrame implements ActionListener {
 				// String[] s = GenericManagementDelegate.getInstance()
 				// .doReadById(GenericManagementDelegate.getInstance().doReadLastId()).toString().split("
 				// : ");
-				// String[][] fill = {{""},{""}};
+				// String[][] fill = { { "" }, { "" } };
 				// for (int j = 0; j < (s.length) / 3; j++) {
 				// for (int i = 0; i < s.length; i = i + 3) {
 				// fill[j][i] = s[i];
+				// fill[j][i + 1] = s[i + 1];
+				// fill[j][i + 2] = s[i + 2];
 				// }
 				// }
 				// tableNewProduct = new JTable(fill, entete);
