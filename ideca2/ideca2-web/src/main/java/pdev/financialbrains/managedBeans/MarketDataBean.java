@@ -63,8 +63,7 @@ public class MarketDataBean {
 	@PostConstruct
 	public void init() {
 	
-		try {//quoteLocal.initializeQuotes("AAPL");
-			//quotes = quoteLocal.initializeQuotes2("AAPL");
+		try {
 			quotes = quoteLocal.initializeQuotes2("AAPL");
 		 quotess = quoteLocal.initializeQuotes2("YHOO");
 		 quotesss = quoteLocal.initializeQuotes2("GOOG");

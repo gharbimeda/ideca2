@@ -21,6 +21,18 @@ public class Bond extends CashInstrument {
 	private Integer yield;
 	private static final long serialVersionUID = 1L;
 
+	public Bond(Integer id, Float currentPrice, Float volatility,
+			String symbol, Date startDate, Date endDate, Integer couponFreq,
+			Integer steppedBound, Boolean rollDate, Integer yield) {
+		super(id, currentPrice, volatility, symbol);
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.couponFreq = couponFreq;
+		this.steppedBound = steppedBound;
+		this.rollDate = rollDate;
+		this.yield = yield;
+	}
+
 	public Bond() {
 		// TODO Auto-generated constructor stub
 	}

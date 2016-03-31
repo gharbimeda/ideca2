@@ -20,7 +20,7 @@
 		<h:form id="form_1">
 	
 				
-			<h:dataTable value="#{mdBean.quotes}" var="quote">
+			<h:dataTable value="#{mdBean.quotes}" var="quote" styleClass="table table-bordered">
 					<h:column>
 				<f:facet name="header">
 						<h:outputText value="COMPANY NAME" />
@@ -34,17 +34,22 @@
 					<h:outputText value="#{quote.ask}" />
 				</h:column>
 				<h:column>
+					<f:facet name="header">
+						<h:outputText value="VOLUME" />
+					</f:facet>
+					<h:outputText value="#{quote.volume}" />
+				</h:column>
+				<h:column>
 				<f:facet name="header">
 						<h:outputText value="CHANGE" />
 					</f:facet>
 					<h:outputText value="#{quote.change}" />
 				</h:column>
-				<!--  <p:poll interval="5" listener="#{marketMB.quotes}" update="txt_count" />-->
 			</h:dataTable>
 		</h:form>
-		<h:form id="form_2">
+		<h:form id="form_2" >
 			
-			<h:dataTable value="#{mdBean.quotess}" var="quote">
+			<h:dataTable styleClass="table table-bordered"  value="#{mdBean.quotess}" var="quote">
 			<h:column>
 					<f:facet name="header">
 						<h:outputText value="COMPANY NAME" />
@@ -83,12 +88,11 @@
 					<h:outputText value="#{quote.change}" />
 				</h:column>
 				
-				<!--  <p:poll interval="5" listener="#{marketMB.quotes}" update="txt_count" />-->
 			</h:dataTable>
 		</h:form>
 				<h:form id="form_3">
 			
-			<h:dataTable value="#{mdBean.quotesss}" var="quote">
+			<h:dataTable value="#{mdBean.quotesss}" var="quote" styleClass="table table-bordered" >
 			<h:column>
 					<f:facet name="header">
 						<h:outputText value="COMPANY NAME" />
@@ -127,7 +131,6 @@
 					<h:outputText value="#{quote.change}" />
 				</h:column>
 				
-				<!--  <p:poll interval="5" listener="#{marketMB.quotes}" update="txt_count" />-->
 			</h:dataTable>
 		</h:form>
 		
