@@ -83,16 +83,16 @@ public class BondManuallyBean {
 		return null;
 	}
 	 public String initialiser(){
+		 
 		 bond=new Bond();
 		 return null;
 	 }
-	 public  String doShow()
-	 {
-		 bondlocal.readAll();
-		 return null;
-	 }
+	// public  String doShow()
+	// {
+	//	 bondlocal.readAll();
+	//	 return null;
+	// }
 	 public String doShowForm() {
-			// Pas conseillé à faire. Parce que.
 			showForm = showForm ? false : true;
 			return null;
 		}

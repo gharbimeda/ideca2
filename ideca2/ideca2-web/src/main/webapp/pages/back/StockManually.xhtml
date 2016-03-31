@@ -20,21 +20,24 @@
 
 		<h1>Add A Stock</h1>
 
-		<h:form>
+<h:form>
 			<h:panelGrid columns="2">
 				<h:outputText value="Company Name" />
 				<p:inputText value="#{mdstockBean.stock.companyName}" />
 				<h:outputText value="Symbol" />
 				<p:inputText value="#{mdstockBean.stock.symbol}" />
-				<h:outputText value="Current Price" />
+				<h:outputText value="Current Price"/>
+							
 				<p:inputText value="#{mdstockBean.stock.currentPrice}" />
-				<h:outputText value="Opening Price" />
-				<p:inputText value="#{mdstockBean.stock.openingPrice}" />
+								
+				<h:outputText value="Opening Price" >
+				  				</h:outputText>
+				<p:inputText value="#{mdstockBean.stock.openingPrice}"  />
 				<h:outputText value="Closing Price" />
 				<p:inputText value="#{mdstockBean.stock.closingPrice}" />
 				<h:outputText value="Volume" />
 				<p:inputText value="#{mdstockBean.stock.volume}" />
-				<h:outputText value="Volatility" />
+				<h:outputText value="Volatitlity" />
 				<p:inputText value="#{mdstockBean.stock.volatility}" />
 			</h:panelGrid>
 			<p:commandButton action="#{mdstockBean.doUpdate()}" value="add" />
