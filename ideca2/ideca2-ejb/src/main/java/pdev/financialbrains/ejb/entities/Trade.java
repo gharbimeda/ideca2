@@ -1,39 +1,44 @@
 package pdev.financialbrains.ejb.entities;
 
 import java.io.Serializable;
-import java.util.Date;
 
+
+import javax.persistence.CascadeType;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "t_trade")
 public class Trade implements Serializable {
 
-	@Id
-	private Integer id;
-	
-	private Date date;
+	@EmbeddedId
+	private TradePK pk;
 	private String name;
-	private Double value;
+	private Double value;	
 	private Integer status;
-	
-	
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(referencedColumnName="idUser", name="idUser", updatable=false, insertable=false)
+	private Trader trader;
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(referencedColumnName="id", name="id", updatable=false, insertable=false)
+	private DerivativeInstrument fi;
 	private static final long serialVersionUID = 1L;
 
-	public Trade(){
+	public Trade() {
 		// TODO Auto-generated constructor stub
 	}
 
 
-	public Integer getId() {
-		return id;
+	public TradePK getPk() {
+		return pk;
 	}
 
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setPk(TradePK pk) {
+		this.pk = pk;
 	}
 
 
@@ -54,6 +59,7 @@ public class Trade implements Serializable {
 	}
 
 
+
 	public Integer getStatus() {
 		return status;
 	}
@@ -72,15 +78,24 @@ public class Trade implements Serializable {
 	}
 
 
-	public Date getDate() {
-		return date;
+	public Trader getTrader() {
+		return trader;
 	}
 
 
-	public void setDate(Date date) {
-		this.date = date;
+	public void setTrader(Trader trader) {
+		this.trader = trader;
 	}
 
+
+	public DerivativeInstrument getFi() {
+		return fi;
+	}
+
+
+	public void setFi(DerivativeInstrument fi) {
+		this.fi = fi;
+	}
 
 
 }
