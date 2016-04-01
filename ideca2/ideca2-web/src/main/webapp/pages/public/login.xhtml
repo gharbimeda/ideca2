@@ -3,6 +3,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
 	template="/WEB-INF/templates/traderTemplate/publicTemplate.xhtml">
 	<ui:define name="titleName">LOGIN</ui:define>
 	<ui:define name="menuContent">
@@ -22,15 +23,15 @@
 				Login with <strong>INTELLIXX ACCOUNT :</strong>
 			</h4>
 			<br /> 
+			<h:form>
 			<label>Enter Login : </label> 
-			<input type="text" class="form-control" /> 
+			<p:inputText value="#{access.login}" class="form-control" /> 
 			<label>Enter Password : </label> 
-			<input type="password" class="form-control" />
+			<p:inputText value="#{access.password}" class="form-control" />
 			<hr />
-			<a href="#{request.contextPath}/pages/public/index.xhtml"
-				class="btn btn-info"><span class="glyphicon glyphicon-user"></span>
-				&nbsp;Log Me In </a>&nbsp;
-		</div>
+			<p:commandButton action="#{access.doLogin()}" value="Log me IN" ajax="false" class="btn btn-info"/>
+					</h:form>
+					</div>
 
         <div class="col-md-6">
 		<div class="alert alert-info">

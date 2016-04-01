@@ -24,29 +24,29 @@
 	<ui:define name="PageContent">
 		<br />
 		<h:form>
-			<h:dataTable value="#" var="c">
+			<p:dataTable value="#{capFloorBean.capFloors}" var="c">
 				<f:facet name="header">Caps and Floors for Sell</f:facet>
-				<h:column>
+				<p:column>
 					<f:facet name="header">ID</f:facet>
-					<h:outputText value="#" />
-				</h:column>
-				<h:column>
+					<h:outputText value="#{c.id}" />
+				</p:column>
+				<p:column>
 					<f:facet name="header">Notional Amount</f:facet>
-					<h:outputText value="#" />
-				</h:column>
-				<h:column>
+					<h:outputText value="#{c.notionalAmount}" />
+				</p:column>
+				<p:column>
 					<f:facet name="header">Start Date</f:facet>
-					<h:outputText value="#" />
-				</h:column>
-				<h:column>
+					<h:outputText value="#{c.startDate}" />
+				</p:column>
+				<p:column>
 					<f:facet name="header">End Date</f:facet>
-					<h:outputText value="#" />
-				</h:column>
-				<h:column>
+					<h:outputText value="#{c.endDate}" />
+				</p:column>
+				<p:column>
 					<h:commandButton action="#" value="Show"
 						styleClass="btn btn-slategray" />
-				</h:column>
-			</h:dataTable>
+				</p:column>
+			</p:dataTable>
 		</h:form>
 
 		<br />
@@ -64,14 +64,17 @@
 							<div class="form-group">
 								<label>Day Convention</label>
 								<div class="col-md-10">
-									<h:panelGrid columns="2" style="margin-bottom:10px"
-										cellpadding="5">
-										<h:selectOneMenu id="convention" value=" " style="width:125px">
+									<p:panelGrid >
+										<p:selectOneMenu id="convention" value=" " style="width:125px">
 											<f:selectItem itemLabel="act/360" itemValue="act/360" />
 											<f:selectItem itemLabel="act/365" itemValue="act/365" />
-										</h:selectOneMenu>
-									</h:panelGrid>
+										</p:selectOneMenu>
+									</p:panelGrid>
 								</div>
+								<p:calendar value="#{capFloorBean.capFloor.startDate}"></p:calendar>
+								<p:calendar value="#{capFloorBean.capFloor.endDate}"></p:calendar>
+								<p:inputText value="#{capFloorBean.capFloor.notionalAmount}" />
+								<p:commandButton value="save" action="#{capFloorBean.doSave}"/>
 							</div>
 						</h:panelGrid>
 					</h:form>

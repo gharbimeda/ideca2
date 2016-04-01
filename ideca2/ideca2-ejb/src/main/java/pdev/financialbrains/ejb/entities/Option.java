@@ -5,8 +5,10 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="t_option")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Option extends DerivativeInstrument {
 
