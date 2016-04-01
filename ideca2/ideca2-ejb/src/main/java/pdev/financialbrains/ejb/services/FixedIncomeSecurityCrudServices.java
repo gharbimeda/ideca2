@@ -81,5 +81,36 @@ public class FixedIncomeSecurityCrudServices implements IFixedIncomeSecurityRemo
 		
 		return Price = (couponRate*(faceValue/frequency))*(1-(1+Math.pow(Math.pow(1+currentYield,(1/frequency)-1), 0-(timeMaturity*frequency))))+faceValue/Math.pow(1+currentYield,(timeMaturity+months)/12)+((faceValue*couponRate)/(frequency/Math.pow(1+currentYield,months/12)));
 	}
+	@Override
+	public Boolean delete2(FixedIncomeSecuritie f) {
+		try {
+			entityManager.remove(entityManager.find(FixedIncomeSecuritie.class, f.getId()));
+			return true;
+		} catch (Exception e) {
+			System.err.println("Couldn't find the Fixed IncomeSecurity!");
+		}
+		return false;
+	}
+
+	@Override
+	public Boolean update2(FixedIncomeSecuritie f) {
+		try {
+			entityManager.merge(f);
+			return true;
+		} catch (Exception e) {
+			System.err.println("The Fixed Income Security update is not set.");
+		}
+		return false;
+	}
+
+
+
+	@Override
+	public Boolean add(FixedIncomeSecuritie f) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
 
 }

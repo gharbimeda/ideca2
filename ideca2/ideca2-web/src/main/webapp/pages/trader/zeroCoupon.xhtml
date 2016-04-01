@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/WEB-INF/templates/traderTemplate/traderTemplate.xhtml">
+	<ui:define name="titleName">FINANCIAL PRODUCTS</ui:define>
+	<ui:define name="linkAdd">
+		<link
+			href="#{request.contextPath}/resources/traderResources/css/responsive.css"
+			rel="stylesheet" />
+		<link
+			href="#{request.contextPath}/resources/traderResources/css/prettyPhoto.css"
+			rel="stylesheet" />
+		<link
+			href="#{request.contextPath}/resources/traderResources/css/animate.min.css"
+			rel="stylesheet" />
+	</ui:define>
+	<ui:define name="menuContent">
+		<li><a href="#{request.contextPath}/pages/trader/home.xhtml"><i
+				class="fa fa-home" /> HOME</a></li>
+		<li><a class="menu-top-active"
+			href="#{request.contextPath}/pages/trader/menuProduct.xhtml"><i
+				class="fa fa-money" /> FINANCIAL PRODUCTS</a></li>
+		<li><a href="#{request.contextPath}/pages/trader/trades.xhtml"><i
+				class="fa fa-shopping-cart" /> MY TRADES</a></li>
+		<li><a href="#{request.contextPath}/pages/trader/messages.xhtml"><i
+				class="fa fa-wechat" /> MESSAGES</a></li>
+		<li><a href="#{request.contextPath}/pages/trader/contactUs.xhtml"><i
+				class="fa fa-inbox" /> CONTACT US</a></li>
+	</ui:define>
+	<ui:define name="PageName">FINANCIAL PRODUCTS</ui:define>
+	<ui:define name="PageContent">
+
+		<h4>Zero coupon Bond pricing</h4>
+
+		<h:form>
+			<h:panelGrid columns="2">
+				<h:outputText value="Face Value" />
+				<h:inputText value="#{mdfxincomeBean.faceValue}" />
+				<h:outputText value="Time To Maturity" />
+				<h:inputText value="#{mdfxincomeBean.timeMaturity}" />
+				<h:outputText value="Interest Rate On Bond" />
+				<h:inputText value="#{mdfxincomeBean.couponRate}" />
+				
+			
+				<h:commandButton
+		action="#{mdfxincomeBean.dopriceZeroCouponBond(mdfxincomeBean.faceValue,mdfxincomeBean.timeMaturity,mdfxincomeBean.couponRate)}"
+					value="price" />
+				<h:outputText value="#{mdfxincomeBean.bondPrice}" />
+<h:commandButton
+		action="#{mdfxincomeBean.doUpdate()}"
+					value="book" />
+			</h:panelGrid>
+
+		</h:form>
+
+	</ui:define>
+	<ui:define name="scriptAdd">
+		<script
+			src="#{request.contextPath}/resources/traderResources/jsMine/jquery.js"></script>
+		<script
+			src="#{request.contextPath}/resources/traderResources/jsMine/bootstrap.min.js"></script>
+		<script
+			src="#{request.contextPath}/resources/traderResources/jsMine/jquery.prettyPhoto.js"></script>
+		<script
+			src="#{request.contextPath}/resources/traderResources/jsMine/jquery.isotope.min.js"></script>
+		<script
+			src="#{request.contextPath}/resources/traderResources/jsMine/main.js"></script>
+		<script
+			src="#{request.contextPath}/resources/traderResources/jsMine/wow.min.js"></script>
+	</ui:define>
+</ui:composition>

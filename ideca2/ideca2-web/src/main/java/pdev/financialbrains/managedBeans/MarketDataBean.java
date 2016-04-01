@@ -31,6 +31,16 @@ public class MarketDataBean {
 	private List<Quote> quotes2 = new ArrayList<>();
 	private List<Quote> quotes3 = new ArrayList<>();
 	private List<Quote> quotes4 = new ArrayList<>();
+	
+	private List<Quote> cur = new ArrayList<>();
+
+	public List<Quote> getCur() {
+		return cur;
+	}
+
+	public void setCur(List<Quote> cur) {
+		this.cur = cur;
+	}
 
 	private Quote quote = new Quote();
 
@@ -119,7 +129,7 @@ public class MarketDataBean {
 			quotes2 = quoteLocal.initializeQuotes2("INTC");//
 			quotes3 = quoteLocal.initializeQuotes2("SGF");
 			quotes4 = quoteLocal.initializeQuotes2("FB");
-
+           cur = quoteLocal.initializeQuotes3("EUR/USD");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
