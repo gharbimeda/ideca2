@@ -22,8 +22,6 @@ public class Trade implements Serializable {
 	private Double value;	
 	private Integer status;
 	private Integer putcall;
-	@Temporal(TemporalType.DATE)
-	private Date date;
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(referencedColumnName="idUser", name="idUser", updatable=false, insertable=false)
 	private Trader trader;
@@ -117,15 +115,6 @@ public class Trade implements Serializable {
 		this.fi = fi;
 	}
 
-
-	public Date getDate() {
-		return date;
-	}
-
-
-	public void setDate(Date date) {
-		this.date = date;
-	}
 
 
 }

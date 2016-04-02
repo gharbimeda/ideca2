@@ -77,7 +77,7 @@ public class CapFloorBean {
 		TradePK pk = new TradePK();
 		pk.setId(1);
 		pk.setIdUser(1);
-		trade1.setDate(new Date());
+		pk.setDate(new Date());
 		trade1.setPk(pk);
 		tradeService.create(trade1);
 		trades = tradeService.readAll();

@@ -34,7 +34,6 @@ public class TradeBean {
 	
 	public void doDecline(Trade trade){
 		trade.setStatus(0);
-		services.delete(trade);
 		services.update(trade);
 		trades = services.readPending();
 	}
