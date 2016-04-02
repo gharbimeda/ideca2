@@ -13,6 +13,7 @@ public class CapFloor extends Option {
 	private Integer lastFixing;
 	private Integer dayCount;
 	private Float notionalAmount;
+	private Boolean capFloor;
 	private static final long serialVersionUID = 1L;
 
 	public CapFloor() {
@@ -65,6 +66,14 @@ public class CapFloor extends Option {
 
 	public void setNotionalAmount(Float notionalAmount) {
 		this.notionalAmount = notionalAmount;
+	}
+
+	public Boolean getCapFloor() {
+		return capFloor;
+	}
+
+	public void setCapFloor(Boolean capFloor) {
+		this.capFloor = capFloor;
 	}
 
 	@Override

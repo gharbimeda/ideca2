@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="t_option")
@@ -13,6 +15,7 @@ import javax.persistence.Table;
 public class Option extends DerivativeInstrument {
 
 	private Boolean buySell;
+	@Temporal(TemporalType.DATE)
 	private Date expiration;
 	private Integer riskFree;
 	private Float strikePrice;
