@@ -6,7 +6,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
-import javax.ws.rs.container.Suspended;
 
 import pdev.financialbrains.ejb.entities.BackOfficeUser;
 import pdev.financialbrains.ejb.entities.Trader;

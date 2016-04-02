@@ -24,11 +24,11 @@
 	<ui:define name="PageContent">
 		<br />
 		<h:form>
-			<p:dataTable value="#" var="cap">
+			<p:dataTable value="#{capbean.caps}" var="cap">
 				<f:facet name="header">Caps and Floors for Sell</f:facet>
 				<p:column>
-					<f:facet name="header">ID</f:facet>
-					<h:outputText value=" " />
+					<f:facet name="header">Cap / Floor</f:facet>
+					<h:outputText value="#{cap.name}" />
 				</p:column>
 				<p:column>
 					<f:facet name="header">Notional Amount</f:facet>
@@ -36,11 +36,11 @@
 				</p:column>
 				<p:column>
 					<f:facet name="header">Start Date</f:facet>
-					<h:outputText value=" " />
+					<h:outputText value="#{cap.fi.startDate}" />
 				</p:column>
 				<p:column>
 					<f:facet name="header">End Date</f:facet>
-					<h:outputText value=" " />
+					<h:outputText value="#{cap.fi.endDate}" />
 				</p:column>
 				<p:column>
 					<h:commandButton action="#" value="Show"
@@ -56,20 +56,24 @@
 					<div class="panel-body">
 
 						<h:form>
-							<h:panelGrid >
+							<h:panelGrid columns="2">
+							<!--  
+							<p:outputLabel value="#{capbean.trader.idUser}"/>
+							<p:outputLabel value="#{identity.userIdentify.idUser}"/>
+							-->
 								<p:outputLabel value="Cap / Floor" />
 								<p:panelGrid>
 									<p:selectOneMenu id="capfloor" value="#{capbean.c.capFloor}">
-										<f:selectItem itemLabel="cap" itemValue="true" />
-										<f:selectItem itemLabel="floor" itemValue="false" />
+										<f:selectItem itemLabel="cap" itemValue="0" />
+										<f:selectItem itemLabel="floor" itemValue="1" />
 									</p:selectOneMenu>
 								</p:panelGrid>
 								
 								<p:outputLabel value="Put / Call" />
 								<p:panelGrid >
-									<p:selectOneMenu id="putCall" value="#{capbean.c.buySell}">
-										<f:selectItem itemLabel="put" itemValue="true" />
-										<f:selectItem itemLabel="call" itemValue="false" />
+									<p:selectOneMenu id="putCall" value="#{capbean.putCall}">
+										<f:selectItem itemLabel="put" itemValue="0" />
+										<f:selectItem itemLabel="call" itemValue="1" />
 									</p:selectOneMenu>
 								</p:panelGrid>
 
@@ -145,7 +149,7 @@
 								<p:commandButton class="btn btn-primary btn-sm" value="Pricing"
 									action=" " />
 								<p:commandButton class="btn btn-success btn-sm"
-									value="Book Trade" action=" " />
+									value="Book Trade" action="#{capbean.doBookTrade()}" />
 
 							</h:panelGrid>
 						</h:form>

@@ -17,7 +17,7 @@ public class TradeBean {
 	@EJB
 	ITradeCrudServiceLocal services;
 
-	List<Trade> trades;
+	private List<Trade> trades;
 
 
 	@PostConstruct
