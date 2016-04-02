@@ -7,6 +7,8 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
+import pdev.financialbrains.ejb.contracts.ICapFloorServiceLocal;
+import pdev.financialbrains.ejb.contracts.ITradeCrudServiceLocal;
 import pdev.financialbrains.ejb.entities.CapFloor;
 import pdev.financialbrains.ejb.entities.Trade;
 import pdev.financialbrains.ejb.services.CapFloorCrudService;
@@ -17,10 +19,10 @@ import pdev.financialbrains.ejb.services.TradeCrudServices;
 public class CapFloorBean {
 
 	@EJB
-	CapFloorCrudService CapService;
+	ICapFloorServiceLocal CapService;
 	
 	@EJB
-	TradeCrudServices tradeService;
+	ITradeCrudServiceLocal tradeService;
 	
 	//public List<CapFloor> capFloors;
 	
