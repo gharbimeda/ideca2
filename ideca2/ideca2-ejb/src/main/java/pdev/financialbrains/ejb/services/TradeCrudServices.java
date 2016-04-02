@@ -2,6 +2,7 @@ package pdev.financialbrains.ejb.services;
 
 import java.util.List;
 
+import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -12,6 +13,7 @@ import pdev.financialbrains.ejb.contracts.ITradeCrudServiceRemote;
 import pdev.financialbrains.ejb.entities.Trade;
 
 @Stateless
+@LocalBean
 public class TradeCrudServices implements ITradeCrudServiceLocal, ITradeCrudServiceRemote {
 
 	@PersistenceContext(unitName = "data")

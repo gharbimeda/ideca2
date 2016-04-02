@@ -13,7 +13,7 @@ import javax.persistence.OneToMany;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public class FinancialInstrument implements Serializable {
+public abstract class FinancialInstrument implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE)
