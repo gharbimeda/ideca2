@@ -6,37 +6,78 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 
 import pdev.financialbrains.ejb.contracts.IFixedIncomeSecurityLocal;
 import pdev.financialbrains.ejb.entities.Bond;
 import pdev.financialbrains.ejb.entities.FixedIncomeSecuritie;
+import pdev.financialbrains.ejb.entities.Trade;
+import pdev.financialbrains.ejb.entities.Trader;
+import pdev.financialbrains.ejb.services.TradeCrudServices;
+import pdev.financialbrains.ejb.services.UserCrudServices;
+import pdev.financialbrains.ejb.services.derivativesCrudService;
 
 @ManagedBean(name = "mdfxincomeBean")
 @ViewScoped
 public class FixedIncomeSecurityBean {
+	
+
+	@ManagedProperty("#{identity.userIdentify}")
+	private Trader trader;
+	@EJB
+	TradeCrudServices tradeService;
+
+	@EJB
+	derivativesCrudService derivativesCrudService;
+
+	@EJB
+	UserCrudServices userCrudServices;
+	private List<Trade> trades ;
+
+	
+	
+
 	@EJB
 	private IFixedIncomeSecurityLocal fxlocal;
 	private List<FixedIncomeSecuritie> fixedIncomeSecurities = new ArrayList<>();
 
 	private FixedIncomeSecuritie fx = new FixedIncomeSecuritie();
 	private Integer timeMaturity;
-	private Integer couponFreq;
+	private Integer frequency;
 
-	private Float faceValue;
+	private Float faceValue; 
+	private int months;
 
 	private Float couponRate;
 	private Float yield;
 	private Float currentYield;
 	private Double bondPrice;
 
-	public Integer getCouponFreq() {
-		return couponFreq;
+	
+	public Trader getTrader() {
+		return trader;
 	}
 
-	public void setCouponFreq(Integer couponFreq) {
-		this.couponFreq = couponFreq;
+	public void setTrader(Trader trader) {
+		this.trader = trader;
 	}
+
+	public List<Trade> getTrades() {
+		return trades;
+	}
+
+	public void setTrades(List<Trade> trades) {
+		this.trades = trades;
+	}
+	public Integer getFrequency() {
+		return frequency;
+	}
+
+	public void setFrequency(Integer frequency) {
+		this.frequency = frequency;
+	}
+
 
 	public Float getFaceValue() {
 		return faceValue;
@@ -149,25 +190,38 @@ public class FixedIncomeSecurityBean {
 		this.bondPrice = fxlocal.priceZeroCouponBond(faceValue, timeMaturity,
 				currentYield);
 		init();
-
+		
 		return null;
 
 	}
 
 	public String dopriceTreasuryBond(Float faceValue, Integer timeMaturity, Float currentYield, Integer frequency,
 			Float couponRate) {
-		this.bondPrice = fxlocal.priceTreasuryBond(faceValue, timeMaturity, currentYield, frequency, couponRate);
+	
+		
+		this.bondPrice = fxlocal.priceTreasuryBond(faceValue, timeMaturity,
+				currentYield, frequency, couponRate);
+		init();
+
+		return "Prcing done!!";
+	}
+
+	public String dopricecorpBond(Float faceValue, Integer timeMaturity,
+			Float currentYield, Integer frequency, Float couponRate,
+			Integer months) {
+		this.bondPrice = fxlocal.priceCorpBond(faceValue, timeMaturity,
+				currentYield, frequency, couponRate, months);
 		init();
 
 		return null;
 
 	}
-	public String dopricecorpBond(Float faceValue, Integer timeMaturity, Float currentYield, Integer frequency,
-			Float couponRate, Integer months) {
-		this.bondPrice = fxlocal.priceZeroCouponBond(faceValue, timeMaturity, currentYield);
-		init();
 
-		return null;
+	public int getMonths() {
+		return months;
+	}
 
+	public void setMonths(int months) {
+		this.months = months;
 	}
 }

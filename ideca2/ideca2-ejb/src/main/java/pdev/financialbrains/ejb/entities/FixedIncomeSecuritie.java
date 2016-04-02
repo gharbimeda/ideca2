@@ -19,6 +19,15 @@ public class FixedIncomeSecuritie extends DerivativeInstrument {
 		private Float yield;
 		private Float currentYield;
 		private Float bondPrice;
+		private int months;
+		public int getMonths() {
+			return months;
+		}
+
+		public void setMonths(int months) {
+			this.months = months;
+		}
+
 		private static final long serialVersionUID = 1L;
 
 		public Integer getTimeMaturity() {
