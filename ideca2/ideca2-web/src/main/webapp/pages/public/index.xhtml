@@ -108,7 +108,73 @@
 			<i class="fa fa-chevron-right"></i>
 		</a> </section>
 	</ui:define>
-	<ui:define name="PageName">Add Currency</ui:define>
+	<ui:define name="PageName"></ui:define>
+	<ui:define name="PageContent">
+		<h:form id="form_3">
+			
+			
+			<h:dataTable value="#{mdBean.rates}" var="rate" styleClass="table table-bordered" >
+			<h:column>
+					<f:facet name="header">
+						<h:outputText value="NAME" />
+					</f:facet>
+					<h:outputText value="#{rate.name}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="DATE" />
+					</f:facet>
+					<h:outputText value="#{rate.date}" />
+					<h:column>
+					<f:facet name="header">
+						<h:outputText value="ASK" />
+					</f:facet>
+					<h:outputText value="#{rate.ask}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="BID" />
+					</f:facet>
+					<h:outputText value="#{rate.bid}" />
+				</h:column>
+				</h:column>
+				
+							
+			</h:dataTable>
+		</h:form>
+		
+		<h:form id="form_4">
+			
+			<h:dataTable value="#{mdBean.ratess}" var="rate" styleClass="table table-bordered" >
+			<h:column>
+					<f:facet name="header">
+						<h:outputText value="NAME" />
+					</f:facet>
+					<h:outputText value="#{rate.name}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="DATE" />
+					</f:facet>
+					<h:outputText value="#{rate.date}" />
+					<h:column>
+					<f:facet name="header">
+						<h:outputText value="ASK" />
+					</f:facet>
+					<h:outputText value="#{rate.ask}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="BID" />
+					</f:facet>
+					<h:outputText value="#{rate.bid}" />
+				</h:column>
+				</h:column>
+				
+							
+			</h:dataTable>
+		</h:form>
+	</ui:define>
 	<ui:define name="ScriptAdd">
 		<!-- Mine -->
 		<script

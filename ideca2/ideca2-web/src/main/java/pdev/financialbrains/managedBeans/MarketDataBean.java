@@ -16,6 +16,7 @@ import javax.faces.bean.ViewScoped;
 import pdev.financialbrains.ejb.contracts.IParsingQuoteServiceLocal;
 import pdev.financialbrains.ejb.contracts.IParsingQuoteServiceRemote;
 import pdev.financialbrains.ejb.entities.Quote;
+import pdev.financialbrains.ejb.entities.Rate;
 
 @ManagedBean(name = "mdBean")
 @ViewScoped
@@ -31,7 +32,33 @@ public class MarketDataBean {
 	private List<Quote> quotes2 = new ArrayList<>();
 	private List<Quote> quotes3 = new ArrayList<>();
 	private List<Quote> quotes4 = new ArrayList<>();
-	
+	private List<Rate> rates = new ArrayList<>();
+	private List<Rate> ratess = new ArrayList<>();
+	private Rate rate = new Rate();
+	public Rate getRate() {
+		return rate;
+	}
+
+	public void setRate(Rate rate) {
+		this.rate = rate;
+	}
+
+	public List<Rate> getRates() {
+		return rates;
+	}
+
+	public void setRates(List<Rate> rates) {
+		this.rates = rates;
+	}
+
+	public List<Rate> getRatess() {
+		return ratess;
+	}
+
+	public void setRatess(List<Rate> ratess) {
+		this.ratess = ratess;
+	}
+
 	private List<Quote> cur = new ArrayList<>();
 
 	public List<Quote> getCur() {
@@ -129,7 +156,9 @@ public class MarketDataBean {
 			quotes2 = quoteLocal.initializeQuotes2("INTC");//
 			quotes3 = quoteLocal.initializeQuotes2("SGF");
 			quotes4 = quoteLocal.initializeQuotes2("FB");
-           cur = quoteLocal.initializeQuotes3("EUR/USD");
+           rates = quoteLocal.initializeQuotes4("USDEUR");
+           ratess = quoteLocal.initializeQuotes4("USDJPY");
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

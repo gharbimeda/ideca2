@@ -20,8 +20,8 @@ public class DerivativeInstrument extends FinancialInstrument {
 	private Date startDate;
 	@Temporal(TemporalType.DATE)
 	private Date endDate;
-	@OneToMany(mappedBy="fi")
-	private List<Trade> trades;
+	//@OneToMany(mappedBy="fi")
+	//private List<Trade> trades;
 	private static final long serialVersionUID = 1L;
 
 	public DerivativeInstrument() {
@@ -97,12 +97,6 @@ public class DerivativeInstrument extends FinancialInstrument {
 		this.endDate = endDate;
 	}
 
-	public List<Trade> getTrades() {
-		return trades;
-	}
 
-	public void setTrades(List<Trade> trades) {
-		this.trades = trades;
-	}
 
 }

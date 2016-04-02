@@ -40,7 +40,7 @@ public class Bond extends CashInstrument {
 	public Bond() {
 		// TODO Auto-generated constructor stub
 	}
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
 	public Date getStartDate() {
 		return startDate;
 	}

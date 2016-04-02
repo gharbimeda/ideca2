@@ -153,4 +153,21 @@ public class FixedIncomeSecurityBean {
 		return null;
 
 	}
+
+	public String dopriceTreasuryBond(Float faceValue, Integer timeMaturity, Float currentYield, Integer frequency,
+			Float couponRate) {
+		this.bondPrice = fxlocal.priceTreasuryBond(faceValue, timeMaturity, currentYield, frequency, couponRate);
+		init();
+
+		return null;
+
+	}
+	public String dopricecorpBond(Float faceValue, Integer timeMaturity, Float currentYield, Integer frequency,
+			Float couponRate, Integer months) {
+		this.bondPrice = fxlocal.priceZeroCouponBond(faceValue, timeMaturity, currentYield);
+		init();
+
+		return null;
+
+	}
 }
