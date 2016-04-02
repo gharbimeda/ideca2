@@ -1,7 +1,7 @@
 package pdev.financialbrains.ejb.entities;
 
 import java.io.Serializable;
-
+import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.EmbeddedId;
@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "t_trade")
@@ -19,6 +21,9 @@ public class Trade implements Serializable {
 	private String name;
 	private Double value;	
 	private Integer status;
+	private Integer putcall;
+	@Temporal(TemporalType.DATE)
+	private Date date;
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(referencedColumnName="idUser", name="idUser", updatable=false, insertable=false)
 	private Trader trader;
@@ -86,6 +91,21 @@ public class Trade implements Serializable {
 	public void setTrader(Trader trader) {
 		this.trader = trader;
 	}
+	public Integer getPutcall() {
+		return putcall;
+	}
+	
+	public String getPutcallString() {
+		if (this.putcall == 0)
+			return "PUT";
+		else
+			return "CALL";
+	}
+
+
+	public void setPutcall(Integer putcall) {
+		this.putcall = putcall;
+	}
 
 
 	public DerivativeInstrument getFi() {
@@ -95,6 +115,16 @@ public class Trade implements Serializable {
 
 	public void setFi(DerivativeInstrument fi) {
 		this.fi = fi;
+	}
+
+
+	public Date getDate() {
+		return date;
+	}
+
+
+	public void setDate(Date date) {
+		this.date = date;
 	}
 
 
