@@ -39,19 +39,23 @@
 			<h:panelGrid columns="2">
 
 				<h:outputText value="Face Value" />
+				<p:spacer width="10" height="10" />
 				<h:inputText value="#{mdfxincomeBean.faceValue}" />
-
+				<p:spacer width="10" height="10" />
 				<h:outputText value="Time To Maturity" />
+				<p:spacer width="10" height="10" />
 				<h:inputText value="#{mdfxincomeBean.timeMaturity}" />
-
+				<p:spacer width="10" height="10" />
 				<h:outputText value="Interest Rate On Bond" />
+				<p:spacer width="10" height="10" />
 				<h:inputText value="#{mdfxincomeBean.couponRate}" />
-
+				<p:spacer width="10" height="10" />
 				<h:commandButton
 					action="#{mdfxincomeBean.dopriceZeroCouponBond(mdfxincomeBean.faceValue,mdfxincomeBean.timeMaturity,mdfxincomeBean.couponRate)}"
 					value="price" />
+				<p:spacer width="10" height="10" />
 				<h:outputText value="#{mdfxincomeBean.bondPrice}" />
-				<h:commandButton action="#{mdfxincomeBean.doUpdate()}" value="Save" />
+
 			</h:panelGrid>
 
 		</h:form>

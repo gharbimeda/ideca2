@@ -1,6 +1,7 @@
 package pdev.financialbrains.managedBeans;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -11,8 +12,11 @@ import javax.faces.bean.ViewScoped;
 
 import pdev.financialbrains.ejb.contracts.IFixedIncomeSecurityLocal;
 import pdev.financialbrains.ejb.entities.Bond;
+import pdev.financialbrains.ejb.entities.CapFloor;
+import pdev.financialbrains.ejb.entities.DerivativeInstrument;
 import pdev.financialbrains.ejb.entities.FixedIncomeSecuritie;
 import pdev.financialbrains.ejb.entities.Trade;
+import pdev.financialbrains.ejb.entities.TradePK;
 import pdev.financialbrains.ejb.entities.Trader;
 import pdev.financialbrains.ejb.services.TradeCrudServices;
 import pdev.financialbrains.ejb.services.UserCrudServices;
@@ -42,6 +46,8 @@ public class FixedIncomeSecurityBean {
 	private IFixedIncomeSecurityLocal fxlocal;
 	private List<FixedIncomeSecuritie> fixedIncomeSecurities = new ArrayList<>();
 
+	private DerivativeInstrument fixedincome = new FixedIncomeSecuritie();
+
 	private FixedIncomeSecuritie fx = new FixedIncomeSecuritie();
 	private Integer timeMaturity;
 	private Integer frequency;
@@ -53,6 +59,7 @@ public class FixedIncomeSecurityBean {
 	private Float yield;
 	private Float currentYield;
 	private Double bondPrice;
+	
 
 	
 	public Trader getTrader() {
@@ -216,6 +223,35 @@ public class FixedIncomeSecurityBean {
 		return null;
 
 	}
+	public List<FixedIncomeSecuritie> doReadAll() {
+
+		fixedIncomeSecurities = new ArrayList<FixedIncomeSecuritie>();
+		for (Trade d : trades) {
+			
+				    DerivativeInstrument fixed = (FixedIncomeSecuritie) d.getFi();
+				    fixedIncomeSecurities.add((FixedIncomeSecuritie) fixed);
+				
+			
+		}
+
+		return fixedIncomeSecurities;
+	}
+
+	public String doSave() {
+		String navTo = null;
+		derivativesCrudService.createDervivativesInstrument((DerivativeInstrument) fixedincome);
+		Trade trade1 = new Trade();
+		TradePK pk = new TradePK();
+		pk.setId(22);
+		pk.setIdUser(1);
+		pk.setDate(new Date());
+		trade1.setPk(pk);
+		tradeService.create(trade1);
+		trades = tradeService.readAll();
+		fixedIncomeSecurities = doReadAll();
+		//navTo = "/pages/trader/CapFloorTrade.jsf?faces-redirect=true";
+		return navTo;
+	}
 
 	public int getMonths() {
 		return months;
@@ -223,5 +259,13 @@ public class FixedIncomeSecurityBean {
 
 	public void setMonths(int months) {
 		this.months = months;
+	}
+
+	public DerivativeInstrument getFixedincome() {
+		return fixedincome;
+	}
+
+	public void setFixedincome(DerivativeInstrument fixedincome) {
+		this.fixedincome = fixedincome;
 	}
 }
