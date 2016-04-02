@@ -37,7 +37,7 @@ public class AccessBean {
 		if (found != null) {
 			identityBean.setUserIdentify(found);
 			if(found instanceof Trader){
-				navigateTo = "/pages/back/test?faces-redirect=true";
+				navigateTo = "/pages/trader/home?faces-redirect=true";
 			}else if (found instanceof BackOfficeUser) {
 				navigateTo = "/pages/back/backHome?faces-redirect=true";
 			}

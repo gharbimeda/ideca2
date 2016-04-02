@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Embeddable;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Embeddable
 public class TradePK implements Serializable{
@@ -14,7 +16,9 @@ public class TradePK implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private Integer idUser;
 	private Integer id;
+	@Temporal(TemporalType.DATE)
 	private Date date;
+	
 	
 	public TradePK() {
 		// TODO Auto-generated constructor stub
@@ -80,6 +84,11 @@ public class TradePK implements Serializable{
 			return false;
 		return true;
 	}
+
+	
+
+	
+
 	
 	
 }

@@ -24,23 +24,23 @@
 	<ui:define name="PageContent">
 		<br />
 		<h:form>
-			<p:dataTable value="#{capFloorBean.capFloors}" var="c">
+			<p:dataTable value="#" var="cap">
 				<f:facet name="header">Caps and Floors for Sell</f:facet>
 				<p:column>
 					<f:facet name="header">ID</f:facet>
-					<h:outputText value="#{c.id}" />
+					<h:outputText value=" " />
 				</p:column>
 				<p:column>
 					<f:facet name="header">Notional Amount</f:facet>
-					<h:outputText value="#{c.notionalAmount}" />
+					<h:outputText value=" " />
 				</p:column>
 				<p:column>
 					<f:facet name="header">Start Date</f:facet>
-					<h:outputText value="#{c.startDate}" />
+					<h:outputText value=" " />
 				</p:column>
 				<p:column>
 					<f:facet name="header">End Date</f:facet>
-					<h:outputText value="#{c.endDate}" />
+					<h:outputText value=" " />
 				</p:column>
 				<p:column>
 					<h:commandButton action="#" value="Show"
@@ -48,38 +48,120 @@
 				</p:column>
 			</p:dataTable>
 		</h:form>
+		<hr />
+		<div class="col-md-12">
+			<div class="col-md-6">
+				<div class="panel panel-default">
+					<div class="panel-heading">CAP FLOOR INPUTS</div>
+					<div class="panel-body">
 
-		<br />
-		<div class="col-md-6">
+						<h:form>
+							<h:panelGrid >
+								<p:outputLabel value="Cap / Floor" />
+								<p:panelGrid>
+									<p:selectOneMenu id="capfloor" value="#{capbean.c.capFloor}">
+										<f:selectItem itemLabel="cap" itemValue="true" />
+										<f:selectItem itemLabel="floor" itemValue="false" />
+									</p:selectOneMenu>
+								</p:panelGrid>
+								
+								<p:outputLabel value="Put / Call" />
+								<p:panelGrid >
+									<p:selectOneMenu id="putCall" value="#{capbean.c.buySell}">
+										<f:selectItem itemLabel="put" itemValue="true" />
+										<f:selectItem itemLabel="call" itemValue="false" />
+									</p:selectOneMenu>
+								</p:panelGrid>
 
-					<h:form id="form">
-						
 
-						<h:panelGrid columns="2" cellpadding="5">
-                            
-						<div class="form-group">
+								<p:outputLabel value="Start Date" />
+								<p:calendar value="#{capbean.c.startDate}"></p:calendar>
+
+
+								<p:outputLabel value="End Date" />
+								<p:calendar value="#{capbean.c.endDate}"></p:calendar>
+
+
+								<p:outputLabel value="Convention Day" />
+								<p:panelGrid >
+									<p:selectOneMenu id="convention" value=" ">
+										<f:selectItem itemLabel="act/360" itemValue="act/360" />
+										<f:selectItem itemLabel="act/365" itemValue="act/365" />
+									</p:selectOneMenu>
+								</p:panelGrid>
+
+
+
+								<p:outputLabel value="Tenor" />
+								<p:panelGrid >
+									<p:selectOneMenu id="tenor" value="#{capbean.c.tenor}" >
+										<f:selectItem itemLabel="3" itemValue="3" />
+										<f:selectItem itemLabel="6" itemValue="6" />
+										<f:selectItem itemLabel="12" itemValue="12" />
+									</p:selectOneMenu>
+								</p:panelGrid>
+
+
+
+								<p:outputLabel value="Valuation Date" />
+								<p:calendar value="#{capbean.c.expiration}"></p:calendar>
+
+
+
+								<p:outputLabel value="Number of Day" />
+								<p:outputLabel value="60"  />
+
+
+
+								<p:outputLabel value="Notional amount" />
+								<p:inputText value="#{capbean.c.notionalAmount}" />
+
+
+
+								<p:outputLabel value="Risk free Rate" />
+								<p:inputText value=" " />
+
+
+
+								<p:outputLabel value="1.0 Year forward rate" />
+								<p:inputText value=" " />
+
+
+
+								<p:outputLabel value="Reference Index" />
+								<p:outputLabel value="LIBOR" />
+
+
+
+								<p:outputLabel value="Volatility" />
+								<p:inputText value="#{capbean.c.volatility}" />
+
+
+
+								<p:outputLabel value="Strike Price" />
+								<p:inputText value="#{capbean.c.strikePrice}" />
+
+
+								<p:commandButton class="btn btn-primary btn-sm" value="Pricing"
+									action=" " />
+								<p:commandButton class="btn btn-success btn-sm"
+									value="Book Trade" action=" " />
+
+							</h:panelGrid>
+						</h:form>
+					</div>
+				</div>
+				</div>
+				<div class="col-md-6">
+					<div class="panel panel-default">
+						<div class="panel-heading">CAP FLOOR PRICING</div>
+						<div class="panel-body">
 						
 						</div>
-
-							<div class="form-group">
-								<label>Day Convention</label>
-								<div class="col-md-10">
-									<p:panelGrid >
-										<p:selectOneMenu id="convention" value=" " style="width:125px">
-											<f:selectItem itemLabel="act/360" itemValue="act/360" />
-											<f:selectItem itemLabel="act/365" itemValue="act/365" />
-										</p:selectOneMenu>
-									</p:panelGrid>
-								</div>
-								<p:calendar value="#{capFloorBean.capFloor.startDate}"></p:calendar>
-								<p:calendar value="#{capFloorBean.capFloor.endDate}"></p:calendar>
-								<p:inputText value="#{capFloorBean.capFloor.notionalAmount}" />
-								<p:commandButton value="save" action="#{capFloorBean.doSave}"/>
-							</div>
-						</h:panelGrid>
-					</h:form>
+					</div>
 				</div>
-
+			</div>
+	
 	</ui:define>
 
 	<ui:define name="ScriptAdd">

@@ -8,13 +8,17 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="t_derivativeInstrument")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class DerivativeInstrument extends FinancialInstrument {
 
+	@Temporal(TemporalType.DATE)
 	private Date startDate;
+	@Temporal(TemporalType.DATE)
 	private Date endDate;
 	//@OneToMany(mappedBy="fi")
 	//private List<Trade> trades;

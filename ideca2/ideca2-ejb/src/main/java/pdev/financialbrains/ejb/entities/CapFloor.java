@@ -67,6 +67,7 @@ public class CapFloor extends Option {
 		this.notionalAmount = notionalAmount;
 	}
 
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
