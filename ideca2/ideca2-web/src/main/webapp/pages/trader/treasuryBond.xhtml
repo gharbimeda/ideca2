@@ -44,15 +44,7 @@
 					<p:spacer width="10" height="10" />
 					<h:inputText value="#{mdfxincomeBean.faceValue}" />
 					<p:spacer width="10" height="10" />
-					<h:outputText value="Coupon Rate On Bond" />
-					<p:spacer width="10" height="10" />
-					<h:inputText value="#{mdfxincomeBean.timeMaturity}" />
-					<p:spacer width="10" height="10" />
-					<h:outputText value="Frequency Of Coupon" />
-					<p:spacer width="10" height="10" />
-					<h:inputText value="#{mdfxincomeBean.couponRate}" />
-					<p:spacer width="10" height="10" />
-					<h:outputText value="Time To Maturity" />
+					<h:outputText value="Time To Maturiy" />
 					<p:spacer width="10" height="10" />
 					<h:inputText value="#{mdfxincomeBean.timeMaturity}" />
 					<p:spacer width="10" height="10" />
@@ -60,12 +52,21 @@
 					<p:spacer width="10" height="10" />
 					<h:inputText value="#{mdfxincomeBean.currentYield}" />
 					<p:spacer width="10" height="10" />
+					<h:outputText value="Frequency" />
+					<p:spacer width="10" height="10" />
+					<h:inputText value="#{mdfxincomeBean.frequency}" />
+					<p:spacer width="10" height="10" />
+					<h:outputText value="Coupon Rate" />
+					<p:spacer width="10" height="10" />
+					<h:inputText value="#{mdfxincomeBean.couponRate}" />
+					<p:spacer width="10" height="10" />
 					<h:commandButton
-						action="#{mdfxincomeBean.dopriceTreasuryBond(mdfxincomeBean.faceValue,mdfxincomeBean.timeMaturity
-					,mdfxincomeBean.currentYield,mdfxincomeBean.couponFreq,mdfxincomeBean.couponRate)}"
+		action="#{mdfxincomeBean.dopriceTreasuryBond(mdfxincomeBean.faceValue,mdfxincomeBean.timeMaturity
+					,mdfxincomeBean.currentYield,mdfxincomeBean.frequency,mdfxincomeBean.couponRate)}"
 						value="price" />
-					<!-- Float faceValue, Integer timeMaturity, Float currentYield, Integer frequency,
-			Float couponRate -->
+						<!-- //(Float faceValue, Integer timeMaturity, Float currentYield, Integer frequency,
+		//Float couponRate -->
+					
 					<p:spacer width="10" height="10" />
 					<h:outputText value="#{mdfxincomeBean.bondPrice}" />
 					<p:spacer width="10" height="10" />

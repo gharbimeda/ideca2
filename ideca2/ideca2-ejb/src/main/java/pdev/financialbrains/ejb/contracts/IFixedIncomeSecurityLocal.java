@@ -24,6 +24,7 @@ public interface IFixedIncomeSecurityLocal {
 		FixedIncomeSecuritie readById(Integer id);
 
 		
+		public Float dopricTreasuryBond(FixedIncomeSecuritie fx);
 
 		List<FixedIncomeSecuritie> readAll();
 }

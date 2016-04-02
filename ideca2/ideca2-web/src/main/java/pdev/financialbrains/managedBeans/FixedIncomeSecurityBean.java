@@ -21,22 +21,23 @@ public class FixedIncomeSecurityBean {
 
 	private FixedIncomeSecuritie fx = new FixedIncomeSecuritie();
 	private Integer timeMaturity;
-	private Integer couponFreq;
-
+	private Integer frequency;
+//Float faceValue, Integer timeMaturity, Float currentYield, Integer frequency,
+	//Float couponRate
 	private Float faceValue;
 
 	private Float couponRate;
 	private Float yield;
 	private Float currentYield;
+	public Integer getFrequency() {
+		return frequency;
+	}
+
+	public void setFrequency(Integer frequency) {
+		this.frequency = frequency;
+	}
+
 	private Double bondPrice;
-
-	public Integer getCouponFreq() {
-		return couponFreq;
-	}
-
-	public void setCouponFreq(Integer couponFreq) {
-		this.couponFreq = couponFreq;
-	}
 
 	public Float getFaceValue() {
 		return faceValue;
@@ -149,22 +150,28 @@ public class FixedIncomeSecurityBean {
 		this.bondPrice = fxlocal.priceZeroCouponBond(faceValue, timeMaturity,
 				currentYield);
 		init();
-
+		
 		return null;
 
 	}
 
 	public String dopriceTreasuryBond(Float faceValue, Integer timeMaturity, Float currentYield, Integer frequency,
 			Float couponRate) {
-		this.bondPrice = fxlocal.priceTreasuryBond(faceValue, timeMaturity, currentYield, frequency, couponRate);
+		// this.bondPrice = fxlocal.priceTreasuryBond(faceValue, timeMaturity,
+		// currentYield, couponFreq, couponRate);
+		
+		this.bondPrice = fxlocal.priceTreasuryBond(faceValue, timeMaturity,
+				currentYield, frequency, couponRate);
 		init();
 
-		return null;
-
+		return "Prcing done!!";
 	}
-	public String dopricecorpBond(Float faceValue, Integer timeMaturity, Float currentYield, Integer frequency,
-			Float couponRate, Integer months) {
-		this.bondPrice = fxlocal.priceZeroCouponBond(faceValue, timeMaturity, currentYield);
+
+	public String dopricecorpBond(Float faceValue, Integer timeMaturity,
+			Float currentYield, Integer frequency, Float couponRate,
+			Integer months) {
+		this.bondPrice = fxlocal.priceCorpBond(faceValue, timeMaturity,
+				currentYield, frequency, couponRate, months);
 		init();
 
 		return null;
