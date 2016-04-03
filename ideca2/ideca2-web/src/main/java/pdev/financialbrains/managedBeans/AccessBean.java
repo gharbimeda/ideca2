@@ -2,18 +2,21 @@ package pdev.financialbrains.managedBeans;
 
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
 import pdev.financialbrains.ejb.entities.BackOfficeUser;
 import pdev.financialbrains.ejb.entities.Trader;
 import pdev.financialbrains.ejb.entities.User;
 import pdev.financialbrains.ejb.services.UserCrudServices;
+import pdev.financialbrains.util.Util;
 
 @ManagedBean(name="access")
-@RequestScoped
+@ApplicationScoped
 public class AccessBean {
 
 	@EJB
@@ -33,6 +36,7 @@ public class AccessBean {
 		String navigateTo = null;
 		User found = authan.authentification(login, password);
 	
+		Util.userConnect = authan.authentification(login, password);
 		if (found != null) {
 			identityBean.setUserIdentify(found);
 			if(found instanceof Trader){
@@ -56,6 +60,7 @@ public class AccessBean {
 	
 	public String doLogout(){
 		String navigateTo = null;
+		Util.userConnect=null;
 		FacesContext
 		.getCurrentInstance()
 		.getExternalContext()

@@ -3,6 +3,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
 	template="/WEB-INF/templates/traderTemplate/traderTemplate.xhtml">
 	<ui:define name="titleName">TRADES</ui:define>
 	<ui:define name="menuContent">
@@ -22,7 +23,33 @@
 	<ui:define name="PageName">TRADES MENAGEMENT</ui:define>
 	<ui:define name="PageContent">
 
-		<!-- TACHE MARWA -->
+		<h:form>
+			<p:dataTable value="#{tradeBean.trades1}" var="trade">
+				<f:facet name="header">My Trades</f:facet>
+				
+				<p:column>
+					<f:facet name="header">Financial Product</f:facet>
+					<h:outputText value="#{trade.name}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">Value</f:facet>
+					<h:outputText value="#{trade.value}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">Date</f:facet>
+					<h:outputText value="#{trade.pk.date}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">Put/Call</f:facet>
+					<h:outputText value="#{trade.putcallString}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">Status</f:facet>
+					<h:outputText value="#{trade.statusString}" />
+				</p:column>
+				
+			</p:dataTable>
+		</h:form>
 
 	</ui:define>
 </ui:composition>

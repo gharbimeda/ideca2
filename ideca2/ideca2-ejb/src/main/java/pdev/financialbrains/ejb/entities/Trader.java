@@ -119,4 +119,5 @@ public class Trader extends User implements Serializable {
 		this.trades = trades;
 	}
 
+
 }

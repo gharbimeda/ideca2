@@ -18,6 +18,7 @@ import pdev.financialbrains.ejb.entities.Trade;
 import pdev.financialbrains.ejb.entities.TradePK;
 import pdev.financialbrains.ejb.entities.Trader;
 import pdev.financialbrains.ejb.services.TradeCrudServices;
+import pdev.financialbrains.util.Util;
 
 @ManagedBean( name="capbean")
 @ViewScoped

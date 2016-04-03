@@ -25,11 +25,12 @@
 		<class>pdev.financialbrains.ejb.entities.Stock</class>
 		<class>pdev.financialbrains.ejb.entities.Swaption</class>
 		<class>pdev.financialbrains.ejb.entities.Trade</class>
+		<class>pdev.financialbrains.ejb.entities.TradePK</class>
 		<class>pdev.financialbrains.ejb.entities.Trader</class>
 		<class>pdev.financialbrains.ejb.entities.User</class>
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		<properties>
-			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
 		</properties>
