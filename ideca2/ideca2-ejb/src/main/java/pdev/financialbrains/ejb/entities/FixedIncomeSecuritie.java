@@ -18,8 +18,20 @@ public class FixedIncomeSecuritie extends DerivativeInstrument {
 		private Float couponRate;
 		private Float yield;
 		private Float currentYield;
-		private Float bondPrice;
+		private Double bondPrice;
 		private int months;
+		private int bd;
+		
+		
+		public String getbdString(){
+			if (bd == 0){
+				return "ZCB";
+			}else if(bd== 1)
+			{
+				return "treasury";
+			} else return "treasury";
+		}
+		
 		public int getMonths() {
 			return months;
 		}
@@ -78,12 +90,20 @@ public class FixedIncomeSecuritie extends DerivativeInstrument {
 			this.currentYield = currentYield;
 		}
 
-		public Float getBondPrice() {
+		public Double getBondPrice() {
 			return bondPrice;
 		}
 
-		public void setBondPrice(Float bondPrice) {
+		public void setBondPrice(Double bondPrice) {
 			this.bondPrice = bondPrice;
+		}
+
+		public int getBd() {
+			return bd;
+		}
+
+		public void setBd(int bd) {
+			this.bd = bd;
 		}
 
 		public static long getSerialversionuid() {
@@ -91,7 +111,7 @@ public class FixedIncomeSecuritie extends DerivativeInstrument {
 		}
 
 		public FixedIncomeSecuritie(Integer timeMaturity, Integer couponFreq, Float faceValue, Float couponRate,
-				Float yield, Float currentYield, Float bondPrice) {
+				Float yield, Float currentYield, Double bondPrice) {
 			super();
 			this.timeMaturity = timeMaturity;
 			this.couponFreq = couponFreq;
@@ -114,7 +134,7 @@ public class FixedIncomeSecuritie extends DerivativeInstrument {
 		}
 
 		public FixedIncomeSecuritie(Integer id, Float currentPrice, Float volatility, Integer timeMaturity,
-				Integer couponFreq, Float faceValue, Float couponRate, Float yield, Float currentYield, Float bondPrice) {
+				Integer couponFreq, Float faceValue, Float couponRate, Float yield, Float currentYield, Double bondPrice) {
 			super(id, currentPrice, volatility);
 			this.timeMaturity = timeMaturity;
 			this.couponFreq = couponFreq;

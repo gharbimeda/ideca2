@@ -16,7 +16,7 @@ public class TradePK implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private Integer idUser;
 	private Integer id;
-	@Temporal(TemporalType.DATE)
+	
 	private Date date = new Date();
 	
 	

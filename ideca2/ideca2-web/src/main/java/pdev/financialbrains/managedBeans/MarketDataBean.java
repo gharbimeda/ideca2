@@ -34,6 +34,7 @@ public class MarketDataBean {
 	private List<Quote> quotes4 = new ArrayList<>();
 	private List<Rate> rates = new ArrayList<>();
 	private List<Rate> ratess = new ArrayList<>();
+	private List<Rate> ratesss = new ArrayList<>();
 	private Rate rate = new Rate();
 	public Rate getRate() {
 		return rate;
@@ -158,12 +159,21 @@ public class MarketDataBean {
 			quotes4 = quoteLocal.initializeQuotes2("FB");
            rates = quoteLocal.initializeQuotes4("USDEUR");
            ratess = quoteLocal.initializeQuotes4("USDJPY");
+           ratesss = quoteLocal.initializeQuotes4("USDDKK");
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
+	}
+
+	public List<Rate> getRatesss() {
+		return ratesss;
+	}
+
+	public void setRatesss(List<Rate> ratesss) {
+		this.ratesss = ratesss;
 	}
 
 	public List<Quote> getQuotes4() {

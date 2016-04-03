@@ -3,8 +3,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-				xmlns:p="http://primefaces.org/ui"
-	
+	xmlns:p="http://primefaces.org/ui"
 	template="/WEB-INF/templates/traderTemplate/traderTemplate.xhtml">
 	<ui:define name="titleName">FINANCIAL PRODUCTS</ui:define>
 	<ui:define name="linkAdd">
@@ -40,6 +39,7 @@
 
 			<h:panelGrid columns="2">
 
+
 				<h:outputText value="Face Value" />
 				<p:spacer width="10" height="10" />
 				<h:inputText value="#{mdfxincomeBean.faceValue}" />
@@ -54,10 +54,29 @@
 				<p:spacer width="10" height="10" />
 				<h:commandButton
 					action="#{mdfxincomeBean.dopriceZeroCouponBond(mdfxincomeBean.faceValue,mdfxincomeBean.timeMaturity,mdfxincomeBean.couponRate)}"
-					value="price" />
+					value="price" class="btn btn-primary btn-sm" />
 				<p:spacer width="10" height="10" />
 				<h:outputText value="#{mdfxincomeBean.bondPrice}" />
+				<p:spacer width="10" height="10" />
+				<p:outputLabel value="ZCB" />
+				<p:panelGrid>
+					<p:selectOneMenu id="fxincome" value="#{mdfxincomeBean.fx.bd}">
+						<f:selectItem itemLabel="zcb" itemValue="0" />
+						
+					</p:selectOneMenu>
+				</p:panelGrid>
+				<p:spacer width="10" height="10" />
+				<p:outputLabel value="Put / Call" />
+				<p:panelGrid>
+					<p:selectOneMenu id="putCall" value="#{mdfxincomeBean.putCall}">
+						<f:selectItem itemLabel="put" itemValue="0" />
+						<f:selectItem itemLabel="call" itemValue="1" />
+					</p:selectOneMenu>
+				</p:panelGrid>
+				<p:spacer width="10" height="10" />
 
+				<p:commandButton class="btn btn-success btn-sm" value="Book Trade"
+					action="#{mdfxincomeBean.doBookTrade()}" />
 			</h:panelGrid>
 
 		</h:form>

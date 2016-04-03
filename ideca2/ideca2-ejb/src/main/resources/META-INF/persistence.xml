@@ -25,6 +25,7 @@
 		<class>pdev.financialbrains.ejb.entities.Stock</class>
 		<class>pdev.financialbrains.ejb.entities.Swaption</class>
 		<class>pdev.financialbrains.ejb.entities.Trade</class>
+		<class>pdev.financialbrains.ejb.entities.TradePK</class>
 		<class>pdev.financialbrains.ejb.entities.Trader</class>
 		<class>pdev.financialbrains.ejb.entities.User</class>
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
