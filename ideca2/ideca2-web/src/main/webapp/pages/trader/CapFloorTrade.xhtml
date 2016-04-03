@@ -57,10 +57,7 @@
 
 						<h:form>
 							<h:panelGrid columns="2">
-							<!--  
-							<p:outputLabel value="#{capbean.trader.idUser}"/>
-							<p:outputLabel value="#{identity.userIdentify.idUser}"/>
-							-->
+
 								<p:outputLabel value="Cap / Floor" />
 								<p:panelGrid>
 									<p:selectOneMenu id="capfloor" value="#{capbean.c.capFloor}">
@@ -68,9 +65,9 @@
 										<f:selectItem itemLabel="floor" itemValue="1" />
 									</p:selectOneMenu>
 								</p:panelGrid>
-								
+
 								<p:outputLabel value="Put / Call" />
-								<p:panelGrid >
+								<p:panelGrid>
 									<p:selectOneMenu id="putCall" value="#{capbean.putCall}">
 										<f:selectItem itemLabel="put" itemValue="0" />
 										<f:selectItem itemLabel="call" itemValue="1" />
@@ -87,7 +84,7 @@
 
 
 								<p:outputLabel value="Convention Day" />
-								<p:panelGrid >
+								<p:panelGrid>
 									<p:selectOneMenu id="convention" value=" ">
 										<f:selectItem itemLabel="act/360" itemValue="act/360" />
 										<f:selectItem itemLabel="act/365" itemValue="act/365" />
@@ -97,8 +94,8 @@
 
 
 								<p:outputLabel value="Tenor" />
-								<p:panelGrid >
-									<p:selectOneMenu id="tenor" value="#{capbean.c.tenor}" >
+								<p:panelGrid>
+									<p:selectOneMenu id="tenor" value="#{capbean.c.tenor}">
 										<f:selectItem itemLabel="3" itemValue="3" />
 										<f:selectItem itemLabel="6" itemValue="6" />
 										<f:selectItem itemLabel="12" itemValue="12" />
@@ -113,7 +110,7 @@
 
 
 								<p:outputLabel value="Number of Day" />
-								<p:outputLabel value="60"  />
+								<p:outputLabel value="60" />
 
 
 
@@ -155,17 +152,15 @@
 						</h:form>
 					</div>
 				</div>
-				</div>
-				<div class="col-md-6">
-					<div class="panel panel-default">
-						<div class="panel-heading">CAP FLOOR PRICING</div>
-						<div class="panel-body">
-						
-						</div>
-					</div>
+			</div>
+			<div class="col-md-6">
+				<div class="panel panel-default">
+					<div class="panel-heading">CAP FLOOR PRICING</div>
+					<div class="panel-body"></div>
 				</div>
 			</div>
-	
+		</div>
+
 	</ui:define>
 
 	<ui:define name="ScriptAdd">

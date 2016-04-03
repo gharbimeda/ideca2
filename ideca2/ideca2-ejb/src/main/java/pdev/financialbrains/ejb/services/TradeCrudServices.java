@@ -11,6 +11,7 @@ import javax.persistence.Query;
 import pdev.financialbrains.ejb.contracts.ITradeCrudServiceLocal;
 import pdev.financialbrains.ejb.contracts.ITradeCrudServiceRemote;
 import pdev.financialbrains.ejb.entities.Trade;
+import pdev.financialbrains.ejb.entities.User;
 
 @Stateless
 @LocalBean
@@ -77,6 +78,12 @@ public class TradeCrudServices implements ITradeCrudServiceLocal, ITradeCrudServ
 		Query query = entityManager.createQuery("select t from Trade t where t.status=:x and t.putcall=:y");
 		query.setParameter("x", 1);
 		query.setParameter("y", 0);
+		return query.getResultList();
+	}
+	
+	public List<Trade> readTradesByUser(User u){
+		Query query = entityManager.createQuery("select t from Trade t where t.trader=:u", Trade.class);
+		query.setParameter("u", u);
 		return query.getResultList();
 	}
 

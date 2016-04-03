@@ -3,8 +3,46 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
 	template="/WEB-INF/templates/traderTemplate/publicTemplate.xhtml">
 
+	<ui:define name="titleName"> Request </ui:define>
+	<ui:define name="pageLocalisation"> / login </ui:define>
+	<ui:define name="pageActive"> Request</ui:define>
+	<ui:define name="pageDefinition">
+		<h2 class="page-title">
+			<i class="fontello-icon-database"></i> Request
+		</h2>
+		<div class="page-bar"></div>
+	</ui:define>
 	
+	<ui:define name="PageContent">
+	<div class="col-md-12">
+	<div class="col-md-6">
+<h:form>
+<h:panelGrid columns="2">
+<h:outputText value="Mail" />
+					<p:inputText value="#{requestBean.request.mail}" class="form-control"/>
+<h:outputText value="job" />
+					<p:inputText value="#{requestBean.request.job}" class="form-control"/>	
+<h:outputText value="Company" />
+					<p:inputText value="#{requestBean.request.company}" class="form-control"/>					
+									
+<h:commandButton action="#{requestBean.doAdd()}" value="add" class="btn btn-info"/>
+</h:panelGrid>
+
+</h:form>
+</div>
+<div class="col-md-6">
+		<div class="alert alert-info">
+			your request is sent to the admin  
+				you will have a response in your email later
+				<br/>
+			<a href="#{request.contextPath}/pages/public/login.xhtml"
+				class="btn btn-info"> &nbsp; Return to the home page  </a>&nbsp;
+				</div>
+				</div>
+	</div>
+</ui:define>
 	
 </ui:composition>
