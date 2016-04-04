@@ -18,10 +18,7 @@ import pdev.financialbrains.ejb.entities.Stock;
 @ViewScoped
 public class CurrencyManuallyBean {
 	@EJB
-	//private IBondCrudServicesLocal bondlocal;
-	//private List<Bond> bonds = new ArrayList<>();
-	//private Bond bond = new Bond();
-	//private boolean  = false;
+	
 	private ICurrencyCrudServicesLocal curlocal;
 	private List<Currency> curr = new ArrayList<>();
 	private Currency currency = new Currency();
@@ -53,30 +50,28 @@ public class CurrencyManuallyBean {
 	
 	@PostConstruct
 	public void init() {
-	//	stocks= stocklocal.readAll();
-		//stock = new Stock();
+	
 		curr=curlocal.readAll();
 		currency = new Currency();
 	}
 	public String doAdd() {
-		//stocklocal.add(stock);
 		curlocal.add(currency);
 		System.out.println("Im inside ADD************");
 		return null;
 	}
 	public String doUpdate() {
-		//stocklocal.add(stock);
 		curlocal.update2(currency);
 		init();
 		return null;
 	}
 
 	public String doDelete(Currency b) {
-				curlocal.delete2(b);
+		curlocal.delete2(b);
 		init();
 		return null;
 	}
 	 public String initialiser(){
+		
 		 currency = new Currency();
 		 return null;
 	 }

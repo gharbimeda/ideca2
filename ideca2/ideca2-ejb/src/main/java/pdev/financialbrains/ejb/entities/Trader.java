@@ -22,6 +22,8 @@ public class Trader extends User implements Serializable {
 	private String job;
 	private String nationality;
 	private String phoneNumber;
+    @OneToMany(mappedBy="trader")
+	private List<Trade> trades;
 	private static final long serialVersionUID = 1L;
 
 
@@ -108,5 +110,14 @@ public class Trader extends User implements Serializable {
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
+
+	public List<Trade> getTrades() {
+		return trades;
+	}
+
+	public void setTrades(List<Trade> trades) {
+		this.trades = trades;
+	}
+
 
 }

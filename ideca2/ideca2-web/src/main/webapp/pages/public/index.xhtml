@@ -8,9 +8,11 @@
 	<ui:define name="menuContent">
 		<li><a class="menu-top-active"
 			href="#{request.contextPath}/pages/public/index.xhtml">HOME</a></li>
-		<li><a href="#{request.contextPath}/pages/public/menuProduct.xhtml">FINANCIAL PRODUCTS</a></li>
+		<li><a
+			href="#{request.contextPath}/pages/public/menuProduct.xhtml">FINANCIAL
+				PRODUCTS</a></li>
 		<li><a href="#{request.contextPath}/pages/public/login.xhtml">LOGIN</a></li>
-	
+
 	</ui:define>
 	<ui:define name="HomePageContent">
 		<section id="main-slider" class="no-margin">
@@ -28,10 +30,13 @@
 						<div class="row slide-margin">
 							<div class="col-sm-6">
 								<div class="carousel-content">
-									<h1 class="animation animated-item-1" style="color: #f0f0f0">Lorem
-										ipsum dolor sit amet consectetur adipisicing elit</h1>
-									<h2 class="animation animated-item-2">Accusantium
-										doloremque laudantium totam rem aperiam, eaque ipsa...</h2>
+									<h1 class="animation animated-item-1" style="color: #f0f0f0">JP
+										Morgan names new e-trading heads in Europe and US</h1>
+									<h4 class="animation animated-item-2">JP Morgan's head of
+										European electronic equity trading is swapping London for New
+										York to take charge of the Americas side of a global unit that
+										the bank has grown from a self-declared "laggard" into a
+										top-tier player in recent years.</h4>
 									<a class="btn-slide animation animated-item-3" href="#">Read
 										More</a>
 								</div>
@@ -103,7 +108,73 @@
 			<i class="fa fa-chevron-right"></i>
 		</a> </section>
 	</ui:define>
-	<ui:define name="PageName">Add Currency</ui:define>
+	<ui:define name="PageName"></ui:define>
+	<ui:define name="PageContent">
+		<h:form id="form_3">
+			
+			
+			<h:dataTable value="#{mdBean.rates}" var="rate" styleClass="table table-bordered" >
+			<h:column>
+					<f:facet name="header">
+						<h:outputText value="NAME" />
+					</f:facet>
+					<h:outputText value="#{rate.name}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="DATE" />
+					</f:facet>
+					<h:outputText value="#{rate.date}" />
+					<h:column>
+					<f:facet name="header">
+						<h:outputText value="ASK" />
+					</f:facet>
+					<h:outputText value="#{rate.ask}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="BID" />
+					</f:facet>
+					<h:outputText value="#{rate.bid}" />
+				</h:column>
+				</h:column>
+				
+							
+			</h:dataTable>
+		</h:form>
+		
+		<h:form id="form_4">
+			
+			<h:dataTable value="#{mdBean.ratess}" var="rate" styleClass="table table-bordered" >
+			<h:column>
+					<f:facet name="header">
+						<h:outputText value="NAME" />
+					</f:facet>
+					<h:outputText value="#{rate.name}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="DATE" />
+					</f:facet>
+					<h:outputText value="#{rate.date}" />
+					<h:column>
+					<f:facet name="header">
+						<h:outputText value="ASK" />
+					</f:facet>
+					<h:outputText value="#{rate.ask}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="BID" />
+					</f:facet>
+					<h:outputText value="#{rate.bid}" />
+				</h:column>
+				</h:column>
+				
+							
+			</h:dataTable>
+		</h:form>
+	</ui:define>
 	<ui:define name="ScriptAdd">
 		<!-- Mine -->
 		<script

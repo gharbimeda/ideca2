@@ -62,19 +62,19 @@ public class Main {
 
 		Trade trade = new Trade();
 		trade.setName("waiting !");
-		trade.setValue(25d);
+		//trade.setValue(25d);
 		trade.setStatus(2);
 		TradeManagementDelegate.getInstance().doCreate(trade);
 
 		Trade trade2 = new Trade();
 		trade2.setName("En Attente .....");
-		trade2.setValue(20d);
+		//trade2.setValue(20d);
 		trade2.setStatus(2);
 		TradeManagementDelegate.getInstance().doCreate(trade2);
 
 		Trade trade3 = new Trade();
 		trade3.setName("Still Waiting !!");
-		trade3.setValue(82d);
+		//trade3.setValue(82d);
 		trade3.setStatus(2);
 		TradeManagementDelegate.getInstance().doCreate(trade3);
 

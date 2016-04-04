@@ -62,6 +62,12 @@ public class UserCrudServices  implements IUserCrudServiceLocal, IUserCrudServic
 		return entityManager.createQuery("select u from User u", User.class).getResultList();
 
 	}
+	
+	public User readOneUser(Integer id){
+		Query query = entityManager.createQuery("select u from User u where id= :id", User.class);
+		query.setParameter("id", id);
+		return (User) query.getSingleResult();
+	}
 
 
 }

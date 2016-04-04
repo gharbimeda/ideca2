@@ -2,15 +2,21 @@ package pdev.financialbrains.ejb.entities;
 
 import java.util.Date;
 
+import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
+@Table(name="t_option")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public abstract class Option extends DerivativeInstrument {
+public class Option extends DerivativeInstrument {
 
 	private Boolean buySell;
+	@Temporal(TemporalType.DATE)
 	private Date expiration;
 	private Integer riskFree;
 	private Float strikePrice;

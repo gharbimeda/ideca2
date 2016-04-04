@@ -62,21 +62,18 @@ public class StockManuallyBean {
 		return null;
 	}
 	public String doUpdate() {
-		//bondlocal.update2(bond);
-		stocklocal.add(stock);
+		stocklocal.update2(stock);
 		init();
 		return null;
 	}
 
 	public String doDelete(Stock b) {
-		//bondlocal.delete2(b);
 		stocklocal.delete2(b);
 		init();
 		return null;
 	}
 	 public String initialiser(){
-		// bond=new Bond();
-		 stock = new Stock();
+ 		 stock = new Stock();
 		 return null;
 	 }
 	

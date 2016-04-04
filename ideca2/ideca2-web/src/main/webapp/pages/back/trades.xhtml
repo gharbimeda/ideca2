@@ -16,29 +16,76 @@
 		<div class="page-bar"></div>
 	</ui:define>
 	<ui:define name="pageContent">
-		<section>
+
+		<nav>
+		<ul class="btn-toolbar page-nav margin-btn">
+			<li><a class="btn btn-well btn-glyph"
+				href="#" style="width: 80px"><i
+					class="fontello-icon-money f30"></i><span class="block">Z C B P</span></a></li>
+			<li><a class="btn btn-well btn-glyph"
+				href="#" style="width: 80px"><i
+					class="fontello-icon-money f30"></i><span class="block">Treasury BP</span></a></li>
+			<li><a class="btn btn-well btn-glyph"
+				href="#" style="width: 80px"><i
+					class="fontello-icon-money f30"></i><span class="block">Corporate BP</span></a></li>
+			<li><a class="btn btn-well btn-glyph" 
+			href="#" style="width: 80px" data-toggle="modal"><i
+					class="fontello-icon-money f30"></i><span class="block">FR Swap</span></a></li>
+			<li><a class="btn btn-well btn-glyph" href="#"
+				style="width: 80px" data-toggle="modal"><i
+					class="fontello-icon-money f30"></i><span class="block">Equity O</span></a></li>
+			<li><a class="btn btn-well btn-glyph" href="#"
+				style="width: 80px" data-toggle="modal"><i
+					class="fontello-icon-money f30"></i><span class="block">FX Option</span></a></li>
+			<li><a class="btn btn-well btn-glyph" href="#"
+				style="width: 80px" data-toggle="modal"><i
+					class="fontello-icon-money f30"></i><span class="block">CAP FLOOR</span></a></li>
+			
+		</ul>
+		<hr class="margin-0x" />
+		</nav>
 		<br />
-		<div class="row-fluid">
-			<h:form>
-				<p:dataTable class="table table-striped table-hover">
-					<f:facet name="header">
-						<h:outputText value="all travels" />
-					</f:facet>
-
-					<p:column headerText="id">
-						<h:outputText value=" " />
-					</p:column>
-
-					<p:column headerText="name">
-						<h:outputText value=" " />
-					</p:column>
-					<p:column headerText="description">
-						<h:outputText value=" " />
-					</p:column>
-				</p:dataTable>
-			</h:form>
-		</div>
-		</section>
-
+		<h:form>
+			<p:dataTable value="#{tradeBean.trades}" var="trade">
+				<f:facet name="header">All Trades</f:facet>
+				<p:column>
+					<f:facet name="header">Trader</f:facet>
+					<h:outputText value="#{trade.trader.login}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">Financial Product</f:facet>
+					<h:outputText value="#{trade.name}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">Date</f:facet>
+					<h:outputText value="#{trade.pk.date}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">Put/Call</f:facet>
+					<h:outputText value="#{trade.putcallString}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">Status</f:facet>
+					<h:outputText value="#{trade.statusString}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">Accept</f:facet>
+					<h:commandButton action="#{tradeBean.doAccept(trade)}" value="Accept"
+						styleClass="btn btn-small btn-green" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">Decline</f:facet>
+					<h:commandButton action="#{tradeBean.doDecline(trade)}" value="Decline"
+						styleClass="btn btn-small btn-red" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">Detail</f:facet>
+					<h:commandButton action="#" value="Decline"
+						styleClass="btn btn-small btn-yellow" />
+				</p:column>
+			</p:dataTable>
+		</h:form>
+		
+		
 	</ui:define>
 </ui:composition>

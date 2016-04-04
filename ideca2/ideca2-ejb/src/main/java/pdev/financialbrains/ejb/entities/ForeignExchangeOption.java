@@ -1,5 +1,6 @@
 package pdev.financialbrains.ejb.entities;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 

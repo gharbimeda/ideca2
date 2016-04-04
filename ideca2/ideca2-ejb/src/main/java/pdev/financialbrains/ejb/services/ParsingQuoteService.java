@@ -23,6 +23,7 @@ import pdev.financialbrains.ejb.contracts.IParsingQuoteServiceLocal;
 import pdev.financialbrains.ejb.contracts.IParsingQuoteServiceRemote;
 import pdev.financialbrains.ejb.entities.Query;
 import pdev.financialbrains.ejb.entities.Quote;
+import pdev.financialbrains.ejb.entities.Rate;
 import pdev.financialbrains.ejb.entities.Stock;
 
 /**
@@ -65,17 +66,7 @@ public class ParsingQuoteService implements IParsingQuoteServiceRemote,
 				query = (Query) unm.unmarshal(f);
 
 				for (Quote quote : query.results.quotes) {
-					//System.out.println("Ticker :" + quote.getSymbol());
-					//System.out.println("Company Name :" + quote.getName());
-					//System.out.println("Ask :" + quote.getAsk());
-					//System.out.println("Bid :" + quote.getBid());
-					//System.out.println("Previous Close :"
-							//+ quote.getPreviousClose());
-					//System.out.println("Open :" + quote.getOpen());
-					//System.out.println("Change :" + quote.getChange());
-					//System.out.println("Volume :" + quote.getVolume());
-					//quotes = query.results.getQuotes();
-					//quotes.add();
+					
 					quotes.add(quote);
 
 				}
@@ -86,6 +77,41 @@ public class ParsingQuoteService implements IParsingQuoteServiceRemote,
 		}
 		return quotes;
 	}
+	 @Override
+		public List<Quote> initializeQuotes3(String ticker) throws IOException {
+			List<Quote> quotes = new ArrayList<>();
+
+			String fileDir = "E:/yahooQuotes2.xml";
+			String request = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.xchange%20where%20pair%3D%22"+ticker+
+					"%22&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
+			String result = performRequest(request);
+
+			PrintWriter pr = new PrintWriter(fileDir);
+			try {
+				pr.write(result);
+			} finally {
+				pr.close();
+
+				Query query = new Query();
+
+				try {
+					File f = new File(fileDir);
+					JAXBContext jaxbContext = JAXBContext.newInstance(Query.class);
+					Unmarshaller unm = jaxbContext.createUnmarshaller();
+					query = (Query) unm.unmarshal(f);
+
+					for (Quote quote : query.results.quotes) {
+						
+						quotes.add(quote);
+
+					}
+
+				} catch (Exception ex) {
+					ex.printStackTrace();
+				}
+			}
+			return quotes;
+		}
 
 	private static String performRequest(String urlStr) throws IOException {
 		URL url = new URL(urlStr);
@@ -149,6 +175,51 @@ public class ParsingQuoteService implements IParsingQuoteServiceRemote,
 				ex.printStackTrace();
 			}
 		}
+	}
+
+	@Override
+	public List<Rate> initializeQuotes4(String ticker) throws IOException {
+		List<Rate> rates = new ArrayList<>();
+
+    	String fileDir = "E:/yahooCurrencies.xml";
+	       String request = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.xchange%20where%20pair%3D%22"+ticker+
+	    		   "%22&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
+       String result = performRequest(request);
+		
+       PrintWriter pr = new PrintWriter(fileDir);
+       try {
+       	pr.write(result);
+       } finally{
+       	pr.close();
+       
+       	Query query = new Query();
+       
+       	try {
+       		File f = new File(fileDir);
+       		JAXBContext jaxbContext = JAXBContext.newInstance(Query.class);
+				Unmarshaller unm = jaxbContext.createUnmarshaller();
+				query = (Query) unm.unmarshal(f);
+				
+				for (Rate rate : query.results.rates) {
+					System.out.println("Rate :"+rate.getRate());
+					System.out.println("Name :"+rate.getName());
+					System.out.println("Date:"+rate.getDate());
+					System.out.println("Time :"+rate.getTime());
+					System.out.println("As :"+rate.getAsk());
+					System.out.println("Bid :"+rate.getBid());
+					rates = query.results.getRates();
+		        }
+				
+				
+       	}catch(Exception ex) {
+       		ex.printStackTrace();
+       	}
+        
+       }
+       return rates;
+       
+      
+	
 	}
 
 }
