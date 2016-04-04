@@ -16,7 +16,7 @@ import pdev.financialbrains.ejb.services.UserCrudServices;
 import pdev.financialbrains.util.Util;
 
 @ManagedBean(name="access")
-@ApplicationScoped
+@RequestScoped
 public class AccessBean {
 
 	@EJB
