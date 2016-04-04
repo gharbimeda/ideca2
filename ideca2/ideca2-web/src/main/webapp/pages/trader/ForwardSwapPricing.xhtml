@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/traderTemplate/traderTemplate.xhtml">
+	<ui:define name="titleName">FORWARD SWAP PRICING</ui:define>
+	<ui:define name="menuContent">
+		<li><a href="#{request.contextPath}/pages/trader/home.xhtml"><i
+				class="fa fa-home" /> HOME</a></li>
+		<li><a class="menu-top-active"
+			href="#{request.contextPath}/pages/trader/menuProduct.xhtml"><i
+				class="fa fa-money" /> FINANCIAL PRODUCTS</a></li>
+		<li><a href="#{request.contextPath}/pages/trader/trades.xhtml"><i
+				class="fa fa-shopping-cart" /> MY TRADES</a></li>
+		<li><a href="#{request.contextPath}/pages/trader/messages.xhtml"><i
+				class="fa fa-wechat" /> MESSAGES</a></li>
+		<li><a href="#{request.contextPath}/pages/trader/contactUs.xhtml"><i
+				class="fa fa-inbox" /> CONTACT US</a></li>
+	</ui:define>
+	<ui:define name="PageName">FORWARD SWAP PRICING</ui:define>
+	<ui:define name="PageContent">
+		<h:form>
+			<h:panelGrid columns="2">
+				<h:outputText value="Strike Rate" />
+				<p:inputText value="#{fsbean.strikeRate}" />
+				<h:outputText value="Rate" />
+				<p:inputText value="#{fsbean.rate}" />
+				<h:outputText value="Notional" />
+				<p:inputText value="#{fsbean.notional}" />
+				<h:outputText value="Period" />
+				<p:inputText value="#{fsbean.period}" />
+				<h:outputText value="Expiry Time" />
+				<p:inputText value="#{fsbean.expiryTime}" />
+				<h:outputText value="Volatility" />
+				<p:inputText value="#{fsbean.volatility}" />
+				<p:commandButton action="#{fsbean.doPrice()}" value="Price" />
+			</h:panelGrid>
+			<h:panelGroup layout="block">
+				<h:outputText value="#{fsbean.result}"/>
+			</h:panelGroup>
+		</h:form>
+	</ui:define>
+</ui:composition>

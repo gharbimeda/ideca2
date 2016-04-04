@@ -26,5 +26,9 @@ public interface ITradeCrudServiceLocal {
 	Integer readAccepted();
 	
 	Integer readRefused();
+	
+	void settle(Trade trade);
+	
+	void decline(Trade trade);
 
 }

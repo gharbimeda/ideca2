@@ -71,4 +71,16 @@ public class TradeCrudServices implements ITradeCrudServiceLocal, ITradeCrudServ
 		return query.getResultList().size();
 	}
 
+	@Override
+	public void settle(Trade trade) {
+		trade.setStatus(1);
+		entityManager.merge(trade);
+	}
+
+	@Override
+	public void decline(Trade trade) {
+		trade.setStatus(0);
+		entityManager.merge(trade);		
+	}
+
 }
