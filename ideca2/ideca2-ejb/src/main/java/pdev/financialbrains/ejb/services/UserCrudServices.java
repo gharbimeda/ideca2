@@ -70,4 +70,13 @@ public class UserCrudServices  implements IUserCrudServiceLocal, IUserCrudServic
 	}
 
 
+
+	@Override
+	public List<User> readAllButOne(User user) {
+		Query query = entityManager.createQuery("select u from User u where id!=:id", User.class);
+		query.setParameter("id", user.getIdUser());
+		return query.getResultList();
+	}
+
+
 }

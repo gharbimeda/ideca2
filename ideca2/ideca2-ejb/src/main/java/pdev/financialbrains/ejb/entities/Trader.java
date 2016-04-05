@@ -119,5 +119,13 @@ public class Trader extends User implements Serializable {
 		this.trades = trades;
 	}
 
+	@Override
+	public String toString() {
+		return "Trader [cin=" + cin + ", adress=" + adress + ", company=" + company + ", creditCard=" + creditCard
+				+ ", dateOfBirth=" + dateOfBirth + ", firstName=" + firstName + ", lastName=" + lastName + ", job="
+				+ job + ", nationality=" + nationality + ", phoneNumber=" + phoneNumber + ", trades=" + trades
+				+ ", toString()=" + super.toString() + "]";
+	}
+
 
 }

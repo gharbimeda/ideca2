@@ -11,7 +11,6 @@ import javax.persistence.Query;
 import pdev.financialbrains.ejb.contracts.IMessageCrudServicesLocal;
 import pdev.financialbrains.ejb.contracts.IMessageCrudServicesRemote;
 import pdev.financialbrains.ejb.entities.Message;
-import pdev.financialbrains.ejb.entities.Stock;
 
 /**
  * Session Bean implementation class MessageCrudServices

@@ -3,7 +3,8 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	template="/WEB-INF/templates/traderTemplate/traderTemplate.xhtml">
+	template="/WEB-INF/templates/traderTemplate/traderTemplate.xhtml"
+                xmlns:p="http://primefaces.org/ui">
 	<ui:define name="titleName">MESSAGES</ui:define>
 	<ui:define name="menuContent">
 		<li><a href="#{request.contextPath}/pages/trader/home.xhtml"><i
@@ -22,7 +23,13 @@
 	<ui:define name="PageName">MESSAGE MENAGEMENT</ui:define>
 	<ui:define name="PageContent">
 		<h:form>
-			<!-- TACHE ANOUAR -->
+			<h:panelGrid columns="2">
+				<h:outputText value="Destination" />
+				<h:selectOneListbox value="#{messageBean.traders}"></h:selectOneListbox>
+				<h:outputText value="Message" />
+				<p:inputTextarea value="#{messageBean.text}" />
+			</h:panelGrid>
+			<h:commandButton action="#{messageBean.doSend()}" value="Send" /> 
 		</h:form>
 	</ui:define>
 </ui:composition>
