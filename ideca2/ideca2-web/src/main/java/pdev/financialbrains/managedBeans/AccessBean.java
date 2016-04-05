@@ -16,7 +16,7 @@ import pdev.financialbrains.ejb.services.UserCrudServices;
 import pdev.financialbrains.util.Util;
 
 @ManagedBean(name="access")
-@ApplicationScoped
+@RequestScoped
 public class AccessBean {
 
 	@EJB
@@ -36,7 +36,7 @@ public class AccessBean {
 		String navigateTo = null;
 		User found = authan.authentification(login, password);
 	
-		Util.userConnect = authan.authentification(login, password);
+		//Util.userConnect = authan.authentification(login, password);
 		if (found != null) {
 			identityBean.setUserIdentify(found);
 			if(found instanceof Trader){
@@ -60,7 +60,7 @@ public class AccessBean {
 	
 	public String doLogout(){
 		String navigateTo = null;
-		Util.userConnect=null;
+		//Util.userConnect=null;
 		FacesContext
 		.getCurrentInstance()
 		.getExternalContext()

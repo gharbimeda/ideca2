@@ -78,15 +78,17 @@ public List<Trade> remplir(){
 	public void doBookTrade(){
 		Trade t = new Trade();
 		TradePK pk = new TradePK();
-		pk.setIdUser(1);
 		pk.setId(i);
 		i++;
+		pk.setIdUser(1);
 		t.setPk(pk);
+		t.setFi(c);
+		t.setTrader(trader);
 		t.setPutcall(putCall);
 		t.setStatus(2);
 		t.setName(c.getCapFloorString());
 		t.setValue(c.getNotionalAmount());
-		tradeServices.update(t);
+		tradeServices.create(t);
 	}
 	
 	public Trader getTrader() {
