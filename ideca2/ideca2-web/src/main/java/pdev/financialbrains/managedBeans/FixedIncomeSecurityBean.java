@@ -10,6 +10,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 
+import com.sun.mail.auth.MD4;
+
 import pdev.financialbrains.ejb.contracts.IFixedIncomeSecurityLocal;
 import pdev.financialbrains.ejb.entities.Bond;
 import pdev.financialbrains.ejb.entities.CapFloor;
@@ -25,7 +27,6 @@ import pdev.financialbrains.ejb.services.derivativesCrudService;
 @ManagedBean(name = "mdfxincomeBean")
 @ViewScoped
 public class FixedIncomeSecurityBean {
-	
 
 	@ManagedProperty("#{identity.userIdentify}")
 	private Trader trader;
@@ -37,10 +38,10 @@ public class FixedIncomeSecurityBean {
 
 	@EJB
 	UserCrudServices userCrudServices;
-	private List<Trade> trades ;
+	private List<Trade> trades;
 
-	
-	
+	@EJB
+	private TradeCrudServices tradeServices;
 
 	@EJB
 	private IFixedIncomeSecurityLocal fxlocal;
@@ -52,16 +53,18 @@ public class FixedIncomeSecurityBean {
 	private Integer timeMaturity;
 	private Integer frequency;
 
-	private Float faceValue; 
+	private Float faceValue;
 	private int months;
 
 	private Float couponRate;
 	private Float yield;
 	private Float currentYield;
 	private Double bondPrice;
-	
+	private Integer putCall;
 
-	
+	private int i = 10;
+	private List<Trade> fixes;
+
 	public Trader getTrader() {
 		return trader;
 	}
@@ -77,6 +80,7 @@ public class FixedIncomeSecurityBean {
 	public void setTrades(List<Trade> trades) {
 		this.trades = trades;
 	}
+
 	public Integer getFrequency() {
 		return frequency;
 	}
@@ -84,7 +88,6 @@ public class FixedIncomeSecurityBean {
 	public void setFrequency(Integer frequency) {
 		this.frequency = frequency;
 	}
-
 
 	public Float getFaceValue() {
 		return faceValue;
@@ -137,6 +140,8 @@ public class FixedIncomeSecurityBean {
 	@PostConstruct
 	public void init() {
 		fixedIncomeSecurities = fxlocal.readAll();
+		fixes = remplir();
+
 	}
 
 	public IFixedIncomeSecurityLocal getFxlocal() {
@@ -179,7 +184,6 @@ public class FixedIncomeSecurityBean {
 	}
 
 	public String doDelete(Bond b) {
-		// bondlocal.delete2(b);
 		fxlocal.delete2(fx);
 		init();
 		return null;
@@ -187,25 +191,24 @@ public class FixedIncomeSecurityBean {
 
 	public String initialiser() {
 
-		// bond=new Bond();
 		fx = new FixedIncomeSecuritie();
 		return null;
 	}
 
 	public String dopriceZeroCouponBond(Float faceValue, Integer timeMaturity,
 			Float currentYield) {
+		String nav;
 		this.bondPrice = fxlocal.priceZeroCouponBond(faceValue, timeMaturity,
 				currentYield);
 		init();
-		
+		// nav ="/pages/trader/menuProduct.xhtml?faces-redirect=true";
 		return null;
 
 	}
 
-	public String dopriceTreasuryBond(Float faceValue, Integer timeMaturity, Float currentYield, Integer frequency,
-			Float couponRate) {
-	
-		
+	public String dopriceTreasuryBond(Float faceValue, Integer timeMaturity,
+			Float currentYield, Integer frequency, Float couponRate) {
+
 		this.bondPrice = fxlocal.priceTreasuryBond(faceValue, timeMaturity,
 				currentYield, frequency, couponRate);
 		init();
@@ -223,34 +226,64 @@ public class FixedIncomeSecurityBean {
 		return null;
 
 	}
+
 	public List<FixedIncomeSecuritie> doReadAll() {
 
 		fixedIncomeSecurities = new ArrayList<FixedIncomeSecuritie>();
 		for (Trade d : trades) {
-			
-				    DerivativeInstrument fixed = (FixedIncomeSecuritie) d.getFi();
-				    fixedIncomeSecurities.add((FixedIncomeSecuritie) fixed);
-				
-			
+
+			DerivativeInstrument fixed = (FixedIncomeSecuritie) d.getFi();
+			fixedIncomeSecurities.add((FixedIncomeSecuritie) fixed);
+
 		}
 
 		return fixedIncomeSecurities;
 	}
 
 	public String doSave() {
-		String navTo = null;
-		derivativesCrudService.createDervivativesInstrument((DerivativeInstrument) fixedincome);
+		String navTo ;
+		derivativesCrudService
+				.createDervivativesInstrument((DerivativeInstrument) fixedincome);
 		Trade trade1 = new Trade();
 		TradePK pk = new TradePK();
-		pk.setId(22);
+		pk.setId(11);
 		pk.setIdUser(1);
 		pk.setDate(new Date());
 		trade1.setPk(pk);
 		tradeService.create(trade1);
 		trades = tradeService.readAll();
 		fixedIncomeSecurities = doReadAll();
-		//navTo = "/pages/trader/CapFloorTrade.jsf?faces-redirect=true";
+		navTo = "/pages/trader/menuProduct.xhtml?faces-redirect=true";
 		return navTo;
+	}
+
+	public void doBookTrade() {
+		Trade t = new Trade();
+		TradePK pk = new TradePK();
+		pk.setIdUser(1);
+		 pk.setId(i);
+		i++;
+		pk.setDate(new Date());
+		 t.setPk(pk);
+		 t.setPutcall(putCall);
+		 t.setStatus(2);
+		 t.setName(fx.getbdString());
+		 t.setValue(45.2f);
+		 tradeServices.update(t);
+	}
+
+	public List<Trade> remplir() {
+		trades = tradeServices.readPutAccepted();
+		List<Trade> fixes = new ArrayList<Trade>();
+		for (Trade t : trades) {
+			if (t.getName().equalsIgnoreCase("ZCB")
+					|| t.getName().equalsIgnoreCase("treasury")
+					|| t.getName().equalsIgnoreCase("corporate")) {
+				fixes.add(t);
+			}
+		}
+		return fixes;
+
 	}
 
 	public int getMonths() {
@@ -267,5 +300,37 @@ public class FixedIncomeSecurityBean {
 
 	public void setFixedincome(DerivativeInstrument fixedincome) {
 		this.fixedincome = fixedincome;
+	}
+
+	public TradeCrudServices getTradeServices() {
+		return tradeServices;
+	}
+
+	public void setTradeServices(TradeCrudServices tradeServices) {
+		this.tradeServices = tradeServices;
+	}
+
+	public Integer getPutCall() {
+		return putCall;
+	}
+
+	public void setPutCall(Integer putCall) {
+		this.putCall = putCall;
+	}
+
+	public int getI() {
+		return i;
+	}
+
+	public void setI(int i) {
+		this.i = i;
+	}
+
+	public List<Trade> getFixes() {
+		return fixes;
+	}
+
+	public void setFixes(List<Trade> fixes) {
+		this.fixes = fixes;
 	}
 }
