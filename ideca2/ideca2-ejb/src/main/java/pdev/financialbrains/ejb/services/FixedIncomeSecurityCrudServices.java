@@ -61,19 +61,19 @@ public class FixedIncomeSecurityCrudServices implements IFixedIncomeSecurityRemo
 	}
 
 	@Override
-	public Double priceZeroCouponBond(Float faceValue, Integer timeMaturity, Float currentYield) {
+	public Float priceZeroCouponBond(Float faceValue, Integer timeMaturity, Float currentYield) {
 		// TODO Auto-generated method stub
-		Double  Price;
-		return Price = faceValue/(Math.pow(1+currentYield, timeMaturity));
+		Float  Price;
+		return Price = (float) (faceValue/(Math.pow(1+currentYield, timeMaturity)));
 	}
 
 	@Override
-	public Double priceTreasuryBond(Float faceValue, Integer timeMaturity, Float currentYield, Integer frequency,
+	public Float priceTreasuryBond(Float faceValue, Integer timeMaturity, Float currentYield, Integer frequency,
 			Float couponRate) {
-		Double Price ; 
-		return Price = couponRate*(faceValue/frequency)*
+		Float Price ; 
+		return Price = (float) (couponRate*(faceValue/frequency)*
 				(1-(Math.pow(1+currentYield, (1/frequency)-1))+
-						faceValue/Math.pow(1+currentYield, timeMaturity));
+						faceValue/Math.pow(1+currentYield, timeMaturity)));
 	}
 
 	public Float dopricTreasuryBond(FixedIncomeSecuritie fx)
@@ -83,11 +83,11 @@ public class FixedIncomeSecurityCrudServices implements IFixedIncomeSecurityRemo
 		
 	}
 	@Override
-	public Double priceCorpBond(Float faceValue, Integer timeMaturity, Float currentYield, Integer frequency,
+	public Float priceCorpBond(Float faceValue, Integer timeMaturity, Float currentYield, Integer frequency,
 			Float couponRate, Integer months) {
-		Double Price;
+		Float Price;
 		
-		return Price = (couponRate*(faceValue/frequency))*(1-(1+Math.pow(Math.pow(1+currentYield,(1/frequency)-1), 0-(timeMaturity*frequency))))+faceValue/Math.pow(1+currentYield,(timeMaturity+months)/12)+((faceValue*couponRate)/(frequency/Math.pow(1+currentYield,months/12)));
+		return Price = (float) ((couponRate*(faceValue/frequency))*(1-(1+Math.pow(Math.pow(1+currentYield,(1/frequency)-1), 0-(timeMaturity*frequency))))+faceValue/Math.pow(1+currentYield,(timeMaturity+months)/12)+((faceValue*couponRate)/(frequency/Math.pow(1+currentYield,months/12))));
 	}
 	@Override
 	public Boolean delete2(FixedIncomeSecuritie f) {

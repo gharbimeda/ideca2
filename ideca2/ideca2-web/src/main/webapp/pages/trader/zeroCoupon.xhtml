@@ -30,6 +30,7 @@
 		<li><a href="#{request.contextPath}/pages/trader/contactUs.xhtml"><i
 				class="fa fa-inbox" /> CONTACT US</a></li>
 	</ui:define>
+	
 	<ui:define name="PageName">FINANCIAL PRODUCTS</ui:define>
 	<ui:define name="PageContent">
 
@@ -56,7 +57,9 @@
 					action="#{mdfxincomeBean.dopriceZeroCouponBond(mdfxincomeBean.faceValue,mdfxincomeBean.timeMaturity,mdfxincomeBean.couponRate)}"
 					value="price" class="btn btn-primary btn-sm" />
 				<p:spacer width="10" height="10" />
-				<h:outputText value="#{mdfxincomeBean.bondPrice}" />
+				
+									<h:inputText value="#{mdfxincomeBean.bondPrice}" styleClass="form-control input-rounded"/>
+				
 				<p:spacer width="10" height="10" />
 				<p:outputLabel value="ZCB" />
 				<p:panelGrid>

@@ -122,7 +122,7 @@ public class PricingCorporateBond extends JFrame {
 				Integer Months = Integer.parseInt(tf_months.getText());
 
 				
-				Double Price=FixedIncomeSecurityManagementDelegate.doPriceCorpBond(FaceValue, TimeToMaturity,InterestRate , Frequency, CouponRate, Months);
+				Float Price=FixedIncomeSecurityManagementDelegate.doPriceCorpBond(FaceValue, TimeToMaturity,InterestRate , Frequency, CouponRate, Months);
 
 				tf_price.setText(Price.toString());
 			}
