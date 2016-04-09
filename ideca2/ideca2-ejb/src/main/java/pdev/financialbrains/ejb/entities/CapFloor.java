@@ -13,7 +13,7 @@ public class CapFloor extends Option {
 	private Integer tenor;
 	private Integer lastFixing;
 	private Integer dayCount;
-	private Float notionalAmount;
+	private Double notionalAmount;
 	private Integer capFloor;
 	private static final long serialVersionUID = 1L;
 
@@ -61,11 +61,11 @@ public class CapFloor extends Option {
 		this.dayCount = dayCount;
 	}
 
-	public Float getNotionalAmount() {
+	public Double getNotionalAmount() {
 		return notionalAmount;
 	}
 
-	public void setNotionalAmount(Float notionalAmount) {
+	public void setNotionalAmount(Double notionalAmount) {
 		this.notionalAmount = notionalAmount;
 	}
 

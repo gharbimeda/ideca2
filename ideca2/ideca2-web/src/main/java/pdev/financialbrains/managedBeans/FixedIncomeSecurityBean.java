@@ -268,7 +268,7 @@ public class FixedIncomeSecurityBean {
 		 t.setPutcall(putCall);
 		 t.setStatus(2);
 		 t.setName(fx.getbdString());
-		 t.setValue(45.2f);
+		 t.setValue(45.2);
 		 tradeServices.update(t);
 	}
 

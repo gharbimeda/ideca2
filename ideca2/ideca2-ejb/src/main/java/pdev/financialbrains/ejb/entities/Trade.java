@@ -19,13 +19,13 @@ public class Trade implements Serializable {
 	@EmbeddedId
 	private TradePK pk;
 	private String name;
-	private Float value;	
+	private Double value;	
 	private Integer status;
 	private Integer putcall;
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne(cascade={CascadeType.PERSIST,CascadeType.MERGE})
 	@JoinColumn(referencedColumnName="idUser", name="idUser", updatable=false, insertable=false)
 	private Trader trader;
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne(cascade={CascadeType.PERSIST,CascadeType.MERGE})
 	@JoinColumn(referencedColumnName="id", name="id", updatable=false, insertable=false)
 	private DerivativeInstrument fi;
 	private static final long serialVersionUID = 1L;
@@ -53,11 +53,11 @@ public class Trade implements Serializable {
 		this.name = name;
 	}
 
-	public Float getValue() {
+	public Double getValue() {
 		return value;
 	}
 
-	public void setValue(Float value) {
+	public void setValue(Double value) {
 		this.value = value;
 	}
 

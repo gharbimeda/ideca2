@@ -16,9 +16,8 @@ import javax.persistence.TemporalType;
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class DerivativeInstrument extends FinancialInstrument {
 
-	@Temporal(TemporalType.DATE)
 	private Date startDate;
-	@Temporal(TemporalType.DATE)
+	
 	private Date endDate;
 	@OneToMany(mappedBy="fi")
 	private List<Trade> trades;

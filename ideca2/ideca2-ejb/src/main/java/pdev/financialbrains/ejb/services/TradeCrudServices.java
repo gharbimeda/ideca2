@@ -27,7 +27,7 @@ public class TradeCrudServices implements ITradeCrudServiceLocal, ITradeCrudServ
 
 	@Override
 	public void delete(Trade trade) {
-		//entityManager.remove(entityManager.find(Trade.class, trade.getId()));
+		entityManager.remove(entityManager.find(Trade.class, trade.getPk()));
 	}
 
 	@Override
@@ -78,6 +78,15 @@ public class TradeCrudServices implements ITradeCrudServiceLocal, ITradeCrudServ
 		Query query = entityManager.createQuery("select t from Trade t where t.status=:x and t.putcall=:y");
 		query.setParameter("x", 1);
 		query.setParameter("y", 0);
+		return query.getResultList();
+	}
+	
+	public List<Trade> readCFPutAccepted() {
+		Query query = entityManager.createQuery("select t from Trade t where t.status=:x and t.putcall=:y and name=:z or name=:a");
+		query.setParameter("x", 1);
+		query.setParameter("y", 0);
+		query.setParameter("z", "CAP");
+		query.setParameter("a", "FLOOR");
 		return query.getResultList();
 	}
 	
