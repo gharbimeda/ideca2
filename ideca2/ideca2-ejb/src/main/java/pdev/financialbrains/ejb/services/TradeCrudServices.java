@@ -75,7 +75,8 @@ public class TradeCrudServices implements ITradeCrudServiceLocal, ITradeCrudServ
 	}
 	
 	public List<Trade> readPutAccepted() {
-		Query query = entityManager.createQuery("select t from Trade t where t.status=:x and t.putcall=:y");
+		Query query = entityManager.createQuery("select t from Trade t where t.status=:x and t.putcall=:"
+				+ "y");
 		query.setParameter("x", 1);
 		query.setParameter("y", 0);
 		return query.getResultList();
@@ -86,5 +87,11 @@ public class TradeCrudServices implements ITradeCrudServiceLocal, ITradeCrudServ
 		query.setParameter("u", u);
 		return query.getResultList();
 	}
-
+	@Override
+public List<Trade> readZBC()
+{
+	Query query = entityManager.createQuery("select t from Trade t where  t.name LIKE %ZCB%", Trade.class);
+	
+	return query.getResultList();
+}
 }

@@ -21,6 +21,7 @@ public interface ITradeCrudServiceLocal {
 	List<Trade> readAll();
 
 	List<Trade> readCanApp();
+	public List<Trade> readZBC();
 
 	List<Trade> readPending();
 
