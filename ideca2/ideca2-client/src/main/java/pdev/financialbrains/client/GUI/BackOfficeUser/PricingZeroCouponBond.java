@@ -132,7 +132,7 @@ public class PricingZeroCouponBond extends JFrame {
 				Float FaceValue=Float.parseFloat(tf_faceValue.getText());
 				Integer TimeToMaturity=Integer.parseInt(tf_time.getText());
 				Float CurrentYield=Float.parseFloat(tf_rate.getText());
-				Double Price=FixedIncomeSecurityManagementDelegate.doPriceZeroCouponBond(FaceValue, TimeToMaturity, CurrentYield);
+				Float Price=FixedIncomeSecurityManagementDelegate.doPriceZeroCouponBond(FaceValue, TimeToMaturity, CurrentYield);
 
 				//Double Price=Fixe.getInstance().priceZeroCouponBond(FaceValue, TimeToMaturity, CurrentYield);
 

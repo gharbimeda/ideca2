@@ -128,7 +128,7 @@ public class TreasuryBondPricing extends JFrame {
 
 				
 				
-				Double Price=FixedIncomeSecurityManagementDelegate.doPriceTtreasuryBond(FaceValue, TimeToMaturity , CurrentYield, Frequency, CouponRate);
+				Float Price=FixedIncomeSecurityManagementDelegate.doPriceTtreasuryBond(FaceValue, TimeToMaturity , CurrentYield, Frequency, CouponRate);
 				 tf_price.setText(Price.toString());
 			}
 		});

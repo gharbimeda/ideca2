@@ -9,9 +9,9 @@ import pdev.financialbrains.ejb.entities.FixedIncomeSecuritie;
 @Local
 
 public interface IFixedIncomeSecurityLocal {
-	Double priceZeroCouponBond(Float faceValue,Integer timeMaturity,Float currentYield);
-	  Double priceTreasuryBond(Float faceValue,Integer timeMaturity, Float currentYield,Integer frequency,Float couponRate);
-	  Double priceCorpBond(Float faceValue,Integer timeMaturity, Float currentYield,Integer frequency,Float couponRate,Integer months);
+	Float priceZeroCouponBond(Float faceValue,Integer timeMaturity,Float currentYield);
+	  Float priceTreasuryBond(Float faceValue,Integer timeMaturity, Float currentYield,Integer frequency,Float couponRate);
+	  Float priceCorpBond(Float faceValue,Integer timeMaturity, Float currentYield,Integer frequency,Float couponRate,Integer months);
 	  public Boolean delete2(FixedIncomeSecuritie f);
 	  public Boolean update2(FixedIncomeSecuritie f);
 	  public Boolean add(FixedIncomeSecuritie f);

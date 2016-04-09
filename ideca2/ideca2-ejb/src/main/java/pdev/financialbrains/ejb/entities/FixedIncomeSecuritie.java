@@ -18,7 +18,7 @@ public class FixedIncomeSecuritie extends DerivativeInstrument {
 		private Float couponRate;
 		private Float yield;
 		private Float currentYield;
-		private Double bondPrice;
+		private Float bondPrice;
 		private int months;
 		private int bd;
 		
@@ -90,11 +90,11 @@ public class FixedIncomeSecuritie extends DerivativeInstrument {
 			this.currentYield = currentYield;
 		}
 
-		public Double getBondPrice() {
+		public Float getBondPrice() {
 			return bondPrice;
 		}
 
-		public void setBondPrice(Double bondPrice) {
+		public void setBondPrice(Float bondPrice) {
 			this.bondPrice = bondPrice;
 		}
 
@@ -111,7 +111,7 @@ public class FixedIncomeSecuritie extends DerivativeInstrument {
 		}
 
 		public FixedIncomeSecuritie(Integer timeMaturity, Integer couponFreq, Float faceValue, Float couponRate,
-				Float yield, Float currentYield, Double bondPrice) {
+				Float yield, Float currentYield, Float bondPrice) {
 			super();
 			this.timeMaturity = timeMaturity;
 			this.couponFreq = couponFreq;
@@ -134,7 +134,7 @@ public class FixedIncomeSecuritie extends DerivativeInstrument {
 		}
 
 		public FixedIncomeSecuritie(Integer id, Float currentPrice, Float volatility, Integer timeMaturity,
-				Integer couponFreq, Float faceValue, Float couponRate, Float yield, Float currentYield, Double bondPrice) {
+				Integer couponFreq, Float faceValue, Float couponRate, Float yield, Float currentYield, Float bondPrice) {
 			super(id, currentPrice, volatility);
 			this.timeMaturity = timeMaturity;
 			this.couponFreq = couponFreq;

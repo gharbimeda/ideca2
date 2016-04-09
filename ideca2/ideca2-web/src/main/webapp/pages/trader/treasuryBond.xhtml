@@ -30,6 +30,7 @@
 		<li><a href="#{request.contextPath}/pages/trader/contactUs.xhtml"><i
 				class="fa fa-inbox" /> CONTACT US</a></li>
 	</ui:define>
+	
 	<ui:define name="PageName">FINANCIAL PRODUCTS</ui:define>
 	<ui:define name="PageContent">
 		<h:form>
@@ -69,7 +70,8 @@
 		//Float couponRate -->
 
 					<p:spacer width="10" height="10" />
-					<h:outputText value="#{mdfxincomeBean.bondPrice}" />
+														<h:inputText value="#{mdfxincomeBean.bondPrice}" styleClass="form-control input-rounded"/>
+
 					<p:spacer width="10" height="10" />
 					<p:outputLabel value="Treasury" />
 					<p:panelGrid>
