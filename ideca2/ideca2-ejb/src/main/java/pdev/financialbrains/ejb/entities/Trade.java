@@ -19,11 +19,11 @@ public class Trade implements Serializable {
 	private Float value;
 	private Integer status;
 	private Integer putcall;
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(referencedColumnName = "idUser", name = "idUser", updatable = false, insertable = false)
+	@ManyToOne(cascade={CascadeType.PERSIST,CascadeType.MERGE})
+	@JoinColumn(referencedColumnName="idUser", name="idUser", updatable=false, insertable=false)
 	private Trader trader;
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(referencedColumnName = "id", name = "id", updatable = false, insertable = false)
+	@ManyToOne(cascade={CascadeType.PERSIST,CascadeType.MERGE})
+	@JoinColumn(referencedColumnName="id", name="id", updatable=false, insertable=false)
 	private DerivativeInstrument fi;
 	private static final long serialVersionUID = 1L;
 

@@ -33,6 +33,12 @@ public class CapFloorCrudService implements ICapFloorServiceLocal, ICapFloorServ
 	public void update(CapFloor capFloor) {
 		entityManager.merge(capFloor);
 	}
+	
+	public CapFloor update1(CapFloor capFloor) {
+		CapFloor c = new CapFloor();
+		c = entityManager.merge(capFloor);
+		return c;
+	}
 
 	@Override
 	public void delete(CapFloor capFloor) {
@@ -120,7 +126,7 @@ public class CapFloorCrudService implements ICapFloorServiceLocal, ICapFloorServ
 
 	@Override
 	public double pricingCapFloor(Double amount, String cap_floor, Integer nDays, Integer period, Integer daysYear, Double f_rate,
-			Double strike, Double vol, Double maturity, Double rfr) {
+			Float strike, Float vol, Double maturity, Double rfr) {
 		Double a = (amount*nDays*period/daysYear)/(1+f_rate*nDays*period/daysYear);
 		Double b,c,result=0.0;
 		if (cap_floor.equals("cap")){
