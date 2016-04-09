@@ -21,7 +21,6 @@ public interface ITradeCrudServiceLocal {
 	List<Trade> readAll();
 
 	List<Trade> readCanApp();
-	public List<Trade> readZBC();
 
 	List<Trade> readPending();
 
@@ -29,6 +28,10 @@ public interface ITradeCrudServiceLocal {
 	
 	Integer readRefused();
 	
+	void settle(Trade trade);
+	
+	void decline(Trade trade);
+
 	List<Trade> readTradesByUser(User u);
 
 }

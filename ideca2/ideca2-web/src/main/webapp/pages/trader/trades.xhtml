@@ -20,36 +20,44 @@
 		<li><a href="#{request.contextPath}/pages/trader/contactUs.xhtml"><i
 				class="fa fa-inbox" /> CONTACT US</a></li>
 	</ui:define>
-	<ui:define name="PageName">TRADES MENAGEMENT</ui:define>
+	<ui:define name="PageName">My TRADES</ui:define>
 	<ui:define name="PageContent">
 
 		<h:form>
-			<p:dataTable value="#{tradeBean.trades1}" var="trade">
-				<f:facet name="header">My Trades</f:facet>
-				
-				<p:column>
+		<div class="table-responsive">
+			<h:dataTable value="#{tradeBean.trades1}" var="trade" class="table table-striped">
+
+				<h:column>
 					<f:facet name="header">Financial Product</f:facet>
 					<h:outputText value="#{trade.name}" />
-				</p:column>
-				<p:column>
+				</h:column>
+				<h:column>
 					<f:facet name="header">Value</f:facet>
 					<h:outputText value="#{trade.value}" />
-				</p:column>
-				<p:column>
+				</h:column>
+				<h:column>
 					<f:facet name="header">Date</f:facet>
 					<h:outputText value="#{trade.pk.date}" />
-				</p:column>
-				<p:column>
+				</h:column>
+				<h:column>
 					<f:facet name="header">Put/Call</f:facet>
 					<h:outputText value="#{trade.putcallString}" />
-				</p:column>
-				<p:column>
+				</h:column>
+				<h:column>
 					<f:facet name="header">Status</f:facet>
 					<h:outputText value="#{trade.statusString}" />
-				</p:column>
-				
-			</p:dataTable>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Delete</f:facet>
+					<h:commandButton action=" " value="delete"
+						class="btn btn-danger btn-sm">
+					</h:commandButton>
+				</h:column>
+
+			</h:dataTable>
+			</div>
 		</h:form>
+
 
 	</ui:define>
 </ui:composition>

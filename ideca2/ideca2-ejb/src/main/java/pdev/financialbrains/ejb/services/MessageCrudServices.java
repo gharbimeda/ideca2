@@ -11,7 +11,6 @@ import javax.persistence.Query;
 import pdev.financialbrains.ejb.contracts.IMessageCrudServicesLocal;
 import pdev.financialbrains.ejb.contracts.IMessageCrudServicesRemote;
 import pdev.financialbrains.ejb.entities.Message;
-import pdev.financialbrains.ejb.entities.Stock;
 
 /**
  * Session Bean implementation class MessageCrudServices
@@ -35,10 +34,12 @@ public class MessageCrudServices implements IMessageCrudServicesLocal, IMessageC
 	public void create(Message message) {
 		entityManager.persist(message);
 
-	}@Override
+	}
+
+	@Override
 	public void deleteById(Message message) {
 		entityManager.remove(entityManager.find(Message.class, message.getId()));
-		
+
 	}
 
 	@Override
@@ -60,9 +61,8 @@ public class MessageCrudServices implements IMessageCrudServicesLocal, IMessageC
 		// m.userDest=:idMessage",Message.class).getResultList();
 		String jpql = "select m from Message m where m.userSource.id=:idMessage";
 		Query query = entityManager.createQuery(jpql, Message.class);
-		query.setParameter("idMessage",idMessage);
-		return 
-				query.getResultList();
+		query.setParameter("idMessage", idMessage);
+		return query.getResultList();
 
 	}
 
@@ -81,5 +81,15 @@ public class MessageCrudServices implements IMessageCrudServicesLocal, IMessageC
 		query.setParameter("id", id);
 		return (Message) query.getSingleResult();
 	}
+
+	@Override
+	public List<Message> readByUserDestId(Integer id) {
+		Query query = entityManager.createQuery("select m from Message m join m.userDest u where u.IdUser =:id");
+		query.setParameter("id", id);
+		return query.getResultList();
+	}
+	// SELECT e FROM Employee e JOIN e.projects p JOIN e.projects p2 WHERE
+	// p.name = :p1
+	// select m from Message m where m.userDest.idUser =:id
 
 }

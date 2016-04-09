@@ -27,7 +27,7 @@ public class TradeCrudServices implements ITradeCrudServiceLocal, ITradeCrudServ
 
 	@Override
 	public void delete(Trade trade) {
-		//entityManager.remove(entityManager.find(Trade.class, trade.getId()));
+		entityManager.remove(entityManager.find(Trade.class, trade.getPk()));
 	}
 
 	@Override
@@ -75,10 +75,18 @@ public class TradeCrudServices implements ITradeCrudServiceLocal, ITradeCrudServ
 	}
 	
 	public List<Trade> readPutAccepted() {
-		Query query = entityManager.createQuery("select t from Trade t where t.status=:x and t.putcall=:"
-				+ "y");
+		Query query = entityManager.createQuery("select t from Trade t where t.status=:x and t.putcall=:y");
 		query.setParameter("x", 1);
 		query.setParameter("y", 0);
+		return query.getResultList();
+	}
+	
+	public List<Trade> readCFPutAccepted() {
+		Query query = entityManager.createQuery("select t from Trade t where t.status=:x and t.putcall=:y and name=:z or name=:a");
+		query.setParameter("x", 1);
+		query.setParameter("y", 0);
+		query.setParameter("z", "CAP");
+		query.setParameter("a", "FLOOR");
 		return query.getResultList();
 	}
 	
@@ -87,11 +95,17 @@ public class TradeCrudServices implements ITradeCrudServiceLocal, ITradeCrudServ
 		query.setParameter("u", u);
 		return query.getResultList();
 	}
+
 	@Override
-public List<Trade> readZBC()
-{
-	Query query = entityManager.createQuery("select t from Trade t where  t.name LIKE %ZCB%", Trade.class);
-	
-	return query.getResultList();
-}
+	public void settle(Trade trade) {
+		trade.setStatus(1);
+		entityManager.merge(trade);
+	}
+
+	@Override
+	public void decline(Trade trade) {
+		trade.setStatus(0);
+		entityManager.merge(trade);		
+	}
+
 }
