@@ -35,12 +35,15 @@
 				<p:inputText value="#{fsbean.expiryTime}" />
 				<h:outputText value="Volatility" />
 				<p:inputText value="#{fsbean.volatility}" />
-				<h:commandButton action="#{fsbean.doPrice()}" value="Price" />
+				<h:commandButton class="btn btn-primary btn-sm"
+					action="#{fsbean.doPrice()}" value="Price" />
 			</h:panelGrid>
 			<h:panelGroup layout="block">
 				<h:outputText value="Result" rendered="#{fsbean.rend}" />
 				<h:inputText value="#{fsbean.result}" rendered="#{fsbean.rend}"
 					readonly="true" />
+				<h:commandButton class="btn btn-success btn-sm" action="#{fsbean.doPrice()}"
+					value="Book" />
 			</h:panelGroup>
 		</h:form>
 	</ui:define>

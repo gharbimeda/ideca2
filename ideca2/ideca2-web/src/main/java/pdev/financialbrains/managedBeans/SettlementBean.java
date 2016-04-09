@@ -18,6 +18,8 @@ public class SettlementBean {
 	private ITradeCrudServiceLocal tradeLocal;
 	private Trade trade;
 	private List<Trade> trades;
+	private Integer tradeSettled;
+	private Integer tradeUnsettled;
 	private boolean showForm = false;
 
 	public boolean isShowForm() {
@@ -52,23 +54,41 @@ public class SettlementBean {
 		this.trades = trades;
 	}
 
+	public Integer getTradeSettled() {
+		return tradeSettled;
+	}
+
+	public void setTradeSettled(Integer tradeSettled) {
+		this.tradeSettled = tradeSettled;
+	}
+
+	public Integer getTradeUnsettled() {
+		return tradeUnsettled;
+	}
+
+	public void setTradeUnsettled(Integer tradeUnsettled) {
+		this.tradeUnsettled = tradeUnsettled;
+	}
+
 	@PostConstruct
 	public void init() {
 		trades = tradeLocal.readPending();
 		trade = new Trade();
-		
+		tradeSettled = tradeLocal.readAccepted();
+		tradeUnsettled = tradeLocal.readRefused();
+
 	}
 
-	public String doSettle(Trade trade ) {
+	public String doSettle(Trade trade) {
 		tradeLocal.settle(trade);
 		init();
 		return null;
 	}
-	
-	public String doDecline(){
+
+	public String doDecline() {
 		tradeLocal.decline(trade);
 		init();
-		return null; 
+		return null;
 	}
 
 	public String doShowForm() {

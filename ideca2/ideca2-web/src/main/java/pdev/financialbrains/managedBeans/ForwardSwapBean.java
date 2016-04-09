@@ -7,6 +7,8 @@ import javax.faces.bean.ViewScoped;
 
 import pdev.financialbrains.ejb.contracts.IForwardSwapCrudServicesLocal;
 import pdev.financialbrains.ejb.entities.ForwardSwap;
+import pdev.financialbrains.ejb.entities.Trade;
+import pdev.financialbrains.ejb.entities.TradePK;
 
 @ManagedBean(name = "fsbean")
 @ViewScoped
@@ -21,8 +23,10 @@ public class ForwardSwapBean {
 	private Float period;
 	private Float expiryTime;
 	private Float volatility;
-	private Double result; 
-	private Boolean rend = false; 
+	private Double result;
+	private Boolean rend = false;
+	private TradePK tradePk;
+	private Trade trade;
 	private boolean showForm = false;
 
 	public boolean isShowForm() {
@@ -113,6 +117,22 @@ public class ForwardSwapBean {
 		this.rend = rend;
 	}
 
+	public TradePK getTradePk() {
+		return tradePk;
+	}
+
+	public void setTradePk(TradePK tradePk) {
+		this.tradePk = tradePk;
+	}
+
+	public Trade getTrade() {
+		return trade;
+	}
+
+	public void setTrade(Trade trade) {
+		this.trade = trade;
+	}
+
 	@PostConstruct
 	public void init() {
 		forwardSwap = new ForwardSwap();
@@ -123,12 +143,14 @@ public class ForwardSwapBean {
 		expiryTime = new Float(0);
 		volatility = new Float(0);
 		result = new Double(0);
+		trade = new Trade();
+		tradePk = new TradePK();
 	}
 
 	public String doPrice() {
 		result = fsLocal.priceForwardSwap(strikeRate, rate, notional, period, expiryTime, volatility);
 		System.out.println(result);
-		rend = true ; 
+		rend = true;
 		return null;
 	}
 
