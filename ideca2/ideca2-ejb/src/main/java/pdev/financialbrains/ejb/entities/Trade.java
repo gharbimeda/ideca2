@@ -19,7 +19,7 @@ public class Trade implements Serializable {
 	@EmbeddedId
 	private TradePK pk;
 	private String name;
-	private Double value;	
+	private Float value;	
 	private Integer status;
 	private Integer putcall;
 	@ManyToOne(cascade={CascadeType.PERSIST,CascadeType.MERGE})
@@ -53,11 +53,11 @@ public class Trade implements Serializable {
 		this.name = name;
 	}
 
-	public Double getValue() {
+	public Float getValue() {
 		return value;
 	}
 
-	public void setValue(Double value) {
+	public void setValue(Float value) {
 		this.value = value;
 	}
 

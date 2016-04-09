@@ -59,7 +59,7 @@ public class FixedIncomeSecurityBean {
 	private Float couponRate;
 	private Float yield;
 	private Float currentYield;
-	private Double bondPrice;
+	private Float bondPrice;
 	private Integer putCall;
 
 	private int i = 10;
@@ -129,11 +129,11 @@ public class FixedIncomeSecurityBean {
 		this.yield = yield;
 	}
 
-	public Double getBondPrice() {
+	public Float getBondPrice() {
 		return bondPrice;
 	}
 
-	public void setBondPrice(Double bondPrice) {
+	public void setBondPrice(Float bondPrice) {
 		this.bondPrice = bondPrice;
 	}
 
@@ -268,7 +268,7 @@ public class FixedIncomeSecurityBean {
 		 t.setPutcall(putCall);
 		 t.setStatus(2);
 		 t.setName(fx.getbdString());
-		 t.setValue(45.2);
+		 t.setValue(bondPrice);
 		 tradeServices.update(t);
 	}
 

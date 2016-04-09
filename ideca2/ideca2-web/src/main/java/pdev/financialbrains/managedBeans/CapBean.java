@@ -107,8 +107,8 @@ public class CapBean {
 			n = Math.abs((date2.getTime().getYear() - date1.getTime().getYear()) * 12
 					+ (date2.getTime().getMonth() - date1.getTime().getMonth()));
 			capFloorTable.setMaturity(n / 365.0);
-			capFloorTable.setCap(capService.pricingCapFloor(c.getNotionalAmount(), c.getCapFloorString(), nd, i, 360,
-					risk, c.getStrikePrice(), c.getVolatility(), capFloorTable.getMaturity(), Double.parseDouble(f)));
+			//capFloorTable.setCap(capService.pricingCapFloor(c.getNotionalAmount(), c.getCapFloorString(), nd, i, 360,
+			//		risk, c.getStrikePrice(), c.getVolatility(), capFloorTable.getMaturity(), Double.parseDouble(f)));
 			capFloorTables.add(capFloorTable);
 			somme += capFloorTable.getCap();
 		}
