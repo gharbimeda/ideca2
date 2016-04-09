@@ -1,5 +1,6 @@
 package pdev.financialbrains.managedBeans;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -11,6 +12,7 @@ import javax.faces.bean.ViewScoped;
 
 import pdev.financialbrains.ejb.contracts.IMessageCrudServicesLocal;
 import pdev.financialbrains.ejb.contracts.IUserCrudServiceLocal;
+import pdev.financialbrains.ejb.entities.BackOfficeUser;
 import pdev.financialbrains.ejb.entities.Message;
 import pdev.financialbrains.ejb.entities.Trader;
 import pdev.financialbrains.ejb.entities.User;
@@ -23,13 +25,17 @@ public class MessageBean {
 	private IUserCrudServiceLocal userLocal;
 	@EJB
 	private IMessageCrudServicesLocal messageLocal;
-	@ManagedProperty("#{identity}")
-	private Trader traderConnected;
+	@ManagedProperty(value = "#{identity}")
+	private IdentityBean identityBean;
 	private String text;
-	private Trader traderDest;
+	private String traderDest;
 	private Message message;
 	private Date date;
 	private List<User> traders;
+	private List<String> tradersNames;
+	private List<Message> messages;
+	private Trader trader;
+	private BackOfficeUser back;
 	private Boolean showForm = false;
 
 	public boolean isShowForm() {
@@ -56,12 +62,12 @@ public class MessageBean {
 		this.messageLocal = messageLocal;
 	}
 
-	public Trader getTraderConnected() {
-		return traderConnected;
+	public IdentityBean getIdentityBean() {
+		return identityBean;
 	}
 
-	public void setTraderConnected(Trader traderConnected) {
-		this.traderConnected = traderConnected;
+	public void setIdentityBean(IdentityBean identityBean) {
+		this.identityBean = identityBean;
 	}
 
 	public String getText() {
@@ -72,14 +78,14 @@ public class MessageBean {
 		this.text = text;
 	}
 
-	public Trader getTraderDest() {
+	public String getTraderDest() {
 		return traderDest;
 	}
 
-	public void setTraderDest(Trader traderDest) {
+	public void setTraderDest(String traderDest) {
 		this.traderDest = traderDest;
 	}
-	
+
 	public Message getMessage() {
 		return message;
 	}
@@ -104,27 +110,74 @@ public class MessageBean {
 		this.traders = traders;
 	}
 
-	public String doShowForm(){
-		showForm = showForm ? false : true;
-		return null; 
+	public List<String> getTradersNames() {
+		return tradersNames;
 	}
-	
+
+	public void setTradersNames(List<String> tradersNames) {
+		this.tradersNames = tradersNames;
+	}
+
+	public List<Message> getMessages() {
+		return messages;
+	}
+
+	public void setMessages(List<Message> messages) {
+		this.messages = messages;
+	}
+
+	public Trader getTrader() {
+		return trader;
+	}
+
+	public void setTrader(Trader trader) {
+		this.trader = trader;
+	}
+
+	public BackOfficeUser getBack() {
+		return back;
+	}
+
+	public void setBack(BackOfficeUser back) {
+		this.back = back;
+	}
+
+	public String doShowForm() {
+		showForm = showForm ? false : true;
+		return null;
+	}
+
 	@PostConstruct
-	public void init(){
+	public void init() {
 		text = new String();
-		traderDest = new Trader();
+		traderDest = new String();
 		message = new Message();
 		date = new Date();
-		System.out.println(traderConnected);
-//		traders =  userLocal.readAllButOne(traderConnected);
+		tradersNames = new ArrayList<String>();
+		if (identityBean.hasRole("trader")) {
+			trader = new Trader();
+			trader = (Trader) identityBean.getUserIdentify();
+		} else if (identityBean.hasRole("backoffuser")) {
+			back = new BackOfficeUser();
+			back = (BackOfficeUser) identityBean.getUserIdentify();
+		}
+
+		traders = userLocal.readAll(1);
+		for (int i = 0; i < traders.size(); i++) {
+			tradersNames.add(i, traders.get(i).getLogin());
+		}
+		messages = messageLocal.readByUserDestId(2);
+		System.out.println(identityBean);
+
 	}
-	
-	public String doSend(){
-		message.setUserSource(traderConnected);
-		message.setUserDest(traderDest);
+
+	public String doSend() {
+		message.setUserSource(userLocal.readById(1));
+		message.setUserDest(userLocal.readByLogin(traderDest));
 		message.setTexte(text);
 		message.setDate(date);
 		messageLocal.create(message);
+		init();
 		return null;
 	}
 

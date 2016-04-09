@@ -22,4 +22,6 @@ public interface IMessageCrudServicesLocal {
 	List<Message> readAll();
 
 	public Message findByIdUser(int id);
+	
+	List<Message> readByUserDestId(Integer id);
 }

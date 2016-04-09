@@ -2,11 +2,9 @@ package pdev.financialbrains.managedBeans;
 
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
-import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
 import pdev.financialbrains.ejb.entities.BackOfficeUser;
@@ -22,7 +20,7 @@ public class AccessBean {
 	@EJB
 	private UserCrudServices authan;
 	
-	@ManagedProperty("#{identity}")
+	@ManagedProperty(value="#{identity}")
 	private IdentityBean identityBean;
 	
 	private String login;

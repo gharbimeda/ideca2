@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -22,7 +23,7 @@ public class Trader extends User implements Serializable {
 	private String job;
 	private String nationality;
 	private String phoneNumber;
-    @OneToMany(mappedBy="trader")
+    @OneToMany(mappedBy="trader", fetch = FetchType.EAGER)
 	private List<Trade> trades;
 	private static final long serialVersionUID = 1L;
 

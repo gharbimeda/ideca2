@@ -4,7 +4,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	template="/WEB-INF/templates/traderTemplate/traderTemplate.xhtml"
-                xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui">
 	<ui:define name="titleName">MESSAGES</ui:define>
 	<ui:define name="menuContent">
 		<li><a href="#{request.contextPath}/pages/trader/home.xhtml"><i
@@ -22,14 +22,39 @@
 	</ui:define>
 	<ui:define name="PageName">MESSAGE MENAGEMENT</ui:define>
 	<ui:define name="PageContent">
+		<h4 style="color:#506b89">INBOX</h4>
+		<h:form>
+			<h:dataTable styleClass="table table-bordered"
+				value="#{messageBean.messages}" var="m">
+				<h:column>
+					<f:facet name="header">ID Message</f:facet>
+					<h:outputText value="#{m.id}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Date</f:facet>
+					<h:outputText value="#{m.date}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Text</f:facet>
+					<h:outputText value="#{m.texte}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Sender</f:facet>
+					<h:outputText value="#{m.userSource.login}" />
+				</h:column>
+			</h:dataTable>
+		</h:form>
+		<h4 style="color:#506b89">SEND MESSAGE</h4>
 		<h:form>
 			<h:panelGrid columns="2">
 				<h:outputText value="Destination" />
-				<h:selectOneListbox value="#{messageBean.traders}"></h:selectOneListbox>
+				<h:selectOneMenu id="txt3" value="#{messageBean.traderDest}">
+					<f:selectItems value="#{messageBean.tradersNames}" />
+				</h:selectOneMenu>
 				<h:outputText value="Message" />
 				<p:inputTextarea value="#{messageBean.text}" />
 			</h:panelGrid>
-			<h:commandButton action="#{messageBean.doSend()}" value="Send" /> 
+			<h:commandButton action="#{messageBean.doSend()}" value="Send" />
 		</h:form>
 	</ui:define>
 </ui:composition>
