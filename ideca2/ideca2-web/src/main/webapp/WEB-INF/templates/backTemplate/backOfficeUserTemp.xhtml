@@ -70,216 +70,230 @@
 									class="search-button" href="javascript:void(0);"><i
 									class="fontello-icon-search-5"></i></a>
 							</div>
-
+							<div class="nav-collapse collapse">
+								<ul class="nav user-menu visible-desktop">
+									<li><a class="btn-glyph fontello-icon-edit tip-bc"
+										href="javascript:void(0);" title="Messages"><span
+											class="badge badge-important">8</span></a></li>
+									<li><a class="btn-glyph fontello-icon-mail-1 tip-bc"
+										href="javascript:void(0);" title="Emails"></a></li>
+									<li><a class="btn-glyph fontello-icon-lifebuoy tip-bc"
+										href="javascript:void(0);" title="Support"><span
+											class="badge badge-important">4</span></a></li>
+								</ul>
+							</div>
 						</div>
-					</div>
-				</div>
-				<!-- // navbar -->
 
-				<div class="header-drawer">
-					<div class="mobile-nav text-center visible-phone">
-						<a href="javascript:void(0);" class="mobile-btn"
-							data-toggle="collapse" data-target=".sidebar"><i
-							class="aweso-icon-chevron-down"></i> Components</a>
 					</div>
-					<!-- // Resposive navigation -->
-					<div class="breadcrumbs-nav hidden-phone">
-						<ul id="breadcrumbs" class="breadcrumb">
-							<li><a href="javascript:void(0);"><i
-									class="fontello-icon-home f12"></i> Dashboard <ui:insert
-										name="pageLocalisation"></ui:insert> </a></li>
-							<li class="active"><ui:insert name="pageActive"></ui:insert>
-							</li>
-						</ul>
-					</div>
-					<!-- // breadcrumbs -->
-				</div>
-				<!-- // drawer -->
+				
 			</div>
+			<!-- // navbar -->
+
+			<div class="header-drawer">
+				<div class="mobile-nav text-center visible-phone">
+					<a href="javascript:void(0);" class="mobile-btn"
+						data-toggle="collapse" data-target=".sidebar"><i
+						class="aweso-icon-chevron-down"></i> Components</a>
+				</div>
+				<!-- // Resposive navigation -->
+				<div class="breadcrumbs-nav hidden-phone">
+					<ul id="breadcrumbs" class="breadcrumb">
+						<li><a href="javascript:void(0);"><i
+								class="fontello-icon-home f12"></i> Dashboard <ui:insert
+									name="pageLocalisation"></ui:insert> </a></li>
+						<li class="active"><ui:insert name="pageActive"></ui:insert>
+						</li>
+					</ul>
+				</div>
+				<!-- // breadcrumbs -->
+			</div>
+			<!-- // drawer -->
 		</div>
-		<!-- // header-container -->
+	</div>
+	<!-- // header-container -->
 
-		<div id="main-container">
-			<div id="main-sidebar" class="sidebar sidebar-inverse">
-				<div class="sidebar-item">
-					<div class="media profile">
-						<img
-							src="#{request.contextPath}/resources/backResources/img/Intellixx.png" />
+	<div id="main-container">
+		<div id="main-sidebar" class="sidebar sidebar-inverse">
+			<div class="sidebar-item">
+				<div class="media profile">
+					<img
+						src="#{request.contextPath}/resources/backResources/img/Intellixx.png" />
 
+				</div>
+			</div>
+			<!-- // sidebar item - profile -->
+
+			<ul id="mainSideMenu" class="nav nav-list nav-side">
+				<li class="accordion-group">
+					<div class="accordion-heading">
+						<a href="#{request.contextPath}/pages/back/backHome.xhtml"
+							data-parent="#mainSideMenu" data-toggle="collapse"
+							class="accordion-toggle"> <span
+							class="item-icon fontello-icon-monitor"></span> Dashboard
+						</a>
 					</div>
-				</div>
-				<!-- // sidebar item - profile -->
 
-				<ul id="mainSideMenu" class="nav nav-list nav-side">
-					<li class="accordion-group">
-						<div class="accordion-heading">
-							<a href="#{request.contextPath}/pages/back/backHome.xhtml"
-								data-parent="#mainSideMenu" data-toggle="collapse"
-								class="accordion-toggle"> <span
-								class="item-icon fontello-icon-monitor"></span> Dashboard
-							</a>
-						</div>
+				</li>
+				<li class="accordion-group">
+					<div class="accordion-heading">
+						<a href="" data-parent="#mainSideMenu" data-toggle="collapse"
+							class="accordion-toggle"> <span
+							class="item-icon  fontello-icon-database"></span> <i
+							class="chevron fontello-icon-right-open-3"></i> Market Data
+						</a>
+					</div>
+					<ul class="accordion-content nav nav-list collapse"
+						id="accMarketData">
 
-					</li>
-					<li class="accordion-group">
-						<div class="accordion-heading">
-							<a href="" data-parent="#mainSideMenu"
-								data-toggle="collapse" class="accordion-toggle"> <span
-								class="item-icon  fontello-icon-database"></span> <i
-								class="chevron fontello-icon-right-open-3"></i> Market Data
-							</a>
-						</div>
-						<ul class="accordion-content nav nav-list collapse"
-							id="accMarketData">
-							
-							<li><a href="#{request.contextPath}/pages/back/BondManually.xhtml">
-									<i class="fontello-icon-right-dir"></i> Bonds
-							</a></li>
-							<li><a
-								href="#{request.contextPath}/pages/back/CurrencyManually.xhtml"> <i
-									class="fontello-icon-right-dir"></i> Currencies
-							</a></li>
-							<li><a href="#{request.contextPath}/pages/back/StockManually.xhtml">
-									<i class="fontello-icon-right-dir"></i> Stocks
-							</a></li>
-						</ul>
-					</li>
-					<!-- {request.contextPath}/pages/back/trades.xhtml-->
-					<li class="accordion-group">
-						<div class="accordion-heading">
-							<a href="#{request.contextPath}/pages/back/trades.xhtml"
-								data-parent="#mainSideMenu" data-toggle="collapse"
-								class="accordion-toggle"> <span
-								class="item-icon  fontello-icon-money"></span> Trades
-							</a>
-						</div>
-					</li>
-					<li class="accordion-group">
-						<div class="accordion-heading">
-							<a href="#accSettlement" data-parent="#mainSideMenu"
-								data-toggle="collapse" class="accordion-toggle"> <span
-								class="item-icon  fontello-icon-edit-2"></span> <i
-								class="chevron fontello-icon-right-open-3"></i> Settlements
-							</a>
-						</div>
-						<ul class="accordion-content nav nav-list collapse"
-							id="accSettlement">
-							<li><a
-								href="#{request.contextPath}/pages/back/Settlement.xhtml"> <i
-									class="fontello-icon-right-dir"></i> <span
-									class="hidden-tablet">Show Settlements</span>
-							</a></li>
-						</ul>
-					</li>
-					<li class="accordion-group">
-						<div class="accordion-heading">
-							<a href="#accMessage" data-parent="#mainSideMenu"
-								data-toggle="collapse" class="accordion-toggle"> <span
-								class="item-icon   fontello-icon-chat-empty"></span> <i
-								class="chevron fontello-icon-right-open-3"></i> Messages
-							</a>
-						</div>
-						<ul class="accordion-content nav nav-list collapse"
-							id="accMessage">
-							<li><a
-								href="#{request.contextPath}/pages/back/MessageBack.xhtml">
-									<i class="fontello-icon-right-dir"></i> <span
-									class="hidden-tablet">Show My Inbox </span>
-							</a></li>
-							<li><a
-								href="#{request.contextPath}/pages/back/sendMessages.xhtml">
-									<i class="fontello-icon-right-dir"></i> <span
-									class="hidden-tablet">Send a Message </span>
-							</a></li>
-						</ul>
-					</li>
-					<!-- // item accordionMenu Widgets -->
-					<li class="accordion-group">
-						<div class="accordion-heading">
-							<a href="#accButtons" data-parent="#mainSideMenu"
-								data-toggle="collapse" class="accordion-toggle"> <span
-								class="item-icon fontello-icon-user"></span> <i
-								class="chevron fontello-icon-right-open-3"></i> My Account
-							</a>
-						</div>
-						<ul class="accordion-content nav nav-list collapse"
-							id="accButtons">
-							<li><a
-								href="#{request.contextPath}/pages/back/myAccount.xhtml"> <i
-									class="fontello-icon-right-dir"></i>Show Account
-							</a></li>
-							<li><a href="#{request.contextPath}/pages/back/logout.xhtml">
-									<i class="fontello-icon-right-dir"></i>LogOut
-							</a></li>
-						</ul>
-					</li>
+						<li><a
+							href="#{request.contextPath}/pages/back/BondManually.xhtml">
+								<i class="fontello-icon-right-dir"></i> Bonds
+						</a></li>
+						<li><a
+							href="#{request.contextPath}/pages/back/CurrencyManually.xhtml">
+								<i class="fontello-icon-right-dir"></i> Currencies
+						</a></li>
+						<li><a
+							href="#{request.contextPath}/pages/back/StockManually.xhtml">
+								<i class="fontello-icon-right-dir"></i> Stocks
+						</a></li>
+					</ul>
+				</li>
+				<!-- {request.contextPath}/pages/back/trades.xhtml-->
+				<li class="accordion-group">
+					<div class="accordion-heading">
+						<a href="#{request.contextPath}/pages/back/trades.xhtml"
+							data-parent="#mainSideMenu" data-toggle="collapse"
+							class="accordion-toggle"> <span
+							class="item-icon  fontello-icon-money"></span> Trades
+						</a>
+					</div>
+				</li>
+				<li class="accordion-group">
+					<div class="accordion-heading">
+						<a href="#accSettlement" data-parent="#mainSideMenu"
+							data-toggle="collapse" class="accordion-toggle"> <span
+							class="item-icon  fontello-icon-edit-2"></span> <i
+							class="chevron fontello-icon-right-open-3"></i> Settlements
+						</a>
+					</div>
+					<ul class="accordion-content nav nav-list collapse"
+						id="accSettlement">
+						<li><a
+							href="#{request.contextPath}/pages/back/Settlement.xhtml"> <i
+								class="fontello-icon-right-dir"></i> <span class="hidden-tablet">Show
+									Settlements</span>
+						</a></li>
+					</ul>
+				</li>
+				<li class="accordion-group">
+					<div class="accordion-heading">
+						<a href="#accMessage" data-parent="#mainSideMenu"
+							data-toggle="collapse" class="accordion-toggle"> <span
+							class="item-icon   fontello-icon-chat-empty"></span> <i
+							class="chevron fontello-icon-right-open-3"></i> Messages
+						</a>
+					</div>
+					<ul class="accordion-content nav nav-list collapse" id="accMessage">
+						<li><a
+							href="#{request.contextPath}/pages/back/MessageBack.xhtml"> <i
+								class="fontello-icon-right-dir"></i> <span class="hidden-tablet">Show
+									My Inbox </span>
+						</a></li>
+						<li><a
+							href="#{request.contextPath}/pages/back/sendMessages.xhtml">
+								<i class="fontello-icon-right-dir"></i> <span
+								class="hidden-tablet">Send a Message </span>
+						</a></li>
+					</ul>
+				</li>
+				<!-- // item accordionMenu Widgets -->
+				<li class="accordion-group">
+					<div class="accordion-heading">
+						<a href="#accButtons" data-parent="#mainSideMenu"
+							data-toggle="collapse" class="accordion-toggle"> <span
+							class="item-icon fontello-icon-user"></span> <i
+							class="chevron fontello-icon-right-open-3"></i> My Account
+						</a>
+					</div>
+					<ul class="accordion-content nav nav-list collapse" id="accButtons">
+						<li><a
+							href="#{request.contextPath}/pages/back/myAccount.xhtml"> <i
+								class="fontello-icon-right-dir"></i>Show Account
+						</a></li>
+						<li><a href="#{request.contextPath}/pages/back/logout.xhtml">
+								<i class="fontello-icon-right-dir"></i>LogOut
+						</a></li>
+						
+					</ul>
+				</li>
 
-				</ul>
-				<!-- // sidebar menu -->
+			</ul>
+			<!-- // sidebar menu -->
 
-				<div class="sidebar-item"></div>
-				<!-- // sidebar item -->
-
-			</div>
-			<!-- // sidebar -->
-
-			<div id="main-content" class="main-content container-fluid">
-				<div class="row-fluid page-head">
-					<ui:insert name="pageDefinition"></ui:insert>
-				</div>
-				<!-- // page head -->
-
-				<div id="page-content" class="page-content">
-					<ui:insert name="pageContent"></ui:insert>
-				</div>
-				<!-- // page content -->
-
-			</div>
-			<!-- // main-content -->
+			<div class="sidebar-item"></div>
+			<!-- // sidebar item -->
 
 		</div>
-		<!-- // main-container  -->
+		<!-- // sidebar -->
 
-		<footer id="footer-fix">
-			<div id="footer-sidebar" class="footer-sidebar">
-				<div class="navbar">
-					<div class="btn-toolbar">
-						<a class="btn btn-glyph btn-link" href="javascript:void(0);"><i
-							class="fontello-icon-up-open-1"></i></a>
-					</div>
+		<div id="main-content" class="main-content container-fluid">
+			<div class="row-fluid page-head">
+				<ui:insert name="pageDefinition"></ui:insert>
+			</div>
+			<!-- // page head -->
+
+			<div id="page-content" class="page-content">
+				<ui:insert name="pageContent"></ui:insert>
+			</div>
+			<!-- // page content -->
+
+		</div>
+		<!-- // main-content -->
+
+	</div>
+	<!-- // main-container  -->
+
+	<footer id="footer-fix">
+		<div id="footer-sidebar" class="footer-sidebar">
+			<div class="navbar">
+				<div class="btn-toolbar">
+					<a class="btn btn-glyph btn-link" href="javascript:void(0);"><i
+						class="fontello-icon-up-open-1"></i></a>
 				</div>
 			</div>
-			<!-- // footer sidebar -->
+		</div>
+		<!-- // footer sidebar -->
 
-			<div id="footer-content" class="footer-content">
-				<div class="navbar navbar-inverse">
-					<div class="navbar-inner">
-						<ul class="nav pull-left">
+		<div id="footer-content" class="footer-content">
+			<div class="navbar navbar-inverse">
+				<div class="navbar-inner">
+					<ul class="nav pull-left">
 
-						</ul>
-						<ul class="nav pull-right">
+					</ul>
+					<ul class="nav pull-right">
 
-							<li class="divider-vertical"></li>
-							<li><a id="btnLogout"
-								class="btn-glyph fontello-icon-logout-1 tip"
-								href="#{request.contextPath}/pages/back/logout.xhtml"
-								title="logout"></a></li>
+						<li class="divider-vertical"></li>
+						<li><a id="btnLogout"
+							class="btn-glyph fontello-icon-logout-1 tip"
+							href="#{request.contextPath}/pages/back/logout.xhtml"
+							title="logout"></a></li>
 
-						</ul>
-					</div>
+					</ul>
 				</div>
 			</div>
-			<!-- // footer content -->
+		</div>
+		<!-- // footer content -->
 
-		</footer>
-		<!-- // footer-fix  -->
+	</footer>
+	<!-- // footer-fix  -->
 
 	</div>
 	<!-- // page-container  -->
 
 	<!-- Le javascript -->
 	<!-- Placed at the end of the document so the pages load faster -->
-	
+
 	<script
 		src="#{request.contextPath}/resources/backResources/js/lib/jquery.js"></script>
 	<script
