@@ -24,21 +24,37 @@ public class TradeBean {
 	ITradeCrudServiceLocal services;
 
 	private List<Trade> trades;
+	
+	
+	
+	private Boolean show;
 
 	@PostConstruct
 	public void init() {
 		trades = services.readPending();
 	}
 
-	public void doAccept(Trade trade) {
-		trade.setStatus(1);
-		services.update(trade);
-		trades = services.readPending();
+	public String doShow(){
+		show=true;
+		return null;
+	}
+	public Boolean getShow() {
+		return show;
 	}
 
-	public void doDecline(Trade trade) {
-		trade.setStatus(0);
-		services.update(trade);
+	public void setShow(Boolean show) {
+		this.show = show;
+	}
+
+	public String doAccept(Trade t) {
+		t.setStatus(1);
+		services.update(t);
+		return "trades?faces-redirect=true";
+	}
+
+	public void doDecline(Trade t) {
+		t.setStatus(0);
+		services.update(t);
 		trades = services.readPending();
 	}	
 
@@ -49,6 +65,7 @@ public class TradeBean {
 	public void setTrades(List<Trade> trades) {
 		this.trades = trades;
 	}
+
 
 
 }
