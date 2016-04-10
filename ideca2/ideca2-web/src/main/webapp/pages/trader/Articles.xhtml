@@ -4,7 +4,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	template="/WEB-INF/templates/traderTemplate/traderTemplate.xhtml"
-                xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui">
 	<ui:define name="titleName">Articles</ui:define>
 	<ui:define name="menuContent">
 		<li><a href="#{request.contextPath}/pages/trader/home.xhtml"><i
@@ -14,189 +14,193 @@
 				class="fa fa-money" /> FINANCIAL PRODUCTS</a></li>
 		<li><a href="#{request.contextPath}/pages/trader/trades.xhtml"><i
 				class="fa fa-shopping-cart" /> MY TRADES</a></li>
-		<li><a 
-			href="#{request.contextPath}/pages/trader/messages.xhtml"><i
+		<li><a href="#{request.contextPath}/pages/trader/messages.xhtml"><i
 				class="fa fa-wechat" /> MESSAGES</a></li>
 		<li><a href="#{request.contextPath}/pages/trader/contactUs.xhtml"><i
 				class="fa fa-inbox" /> CONTACT US</a></li>
 	</ui:define>
 	<ui:define name="PageName">FINANCIAL ARTICLES</ui:define>
 	<ui:define name="PageContent">
-	<h:form>
- <p:growl id="msgs" showDetail="true"></p:growl>
- 
-    <h3 style="margin-top:0">NEWS</h3>
-    <p:accordionPanel>
-    <p:tab title="WORLD'S NEWS">
-            <h:panelGrid columns="2" cellpadding="10">
-              <img src="#{request.contextPath}/resources/traderResources/img/world.jpg" />
-        <div class="row">
-          
-            <h2>WORLD'S NEWS</h2>
-            <div class="table-responsive">
-              <table class="table table-bordered table-hover tablesorter">
-                <thead>
-                  <tr>
-           
-                    <th colspan="80">News  <i class="fa fa-sort"></i></th>
-                    <th colspan="20">Link <i class="fa fa-sort"></i></th>
-              
-                  </tr>
-                </thead>
-                <tbody>
-                  	<ui:repeat var="c" value="#{newsBean.addnewsWORLD()}">
-                     <tr>      
-                                       <td colspan="80" class="success">#{c.contenu}</td>
-												<td colspan="20" class="success"><a href="#{c.url}">Link</a></td>
-											
-												
-												</tr>
-											</ui:repeat>
-				</tbody>
-              </table>
-           
-          </div>
-          </div>
-		
-            </h:panelGrid>
-        </p:tab>
-         <p:tab title="GOOGLE FINANCE NEWS ">
-         
-            <h:panelGrid columns="2" cellpadding="10">
-                <img src="#{request.contextPath}/resources/traderResources/img/google-news.jpg" /> 
-                   <div class="row">
-          
-            <h2>GOOGLE FINANCE NEWS</h2>
-            <div class="table-responsive">
-              <table class="table table-bordered table-hover tablesorter">
-                <thead>
-                  <tr>
-           
-                    <th colspan="80">News  <i class="fa fa-sort"></i></th>
-                    <th colspan="20">Link <i class="fa fa-sort"></i></th>
-              
-                  </tr>
-                </thead>
-                <tbody>
-                  	<ui:repeat var="c" value="#{newsBean.addGoogle()}">
-                     <tr>      
-                                       <td colspan="80" class="success">#{c.contenu}</td>
-												<td colspan="20" class="success"><a href="#{c.url}">Link</a></td>
-											
-												
-												</tr>
-											</ui:repeat>
-				</tbody>
-              </table>
-            </div>
-          </div>
-          
-            </h:panelGrid>
-        </p:tab>
-   
-        <p:tab  title="EUROPE'S NEWS">
-            <h:panelGrid columns="2" cellpadding="10">
-                 <img src="#{request.contextPath}/resources/traderResources/img/bloomberg europ.png" />
-					   <div class="row">
-        
-            <h2>EUROPE NEWS</h2>
-            <div class="table-responsive">
-              <table class="table table-bordered table-hover tablesorter">
-                <thead>
-                  <tr>
-           
-                    <th colspan="80">News  <i class="fa fa-sort"></i></th>
-                    <th colspan="20">Link <i class="fa fa-sort"></i></th>
-              
-                  </tr>
-                </thead>
-                <tbody>
-                  	<ui:repeat var="c" value="#{newsBean.addneweurope()}">
-                     <tr>      
-                                       <td colspan="80" class="success">#{c.contenu}</td>
-												<td colspan="20" class="success"><a href="#{c.url}">Link</a></td>
-											
-												
-												</tr>
-											</ui:repeat>
-				</tbody>
-              </table>
-            </div>
-          </div>
-         
-            </h:panelGrid>
-        </p:tab>
-        <p:tab title="ASIA'S NEWS">
-         
-            <h:panelGrid columns="2" cellpadding="10">
-                <img src="#{request.contextPath}/resources/traderResources/img/download.jpg" /> 
-                   <div class="row">
-       
-            <h2>ASIA NEWS</h2>
-            <div class="table-responsive">
-              <table class="table table-bordered table-hover tablesorter">
-                <thead>
-                  <tr>
-           
-                    <th colspan="80">News  <i class="fa fa-sort"></i></th>
-                    <th colspan="20">Link <i class="fa fa-sort"></i></th>
-              
-                  </tr>
-                </thead>
-                <tbody>
-                  	<ui:repeat var="c" value="#{newsBean.addnewsasia()}">
-                     <tr>      
-                                       <td colspan="80" class="success">#{c.contenu}</td>
-												<td colspan="20" class="success"><a href="#{c.url}">Link</a></td>
-											
-												
-												</tr>
-											</ui:repeat>
-				</tbody>
-              </table>
-            
-          </div>
-          </div>
-            </h:panelGrid>
-        </p:tab>
-         <p:tab title=" AMERICA'S NEWS">
-         
-            <h:panelGrid columns="2" cellpadding="10">
-                <img src="#{request.contextPath}/resources/traderResources/img/Bloomberg-News-logo.png" /> 
-                   <div class="row">
-         
-            <h2>USA NEWS</h2>
-            <div class="table-responsive">
-              <table class="table table-bordered table-hover tablesorter">
-                <thead>
-                  <tr>
-           
-                    <th colspan="80">News  <i class="fa fa-sort"></i></th>
-                    <th colspan="20">Link <i class="fa fa-sort"></i></th>
-              
-                  </tr>
-                </thead>
-                <tbody>
-                  	<ui:repeat var="c" value="#{newsBean.addnewamerica()}">
-                     <tr>      
-                                       <td colspan="80" class="success">#{c.contenu}</td>
-												<td colspan="20" class="success"><a href="#{c.url}">Link</a></td>
-											
-												
-												</tr>
-											</ui:repeat>
-				</tbody>
-              </table>
-            </div>
-          </div>
-          
-            </h:panelGrid>
-        </p:tab>
-        
-  
-    </p:accordionPanel>
+		<h:form>
+			<p:growl id="msgs" showDetail="true"></p:growl>
 
-	</h:form>
+			<h3 style="margin-top: 0">NEWS</h3>
+			<p:accordionPanel>
+				<p:tab title="WORLD'S NEWS">
+					<h:panelGrid columns="2" cellpadding="10">
+						<img
+							src="#{request.contextPath}/resources/traderResources/img/world.jpg" />
+						<div class="row">
+
+							<h2>WORLD'S NEWS</h2>
+							<div class="table-responsive">
+								<table class="table table-bordered table-hover tablesorter">
+									<thead>
+										<tr>
+
+											<th colspan="80">News <i class="fa fa-sort"></i></th>
+											<th colspan="20">Link <i class="fa fa-sort"></i></th>
+
+										</tr>
+									</thead>
+									<tbody>
+										<ui:repeat var="c" value="#{newsBean.addnewsWORLD()}">
+											<tr>
+												<td colspan="80" class="success">#{c.contenu}</td>
+												<td colspan="20" class="success"><a href="#{c.url}">Link</a></td>
+
+
+											</tr>
+										</ui:repeat>
+									</tbody>
+								</table>
+
+							</div>
+						</div>
+
+					</h:panelGrid>
+				</p:tab>
+				<p:tab title="GOOGLE FINANCE NEWS ">
+
+					<h:panelGrid columns="2" cellpadding="10">
+						<img
+							src="#{request.contextPath}/resources/traderResources/img/google-news.jpg" />
+						<div class="row">
+
+							<h2>GOOGLE FINANCE NEWS</h2>
+							<div class="table-responsive">
+								<table class="table table-bordered table-hover tablesorter">
+									<thead>
+										<tr>
+
+											<th colspan="80">News <i class="fa fa-sort"></i></th>
+											<th colspan="20">Link <i class="fa fa-sort"></i></th>
+
+										</tr>
+									</thead>
+									<tbody>
+										<ui:repeat var="c" value="#{newsBean.addGoogle()}">
+											<tr>
+												<td colspan="80" class="success">#{c.contenu}</td>
+												<td colspan="20" class="success"><a href="#{c.url}">Link</a></td>
+
+
+											</tr>
+										</ui:repeat>
+									</tbody>
+								</table>
+							</div>
+						</div>
+
+					</h:panelGrid>
+				</p:tab>
+
+				<p:tab title="EUROPE'S NEWS">
+					<h:panelGrid columns="2" cellpadding="10">
+						<img
+							src="#{request.contextPath}/resources/traderResources/img/bloomberg europ.png" />
+						<div class="row">
+
+							<h2>EUROPE NEWS</h2>
+							<div class="table-responsive">
+								<table class="table table-bordered table-hover tablesorter">
+									<thead>
+										<tr>
+
+											<th colspan="80">News <i class="fa fa-sort"></i></th>
+											<th colspan="20">Link <i class="fa fa-sort"></i></th>
+
+										</tr>
+									</thead>
+									<tbody>
+										<ui:repeat var="c" value="#{newsBean.addneweurope()}">
+											<tr>
+												<td colspan="80" class="success">#{c.contenu}</td>
+												<td colspan="20" class="success"><a href="#{c.url}">Link</a></td>
+
+
+											</tr>
+										</ui:repeat>
+									</tbody>
+								</table>
+							</div>
+						</div>
+
+					</h:panelGrid>
+				</p:tab>
+				<p:tab title="ASIA'S NEWS">
+
+					<h:panelGrid columns="2" cellpadding="10">
+						<img
+							src="#{request.contextPath}/resources/traderResources/img/download.jpg" />
+						<div class="row">
+
+							<h2>ASIA NEWS</h2>
+							<div class="table-responsive">
+								<table class="table table-bordered table-hover tablesorter">
+									<thead>
+										<tr>
+
+											<th colspan="80">News <i class="fa fa-sort"></i></th>
+											<th colspan="20">Link <i class="fa fa-sort"></i></th>
+
+										</tr>
+									</thead>
+									<tbody>
+										<ui:repeat var="c" value="#{newsBean.addnewsasia()}">
+											<tr>
+												<td colspan="80" class="success">#{c.contenu}</td>
+												<td colspan="20" class="success"><a href="#{c.url}">Link</a></td>
+
+
+											</tr>
+										</ui:repeat>
+									</tbody>
+								</table>
+
+							</div>
+						</div>
+					</h:panelGrid>
+				</p:tab>
+				<p:tab title=" AMERICA'S NEWS">
+
+					<h:panelGrid columns="2" cellpadding="10">
+						<img
+							src="#{request.contextPath}/resources/traderResources/img/Bloomberg-News-logo.png" />
+						<div class="row">
+
+							<h2>USA NEWS</h2>
+							<div class="table-responsive">
+								<table class="table table-bordered table-hover tablesorter">
+									<thead>
+										<tr>
+
+											<th colspan="80">News <i class="fa fa-sort"></i></th>
+											<th colspan="20">Link <i class="fa fa-sort"></i></th>
+
+										</tr>
+									</thead>
+									<tbody>
+										<ui:repeat var="c" value="#{newsBean.addnewamerica()}">
+											<tr>
+												<td colspan="80" class="success">#{c.contenu}</td>
+												<td colspan="20" class="success"><a href="#{c.url}">Link</a></td>
+
+
+											</tr>
+										</ui:repeat>
+									</tbody>
+								</table>
+							</div>
+						</div>
+
+					</h:panelGrid>
+				</p:tab>
+
+
+			</p:accordionPanel>
+
+		</h:form>
 		<!--  h:form id="form">           
    
    <p:growl id="msgs" showDetail="true"></p:growl>
@@ -267,44 +271,49 @@ That's still an incredible sum by any standard, but it pales in comparison to wh
             </h:panelGrid>
         </p:tab>
     </p:accordionPanel>
- </h:form--> 
- <br />
- <br/>
- <h:form> 
-    <p:dataScroller value="#{articlesBean.articles}" var="article" chunkSize="10" mode="inline" scrollHeight="500">
-        <f:facet name="header">
+ </h:form-->
+		<br />
+		<br />
+		<h:form>
+			<p:dataScroller value="#{articlesBean.articles}" var="article"
+				chunkSize="10" mode="inline" scrollHeight="500">
+				<f:facet name="header">
             Scroll Down to Load More articles
         </f:facet>
- 
-        <h:panelGrid columns="2" style="width:100%" columnClasses="logo,detail">
-            <img src="#{request.contextPath}/resources/traderResources/img/logo.png" /> 
- 
-            <p:outputPanel>
-                <h:panelGrid columns="2" cellpadding="5">
-                    <h:outputText value="Author:" />
-                    <h:outputText value="#{article.author}" style="font-weight: bold"/>
- 
-                    <h:outputText value="Date" />
-                    <h:outputText value="#{article.date}" style="font-weight: bold"/>
- 
-                    <h:outputText value="Title:" />
-                    <h:outputText value="#{article.title}" style="font-weight: bold" />
-                   
-                    <h:outputText value="Text:" />
-                    <h:outputText value="#{article.text}"/>
-                    
-                    <h:outputText value="LINK:" />
-                   <h:outputLink value="#{article.url}" ><h:outputText value = "#{article.url}" /></h:outputLink>
-                    
-                  
-                   
-                    <br></br>
-                    <br></br>
-                    
-                </h:panelGrid>
-            </p:outputPanel>
-        </h:panelGrid>
-    </p:dataScroller>
-</h:form>
+
+				<h:panelGrid columns="2" style="width:100%"
+					columnClasses="logo,detail">
+					<img
+						src="#{request.contextPath}/resources/traderResources/img/logo.png" />
+
+					<p:outputPanel>
+						<h:panelGrid columns="2" cellpadding="5">
+							<h:outputText value="Author:" />
+							<h:outputText value="#{article.author}" style="font-weight: bold" />
+
+							<h:outputText value="Date" />
+							<h:outputText value="#{article.date}" style="font-weight: bold" />
+
+							<h:outputText value="Title:" />
+							<h:outputText value="#{article.title}" style="font-weight: bold" />
+
+							<h:outputText value="Text:" />
+							<h:outputText value="#{article.text}" />
+
+							<h:outputText value="LINK:" />
+							<h:outputLink value="#{article.url}">
+								<h:outputText value="#{article.url}" />
+							</h:outputLink>
+
+
+
+							<br></br>
+							<br></br>
+
+						</h:panelGrid>
+					</p:outputPanel>
+				</h:panelGrid>
+			</p:dataScroller>
+		</h:form>
 	</ui:define>
 </ui:composition>
