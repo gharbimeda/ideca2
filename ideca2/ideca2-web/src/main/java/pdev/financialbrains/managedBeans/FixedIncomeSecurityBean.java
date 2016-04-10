@@ -203,7 +203,8 @@ public class FixedIncomeSecurityBean {
 		this.bondPrice = fxlocal.priceZeroCouponBond(faceValue, timeMaturity,
 				currentYield);
 		init();
-		// nav ="/pages/trader/menuProduct.xhtml?faces-redirect=true";
+		nav = "menuProduct?faces-redirect=true";
+
 		return null;
 
 	}
@@ -255,7 +256,7 @@ public class FixedIncomeSecurityBean {
 		tradeService.create(trade1);
 		trades = tradeService.readAll();
 		fixedIncomeSecurities = doReadAll();
-		navTo = "/pages/trader/menuProduct.xhtml?faces-redirect=true";
+		navTo = "menuProduct?faces-redirect=true";
 		return navTo;
 	}
 
