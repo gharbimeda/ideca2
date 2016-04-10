@@ -42,8 +42,8 @@
 				<h:outputText value="Result" rendered="#{fsbean.rend}" />
 				<h:inputText value="#{fsbean.result}" rendered="#{fsbean.rend}"
 					readonly="true" />
-				<h:commandButton class="btn btn-success btn-sm" action="#{fsbean.doPrice()}"
-					value="Book" />
+				<h:commandButton class="btn btn-success btn-sm" action="#{fsbean.doBook()}"
+					value="Book" rendered="#{fsbean.rend}" />
 			</h:panelGroup>
 		</h:form>
 	</ui:define>

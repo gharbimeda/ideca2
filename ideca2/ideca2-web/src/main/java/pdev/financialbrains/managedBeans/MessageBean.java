@@ -25,7 +25,7 @@ public class MessageBean {
 	private IUserCrudServiceLocal userLocal;
 	@EJB
 	private IMessageCrudServicesLocal messageLocal;
-	@ManagedProperty(value = "#{identity}")
+	@ManagedProperty("#{identityBean}")
 	private IdentityBean identityBean;
 	private String text;
 	private String traderDest;
@@ -156,23 +156,23 @@ public class MessageBean {
 		tradersNames = new ArrayList<String>();
 		if (identityBean.hasRole("trader")) {
 			trader = new Trader();
-			trader = (Trader) identityBean.getUserIdentify();
+			trader = (Trader) identityBean.getUtilisateur();
+			traders = userLocal.readAll(trader.getIdUser());
+			messages = messageLocal.readByUserDestId(trader.getIdUser());
 		} else if (identityBean.hasRole("backoffuser")) {
 			back = new BackOfficeUser();
-			back = (BackOfficeUser) identityBean.getUserIdentify();
+			back = (BackOfficeUser) identityBean.getUtilisateur();
+			traders = userLocal.readAll(back.getIdUser());
+			messages = messageLocal.readByUserDestId(back.getIdUser());
 		}
-
-		traders = userLocal.readAll(1);
 		for (int i = 0; i < traders.size(); i++) {
 			tradersNames.add(i, traders.get(i).getLogin());
 		}
-		messages = messageLocal.readByUserDestId(2);
-		System.out.println(identityBean);
 
 	}
 
 	public String doSend() {
-		message.setUserSource(userLocal.readById(1));
+		message.setUserSource(userLocal.readById(identityBean.getUtilisateur().getIdUser()));
 		message.setUserDest(userLocal.readByLogin(traderDest));
 		message.setTexte(text);
 		message.setDate(date);
