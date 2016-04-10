@@ -20,12 +20,13 @@
 		<li><a href="#{request.contextPath}/pages/trader/contactUs.xhtml"><i
 				class="fa fa-inbox" /> CONTACT US</a></li>
 	</ui:define>
-	
+
 	<ui:define name="PageName">CAP AND FLOOR</ui:define>
 	<ui:define name="PageContent">
 		<hr />
-		<h:inputHidden value="#{capbean.trader.idUser}"  target="#{capbean.idUserConnect}"/>
-		
+		<h:inputHidden value="#{capbean.trader.idUser}"
+			target="#{capbean.idUserConnect}" />
+
 		<h:form>
 			<!-- value de la dataTable est le modele maniplue -->
 			<div class="panel panel-default">
@@ -93,7 +94,7 @@
 							<!-- ****************************************************** -->
 							<label>Start Date : </label>
 							<br />
-							<p:calendar value="#{capbean.c.startDate}"/>
+							<p:calendar value="#{capbean.c.startDate}" />
 							<br />
 							<!-- ****************************************************** -->
 							<label>End Date : </label>
@@ -120,9 +121,6 @@
 							<p:calendar value="#{capbean.c.expiration}" />
 							<br />
 							<!-- ****************************************************** -->
-							<label>NDays : </label>
-							<p:outputLabel class="form-control" value="#{capbean.nbDays}" />
-							<!-- ****************************************************** -->
 							<label> Notional amount :</label>
 							<p:inputText class="form-control"
 								value="#{capbean.c.notionalAmount}" />
@@ -133,18 +131,22 @@
 							<label>1.0 Year forward rate :</label>
 							<p:inputText class="form-control" value="#{capbean.yield}" />
 							<!-- ****************************************************** -->
-							<label>Reference Index:        LIBOR</label> <br/>
+							<label>Reference Index: LIBOR</label>
+							<br />
 							<!-- ****************************************************** -->
 							<label>Volatility : </label>
 							<p:inputText class="form-control" value="#{capbean.c.volatility}" />
 							<!-- ****************************************************** -->
 							<label>Strike Price : </label>
-							<p:inputText class="form-control" value="#{capbean.c.strikePrice}"  />
+							<p:inputText class="form-control"
+								value="#{capbean.c.strikePrice}" />
 							<hr />
 							<p:commandButton class="btn btn-primary btn-sm" value="Pricing"
 								action="#{capbean.doPricing()}" />
 							<p:commandButton class="btn btn-success btn-sm"
-								value="Book Trade" action="#{capbean.doBookTrade()}" />
+								value="Book Trade" action="#{capbean.doBookTrade()}">
+								
+							</p:commandButton>
 						</h:form>
 					</div>
 				</div>
@@ -154,7 +156,37 @@
 					<div class="panel-heading">
 						<h4 style="color: #c11313">CAP FLOOR PRICING</h4>
 					</div>
-					<div class="panel-body"></div>
+					<div class="panel-body">
+						<div class="table-responsive">
+							<h:form rendered="#{capbean.showForm}">
+								<h:dataTable value="#{capbean.resulats}" var="res"
+									class="table table-striped">
+
+									<h:column>
+										<f:facet name="header">Start Date</f:facet>
+										<h:outputText value="#{res.startDate}" />
+									</h:column>
+									<h:column>
+										<f:facet name="header">End Date</f:facet>
+										<h:outputText value="#{res.endDate}" />
+									</h:column>
+									<h:column>
+										<f:facet name="header">Period</f:facet>
+										<h:outputText value="#{res.period}" />
+									</h:column>
+									<h:column>
+										<f:facet name="header">Maturity</f:facet>
+										<h:outputText value="#{res.maturity}" />
+									</h:column>
+									<h:column>
+										<f:facet name="header">Cap / Floor</f:facet>
+										<h:outputText value="#{res.cap}" />
+									</h:column>
+
+								</h:dataTable>
+							</h:form>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

@@ -49,14 +49,14 @@ public class CapBean {
 	private Double risk;
 	private Float yield;
 	private Integer putCall;
-
 	private Integer nd;
 	private Integer i=15;
-
 	private List<CapFloorTable> resulats;
 	private List<Trade> trades;
 	private List<Trade> caps;
-
+	private boolean showForm;
+	private Trade t = new Trade();
+	
 	@PostConstruct
 	public void init() {
 
@@ -72,7 +72,6 @@ public class CapBean {
 			}
 		}
 		return caps;
-
 	}
 
 	private Integer nDays() {
@@ -87,7 +86,9 @@ public class CapBean {
 		return nDays() / c.getTenor();
 	}
 
-	public void doPricing() {
+	@SuppressWarnings("null")
+	public String doPricing() {
+		showForm=true;
 		SimpleDateFormat formater = null;
 		formater = new SimpleDateFormat("dd/MM/yyyy");
 		nd = this.nDays();
@@ -107,19 +108,20 @@ public class CapBean {
 			capFloorTable.setPeriod(i);
 			n = Math.abs((date2.getTime().getYear() - date1.getTime().getYear()) * 12
 					+ (date2.getTime().getMonth() - date1.getTime().getMonth()));
-			capFloorTable.setMaturity(n / 365.0);
-			//capFloorTable.setCap(capService.pricingCapFloor(c.getNotionalAmount(), c.getCapFloorString(), nd, i, 360,
+			//capFloorTable.setMaturity(n / 365.0);
+			//capFloorTable.setCap(capService.pricingCapFloor(c.getNotionalAmount(), c.getCapFloorString(), nd, i, 360,:
 			//		risk, c.getStrikePrice(), c.getVolatility(), capFloorTable.getMaturity(), Double.parseDouble(f)));
 			capFloorTables.add(capFloorTable);
 			somme += capFloorTable.getCap();
 		}
 		resulats = capFloorTables;
+		return null;
 
 	}
 
 	public String doBookTrade() {
 		
-		Trade t = new Trade();
+		
 		c.setId(i);
 		capService.update(c);
 		
@@ -216,6 +218,22 @@ public class CapBean {
 
 	public void setResulats(List<CapFloorTable> resulats) {
 		this.resulats = resulats;
+	}
+
+	public Trade getT() {
+		return t;
+	}
+
+	public void setT(Trade t) {
+		this.t = t;
+	}
+
+	public boolean isShowForm() {
+		return showForm;
+	}
+
+	public void setShowForm(boolean showForm) {
+		this.showForm = showForm;
 	}
 
 }
