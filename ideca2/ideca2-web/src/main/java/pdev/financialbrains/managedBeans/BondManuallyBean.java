@@ -22,8 +22,17 @@ public class BondManuallyBean {
 	private IBondCrudServicesLocal bondlocal;
 	private List<Bond> bonds = new ArrayList<>();
 	private Bond bond = new Bond();
-	private Bond test = new Bond(5);
+	private boolean showForm = false;
 
+
+
+	public boolean isShowForm() {
+		return showForm;
+	}
+
+	public void setShowForm(boolean showForm) {
+		this.showForm = showForm;
+	}
 
 	public IBondCrudServicesLocal getBondlocal() {
 		return bondlocal;
@@ -51,7 +60,7 @@ public class BondManuallyBean {
 
 	@PostConstruct
 	public void init() {
-		//bonds = bondlocal.readAll();
+		bonds = bondlocal.readAll();
 		bond = new Bond();
 
 	}
@@ -74,7 +83,18 @@ public class BondManuallyBean {
 		return null;
 	}
 	 public String initialiser(){
+		 
 		 bond=new Bond();
 		 return null;
 	 }
+	// public  String doShow()
+	// {
+	//	 bondlocal.readAll();
+	//	 return null;
+	// }
+	 public String doShowForm() {
+			showForm = showForm ? false : true;
+			return null;
+		}
+
 }

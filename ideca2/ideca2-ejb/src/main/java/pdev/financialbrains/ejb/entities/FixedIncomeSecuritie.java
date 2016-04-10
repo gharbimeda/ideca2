@@ -19,6 +19,27 @@ public class FixedIncomeSecuritie extends DerivativeInstrument {
 		private Float yield;
 		private Float currentYield;
 		private Float bondPrice;
+		private int months;
+		private int bd;
+		
+		
+		public String getbdString(){
+			if (bd == 0){
+				return "ZCB";
+			}else if(bd== 1)
+			{
+				return "treasury";
+			} else return "treasury";
+		}
+		
+		public int getMonths() {
+			return months;
+		}
+
+		public void setMonths(int months) {
+			this.months = months;
+		}
+
 		private static final long serialVersionUID = 1L;
 
 		public Integer getTimeMaturity() {
@@ -75,6 +96,14 @@ public class FixedIncomeSecuritie extends DerivativeInstrument {
 
 		public void setBondPrice(Float bondPrice) {
 			this.bondPrice = bondPrice;
+		}
+
+		public int getBd() {
+			return bd;
+		}
+
+		public void setBd(int bd) {
+			this.bd = bd;
 		}
 
 		public static long getSerialversionuid() {

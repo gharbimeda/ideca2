@@ -52,6 +52,7 @@ public class CapFloorManagementDelegate {
 	}
 	public static double pricingCapFloor(Double amount, String cap_floor, Integer nDays, Integer period, Integer daysYear, Double f_rate,
 			Double strike, Double vol, Double maturity, Double rfr) {
-		return getProxy().pricingCapFloor(amount, cap_floor, nDays, period, daysYear, f_rate, strike, vol, maturity, rfr);
+		//return getProxy().pricingCapFloor(amount, cap_floor, nDays, period, daysYear, f_rate, strike, vol, maturity, rfr);
+		return 0;
 	}
 }

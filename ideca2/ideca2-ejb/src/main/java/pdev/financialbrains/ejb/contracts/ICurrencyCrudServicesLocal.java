@@ -20,4 +20,7 @@ public interface ICurrencyCrudServicesLocal {
 	List<Currency> readBySymbol(String symbol);
 
 	List<Currency> readAll();
+	public Boolean delete2(Currency b);
+	public Boolean update2(Currency b);
+	public Boolean add(Currency b);
 }

@@ -1,17 +1,26 @@
 package pdev.financialbrains.ejb.entities;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
+@Table(name="t_derivativeInstrument")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public abstract class DerivativeInstrument extends FinancialInstrument {
+public class DerivativeInstrument extends FinancialInstrument {
 
 	private Date startDate;
+	
 	private Date endDate;
+	@OneToMany(mappedBy="fi")
+	private List<Trade> trades;
 	private static final long serialVersionUID = 1L;
 
 	public DerivativeInstrument() {
@@ -86,5 +95,7 @@ public abstract class DerivativeInstrument extends FinancialInstrument {
 		this.startDate = startDate;
 		this.endDate = endDate;
 	}
+
+
 
 }

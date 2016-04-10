@@ -10,6 +10,8 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 
+
+
 @XmlRootElement(name="results")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Results implements Serializable{
@@ -18,8 +20,17 @@ public class Results implements Serializable{
 	public List<Quote> quotes = new ArrayList<Quote>();
 	
 	
-	
-    private static final long serialVersionUID = 1L;
+	@XmlElement(name="rate")
+	public List<Rate> rates = new ArrayList<Rate>();
+    public List<Rate> getRates() {
+		return rates;
+	}
+
+	public void setRates(List<Rate> rates) {
+		this.rates = rates;
+	}
+
+	private static final long serialVersionUID = 1L;
     
     public void add(Quote quote) {
 		quotes.add(quote);

@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ejb.Local;
 
 import pdev.financialbrains.ejb.entities.Trade;
+import pdev.financialbrains.ejb.entities.User;
 
 @Local
 public interface ITradeCrudServiceLocal {
@@ -26,5 +27,11 @@ public interface ITradeCrudServiceLocal {
 	Integer readAccepted();
 	
 	Integer readRefused();
+	
+	void settle(Trade trade);
+	
+	void decline(Trade trade);
+
+	List<Trade> readTradesByUser(User u);
 
 }

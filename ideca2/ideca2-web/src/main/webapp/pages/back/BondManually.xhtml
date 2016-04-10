@@ -3,8 +3,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-		xmlns:p="http://primefaces.org/ui"
-	
+	xmlns:p="http://primefaces.org/ui"
 	template="/WEB-INF/templates/backTemplate/backOfficeUserTemp.xhtml">
 
 	<ui:define name="titleName"> Market Data </ui:define>
@@ -16,14 +15,35 @@
 		</h2>
 		<div class="page-bar"></div>
 	</ui:define>
-	
+
 	<ui:define name="pageContent">
-	
-<h:form>
-<h:outputText value="Coupon Frequency" />
-					<p:inputText value="#{mdbondBean.bond.couponFreq}" />
+
+		<h1>Add A Bond</h1>
+		<h:form>
+			<h:panelGrid columns="2">
+				<h:outputText value="Symbol" />
+				<p:inputText value="#{mdbondBean.bond.symbol}" />
+				<h:outputText value="Current Price" />
+				<p:inputText value="#{mdbondBean.bond.currentPrice}" />
+				
+						
+								
+			
+				  				
+				<h:outputText value="Coupon Frequency" />
+				<p:inputText value="#{mdbondBean.bond.couponFreq}" />
+				<h:outputText value="Volatility" />
+				<p:inputText value="#{mdbondBean.bond.volatility}" />
+				<h:outputText value="Yield" />
+				<p:inputText value="#{mdbondBean.bond.yield}" />
+				<h:outputText value="Start Date"/>
+								<p:calendar value="#{mdbondBean.bond.startDate}"></p:calendar>
+					<h:outputText value="End Date" />
+									<p:calendar value="#{mdbondBean.bond.endDate}"></p:calendar>
 					
-<p:commandButton actionListener="#{mdbondBean.doUpdate()}" value="add" />
-</h:form>
+			</h:panelGrid>
+			<p:commandButton action="#{mdbondBean.doUpdate()}" value="add" />
+		</h:form>
+		
 	</ui:define>
 </ui:composition>

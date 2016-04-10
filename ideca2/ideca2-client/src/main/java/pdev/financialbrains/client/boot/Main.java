@@ -26,55 +26,59 @@ import pdev.financialbrains.ejb.contracts.IStockCrudServicesRemote;
 
 import pdev.financialbrains.ejb.entities.Stock;
 import pdev.financialbrains.ejb.entities.Trade;
+import pdev.financialbrains.ejb.entities.TradePK;
 
 public class Main {
 
 	public static void main(String[] args) throws Exception {
-		Currency currency = new Currency();
-		// currency.setId(1);
-		currency.setSymbol("EUR");
-		CurrencyManagementDelegate.getInstance().doCreate(currency);
-
-		Currency currency2 = new Currency();
-		// currency2.setId(9);
-		currency2.setSymbol("DNT");
-		CurrencyManagementDelegate.getInstance().doCreate(currency2);
-
-		Bond bond = new Bond();
-		// bond.setId(10);
-		bond.setCurrentPrice(2500f);
-		BondManagementDelegate.getInstance().doCreate(bond);
-
-		Bond bond2 = new Bond();
-		// bond2.setId(11);
-		bond2.setCurrentPrice(5200f);
-		BondManagementDelegate.getInstance().doCreate(bond2);
-
-		Stock stock = new Stock();
-		// stock.setId(2);
-		stock.setCompanyName("Delice");
-		StockManagementDelegate.getInstance().doCreate(stock);
-
-		Stock stock2 = new Stock();
-		// stock2.setId(3);
-		stock2.setCompanyName("Nestle");
-		StockManagementDelegate.getInstance().doCreate(stock2);
+//		Currency currency = new Currency();
+//		// currency.setId(1);
+//		currency.setSymbol("EUR");
+//		CurrencyManagementDelegate.getInstance().doCreate(currency);
+//
+//		Currency currency2 = new Currency();
+//		// currency2.setId(9);
+//		currency2.setSymbol("DNT");
+//		CurrencyManagementDelegate.getInstance().doCreate(currency2);
+//
+//		Bond bond = new Bond();
+//		// bond.setId(10);
+//		bond.setCurrentPrice(2500f);
+//		BondManagementDelegate.getInstance().doCreate(bond);
+//
+//		Bond bond2 = new Bond();
+//		// bond2.setId(11);
+//		bond2.setCurrentPrice(5200f);
+//		BondManagementDelegate.getInstance().doCreate(bond2);
+//
+//		Stock stock = new Stock();
+//		// stock.setId(2);
+//		stock.setCompanyName("Delice");
+//		StockManagementDelegate.getInstance().doCreate(stock);
+//
+//		Stock stock2 = new Stock();
+//		// stock2.setId(3);
+//		stock2.setCompanyName("Nestle");
+//		StockManagementDelegate.getInstance().doCreate(stock2);
 
 	/*	Trade trade = new Trade();
+		TradePK pk = new TradePK(); 
+		pk.setId(1);
+//		pk.setIdUser(1);
 		trade.setName("waiting !");
-		trade.setValue(25d);
+		//trade.setValue(25d);
 		trade.setStatus(2);
 		TradeManagementDelegate.getInstance().doCreate(trade);
 
 		Trade trade2 = new Trade();
 		trade2.setName("En Attente .....");
-		trade2.setValue(20d);
+		//trade2.setValue(20d);
 		trade2.setStatus(2);
 		TradeManagementDelegate.getInstance().doCreate(trade2);
 
 		Trade trade3 = new Trade();
 		trade3.setName("Still Waiting !!");
-		trade3.setValue(82d);
+		//trade3.setValue(82d);
 		trade3.setStatus(2);
 		TradeManagementDelegate.getInstance().doCreate(trade3);
 

@@ -131,19 +131,15 @@
 						</div>
 						<ul class="accordion-content nav nav-list collapse"
 							id="accMarketData">
-							<li><a
-								href="#{request.contextPath}/pages/back/marketData.xhtml"> <i
-									class="fontello-icon-right-dir"></i> MarketData From
-									Yahoo.finance
-							</a></li>
-							<li><a href="#{request.contextPath}/pages/back/bonds.xhtml">
+							
+							<li><a href="#{request.contextPath}/pages/back/BondManually.xhtml">
 									<i class="fontello-icon-right-dir"></i> Bonds
 							</a></li>
 							<li><a
-								href="#{request.contextPath}/pages/back/currencies.xhtml"> <i
+								href="#{request.contextPath}/pages/back/CurrencyManually.xhtml"> <i
 									class="fontello-icon-right-dir"></i> Currencies
 							</a></li>
-							<li><a href="#{request.contextPath}/pages/back/stocks.xhtml">
+							<li><a href="#{request.contextPath}/pages/back/StockManually.xhtml">
 									<i class="fontello-icon-right-dir"></i> Stocks
 							</a></li>
 						</ul>
@@ -169,14 +165,9 @@
 						<ul class="accordion-content nav nav-list collapse"
 							id="accSettlement">
 							<li><a
-								href="#{request.contextPath}/pages/back/settlement.xhtml"> <i
+								href="#{request.contextPath}/pages/back/Settlement.xhtml"> <i
 									class="fontello-icon-right-dir"></i> <span
 									class="hidden-tablet">Show Settlements</span>
-							</a></li>
-							<li><a
-								href="#{request.contextPath}/pages/back/addSettlement.xhtml">
-									<i class="fontello-icon-right-dir"></i> <span
-									class="hidden-tablet">Add a Settlement </span>
 							</a></li>
 						</ul>
 					</li>
@@ -191,12 +182,12 @@
 						<ul class="accordion-content nav nav-list collapse"
 							id="accMessage">
 							<li><a
-								href="#{request.contextPath}/pages/back/showMessage.xhtml">
+								href="#{request.contextPath}/pages/back/MessageBack.xhtml">
 									<i class="fontello-icon-right-dir"></i> <span
 									class="hidden-tablet">Show My Inbox </span>
 							</a></li>
 							<li><a
-								href="#{request.contextPath}/pages/back/sendMessage.xhtml">
+								href="#{request.contextPath}/pages/back/sendMessages.xhtml">
 									<i class="fontello-icon-right-dir"></i> <span
 									class="hidden-tablet">Send a Message </span>
 							</a></li>
@@ -288,8 +279,7 @@
 
 	<!-- Le javascript -->
 	<!-- Placed at the end of the document so the pages load faster -->
-	<script
-		src="#{request.contextPath}/resources/backResources/js/lib/jquery.js"></script>
+	
 	<script
 		src="#{request.contextPath}/resources/backResources/js/lib/jquery-ui.js"></script>
 	<script

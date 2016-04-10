@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/traderTemplate/traderTemplate.xhtml">
+	<ui:define name="titleName">FINANCIAL PRODUCTS</ui:define>
+	<ui:define name="linkAdd">
+		<link
+			href="#{request.contextPath}/resources/traderResources/css/responsive.css"
+			rel="stylesheet" />
+		<link
+			href="#{request.contextPath}/resources/traderResources/css/prettyPhoto.css"
+			rel="stylesheet" />
+		<link
+			href="#{request.contextPath}/resources/traderResources/css/animate.min.css"
+			rel="stylesheet" />
+	</ui:define>
+	<ui:define name="menuContent">
+		<li><a href="#{request.contextPath}/pages/trader/home.xhtml"><i
+				class="fa fa-home" /> HOME</a></li>
+		<li><a class="menu-top-active"
+			href="#{request.contextPath}/pages/trader/menuProduct.xhtml"><i
+				class="fa fa-money" /> FINANCIAL PRODUCTS</a></li>
+		<li><a href="#{request.contextPath}/pages/trader/trades.xhtml"><i
+				class="fa fa-shopping-cart" /> MY TRADES</a></li>
+		<li><a href="#{request.contextPath}/pages/trader/messages.xhtml"><i
+				class="fa fa-wechat" /> MESSAGES</a></li>
+		<li><a href="#{request.contextPath}/pages/trader/contactUs.xhtml"><i
+				class="fa fa-inbox" /> CONTACT US</a></li>
+	</ui:define>
+	<ui:define name="PageName">FINANCIAL PRODUCTS</ui:define>
+	<ui:define name="PageContent">
+
+		<h4>Corporate Bond pricing</h4>
+		<br />
+		<h:form>
+
+			<h:panelGrid columns="2">
+
+				<h:outputText value="Face Value" />
+				<p:spacer width="10" height="10" />
+				<h:inputText value="#{mdfxincomeBean.faceValue}" />
+				<p:spacer width="10" height="10" />
+				<h:outputText value="Time To Maturity" />
+				<p:spacer width="10" height="10" />
+				<h:inputText value="#{mdfxincomeBean.timeMaturity}" />
+				<p:spacer width="10" height="10" />
+				<h:outputText value="Current Yield" />
+				<p:spacer width="10" height="10" />
+				<h:inputText value="#{mdfxincomeBean.currentYield}" />
+				<p:spacer width="10" height="10" />
+				<h:outputText value="Frequency" />
+				<p:spacer width="10" height="10" />
+				<h:inputText value="#{mdfxincomeBean.frequency}" />
+				<p:spacer width="10" height="10" />
+				<h:outputText value="Coupon Rate" />
+				<p:spacer width="10" height="10" />
+				<h:inputText value="#{mdfxincomeBean.couponRate}" />
+				<p:spacer width="10" height="10" />
+				<h:outputText value="Months" />
+				<p:spacer width="10" height="10" />
+				<h:inputText value="#{mdfxincomeBean.months}" />
+				<p:spacer width="10" height="10" />
+
+				<!-- faceValue, timeMaturity,
+				currentYield, frequency, couponRate, months -->
+				<h:commandButton
+					action="#{mdfxincomeBean.dopricecorpBond(mdfxincomeBean.faceValue,mdfxincomeBean.timeMaturity,mdfxincomeBean.currentYield,mdfxincomeBean.frequency,mdfxincomeBean.couponRate,mdfxincomeBean.months)}"
+					value="price" />
+				<p:spacer width="10" height="10" />
+									<h:inputText value="#{mdfxincomeBean.bondPrice}" styleClass="form-control input-rounded"/>
+				<p:spacer width="10" height="10" />
+				<p:outputLabel value="Corporate" />
+				<p:panelGrid>
+					<p:selectOneMenu id="fxincome" value="#{mdfxincomeBean.fx.bd}">
+
+						<f:selectItem itemLabel="corporate" itemValue="2" />
+					</p:selectOneMenu>
+				</p:panelGrid>
+				<p:spacer width="10" height="10" />
+				<p:outputLabel value="Put / Call" />
+				<p:panelGrid>
+					<p:selectOneMenu id="putCall" value="#{mdfxincomeBean.putCall}">
+						<f:selectItem itemLabel="put" itemValue="0" />
+						<f:selectItem itemLabel="call" itemValue="1" />
+					</p:selectOneMenu>
+				</p:panelGrid>
+				<p:spacer width="10" height="10" />
+
+<p:commandButton class="btn btn-success btn-sm" value="Save Pricing"
+					action="#{mdfxincomeBean.doBookTrade()}" />
+			</h:panelGrid>
+
+		</h:form>
+
+	</ui:define>
+	<ui:define name="scriptAdd">
+		<script
+			src="#{request.contextPath}/resources/traderResources/jsMine/jquery.js"></script>
+		<script
+			src="#{request.contextPath}/resources/traderResources/jsMine/bootstrap.min.js"></script>
+		<script
+			src="#{request.contextPath}/resources/traderResources/jsMine/jquery.prettyPhoto.js"></script>
+		<script
+			src="#{request.contextPath}/resources/traderResources/jsMine/jquery.isotope.min.js"></script>
+		<script
+			src="#{request.contextPath}/resources/traderResources/jsMine/main.js"></script>
+		<script
+			src="#{request.contextPath}/resources/traderResources/jsMine/wow.min.js"></script>
+	</ui:define>
+</ui:composition>

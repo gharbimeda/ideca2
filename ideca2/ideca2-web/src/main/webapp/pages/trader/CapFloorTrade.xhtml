@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/traderTemplate/traderTemplate.xhtml">
+	<ui:define name="titleName">FINANCIAL PRODUCTS</ui:define>
+
+	<ui:define name="menuContent">
+		<li><a href="#{request.contextPath}/pages/trader/home.xhtml"><i
+				class="fa fa-home" /> HOME</a></li>
+		<li><a class="menu-top-active"
+			href="#{request.contextPath}/pages/trader/menuProduct.xhtml"><i
+				class="fa fa-money" /> FINANCIAL PRODUCTS</a></li>
+		<li><a href="#{request.contextPath}/pages/trader/trades.xhtml"><i
+				class="fa fa-shopping-cart" /> MY TRADES</a></li>
+		<li><a href="#{request.contextPath}/pages/trader/messages.xhtml"><i
+				class="fa fa-wechat" /> MESSAGES</a></li>
+		<li><a href="#{request.contextPath}/pages/trader/contactUs.xhtml"><i
+				class="fa fa-inbox" /> CONTACT US</a></li>
+	</ui:define>
+	
+	<ui:define name="PageName">CAP AND FLOOR</ui:define>
+	<ui:define name="PageContent">
+		<hr />
+		<h:inputHidden value="#{capbean.trader.idUser}"  target="#{capbean.idUserConnect}"/>
+		
+		<h:form>
+			<!-- value de la dataTable est le modele maniplue -->
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4 style="color: #c11313">CAPS FLOORS FOR SELL</h4>
+				</div>
+				<div class="panel-body">
+
+					<div class="table-responsive">
+						<h:dataTable value="#{capbean.caps}" var="cap"
+							class="table table-striped" id="TableTrades">
+							<h:column>
+								<f:facet name="header">Cap / Floor</f:facet>
+								<h:outputText value="#{cap.name}" />
+							</h:column>
+							<h:column>
+								<f:facet name="header">Notional Amount</f:facet>
+								<h:outputText value="#{cap.value}" />
+							</h:column>
+							<h:column>
+								<f:facet name="header">Start Date</f:facet>
+								<h:outputText value="#{cap.fi.startDate}" />
+							</h:column>
+							<h:column>
+								<f:facet name="header">End Date</f:facet>
+								<h:outputText value="#{cap.fi.endDate}" />
+							</h:column>
+							<h:column>
+								<f:facet name="header">Show</f:facet>
+								<h:commandButton action=" " value="Show"
+									class="btn btn-primary btn-sm">
+									<f:setPropertyActionListener value="#{cap.fi}"
+										target="#{capbean.c}" />
+
+								</h:commandButton>
+							</h:column>
+
+						</h:dataTable>
+					</div>
+				</div>
+			</div>
+		</h:form>
+		<hr />
+		<div class="col-md-12">
+			<div class="col-md-6">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h4 style="color: #c11313">CAP FLOOR INPUTS</h4>
+					</div>
+					<div class="panel-body">
+						<h:form>
+							<label>Cap/Floor : </label>
+							<h:selectOneMenu id="capfloor" value="#{capbean.c.capFloor}"
+								class="form-control">
+								<f:selectItem itemLabel="cap" itemValue="0" />
+								<f:selectItem itemLabel="floor" itemValue="1" />
+							</h:selectOneMenu>
+							<!-- ****************************************************** -->
+							<label>Put/Call : </label>
+							<h:selectOneMenu id="putCall" value="#{capbean.putCall}"
+								class="form-control">
+								<f:selectItem itemLabel="put" itemValue="0" />
+								<f:selectItem itemLabel="call" itemValue="1" />
+							</h:selectOneMenu>
+							<!-- ****************************************************** -->
+							<label>Start Date : </label>
+							<br />
+							<p:calendar value="#{capbean.c.startDate}"/>
+							<br />
+							<!-- ****************************************************** -->
+							<label>End Date : </label>
+							<br />
+							<p:calendar value="#{capbean.c.endDate}" />
+							<br />
+							<!-- ****************************************************** -->
+							<label>Convention Day : </label>
+							<h:selectOneMenu id="convention" value=" " class="form-control">
+								<f:selectItem itemLabel="act/360" itemValue="act/360" />
+								<f:selectItem itemLabel="act/365" itemValue="act/365" />
+							</h:selectOneMenu>
+							<!-- ****************************************************** -->
+							<label>Tenor : </label>
+							<h:selectOneMenu id="tenor" value="#{capbean.c.tenor}"
+								class="form-control">
+								<f:selectItem itemLabel="3" itemValue="3" />
+								<f:selectItem itemLabel="6" itemValue="6" />
+								<f:selectItem itemLabel="12" itemValue="12" />
+							</h:selectOneMenu>
+							<!-- ****************************************************** -->
+							<label>Valuation Date : </label>
+							<br />
+							<p:calendar value="#{capbean.c.expiration}" />
+							<br />
+							<!-- ****************************************************** -->
+							<label>NDays : </label>
+							<p:outputLabel class="form-control" value="#{capbean.nbDays}" />
+							<!-- ****************************************************** -->
+							<label> Notional amount :</label>
+							<p:inputText class="form-control"
+								value="#{capbean.c.notionalAmount}" />
+							<!-- ****************************************************** -->
+							<label>Risk free Rate :</label>
+							<p:inputText class="form-control" value="#{capbean.risk}" />
+							<!-- ****************************************************** -->
+							<label>1.0 Year forward rate :</label>
+							<p:inputText class="form-control" value="#{capbean.yield}" />
+							<!-- ****************************************************** -->
+							<label>Reference Index:        LIBOR</label> <br/>
+							<!-- ****************************************************** -->
+							<label>Volatility : </label>
+							<p:inputText class="form-control" value="#{capbean.c.volatility}" />
+							<!-- ****************************************************** -->
+							<label>Strike Price : </label>
+							<p:inputText class="form-control" value="#{capbean.c.strikePrice}"  />
+							<hr />
+							<p:commandButton class="btn btn-primary btn-sm" value="Pricing"
+								action="#{capbean.doPricing()}" />
+							<p:commandButton class="btn btn-success btn-sm"
+								value="Book Trade" action="#{capbean.doBookTrade()}" />
+						</h:form>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h4 style="color: #c11313">CAP FLOOR PRICING</h4>
+					</div>
+					<div class="panel-body"></div>
+				</div>
+			</div>
+		</div>
+
+	</ui:define>
+
+
+</ui:composition>

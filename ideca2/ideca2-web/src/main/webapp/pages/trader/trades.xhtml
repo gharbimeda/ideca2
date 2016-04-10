@@ -3,6 +3,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
 	template="/WEB-INF/templates/traderTemplate/traderTemplate.xhtml">
 	<ui:define name="titleName">TRADES</ui:define>
 	<ui:define name="menuContent">
@@ -19,10 +20,44 @@
 		<li><a href="#{request.contextPath}/pages/trader/contactUs.xhtml"><i
 				class="fa fa-inbox" /> CONTACT US</a></li>
 	</ui:define>
-	<ui:define name="PageName">TRADES MENAGEMENT</ui:define>
+	<ui:define name="PageName">My TRADES</ui:define>
 	<ui:define name="PageContent">
 
-		<!-- TACHE MARWA -->
+		<h:form>
+		<div class="table-responsive">
+			<h:dataTable value="#{tradeBean.trades1}" var="trade" class="table table-striped">
+
+				<h:column>
+					<f:facet name="header">Financial Product</f:facet>
+					<h:outputText value="#{trade.name}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Value</f:facet>
+					<h:outputText value="#{trade.value}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Date</f:facet>
+					<h:outputText value="#{trade.pk.date}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Put/Call</f:facet>
+					<h:outputText value="#{trade.putcallString}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Status</f:facet>
+					<h:outputText value="#{trade.statusString}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Delete</f:facet>
+					<h:commandButton action=" " value="delete"
+						class="btn btn-danger btn-sm">
+					</h:commandButton>
+				</h:column>
+
+			</h:dataTable>
+			</div>
+		</h:form>
+
 
 	</ui:define>
 </ui:composition>

@@ -2,6 +2,7 @@ package pdev.financialbrains.ejb.services;
 
 import java.util.List;
 
+import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -10,8 +11,10 @@ import javax.persistence.Query;
 import pdev.financialbrains.ejb.contracts.ITradeCrudServiceLocal;
 import pdev.financialbrains.ejb.contracts.ITradeCrudServiceRemote;
 import pdev.financialbrains.ejb.entities.Trade;
+import pdev.financialbrains.ejb.entities.User;
 
 @Stateless
+@LocalBean
 public class TradeCrudServices implements ITradeCrudServiceLocal, ITradeCrudServiceRemote {
 
 	@PersistenceContext(unitName = "data")
@@ -24,7 +27,7 @@ public class TradeCrudServices implements ITradeCrudServiceLocal, ITradeCrudServ
 
 	@Override
 	public void delete(Trade trade) {
-		//entityManager.remove(entityManager.find(Trade.class, trade.getId()));
+		entityManager.remove(entityManager.find(Trade.class, trade.getPk()));
 	}
 
 	@Override
@@ -69,6 +72,40 @@ public class TradeCrudServices implements ITradeCrudServiceLocal, ITradeCrudServ
 		Query query = entityManager.createQuery("select t from Trade t where t.status=:x");
 		query.setParameter("x", 0);
 		return query.getResultList().size();
+	}
+	
+	public List<Trade> readPutAccepted() {
+		Query query = entityManager.createQuery("select t from Trade t where t.status=:x and t.putcall=:y");
+		query.setParameter("x", 1);
+		query.setParameter("y", 0);
+		return query.getResultList();
+	}
+	
+	public List<Trade> readCFPutAccepted() {
+		Query query = entityManager.createQuery("select t from Trade t where t.status=:x and t.putcall=:y and name=:z or name=:a");
+		query.setParameter("x", 1);
+		query.setParameter("y", 0);
+		query.setParameter("z", "CAP");
+		query.setParameter("a", "FLOOR");
+		return query.getResultList();
+	}
+	
+	public List<Trade> readTradesByUser(User u){
+		Query query = entityManager.createQuery("select t from Trade t where t.trader=:u", Trade.class);
+		query.setParameter("u", u);
+		return query.getResultList();
+	}
+
+	@Override
+	public void settle(Trade trade) {
+		trade.setStatus(1);
+		entityManager.merge(trade);
+	}
+
+	@Override
+	public void decline(Trade trade) {
+		trade.setStatus(0);
+		entityManager.merge(trade);		
 	}
 
 }
