@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import pdev.financialbrains.ejb.contracts.IForwardSwapCrudServicesLocal;
 import pdev.financialbrains.ejb.contracts.IForwardSwapCrudServicesRemote;
@@ -15,8 +16,17 @@ public class ForwardSwapCrudServices implements IForwardSwapCrudServicesLocal, I
 
 	@PersistenceContext(unitName = "data")
 	private EntityManager entityManager;
+	private List<ForwardSwap> forwardSwaps;
 
 	public ForwardSwapCrudServices() {
+	}
+
+	public List<ForwardSwap> getForwardSwaps() {
+		return forwardSwaps;
+	}
+
+	public void setForwardSwaps(List<ForwardSwap> forwardSwaps) {
+		this.forwardSwaps = forwardSwaps;
 	}
 
 	@Override
@@ -30,8 +40,9 @@ public class ForwardSwapCrudServices implements IForwardSwapCrudServicesLocal, I
 	}
 
 	@Override
-	public void update(ForwardSwap forwardSwap) {
-		entityManager.merge(forwardSwap);
+	public ForwardSwap update(ForwardSwap forwardSwap) {
+		ForwardSwap fs = entityManager.merge(forwardSwap);
+		return fs;
 	}
 
 	@Override
@@ -118,6 +129,14 @@ public class ForwardSwapCrudServices implements IForwardSwapCrudServicesLocal, I
 			p = 1.0 - p;
 			return p;
 		}
+	}
+
+	@Override
+	public ForwardSwap readByCurrentPrice(Float currentPrice) {
+		Query query = entityManager.createQuery("select f from ForwardSwap f where f.fixedRate=:x");
+		query.setParameter("x", currentPrice);
+		forwardSwaps = query.getResultList();
+		return forwardSwaps.get(0);
 	}
 
 }

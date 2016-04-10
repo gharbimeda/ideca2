@@ -13,7 +13,7 @@ public interface IForwardSwapCrudServicesRemote {
 
 	void delete(ForwardSwap forwardSwap);
 
-	void update(ForwardSwap forwardSwap);
+	ForwardSwap update(ForwardSwap forwardSwap);
 
 	ForwardSwap readById(Integer id);
 

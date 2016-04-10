@@ -11,58 +11,58 @@ import pdev.financialbrains.ejb.entities.BackOfficeUser;
 import pdev.financialbrains.ejb.entities.Trader;
 import pdev.financialbrains.ejb.entities.User;
 import pdev.financialbrains.ejb.services.UserCrudServices;
-import pdev.financialbrains.util.Util;
 
-@ManagedBean(name="access")
+@ManagedBean(name = "access")
 @RequestScoped
 public class AccessBean {
 
 	@EJB
 	private UserCrudServices authan;
-	
-	@ManagedProperty(value="#{identity}")
+
+	@ManagedProperty("#{identityBean}")
 	private IdentityBean identityBean;
-	
+
 	private String login;
 	private String password;
-	
+
 	public AccessBean() {
 		// TODO Auto-generated constructor stub
 	}
-	
-	public String doLogin(){
+
+	public String doLogin() {
 		String navigateTo = null;
 		User found = authan.authentification(login, password);
-	
-		//Util.userConnect = authan.authentification(login, password);
+
+		// Util.userConnect = authan.authentification(login, password);
 		if (found != null) {
-			identityBean.setUserIdentify(found);
-			if(found instanceof Trader){
+			if (found instanceof Trader) {
+				Trader foundTrader = (Trader) authan.authentification(login, password);
+				identityBean.setUtilisateur(foundTrader);
+				identityBean.setRole("trader");
 				navigateTo = "/pages/trader/home?faces-redirect=true";
-			}else if (found instanceof BackOfficeUser) {
+			} else if (found instanceof BackOfficeUser) {
+				BackOfficeUser foundBackOffUser = (BackOfficeUser) authan.authentification(login, password);
+				identityBean.setUtilisateur(foundBackOffUser);
+				identityBean.setRole("backoffuser");
 				navigateTo = "/pages/back/backHome?faces-redirect=true";
 			}
-			
-		}else {
-			FacesContext
-			.getCurrentInstance()
-			.addMessage(null, new FacesMessage(
-					FacesMessage.SEVERITY_ERROR,
-					"NON AUTORISE",
-					null
-					
+
+		} else {
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, "NON AUTORISE", null
+
 			));
 		}
 		return navigateTo;
 	}
-	
-	public String doLogout(){
+
+	public String doLogout() {
 		String navigateTo = null;
 		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().clear();
+
 		navigateTo = "/pages/public/login?faces-redirect=true";
 		return navigateTo;
 	}
-
 
 	public UserCrudServices getAuthan() {
 		return authan;
@@ -95,6 +95,5 @@ public class AccessBean {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	
+
 }

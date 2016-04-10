@@ -3,12 +3,15 @@ package pdev.financialbrains.managedBeans;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 
 import pdev.financialbrains.ejb.contracts.IForwardSwapCrudServicesLocal;
+import pdev.financialbrains.ejb.contracts.ITradeCrudServiceLocal;
 import pdev.financialbrains.ejb.entities.ForwardSwap;
 import pdev.financialbrains.ejb.entities.Trade;
 import pdev.financialbrains.ejb.entities.TradePK;
+import pdev.financialbrains.ejb.entities.Trader;
 
 @ManagedBean(name = "fsbean")
 @ViewScoped
@@ -16,7 +19,8 @@ public class ForwardSwapBean {
 
 	@EJB
 	private IForwardSwapCrudServicesLocal fsLocal;
-	private ForwardSwap forwardSwap;
+	@EJB
+	private ITradeCrudServiceLocal tradeLocal;
 	private Float strikeRate;
 	private Float rate;
 	private Float notional;
@@ -27,6 +31,10 @@ public class ForwardSwapBean {
 	private Boolean rend = false;
 	private TradePK tradePk;
 	private Trade trade;
+	private ForwardSwap forSwap;
+	@ManagedProperty("#{identityBean}")
+	private IdentityBean identityBean;
+	private Trader trader;
 	private boolean showForm = false;
 
 	public boolean isShowForm() {
@@ -43,14 +51,6 @@ public class ForwardSwapBean {
 
 	public void setFsLocal(IForwardSwapCrudServicesLocal fsLocal) {
 		this.fsLocal = fsLocal;
-	}
-
-	public ForwardSwap getForwardSwap() {
-		return forwardSwap;
-	}
-
-	public void setForwardSwap(ForwardSwap forwardSwap) {
-		this.forwardSwap = forwardSwap;
 	}
 
 	public Float getStrikeRate() {
@@ -133,9 +133,32 @@ public class ForwardSwapBean {
 		this.trade = trade;
 	}
 
+	public ForwardSwap getForSwap() {
+		return forSwap;
+	}
+
+	public void setForSwap(ForwardSwap forSwap) {
+		this.forSwap = forSwap;
+	}
+
+	public IdentityBean getIdentityBean() {
+		return identityBean;
+	}
+
+	public void setIdentityBean(IdentityBean identityBean) {
+		this.identityBean = identityBean;
+	}
+
+	public Trader getTrader() {
+		return trader;
+	}
+
+	public void setTrader(Trader trader) {
+		this.trader = trader;
+	}
+
 	@PostConstruct
 	public void init() {
-		forwardSwap = new ForwardSwap();
 		strikeRate = new Float(0);
 		rate = new Float(0);
 		notional = new Float(0);
@@ -145,12 +168,30 @@ public class ForwardSwapBean {
 		result = new Double(0);
 		trade = new Trade();
 		tradePk = new TradePK();
+		forSwap = new ForwardSwap();
+		trader = new Trader();
+		trader = (Trader) identityBean.getUtilisateur();
 	}
 
 	public String doPrice() {
 		result = fsLocal.priceForwardSwap(strikeRate, rate, notional, period, expiryTime, volatility);
-		System.out.println(result);
 		rend = true;
+		return null;
+	}
+
+	public String doBook() {
+		forSwap.setVolatility(volatility);
+		forSwap.setCurrentPrice(strikeRate);
+		forSwap.setFixedRate(rate);
+		fsLocal.create(forSwap);
+		forSwap = fsLocal.readByCurrentPrice(rate);
+		tradePk.setId(forSwap.getId());
+//		tradePk.setIdUser(trader.getIdUser());
+//		trade.setPk(tradePk);
+//		trade.setFi(forSwap);
+//		trade.setStatus(2);
+//		trade.setTrader(trader);
+//		tradeLocal.create(trade);
 		return null;
 	}
 

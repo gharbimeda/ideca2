@@ -31,7 +31,7 @@ public class BackFilter implements Filter {
 		HttpServletResponse resp = (HttpServletResponse) response;
 		IdentityBean identity = (IdentityBean) req.getSession().getAttribute("identity");
 		Boolean letGo = false;
-		if (identity != null && identity.getUserIdentify() != null && identity.hasRole("backoffuser")) {
+		if (identity != null && identity.getUtilisateur() != null && identity.hasRole("backoffuser")) {
 			letGo = true;
 		}
 		if (letGo) {

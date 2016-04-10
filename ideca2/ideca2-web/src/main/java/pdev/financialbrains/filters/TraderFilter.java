@@ -30,7 +30,7 @@ public class TraderFilter implements Filter{
 		HttpServletResponse resp = (HttpServletResponse) response;
 		IdentityBean identity = (IdentityBean) req.getSession().getAttribute("identity");
 		Boolean letGo = false;
-		if (identity != null && identity.getUserIdentify() != null && identity.hasRole("trader")) {
+		if (identity != null && identity.getUtilisateur() != null && identity.hasRole("trader")) {
 			letGo = true;
 		}
 		if (letGo) {
