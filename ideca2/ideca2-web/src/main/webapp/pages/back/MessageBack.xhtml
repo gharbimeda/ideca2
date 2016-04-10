@@ -3,10 +3,11 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
 	template="/WEB-INF/templates/backTemplate/backOfficeUserTemp.xhtml">
 
 	<ui:define name="titleName"> Messages </ui:define>
-	<ui:define name="pageLocalisation"> / Messages </ui:define>
+	<ui:define name="pageLocalisation"> / Messages /</ui:define>
 	<ui:define name="pageActive"> Show all Messages</ui:define>
 	<ui:define name="pageDefinition">
 		<h2 class="page-title">
@@ -15,26 +16,27 @@
 		<div class="page-bar"></div>
 	</ui:define>
 	<ui:define name="pageContent">
+		<br />
 		<h:form>
-			<h:dataTable styleClass="table table-bordered"
+			<p:dataTable styleClass="table table-bordered"
 				value="#{messageBean.messages}" var="m">
-				<h:column>
+				<p:column>
 					<f:facet name="header">ID Message</f:facet>
 					<h:outputText value="#{m.id}" />
-				</h:column>
-				<h:column>
+				</p:column>
+				<p:column>
 					<f:facet name="header">Date</f:facet>
 					<h:outputText value="#{m.date}" />
-				</h:column>
-				<h:column>
+				</p:column>
+				<p:column>
 					<f:facet name="header">Text</f:facet>
 					<h:outputText value="#{m.texte}" />
-				</h:column>
-				<h:column>
+				</p:column>
+				<p:column>
 					<f:facet name="header">Sender</f:facet>
 					<h:outputText value="#{m.userSource.login}" />
-				</h:column>
-			</h:dataTable>
+				</p:column>
+			</p:dataTable>
 		</h:form>
 	</ui:define>
 </ui:composition>
