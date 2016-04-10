@@ -110,70 +110,159 @@
 	</ui:define>
 	<ui:define name="PageName"></ui:define>
 	<ui:define name="PageContent">
-		<h:form id="form_3">
-			
-			
-			<h:dataTable value="#{mdBean.rates}" var="rate" styleClass="table table-bordered" >
-			<h:column>
-					<f:facet name="header">
-						<h:outputText value="NAME" />
-					</f:facet>
-					<h:outputText value="#{rate.name}" />
-				</h:column>
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="DATE" />
-					</f:facet>
-					<h:outputText value="#{rate.date}" />
-					<h:column>
-					<f:facet name="header">
-						<h:outputText value="ASK" />
-					</f:facet>
-					<h:outputText value="#{rate.ask}" />
-				</h:column>
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="BID" />
-					</f:facet>
-					<h:outputText value="#{rate.bid}" />
-				</h:column>
-				</h:column>
+			<br />
+		<br/>
+	<div class="col-md-12">
+			<div class="col-md-6">
 				
-							
-			</h:dataTable>
-		</h:form>
+	 <div class="dashboard-div-wrapper bk-clr-three">
+		<h:form id="form_1">
 		
-		<h:form id="form_4">
-			
-			<h:dataTable value="#{mdBean.ratess}" var="rate" styleClass="table table-bordered" >
-			<h:column>
-					<f:facet name="header">
-						<h:outputText value="NAME" />
+			<h:dataTable value="#{mdBean.quotes}" var="quote" styleClass="table table-bordered">
+					<h:column>
+				<f:facet name="header">
+						<h:outputText value="COMPANY NAME" />
 					</f:facet>
-					<h:outputText value="#{rate.name}" />
+					<h:outputText value="#{quote.name}" />
 				</h:column>
 				<h:column>
-					<f:facet name="header">
-						<h:outputText value="DATE" />
-					</f:facet>
-					<h:outputText value="#{rate.date}" />
-					<h:column>
 					<f:facet name="header">
 						<h:outputText value="ASK" />
 					</f:facet>
-					<h:outputText value="#{rate.ask}" />
+					<h:outputText value="#{quote.ask}" />
 				</h:column>
 				<h:column>
 					<f:facet name="header">
-						<h:outputText value="BID" />
+						<h:outputText value="VOLUME" />
 					</f:facet>
-					<h:outputText value="#{rate.bid}" />
+					<h:outputText value="#{quote.volume}" />
 				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="CHANGE" />
+					</f:facet>
+					<h:outputText value="#{quote.change}" />
 				</h:column>
 				
-							
 			</h:dataTable>
 		</h:form>
+		</div>
+			 <div class="dashboard-div-wrapper bk-clr-three">
+		
+		<h:form id="form_2" >
+			
+			<h:dataTable styleClass="table table-bordered"  value="#{mdBean.quotess}" var="quote">
+			<h:column>
+					<f:facet name="header">
+						<h:outputText value="COMPANY NAME" />
+					</f:facet>
+					<h:outputText value="#{quote.name}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="ASK" />
+					</f:facet>
+					<h:outputText value="#{quote.ask}" />
+					</h:column>
+					<h:column>
+					<f:facet name="header">
+						<h:outputText value="VOLUME" />
+					</f:facet>
+					<h:outputText value="#{quote.volume}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="CHANGE" />
+					</f:facet>
+					<h:outputText value="#{quote.change}" />
+				
+				</h:column>
+			
+			
+				
+			</h:dataTable>
+		</h:form>
+		</div>
+		</div>
+					<div class="col-md-6">
+		
+			 <div class="dashboard-div-wrapper bk-clr-one">
+		
+				<h:form id="form_3">
+			
+			<h:dataTable value="#{mdBean.quotesss}" var="quote" styleClass="table table-bordered" >
+			<h:column>
+					<f:facet name="header">
+						<h:outputText value="COMPANY NAME" />
+					</f:facet>
+					<h:outputText value="#{quote.name}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="ASK" />
+					</f:facet>
+					<h:outputText value="#{quote.ask}" />
+					</h:column>
+					<h:column>
+					<f:facet name="header">
+						<h:outputText value="VOLUME" />
+					</f:facet>
+					<h:outputText value="#{quote.volume}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="CHANGE" />
+					</f:facet>
+					<h:outputText value="#{quote.change}" />
+				</h:column>
+				
+	<!--  <p:poll interval="5" listener="#{mdBean.quoteLocal.initializeQuotes2()}" update="txt_count" />-->
+				
+				
+				
+			</h:dataTable>
+		</h:form>
+</div>
+<div class="dashboard-div-wrapper bk-clr-one">
+		
+				<h:form id="form_4">
+			
+			<h:dataTable value="#{mdBean.quotessss}" var="quote" styleClass="table table-bordered" >
+			<h:column>
+					<f:facet name="header">
+						<h:outputText value="COMPANY NAME" />
+					</f:facet>
+					<h:outputText value="#{quote.name}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="ASK" />
+					</f:facet>
+					<h:outputText value="#{quote.ask}" />
+					</h:column>
+					<h:column>
+					<f:facet name="header">
+						<h:outputText value="VOLUME" />
+					</f:facet>
+					<h:outputText value="#{quote.volume}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="CHANGE" />
+					</f:facet>
+					<h:outputText value="#{quote.change}" />
+				</h:column>
+				
+	<!--  <p:poll interval="5" listener="#{mdBean.quoteLocal.initializeQuotes2()}" update="txt_count" />-->
+				
+				
+				
+			</h:dataTable>
+		</h:form>
+</div>
+</div>
+
+	</div>
 	</ui:define>
 	<ui:define name="ScriptAdd">
 		<!-- Mine -->
