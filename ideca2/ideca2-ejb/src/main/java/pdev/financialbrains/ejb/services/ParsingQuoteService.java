@@ -222,4 +222,5 @@ public class ParsingQuoteService implements IParsingQuoteServiceRemote,
 	
 	}
 
+
 }

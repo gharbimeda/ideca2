@@ -28,6 +28,10 @@ public interface ITradeCrudServiceLocal {
 	
 	Integer readRefused();
 	
+	void settle(Trade trade);
+	
+	void decline(Trade trade);
+
 	List<Trade> readTradesByUser(User u);
 
 }

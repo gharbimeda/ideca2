@@ -13,6 +13,7 @@ import javax.faces.bean.ViewScoped;
 import com.sun.mail.auth.MD4;
 
 import pdev.financialbrains.ejb.contracts.IFixedIncomeSecurityLocal;
+import pdev.financialbrains.ejb.contracts.ITradeCrudServiceLocal;
 import pdev.financialbrains.ejb.entities.Bond;
 import pdev.financialbrains.ejb.entities.CapFloor;
 import pdev.financialbrains.ejb.entities.DerivativeInstrument;
@@ -35,6 +36,7 @@ public class FixedIncomeSecurityBean {
 
 	@EJB
 	derivativesCrudService derivativesCrudService;
+	
 
 	@EJB
 	UserCrudServices userCrudServices;
