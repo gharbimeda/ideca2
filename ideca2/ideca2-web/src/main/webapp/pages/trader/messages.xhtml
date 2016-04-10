@@ -23,6 +23,7 @@
 
 	<ui:define name="PageName">MESSAGE MENAGEMENT</ui:define>
 	<ui:define name="PageContent">
+
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h4 style="color: #c11313">INBOX</h4>
@@ -54,6 +55,7 @@
 				</div>
 			</div>
 		</div>
+
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h4 style="color: #c11313">SEND MESSAGE</h4>
@@ -70,6 +72,8 @@
 					<label>Message</label>
 					<p:inputTextarea value="#{messageBean.text}" class="form-control" />
 					<hr />
+
+
 					<h:commandButton class="btn btn-info"
 						action="#{messageBean.doSend()}" value="Send" />
 				</h:form>
