@@ -6,6 +6,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
 import pdev.financialbrains.ejb.contracts.IForwardSwapCrudServicesLocal;
+import pdev.financialbrains.ejb.contracts.ITradeCrudServiceLocal;
 import pdev.financialbrains.ejb.entities.ForwardSwap;
 import pdev.financialbrains.ejb.entities.Trade;
 import pdev.financialbrains.ejb.entities.TradePK;
@@ -16,7 +17,8 @@ public class ForwardSwapBean {
 
 	@EJB
 	private IForwardSwapCrudServicesLocal fsLocal;
-	private ForwardSwap forwardSwap;
+	@EJB
+	private ITradeCrudServiceLocal tradeLocal;
 	private Float strikeRate;
 	private Float rate;
 	private Float notional;
@@ -27,6 +29,7 @@ public class ForwardSwapBean {
 	private Boolean rend = false;
 	private TradePK tradePk;
 	private Trade trade;
+	private ForwardSwap forSwap;
 	private boolean showForm = false;
 
 	public boolean isShowForm() {
@@ -43,14 +46,6 @@ public class ForwardSwapBean {
 
 	public void setFsLocal(IForwardSwapCrudServicesLocal fsLocal) {
 		this.fsLocal = fsLocal;
-	}
-
-	public ForwardSwap getForwardSwap() {
-		return forwardSwap;
-	}
-
-	public void setForwardSwap(ForwardSwap forwardSwap) {
-		this.forwardSwap = forwardSwap;
 	}
 
 	public Float getStrikeRate() {
@@ -133,9 +128,16 @@ public class ForwardSwapBean {
 		this.trade = trade;
 	}
 
+	public ForwardSwap getForSwap() {
+		return forSwap;
+	}
+
+	public void setForSwap(ForwardSwap forSwap) {
+		this.forSwap = forSwap;
+	}
+
 	@PostConstruct
 	public void init() {
-		forwardSwap = new ForwardSwap();
 		strikeRate = new Float(0);
 		rate = new Float(0);
 		notional = new Float(0);
@@ -145,12 +147,24 @@ public class ForwardSwapBean {
 		result = new Double(0);
 		trade = new Trade();
 		tradePk = new TradePK();
+		forSwap = new ForwardSwap();
 	}
 
 	public String doPrice() {
 		result = fsLocal.priceForwardSwap(strikeRate, rate, notional, period, expiryTime, volatility);
 		System.out.println(result);
 		rend = true;
+		return null;
+	}
+
+	public String doBook() {
+		forSwap.setVolatility(volatility);
+		forSwap.setCurrentPrice(strikeRate);
+		forSwap.setFixedRate(rate);
+		trade.setFi(forSwap);
+		trade.setStatus(2);
+		//trade.setTrader();
+		tradeLocal.create(trade);
 		return null;
 	}
 

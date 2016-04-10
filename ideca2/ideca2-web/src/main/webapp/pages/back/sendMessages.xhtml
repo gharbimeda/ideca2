@@ -24,7 +24,8 @@
 				<h:outputText value="Message" />
 				<p:inputTextarea value="#{messageBean.text}" />
 			</h:panelGrid>
-			<h:commandButton action="#{messageBean.doSend()}" value="Send" />
+			<h:commandButton class="btn btn-primary btn-sm"
+				action="#{messageBean.doSend()}" value="Send" />
 		</h:form>
 	</ui:define>
 </ui:composition>
