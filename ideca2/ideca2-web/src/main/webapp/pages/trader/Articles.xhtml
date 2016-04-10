@@ -1,0 +1,319 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/WEB-INF/templates/traderTemplate/traderTemplate.xhtml"
+	xmlns:p="http://primefaces.org/ui">
+	<ui:define name="titleName">Articles</ui:define>
+	<ui:define name="menuContent">
+		<li><a href="#{request.contextPath}/pages/trader/home.xhtml"><i
+				class="fa fa-home" /> HOME</a></li>
+		<li><a
+			href="#{request.contextPath}/pages/trader/menuProduct.xhtml"><i
+				class="fa fa-money" /> FINANCIAL PRODUCTS</a></li>
+		<li><a href="#{request.contextPath}/pages/trader/trades.xhtml"><i
+				class="fa fa-shopping-cart" /> MY TRADES</a></li>
+		<li><a href="#{request.contextPath}/pages/trader/messages.xhtml"><i
+				class="fa fa-wechat" /> MESSAGES</a></li>
+		<li><a href="#{request.contextPath}/pages/trader/contactUs.xhtml"><i
+				class="fa fa-inbox" /> CONTACT US</a></li>
+	</ui:define>
+	<ui:define name="PageName">FINANCIAL ARTICLES</ui:define>
+	<ui:define name="PageContent">
+		<h:form>
+			<p:growl id="msgs" showDetail="true"></p:growl>
+
+			<h3 style="margin-top: 0">NEWS</h3>
+			<p:accordionPanel>
+				<p:tab title="WORLD'S NEWS">
+					<h:panelGrid columns="2" cellpadding="10">
+						<img
+							src="#{request.contextPath}/resources/traderResources/img/world.jpg" />
+						<div class="row">
+
+							<h2>WORLD'S NEWS</h2>
+							<div class="table-responsive">
+								<table class="table table-bordered table-hover tablesorter">
+									<thead>
+										<tr>
+
+											<th colspan="80">News <i class="fa fa-sort"></i></th>
+											<th colspan="20">Link <i class="fa fa-sort"></i></th>
+
+										</tr>
+									</thead>
+									<tbody>
+										<ui:repeat var="c" value="#{newsBean.addnewsWORLD()}">
+											<tr>
+												<td colspan="80" class="success">#{c.contenu}</td>
+												<td colspan="20" class="success"><a href="#{c.url}">Link</a></td>
+
+
+											</tr>
+										</ui:repeat>
+									</tbody>
+								</table>
+
+							</div>
+						</div>
+
+					</h:panelGrid>
+				</p:tab>
+				<p:tab title="GOOGLE FINANCE NEWS ">
+
+					<h:panelGrid columns="2" cellpadding="10">
+						<img
+							src="#{request.contextPath}/resources/traderResources/img/google-news.jpg" />
+						<div class="row">
+
+							<h2>GOOGLE FINANCE NEWS</h2>
+							<div class="table-responsive">
+								<table class="table table-bordered table-hover tablesorter">
+									<thead>
+										<tr>
+
+											<th colspan="80">News <i class="fa fa-sort"></i></th>
+											<th colspan="20">Link <i class="fa fa-sort"></i></th>
+
+										</tr>
+									</thead>
+									<tbody>
+										<ui:repeat var="c" value="#{newsBean.addGoogle()}">
+											<tr>
+												<td colspan="80" class="success">#{c.contenu}</td>
+												<td colspan="20" class="success"><a href="#{c.url}">Link</a></td>
+
+
+											</tr>
+										</ui:repeat>
+									</tbody>
+								</table>
+							</div>
+						</div>
+
+					</h:panelGrid>
+				</p:tab>
+
+				<p:tab title="EUROPE'S NEWS">
+					<h:panelGrid columns="2" cellpadding="10">
+						<img
+							src="#{request.contextPath}/resources/traderResources/img/bloomberg europ.png" />
+						<div class="row">
+
+							<h2>EUROPE NEWS</h2>
+							<div class="table-responsive">
+								<table class="table table-bordered table-hover tablesorter">
+									<thead>
+										<tr>
+
+											<th colspan="80">News <i class="fa fa-sort"></i></th>
+											<th colspan="20">Link <i class="fa fa-sort"></i></th>
+
+										</tr>
+									</thead>
+									<tbody>
+										<ui:repeat var="c" value="#{newsBean.addneweurope()}">
+											<tr>
+												<td colspan="80" class="success">#{c.contenu}</td>
+												<td colspan="20" class="success"><a href="#{c.url}">Link</a></td>
+
+
+											</tr>
+										</ui:repeat>
+									</tbody>
+								</table>
+							</div>
+						</div>
+
+					</h:panelGrid>
+				</p:tab>
+				<p:tab title="ASIA'S NEWS">
+
+					<h:panelGrid columns="2" cellpadding="10">
+						<img
+							src="#{request.contextPath}/resources/traderResources/img/download.jpg" />
+						<div class="row">
+
+							<h2>ASIA NEWS</h2>
+							<div class="table-responsive">
+								<table class="table table-bordered table-hover tablesorter">
+									<thead>
+										<tr>
+
+											<th colspan="80">News <i class="fa fa-sort"></i></th>
+											<th colspan="20">Link <i class="fa fa-sort"></i></th>
+
+										</tr>
+									</thead>
+									<tbody>
+										<ui:repeat var="c" value="#{newsBean.addnewsasia()}">
+											<tr>
+												<td colspan="80" class="success">#{c.contenu}</td>
+												<td colspan="20" class="success"><a href="#{c.url}">Link</a></td>
+
+
+											</tr>
+										</ui:repeat>
+									</tbody>
+								</table>
+
+							</div>
+						</div>
+					</h:panelGrid>
+				</p:tab>
+				<p:tab title=" AMERICA'S NEWS">
+
+					<h:panelGrid columns="2" cellpadding="10">
+						<img
+							src="#{request.contextPath}/resources/traderResources/img/Bloomberg-News-logo.png" />
+						<div class="row">
+
+							<h2>USA NEWS</h2>
+							<div class="table-responsive">
+								<table class="table table-bordered table-hover tablesorter">
+									<thead>
+										<tr>
+
+											<th colspan="80">News <i class="fa fa-sort"></i></th>
+											<th colspan="20">Link <i class="fa fa-sort"></i></th>
+
+										</tr>
+									</thead>
+									<tbody>
+										<ui:repeat var="c" value="#{newsBean.addnewamerica()}">
+											<tr>
+												<td colspan="80" class="success">#{c.contenu}</td>
+												<td colspan="20" class="success"><a href="#{c.url}">Link</a></td>
+
+
+											</tr>
+										</ui:repeat>
+									</tbody>
+								</table>
+							</div>
+						</div>
+
+					</h:panelGrid>
+				</p:tab>
+
+
+			</p:accordionPanel>
+
+		</h:form>
+		<!--  h:form id="form">           
+   
+   <p:growl id="msgs" showDetail="true"></p:growl>
+ 
+    <h3 style="margin-top:0">Articles</h3>
+    <p:accordionPanel>
+    <p:tab title="Articel I :Best Stocks and ETFs for Your IRA">
+            <h:panelGrid columns="2" cellpadding="10">
+              <img src="#{request.contextPath}/resources/traderResources/img/stock.jpg" />
+               
+                <h:outputText value="With a little over two weeks until the tax filing deadline of April 18, investors still have some time to make contributions to their individual retirement accounts (IRAs) for the 2015 tax year. While some prefer traditional IRAs, many others favor Roth IRAs; both these retirement products provide amazing tax benefits.
+
+IRAs allow investors to buy individual stocks, bonds, ETFs or mutual funds.  ETFs are becoming increasingly popular with investors thanks mainly to their low cost, transparency and tax efficiency. Many investors now hold ETFs in their taxable accounts as they are more tax efficient compared with mutual funds.  (Read: Most ETFs are Tax Smart; Is Yours?)
+
+At the same time, diversified, low-cost ETFs are great investment options for IRAs too. Both diversification and costs should be important factors for retirement investments and ETFs score high on both these. Further, income paying ETFs are better placed in an IRA as income is sheltered from taxes.
+
+Before investing for retirement, investors need to assess their investing goals, time horizon and risk tolerance. They need to remember that performance of an investment portfolio depends mostly on asset allocation, i.e. how an investor allocates money among major asset classes such as stocks, bonds, alternative assets and cash.  "/>
+            </h:panelGrid>
+        </p:tab>
+        <p:tab  title="Article II :3 things you need to know about the tumbling euro">
+            <h:panelGrid columns="2" cellpadding="10">
+                 <img src="#{request.contextPath}/resources/traderResources/img/euro_symbol.jpg" />
+                <h:outputText value="The euro hit a 12-year low vs the dollar Wednesday, continuing a dramatic slump for the single currency. It's the biggest story in the financial markets today (so far at least) so here are three things you need to know about the tumbling Euro:
+
+1: The dollar bears were dead wrong. The dollar hasn't just rallied vs the euro...it's on a tear vs. almost every other major currency. The lesson here: folks like Glenn Beck, Peter Schiff and many others who implored you to dump your dollars, stock up on canned goods and buy gold are just modern day snake oil salesman they also have a political ax to grind vs. an economic one. The hard core dollar bears weren't just concerned about 'Helicopter Ben', they also believe President Obama was a foreign-born, Muslim socialist (or worse, a Commie!) bent on destroying the greenback..and the American way of life.
+
+(Update: A spokesman for Peter Schiff responded to the above, writing: [Peter] says that (Obama is a socialist...but he calls all democrats, and a good portion of republicans, socialists. There is nothing special about Obama on that front. He never said anything about Obama being foreign born or a Muslim, or bent on purposely destroying America or its way of life. He does believe that big government policies and central bank activism will destroy the country, but not because the policy makers want that outcome, but because they simply don't understand the consequences of their actions.) 
+
+2 European Central Bank President Mario Draghi is a master manipulator. In June 2012, Draghi famously said he'd do whatever it takes to save the single currency. Talk may be cheap but that actually bought the ECB two-and-a-half years to think about, plan and (finally) push forward with a quantitative easing program. On Wednesday, Draghi said QE is working and having a beneficial impact and starting to affect the real economy in Europe. Amazing! The program only started on Monday three days ago and Draghi is already declaring victory. 
+
+As evidence, the ECB chief cited the so-called surprise index that compares actual macroeconomic data with consensus estimates of market analysts.
+
+In other words, sentiment about Europe's economy got so bad that recent green sprouts look like tall timber - at least that's what Mario Draghi wants you to believe. 
+
+3 Janet Yellen is watching. If Janet Yellen were to take a page from Draghi's book Jawbone: How to move markets without actually doing anything, she'll remove the patience language from the Fed statement next week and allow subordinates like St. Louis Fed President James Bullard to continue talk about the need to raise rates...but not actually do anything until late 2015 at the earliest.
+
+Yellen remains rightfully concerned about lackluster U.S. wage growth and that 'official' inflation rates around the global remain well below 2%. Despite improvement in the U.S. economy, notably on the jobs front, Yellen likely agrees with Jason Furman, chair of the White House Council of Economic Advisers, who writes there is more to do to help middle class Americans in today's WSJ.
+
+Oh, and the Fed chair has got to be concerned about how just mere speculation of a Fed rate hike has sent the dollar soaring, especially given that 23 other central banks have eased monetary policy this year. The notion that Fed will be going against the global monetary policy grain and raise rates is spooking the stock market because a strong dollar makes it harder for U.S. multinationals to compete with international rivals and higher interest rates pose competition for stocks generally. 
+
+(As an aside, the euro's weakness and signs of life in the EU are prime reasons why a lot of savvy investors like George Soros and Warren Buffett have been making bets on Europe, based on recent 13-F filings.) 
+
+Finally a bonus thing to know: The euro hasn't been this cheap in 12 years and seems almost certain to hit parity with the buck by Labor Day. That means now is a great time to book your dream vacation to Europe as the dollar will go a lot further across the pond than it did six or 12 months ago. The only downside, there will be a lot of other Americans in Europe this summer." />
+            </h:panelGrid>
+        </p:tab>
+        <p:tab title="Article III :Steve Jobs sold most of his Apple stock when he was ousted from the company in 1985 — today it would be worth $66 billion">
+         
+            <h:panelGrid columns="2" cellpadding="10">
+                <img src="#{request.contextPath}/resources/traderResources/img/Steve.png" /> 
+                <h:outputText value="When tech mogul and Apple cofounder Steve Jobs died in 2011, he left his wife, Laurene Powell Jobs, a massive fortune that today is worth $14.1 billion — enough to make her one of the 50 richest people on earth, according to research firm Wealth-X.
+Perhaps more remarkable, though, is the Bill Gates-sized pile of money that he didn't pass along, thanks to one of the more epic and cautionary cases of emotional investing gone wrong.
+
+Jobs cofounded Apple with Steve Wozniak 40 years ago today: April 1, 1976. The young computer company took outside investments to get off the ground, so by the time it went public in 1980, Jobs owned about 11% of Apple — then worth about $130 million.
+
+But Jobs was famously ousted from his company in 1985 after clashing with the board of directors and then CEO John Sculley. In the run-up to and the aftermath of the bitter conflict, Jobs sold his entire Apple stake — save for one share, which gave him access to the company's annual meetings. That 11% stake in the company today would be worth $66 billion, not including any dividends the company would've paid out over the years.
+
+But that's not the only time a frustrated Jobs sold Apple stock on account of misgivings over the company's management and direction. Jobs acquired 1.5 million shares of Apple in 1996 after he sold Next Software, the computer company he founded after leaving Apple, for $400 million.
+
+Jobs joined as a senior adviser, but he sold his 1.5 million shares of the company the next year after losing faith in the company, telling Time magazine, I pretty much had given up hope that the Apple board was going to do anything.
+
+After accounting for stock splits, that chunk of shares would be worth about $4.6 billion today. Jobs returned as CEO of Apple later in 1997 and would eventually acquire several million more shares of the company, worth nearly $600 million today, according to Wealth-X.
+
+It's worth noting, though, that Jobs' decision to sell his Apple shares in 1985 enabled him to buy a tiny animation studio called Pixar from Lucasfilm for $5 million and then build it into a juggernaut, which he would eventually sell to Disney in 2006 for $7.4 billion. The nearly 8% stake in Disney he acquired from the deal is now worth $12.7 billion — about 90% of the fortune he left Powell Jobs.
+
+That's still an incredible sum by any standard, but it pales in comparison to what he left on the table by cashing out of Apple when he was forced out.
+
+                " />
+            </h:panelGrid>
+        </p:tab>
+    </p:accordionPanel>
+ </h:form-->
+		<br />
+		<br />
+		<h:form>
+			<p:dataScroller value="#{articlesBean.articles}" var="article"
+				chunkSize="10" mode="inline" scrollHeight="500">
+				<f:facet name="header">
+            Scroll Down to Load More articles
+        </f:facet>
+
+				<h:panelGrid columns="2" style="width:100%"
+					columnClasses="logo,detail">
+					<img
+						src="#{request.contextPath}/resources/traderResources/img/logo.png" />
+
+					<p:outputPanel>
+						<h:panelGrid columns="2" cellpadding="5">
+							<h:outputText value="Author:" />
+							<h:outputText value="#{article.author}" style="font-weight: bold" />
+
+							<h:outputText value="Date" />
+							<h:outputText value="#{article.date}" style="font-weight: bold" />
+
+							<h:outputText value="Title:" />
+							<h:outputText value="#{article.title}" style="font-weight: bold" />
+
+							<h:outputText value="Text:" />
+							<h:outputText value="#{article.text}" />
+
+							<h:outputText value="LINK:" />
+							<h:outputLink value="#{article.url}">
+								<h:outputText value="#{article.url}" />
+							</h:outputLink>
+
+
+
+							<br></br>
+							<br></br>
+
+						</h:panelGrid>
+					</p:outputPanel>
+				</h:panelGrid>
+			</p:dataScroller>
+		</h:form>
+	</ui:define>
+</ui:composition>

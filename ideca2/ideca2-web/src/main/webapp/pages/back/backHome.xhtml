@@ -3,13 +3,23 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	template="/WEB-INF/templates/backTemplate/backOfficeUserTemp.xhtml">
+	template="/WEB-INF/templates/backTemplate/tempBackHome.xhtml">
 
 	<ui:define name="titleName">Home</ui:define>
 	<ui:define name="pageContent">
 	
-	<h2>Stocks</h2>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="https://code.highcharts.com/stock/highstock.js"></script>
+<script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+
+<div id="chart" style="height:200px; min-width:200px">		<script src="#{request.contextPath}/resources/backResources/js/test.js"></script>
+</div>
+	
 		<br />
+			<div class="col-md-12">
+			
+			<div class="col-md-6">
+				
 		<div id="page-content" class="page-content">
 
 			<div class="row-fluid margin-top20">
@@ -204,6 +214,12 @@
 					</div>
 				</div>
 			</div>
+			</div>
+			
+			</div>
+			
+			
+			<div class="col-md-6">
 			<h2>Currencies</h2>
 			<br/>
 			<div class="span4 grider">
@@ -332,7 +348,7 @@
 			</div>
 		</div>
 
-
+</div>
 	</ui:define>
 
 

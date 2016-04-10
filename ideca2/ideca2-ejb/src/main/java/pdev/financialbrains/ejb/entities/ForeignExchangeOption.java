@@ -19,7 +19,7 @@ public class ForeignExchangeOption extends Option {
 	public ForeignExchangeOption() {
 		// TODO Auto-generated constructor stub
 	}
-
+	
 	public Integer getSpotFx() {
 		return spotFx;
 	}

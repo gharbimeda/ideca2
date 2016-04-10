@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+	<h:head></h:head>
+	<body>
+	  <div class="row">
+          <div class="col-lg-6">
+            <h2>NEWS FROM BLOOMBERG</h2>
+            <div class="table-responsive">
+              <table class="table table-bordered table-hover tablesorter">
+                <thead>
+                  <tr>
+           
+                    <th>News  <i class="fa fa-sort"></i></th>
+                    <th>Link <i class="fa fa-sort"></i></th>
+              
+                  </tr>
+                </thead>
+                <tbody>
+                  	<ui:repeat var="c" value="#{newsBean.addnewsWORLD()}">
+                     <tr>      
+                                       <td class="success">#{c.contenu}</td>
+												<td class="success"><a href="#{c.url}">Link</a></td>
+											
+												
+												</tr>
+											</ui:repeat>
+				</tbody>
+              </table>
+            </div>
+          </div>
+          </div>
+		
+		
+			</body>
+
+	
+</html>

@@ -59,11 +59,7 @@ public class AccessBean {
 	public String doLogout(){
 		String navigateTo = null;
 		//Util.userConnect=null;
-		FacesContext
-		.getCurrentInstance()
-		.getExternalContext()
-		.getSessionMap()
-		.clear();
+		//FacesContext.getCurrentInstance().getExternalContext().getSessionMap().clear();
 		navigateTo = "/pages/public/login?faces-redirect=true";
 		return navigateTo;
 	}

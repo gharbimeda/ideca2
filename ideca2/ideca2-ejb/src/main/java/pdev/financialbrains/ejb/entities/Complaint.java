@@ -17,10 +17,11 @@ import javax.persistence.*;
 public class Complaint implements Serializable {
 	   
 		@Id
+		@GeneratedValue
 		private int id;
 		private String object;
 		private String text;
-		private Date date;
+		private Date date=new Date();
 		@ManyToOne
 		private User user;
 	

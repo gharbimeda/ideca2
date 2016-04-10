@@ -61,7 +61,7 @@ public class Main {
 //		stock2.setCompanyName("Nestle");
 //		StockManagementDelegate.getInstance().doCreate(stock2);
 
-		Trade trade = new Trade();
+	/*	Trade trade = new Trade();
 		TradePK pk = new TradePK(); 
 		pk.setId(1);
 //		pk.setIdUser(1);
@@ -84,7 +84,7 @@ public class Main {
 
 		// System.out.println(TradeManagementDelegate.getInstance().doReadAll());
 		// System.out.println(TradeManagementDelegate.getInstance().doReadCanApp());
-		System.out.println(TradeManagementDelegate.getInstance().doReadPending());
+		//System.out.println(TradeManagementDelegate.getInstance().doReadPending());*/
 
 		/*
 		 * String uri =

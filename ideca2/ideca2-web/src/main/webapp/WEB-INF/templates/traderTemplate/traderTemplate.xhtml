@@ -20,7 +20,7 @@
 		href="#{request.contextPath}/resources/traderResources/css/style.css"
 		rel="stylesheet" />
 
-<ui:insert name="linkAdd"></ui:insert>
+	<ui:insert name="linkAdd"></ui:insert>
 </h:head>
 <body>
 	<!-- HEADER -->
@@ -60,14 +60,16 @@
 						</a>
 							<div class="dropdown-menu dropdown-settings">
 								<div class="media">
-									
+
 									<div class="media-body">
-										<h4 class="media-heading">#{identity.userIdentify.login}</h4>
+										<h4 class="media-heading">#{access.identityBean.userIdentify.login}</h4>
 									</div>
 								</div>
 								<hr />
-								<a href="#" class="btn btn-info btn-sm">Full Profile</a>&nbsp; <a
-									href="login.html" class="btn btn-danger btn-sm">Logout</a>
+								<a href="#" class="btn btn-info btn-sm">Full Profile</a>&nbsp;
+
+								<h:commandButton action="#{access.doLogout()}" value="Logout"
+									class="btn btn-danger btn-sm" />
 
 							</div></li>
 
@@ -85,7 +87,7 @@
 				<div class="navbar-collapse collapse ">
 					<ul id="menu-top" class="nav navbar-nav navbar-right">
 						<ui:insert name="menuContent"></ui:insert>
-						
+
 					</ul>
 				</div>
 			</div>
@@ -118,17 +120,17 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-			<div class="col-md-6">&copy; 2016 FINANCIAL BRAINS</div>
-			<div class="col-md-6"><h:link value="#{access.doLogout()}">logout</h:link> </div>
+				<div class="col-md-6">&copy; 2016 FINANCIAL BRAINS</div>
+
 			</div>
-           
+
 		</div>
 	</div>
 	</footer>
 	<!-- FOOTER SECTION END-->
 	<!-- JAVASCRIPT AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
 	<!-- CORE JQUERY SCRIPTS -->
-	
+
 	<ui:insert name="ScriptAdd"></ui:insert>
 </body>
 </html>

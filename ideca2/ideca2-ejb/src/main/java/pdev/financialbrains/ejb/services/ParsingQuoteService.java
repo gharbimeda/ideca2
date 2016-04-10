@@ -45,7 +45,7 @@ public class ParsingQuoteService implements IParsingQuoteServiceRemote,
 	public List<Quote> initializeQuotes2(String ticker) throws IOException {
 		List<Quote> quotes = new ArrayList<>();
 
-		String fileDir = "E:/yahooQuotes.xml";
+		String fileDir = "D:/yahooQuotes.xml";
 		String request = "http://query.yahooapis.com/v1/public/yql?q=select%20%2a%20from%20yahoo.finance.quotes%20where%20symbol%20in%20%28%22"
 				+ ticker
 				+ "%22%29&env=store://datatables.org/alltableswithkeys";
@@ -81,7 +81,7 @@ public class ParsingQuoteService implements IParsingQuoteServiceRemote,
 		public List<Quote> initializeQuotes3(String ticker) throws IOException {
 			List<Quote> quotes = new ArrayList<>();
 
-			String fileDir = "E:/yahooQuotes2.xml";
+			String fileDir = "D:/yahooQuotes2.xml";
 			String request = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.xchange%20where%20pair%3D%22"+ticker+
 					"%22&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
 			String result = performRequest(request);
@@ -138,7 +138,7 @@ public class ParsingQuoteService implements IParsingQuoteServiceRemote,
 	@Override
 	public void initializeQuotes(String ticker) throws IOException {
 
-		String fileDir = "E:/yahooQuotes.xml";
+		String fileDir = "D:/yahooQuotes.xml";
 		String request = "http://query.yahooapis.com/v1/public/yql?q=select%20%2a%20from%20yahoo.finance.quotes%20where%20symbol%20in%20%28%22"
 				+ ticker
 				+ "%22%29&env=store://datatables.org/alltableswithkeys";
@@ -181,7 +181,7 @@ public class ParsingQuoteService implements IParsingQuoteServiceRemote,
 	public List<Rate> initializeQuotes4(String ticker) throws IOException {
 		List<Rate> rates = new ArrayList<>();
 
-    	String fileDir = "E:/yahooCurrencies.xml";
+    	String fileDir = "D:/yahooCurrencies.xml";
 	       String request = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.xchange%20where%20pair%3D%22"+ticker+
 	    		   "%22&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
        String result = performRequest(request);
@@ -221,5 +221,6 @@ public class ParsingQuoteService implements IParsingQuoteServiceRemote,
       
 	
 	}
+
 
 }

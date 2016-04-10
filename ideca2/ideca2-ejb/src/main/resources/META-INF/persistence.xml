@@ -20,6 +20,7 @@
 		<class>pdev.financialbrains.ejb.entities.ForwardSwap</class>
 		<class>pdev.financialbrains.ejb.entities.Generic</class>
 		<class>pdev.financialbrains.ejb.entities.Message</class>
+		<class>pdev.financialbrains.ejb.entities.News</class>
 		<class>pdev.financialbrains.ejb.entities.Option</class>
 		<class>pdev.financialbrains.ejb.entities.Request</class>
 		<class>pdev.financialbrains.ejb.entities.Stock</class>
@@ -28,7 +29,7 @@
 		<class>pdev.financialbrains.ejb.entities.TradePK</class>
 		<class>pdev.financialbrains.ejb.entities.Trader</class>
 		<class>pdev.financialbrains.ejb.entities.User</class>
-		<exclude-unlisted-classes>true</exclude-unlisted-classes>
+
 		<properties>
 			<property name="hibernate.hbm2ddl.auto" value="update" />
 			<property name="hibernate.show_sql" value="true" />
@@ -41,7 +42,7 @@
 		<class>pdev.financialbrains.ejb.entities.Stock</class>
 		<class>pdev.financialbrains.ejb.entities.Bond</class>
 		<class>pdev.financialbrains.ejb.entities.Quote</class>
-		<exclude-unlisted-classes>true</exclude-unlisted-classes>
+		
 		<properties>
 			<property name="hibernate.hbm2ddl.auto" value="update" />
 			<property name="hibernate.show_sql" value="true" />

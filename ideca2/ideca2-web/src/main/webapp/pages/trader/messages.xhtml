@@ -23,40 +23,58 @@
 
 	<ui:define name="PageName">MESSAGE MENAGEMENT</ui:define>
 	<ui:define name="PageContent">
-		<h4 style="color: #506b89">INBOX</h4>
-		<h:form>
-			<h:dataTable styleClass="table table-bordered"
-				value="#{messageBean.messages}" var="m">
-				<h:column>
-					<f:facet name="header">ID Message</f:facet>
-					<h:outputText value="#{m.id}" />
-				</h:column>
-				<h:column>
-					<f:facet name="header">Date</f:facet>
-					<h:outputText value="#{m.date}" />
-				</h:column>
-				<h:column>
-					<f:facet name="header">Text</f:facet>
-					<h:outputText value="#{m.texte}" />
-				</h:column>
-				<h:column>
-					<f:facet name="header">Sender</f:facet>
-					<h:outputText value="#{m.userSource.login}" />
-				</h:column>
-			</h:dataTable>
-		</h:form>
-		<h4 style="color: #506b89">SEND MESSAGE</h4>
-		<h:form>
-			<h:panelGrid columns="2">
-				<h:outputText value="Destination" />
-				<h:selectOneMenu id="txt3" value="#{messageBean.traderDest}">
-					<f:selectItems value="#{messageBean.tradersNames}" />
-				</h:selectOneMenu>
-				<h:outputText value="Message" />
-				<p:inputTextarea value="#{messageBean.text}" />
-			</h:panelGrid>
-			<h:commandButton class="btn btn-primary btn-sm"
-				action="#{messageBean.doSend()}" value="Send" />
-		</h:form>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h4 style="color: #c11313">INBOX</h4>
+			</div>
+			<div class="panel-body">
+
+				<div class="table-responsive">
+					<h:form>
+						<h:dataTable class="table table-striped"
+							value="#{messageBean.messages}" var="m">
+							<h:column>
+								<f:facet name="header">ID Message</f:facet>
+								<h:outputText value="#{m.id}" />
+							</h:column>
+							<h:column>
+								<f:facet name="header">Date</f:facet>
+								<h:outputText value="#{m.date}" />
+							</h:column>
+							<h:column>
+								<f:facet name="header">Text</f:facet>
+								<h:outputText value="#{m.texte}" />
+							</h:column>
+							<h:column>
+								<f:facet name="header">Sender</f:facet>
+								<h:outputText value="#{m.userSource.login}" />
+							</h:column>
+						</h:dataTable>
+					</h:form>
+				</div>
+			</div>
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h4 style="color: #c11313">SEND MESSAGE</h4>
+			</div>
+			<div class="panel-body">
+				<h:form>
+
+
+					<label>Destination </label>
+					<h:selectOneMenu id="txt3" value="#{messageBean.traderDest}"
+						class="form-control">
+						<f:selectItems value="#{messageBean.tradersNames}" />
+					</h:selectOneMenu>
+					<label>Message</label>
+					<p:inputTextarea value="#{messageBean.text}" class="form-control" />
+					<hr />
+					<h:commandButton class="btn btn-info"
+						action="#{messageBean.doSend()}" value="Send" />
+				</h:form>
+			</div>
+		</div>
+
 	</ui:define>
 </ui:composition>

@@ -13,6 +13,7 @@ import javax.faces.bean.ViewScoped;
 import com.sun.mail.auth.MD4;
 
 import pdev.financialbrains.ejb.contracts.IFixedIncomeSecurityLocal;
+import pdev.financialbrains.ejb.contracts.ITradeCrudServiceLocal;
 import pdev.financialbrains.ejb.entities.Bond;
 import pdev.financialbrains.ejb.entities.CapFloor;
 import pdev.financialbrains.ejb.entities.DerivativeInstrument;
@@ -35,6 +36,7 @@ public class FixedIncomeSecurityBean {
 
 	@EJB
 	derivativesCrudService derivativesCrudService;
+	
 
 	@EJB
 	UserCrudServices userCrudServices;
@@ -201,7 +203,8 @@ public class FixedIncomeSecurityBean {
 		this.bondPrice = fxlocal.priceZeroCouponBond(faceValue, timeMaturity,
 				currentYield);
 		init();
-		// nav ="/pages/trader/menuProduct.xhtml?faces-redirect=true";
+		nav = "menuProduct?faces-redirect=true";
+
 		return null;
 
 	}
@@ -253,7 +256,7 @@ public class FixedIncomeSecurityBean {
 		tradeService.create(trade1);
 		trades = tradeService.readAll();
 		fixedIncomeSecurities = doReadAll();
-		navTo = "/pages/trader/menuProduct.xhtml?faces-redirect=true";
+		navTo = "menuProduct?faces-redirect=true";
 		return navTo;
 	}
 

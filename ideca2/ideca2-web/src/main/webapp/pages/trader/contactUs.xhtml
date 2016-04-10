@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:p="http://primefaces.org/ui">
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
@@ -19,11 +19,69 @@
 			href="#{request.contextPath}/pages/trader/contactUs.xhtml"><i
 				class="fa fa-inbox" /> CONTACT US</a></li>
 	</ui:define>
-	
+
 	<ui:define name="PageName">ADD YOUR COMPLAINT</ui:define>
 	<ui:define name="PageContent">
-		<h:form>
-			
-		</h:form>
+		<div class="col-md-12">
+			<div class="col-md-6">
+				<h:form id="contact-form" class="styled-form" action=""
+					method="post" accept-charset="utf-8">
+					<div style="display: none">
+						<input type="hidden" name="csrfmiddlewaretoken"
+							value="8ece95d139633656ad0371bf53c45b2d" />
+					</div>
+
+					<div class="alert alert-info">
+						<h4 class="pagetitle">Contact us</h4>
+
+						<div class="note">
+							<p>We are here to answer any complaints , any questions you
+								may have about our web application . Reach out to us and we'll
+								respond as soon as we can.</p>
+							<p>Even if there is something you have always wanted and
+								can't find it on our ideca 2.0, let us know and we promise we'll
+								do our best to take your request on consideration.</p>
+						</div>
+					</div>
+
+				</h:form>
+
+			</div>
+
+			<div class="col-md-6">
+				<!-- form begin -->
+
+				<h:form>
+					<p:messages id="messages" showDetail="true" autoUpdate="true"
+						closable="true" />
+
+				</h:form>
+
+				<h:form>
+					<div style="margin-top: 10px;">
+						<h:outputText for="object" value="Ojbect" />
+					</div>
+					<h:inputText id="object" data-placeholder="Enter your Topic  ..."
+						value="#{mbcomplaintBean.complaint.object}" class="form-control"
+						required="true" requiredMessage="topic is required." />
+					<p:message for="object" />
+					<div style="margin-top: 10px;">
+						<h:outputText for="text" value="Text" />
+					</div>
+					<h:inputTextarea id="text"
+						data-placeholder="Enter your complaint's Text ..."
+						value="#{mbcomplaintBean.complaint.text}" class="form-control"
+						required="true" requiredMessage="text is required." />
+					<p:message for="text" />
+					<br />
+					<h:commandButton class="btn btn-info"
+						action="#{mbcomplaintBean.doAdd()}" value="Send" />
+
+
+				</h:form>
+				<!-- form end -->
+			</div>
+		</div>
 	</ui:define>
 </ui:composition>
+</html>

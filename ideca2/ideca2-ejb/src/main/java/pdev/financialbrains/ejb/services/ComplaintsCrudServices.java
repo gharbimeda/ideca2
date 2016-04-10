@@ -55,4 +55,9 @@ public class ComplaintsCrudServices implements IComplaintsCrudServicesRemote, IC
 		        query.setParameter( "id", id );
 		    return (Complaint) query.getSingleResult();
 			}
+	@Override
+	public void update(Complaint complaint) {
+		entityManager.merge(complaint);
+		
+	}
 }

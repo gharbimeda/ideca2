@@ -7,40 +7,40 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
-import javax.faces.bean.ViewScoped;
 
 import pdev.financialbrains.ejb.contracts.ITradeCrudServiceLocal;
 import pdev.financialbrains.ejb.entities.Trade;
 import pdev.financialbrains.ejb.entities.Trader;
 import pdev.financialbrains.ejb.entities.User;
 import pdev.financialbrains.ejb.services.UserCrudServices;
-import pdev.financialbrains.util.Util;
 
-@ManagedBean(name = "tradeBean")
+@ManagedBean(name = "mtradeBean")
 @RequestScoped
-public class TradeBean {
-
+public class MyTradesBean {
+	
+	@ManagedProperty("#{identity.userIdentify}")
+	private Trader trader;
+	
 	@EJB
 	ITradeCrudServiceLocal services;
-
+	
+	@EJB
+	UserCrudServices userCrudServices;
+	
 	private List<Trade> trades;
-
+	
 	@PostConstruct
 	public void init() {
-		trades = services.readPending();
+	    trades =services.readTradesByUser(userCrudServices.readOneUser(1));
 	}
 
-	public void doAccept(Trade trade) {
-		trade.setStatus(1);
-		services.update(trade);
-		trades = services.readPending();
+	public Trader getTrader() {
+		return trader;
 	}
 
-	public void doDecline(Trade trade) {
-		trade.setStatus(0);
-		services.update(trade);
-		trades = services.readPending();
-	}	
+	public void setTrader(Trader trader) {
+		this.trader = trader;
+	}
 
 	public List<Trade> getTrades() {
 		return trades;
@@ -49,6 +49,11 @@ public class TradeBean {
 	public void setTrades(List<Trade> trades) {
 		this.trades = trades;
 	}
-
+	
+	public String doDelete(Trade trade) {
+		services.delete(trade);
+		return "trades?faces-redirect=true";
+	}
+	
 
 }
