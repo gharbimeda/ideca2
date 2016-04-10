@@ -25,7 +25,7 @@
 
 		<h:form>
 		<div class="table-responsive">
-			<h:dataTable value="#{tradeBean.trades1}" var="trade" class="table table-striped">
+			<h:dataTable value="#{mtradeBean.trades}" var="trade" class="table table-striped">
 
 				<h:column>
 					<f:facet name="header">Financial Product</f:facet>
@@ -49,7 +49,7 @@
 				</h:column>
 				<h:column>
 					<f:facet name="header">Delete</f:facet>
-					<h:commandButton action=" " value="delete"
+					<h:commandButton action="#{mtradeBean.doDelete(trade)}" value="delete"
 						class="btn btn-danger btn-sm">
 					</h:commandButton>
 				</h:column>

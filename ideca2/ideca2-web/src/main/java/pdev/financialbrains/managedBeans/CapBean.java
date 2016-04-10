@@ -51,6 +51,7 @@ public class CapBean {
 	private Integer putCall;
 
 	private Integer nd;
+	private Integer i=15;
 
 	private List<CapFloorTable> resulats;
 	private List<Trade> trades;
@@ -116,16 +117,25 @@ public class CapBean {
 
 	}
 
-	public void doBookTrade() {
+	public String doBookTrade() {
 		
 		Trade t = new Trade();
-		t.setFi(capService.update1(c));
-		t.setTrader((Trader) userServices.readOneUser(1));
+		c.setId(i);
+		capService.update(c);
+		
+		TradePK pk = new TradePK();
+		pk.setId(i);
+		i++;
+		pk.setIdUser(1);
+		//t.setFi(c);
+		//t.setTrader((Trader) userServices.readOneUser(1));
+		t.setPk(pk);
 		t.setPutcall(putCall);
 		t.setStatus(2);
 		t.setName(c.getCapFloorString());
 		t.setValue(c.getNotionalAmount());
-		tradeServices.create(t);
+		tradeServices.update(t);
+		return "CapFloorTrade?faces-redirect=true";
 	}
 
 	public Trader getTrader() {

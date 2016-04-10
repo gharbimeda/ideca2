@@ -11,6 +11,8 @@ import javax.persistence.Query;
 import pdev.financialbrains.ejb.contracts.ICapFloorServiceLocal;
 import pdev.financialbrains.ejb.contracts.ICapFloorServiceRemote;
 import pdev.financialbrains.ejb.entities.CapFloor;
+import pdev.financialbrains.ejb.entities.DerivativeInstrument;
+import pdev.financialbrains.ejb.entities.Option;
 
 @Stateless
 @LocalBean
@@ -31,6 +33,8 @@ public class CapFloorCrudService implements ICapFloorServiceLocal, ICapFloorServ
 
 	@Override
 	public void update(CapFloor capFloor) {
+		entityManager.merge((DerivativeInstrument)capFloor);
+		entityManager.merge((Option)capFloor);
 		entityManager.merge(capFloor);
 	}
 	
