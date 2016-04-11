@@ -24,23 +24,17 @@
 		<h:form>
 			<h:panelGrid columns="2">
 				<h:outputText value="Strike Rate" />
-				<p:inputMask value="#{fsbean.strikeRate}" mask="9?999.9?999"
-					maxlength="4" />
+				<p:inputMask value="#{fsbean.strikeRate}" />
 				<h:outputText value="Rate" />
-				<p:inputMask value="#{fsbean.rate}" required="true"
-					mask="9?999.9?999" maxlength="4" />
+				<p:inputMask value="#{fsbean.rate}" />
 				<h:outputText value="Notional" />
-				<p:inputMask value="#{fsbean.notional}" required="true"
-					mask="9?999.9?999" maxlength="4" />
+				<p:inputMask value="#{fsbean.notional}" />
 				<h:outputText value="Period" />
-				<p:inputMask value="#{fsbean.period}" required="true"
-					mask="9?999.9?999" maxlength="4" />
+				<p:inputMask value="#{fsbean.period}" />
 				<h:outputText value="Expiry Time" />
-				<p:inputMask value="#{fsbean.expiryTime}" required="true"
-					mask="9?999.9?999" maxlength="4" />
+				<p:inputMask value="#{fsbean.expiryTime}" />
 				<h:outputText value="Volatility" />
-				<p:inputMask value="#{fsbean.volatility}" required="true"
-					mask="9?999.9?999" maxlength="4" />
+				<p:inputMask value="#{fsbean.volatility}" />
 				<h:commandButton class="btn btn-primary btn-sm"
 					action="#{fsbean.doPrice()}" value="Price" />
 			</h:panelGrid>
