@@ -30,7 +30,7 @@
 		<li><a href="#{request.contextPath}/pages/trader/contactUs.xhtml"><i
 				class="fa fa-inbox" /> CONTACT US</a></li>
 	</ui:define>
-	
+
 	<ui:define name="PageName">FINANCIAL PRODUCTS</ui:define>
 	<ui:define name="PageContent">
 
@@ -39,56 +39,58 @@
 		<div class="col-md-12">
 			<div class="col-md-6">
 				<div class="panel panel-default">
-		<h:form>
+					<h:form>
 
-			<h:panelGrid columns="2">
+						<h:panelGrid columns="2">
 
+							<label>Face Value </label>
 
-				<h:outputText value="Face Value" />
-				<p:spacer width="10" height="10" />
-				<h:inputText value="#{mdfxincomeBean.faceValue}" />
-				<p:spacer width="10" height="10" />
-				<h:outputText value="Time To Maturity" />
-				<p:spacer width="10" height="10" />
-				<h:inputText value="#{mdfxincomeBean.timeMaturity}" />
-				<p:spacer width="10" height="10" />
-				<h:outputText value="Interest Rate On Bond" />
-				<p:spacer width="10" height="10" />
-				<h:inputText value="#{mdfxincomeBean.couponRate}" />
-				<p:spacer width="10" height="10" />
-				<h:commandButton
-					action="#{mdfxincomeBean.dopriceZeroCouponBond(mdfxincomeBean.faceValue,mdfxincomeBean.timeMaturity,mdfxincomeBean.couponRate)}"
-					value="price" class="btn btn-primary btn-sm" />
-				<p:spacer width="10" height="10" />
-				
-									<h:inputText value="#{mdfxincomeBean.bondPrice}" styleClass="form-control input-rounded"/>
-				
-				<p:spacer width="10" height="10" />
-				<p:outputLabel value="ZCB" />
-				<p:panelGrid>
-					<p:selectOneMenu id="fxincome" value="#{mdfxincomeBean.fx.bd}">
-						<f:selectItem itemLabel="zcb" itemValue="0" />
-						
-					</p:selectOneMenu>
-				</p:panelGrid>
-				<p:spacer width="10" height="10" />
-				<p:outputLabel value="Put / Call" />
-				<p:panelGrid>
-					<p:selectOneMenu id="putCall" value="#{mdfxincomeBean.putCall}">
-						<f:selectItem itemLabel="put" itemValue="0" />
-						<f:selectItem itemLabel="call" itemValue="1" />
-					</p:selectOneMenu>
-				</p:panelGrid>
-				<p:spacer width="10" height="10" />
+							<p:spacer width="10" height="10" />
+							<h:inputText value="#{mdfxincomeBean.faceValue}" />
+							<p:spacer width="10" height="10" />
+							<label>Time To Maturity</label>
 
-				<p:commandButton class="btn btn-success btn-sm" value="Save Pricing"
-					action="#{mdfxincomeBean.doBookTrade()}" />
-			</h:panelGrid>
+							<p:spacer width="10" height="10" />
+							<h:inputText value="#{mdfxincomeBean.timeMaturity}" />
+							<p:spacer width="10" height="10" />
+							<label>Interest Rate On Bond</label>
 
-		</h:form>
-</div>
-</div>
-</div>
+							<p:spacer width="10" height="10" />
+							<h:inputText value="#{mdfxincomeBean.couponRate}" />
+							<p:spacer width="10" height="10" />
+							<h:commandButton
+								action="#{mdfxincomeBean.dopriceZeroCouponBond(mdfxincomeBean.faceValue,mdfxincomeBean.timeMaturity,mdfxincomeBean.couponRate)}"
+								value="price" class="btn btn-primary btn-sm" />
+
+							<h:inputText value="#{mdfxincomeBean.bondPrice}"
+								styleClass="form-control input-rounded" />
+							<br />
+							<label>Type </label>
+							<p:panelGrid>
+								<p:selectOneMenu id="fxincome" value="#{mdfxincomeBean.fx.bd}">
+									<f:selectItem itemLabel="zcb" itemValue="0" />
+
+								</p:selectOneMenu>
+							</p:panelGrid>
+							<p:spacer width="10" height="10" />
+							<label>Call/Put</label>
+
+							<p:panelGrid>
+								<p:selectOneMenu id="putCall" value="#{mdfxincomeBean.putCall}">
+									<f:selectItem itemLabel="put" itemValue="0" />
+									<f:selectItem itemLabel="call" itemValue="1" />
+								</p:selectOneMenu>
+							</p:panelGrid>
+							<p:spacer width="10" height="10" />
+
+							<p:commandButton class="btn btn-success btn-sm"
+								value="Save Pricing" action="#{mdfxincomeBean.doBookTrade()}" />
+						</h:panelGrid>
+
+					</h:form>
+				</div>
+			</div>
+		</div>
 
 	</ui:define>
 	<ui:define name="scriptAdd">
