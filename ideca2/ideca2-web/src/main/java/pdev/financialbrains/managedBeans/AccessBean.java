@@ -36,14 +36,14 @@ public class AccessBean {
 		// Util.userConnect = authan.authentification(login, password);
 		if (found != null) {
 			if (found instanceof Trader) {
-				Trader foundTrader = (Trader) authan.authentification(login, password);
-				identityBean.setUtilisateur(foundTrader);
-				identityBean.setRole("trader");
+				//Trader foundTrader = (Trader) authan.authentification(login, password);
+				//identityBean.setUtilisateur(foundTrader);
+				//identityBean.setRole("trader");
 				navigateTo = "/pages/trader/home?faces-redirect=true";
 			} else if (found instanceof BackOfficeUser) {
-				BackOfficeUser foundBackOffUser = (BackOfficeUser) authan.authentification(login, password);
-				identityBean.setUtilisateur(foundBackOffUser);
-				identityBean.setRole("backoffuser");
+				//BackOfficeUser foundBackOffUser = (BackOfficeUser) authan.authentification(login, password);
+				//identityBean.setUtilisateur(foundBackOffUser);
+				//identityBean.setRole("backoffuser");
 				navigateTo = "/pages/back/backHome?faces-redirect=true";
 			}
 
