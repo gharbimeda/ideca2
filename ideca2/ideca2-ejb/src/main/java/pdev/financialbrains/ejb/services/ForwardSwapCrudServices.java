@@ -73,7 +73,6 @@ public class ForwardSwapCrudServices implements IForwardSwapCrudServicesLocal, I
 		Double d2;
 		d2 = d1 - (volatility * Math.sqrt(expiryTime));
 
-		Double op;
 		return (discountFactor * a) * ((rate * N(d1)) - (strikeRate * N(d2)));
 	}
 

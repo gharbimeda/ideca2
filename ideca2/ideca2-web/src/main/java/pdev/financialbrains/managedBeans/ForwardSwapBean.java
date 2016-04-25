@@ -186,12 +186,13 @@ public class ForwardSwapBean {
 		fsLocal.create(forSwap);
 		forSwap = fsLocal.readByCurrentPrice(rate);
 		tradePk.setId(forSwap.getId());
-//		tradePk.setIdUser(trader.getIdUser());
-//		trade.setPk(tradePk);
+		tradePk.setIdUser(trader.getIdUser());
+		trade.setPk(tradePk);
 //		trade.setFi(forSwap);
-//		trade.setStatus(2);
+		trade.setStatus(2);
 //		trade.setTrader(trader);
-//		tradeLocal.create(trade);
+		trade.setValue(Float.parseFloat(result.toString()));
+		tradeLocal.create(trade);
 		return null;
 	}
 
