@@ -70,14 +70,15 @@
 			</div>
 		</h:form>
 		<hr />
-		<div class="col-md-12">
-			<div class="col-md-6">
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						<h4 style="color: #c11313">CAP FLOOR INPUTS</h4>
-					</div>
-					<div class="panel-body">
-						<h:form>
+		<h:form>
+			<div class="col-md-12">
+				<div class="col-md-6">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h4 style="color: #c11313">CAP FLOOR INPUTS</h4>
+						</div>
+						<div class="panel-body">
+
 							<label>Cap/Floor : </label>
 							<h:selectOneMenu id="capfloor" value="#{capbean.c.capFloor}"
 								class="form-control">
@@ -92,13 +93,12 @@
 								<f:selectItem itemLabel="call" itemValue="1" />
 							</h:selectOneMenu>
 							<!-- ****************************************************** -->
-							<label>Start Date : </label>
-							<br />
-							<p:calendar value="#{capbean.c.startDate}" />
+							<label>Start Date : </label> <br />
+							<p:calendar value="#{capbean.c.startDate}" >
+							<f:convertDateTime />							</p:calendar>
 							<br />
 							<!-- ****************************************************** -->
-							<label>End Date : </label>
-							<br />
+							<label>End Date : </label> <br />
 							<p:calendar value="#{capbean.c.endDate}" />
 							<br />
 							<!-- ****************************************************** -->
@@ -116,8 +116,7 @@
 								<f:selectItem itemLabel="12" itemValue="12" />
 							</h:selectOneMenu>
 							<!-- ****************************************************** -->
-							<label>Valuation Date : </label>
-							<br />
+							<label>Valuation Date : </label> <br />
 							<p:calendar value="#{capbean.c.expiration}" />
 							<br />
 							<!-- ****************************************************** -->
@@ -131,8 +130,7 @@
 							<label>1.0 Year forward rate :</label>
 							<p:inputText class="form-control" value="#{capbean.yield}" />
 							<!-- ****************************************************** -->
-							<label>Reference Index: LIBOR</label>
-							<br />
+							<label>Reference Index: LIBOR</label> <br />
 							<!-- ****************************************************** -->
 							<label>Volatility : </label>
 							<p:inputText class="form-control" value="#{capbean.c.volatility}" />
@@ -145,20 +143,20 @@
 								action="#{capbean.doPricing()}" />
 							<p:commandButton class="btn btn-success btn-sm"
 								value="Book Trade" action="#{capbean.doBookTrade()}">
-								
+
 							</p:commandButton>
-						</h:form>
+
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="col-md-6">
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						<h4 style="color: #c11313">CAP FLOOR PRICING</h4>
-					</div>
-					<div class="panel-body">
-						<div class="table-responsive">
-							<h:form rendered="#{capbean.showForm}">
+				<div class="col-md-6">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h4 style="color: #c11313">CAP FLOOR PRICING</h4>
+						</div>
+						<div class="panel-body">
+							<div class="table-responsive">
+
 								<h:dataTable value="#{capbean.resulats}" var="res"
 									class="table table-striped">
 
@@ -184,13 +182,13 @@
 									</h:column>
 
 								</h:dataTable>
-							</h:form>
+
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-
+		</h:form>
 	</ui:define>
 
 
