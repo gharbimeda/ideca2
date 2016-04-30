@@ -12,7 +12,9 @@ import pdev.financialbrains.ejb.contracts.IBondCrudServicesLocal;
 import pdev.financialbrains.ejb.contracts.IStockCrudServicesLocal;
 import pdev.financialbrains.ejb.entities.Bond;
 import pdev.financialbrains.ejb.entities.Stock;
-
+/*
+ * Mariem
+ */
 
 @ManagedBean(name = "mdstockBean")
 @ViewScoped

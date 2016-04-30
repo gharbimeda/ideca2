@@ -26,9 +26,8 @@ import pdev.financialbrains.ejb.entities.Quote;
 import pdev.financialbrains.ejb.entities.Rate;
 import pdev.financialbrains.ejb.entities.Stock;
 
-/**
- * @author MariemR
- *
+/*
+ * Mariem
  */
 @Stateless
 @LocalBean
@@ -176,6 +175,40 @@ public class ParsingQuoteService implements IParsingQuoteServiceRemote,
 			}
 		}
 	}
+	public List<Quote> initializeQuotes5() throws IOException {
+		List<Quote> quotes = new ArrayList<>();
+
+		String fileDir = "D:/parsingFolder/yahooQuotes1.xml";
+		String request = "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20%20%28%22YHOO%22%2C%22AAPL%22%2C%22GOOG%22%2C%22"
+				+ "MSFT%22%29&diagnostics=true&env=http%3A%2F%2Fdatatables.org%2Falltables.env";
+		String result = performRequest(request);
+
+		PrintWriter pr = new PrintWriter(fileDir);
+		try {
+			pr.write(result);
+		} finally {
+			pr.close();
+
+			Query query = new Query();
+
+			try {
+				File f = new File(fileDir);
+				JAXBContext jaxbContext = JAXBContext.newInstance(Query.class);
+				Unmarshaller unm = jaxbContext.createUnmarshaller();
+				query = (Query) unm.unmarshal(f);
+
+				for (Quote quote : query.results.quotes) {
+					
+					quotes.add(quote);
+
+				}
+
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			}
+		}
+		return quotes;
+	}
 
 	@Override
 	public List<Rate> initializeQuotes4(String ticker) throws IOException {
@@ -221,6 +254,45 @@ public class ParsingQuoteService implements IParsingQuoteServiceRemote,
       
 	
 	}
+	public Quote parseQuote(String ticker) throws IOException {
+		Quote quote = new Quote();
 
+		String fileDir = "D:/parsingFolder/yahooQuotes2.xml";
+		String request = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.xchange%20where%20pair%3D%22"+ticker+
+				"%22&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
+		String result = performRequest(request);
+
+		PrintWriter pr = new PrintWriter(fileDir);
+		try {
+			pr.write(result);
+		} finally {
+			pr.close();
+
+			Query query = new Query();
+
+			try {
+				File f = new File(fileDir);
+				JAXBContext jaxbContext = JAXBContext.newInstance(Query.class);
+				Unmarshaller unm = jaxbContext.createUnmarshaller();
+				query = (Query) unm.unmarshal(f);
+
+				 quote = query.results.quotes.get(0);
+
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			}
+		}
+		return quote;
+	}
+	public void Timer() throws IOException {
+		List<Quote> st = initializeQuotes5();
+		Quote c = new Quote();
+		for (int i=0;i<st.size();i++)
+		{
+			
+				c=parseQuote(st.get(i).getSymbol());
+			
+		}
+	}
 
 }
