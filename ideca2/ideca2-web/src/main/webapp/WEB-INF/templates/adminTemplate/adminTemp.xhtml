@@ -55,7 +55,16 @@
               <ul class="nav side-menu">
                 <li><a href=""><i class="fa fa-home"></i> Dashboard </a>
                 </li>
-                <li><a href="index.html"><i class="fa fa-users"></i> Account Management </a>
+                <li><a><i class="fa fa-users"></i> Account Management </a>
+                <ul class="nav child_menu" style="display: none">
+										<li><a
+											href="#{request.contextPath}/pages/admin/">
+												Accounts</a></li>
+										<li><a
+											href="#{request.contextPath}/pages/admin/">
+												Request</a></li>
+
+									</ul>
                 </li>
                 <li><a href=""><i class="fa fa-newspaper-o"></i> Articles Management </a>
                 </li>
