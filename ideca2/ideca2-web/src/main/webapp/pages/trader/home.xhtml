@@ -113,7 +113,9 @@
 		</a> </section>
 	</ui:define>
 	
-	<ui:define name="PageName"><!--TICKER START -->
+	<ui:define name="PageName">
+	<div>
+	<!--TICKER START -->
 <script type="text/javascript" src="http://forexminute.com/forexminutetools/fxticker.js" ></script>
 <center><div id="forex-widget" data-width="900" data-height="30" data-speed="1" ></div></center>
 <!-- TICKER -->
@@ -274,6 +276,7 @@
 				</div>
 			</div>
 
+
 			
 		
 		</div>
@@ -281,72 +284,215 @@
 		
 		</h:form>
 		
+			<!-- 			<div class="dashboard-div-wrapper bk-clr-three"> -->
+			<!-- 				<h:form id="form_1"> -->
 
-		<!-- PIE Chart -->
-		<div class="row">
-			<canvas id="areaChart"></canvas>
-			<div class="box box-danger">
-				<div class="box-header with-border">
-					<h3 class="box-title">SETTLEMENT CHART</h3>
-					<div class="box-tools pull-right">
-						<button class="btn btn-box-tool" data-widget="collapse">
-							<i class="fa fa-minus"></i>
-						</button>
-						<button class="btn btn-box-tool" data-widget="remove">
-							<i class="fa fa-times"></i>
-						</button>
+			<!-- 					<h:dataTable value="#{mdBean.quotes}" var="quote" -->
+			<!-- 						styleClass="table table-bordered"> -->
+			<!-- 						<h:column> -->
+			<!-- 							<f:facet name="header"> -->
+			<!-- 								<h:outputText value="COMPANY NAME" /> -->
+			<!-- 							</f:facet> -->
+			<!-- 							<h:outputText value="#{quote.name}" /> -->
+			<!-- 						</h:column> -->
+			<!-- 						<h:column> -->
+			<!-- 							<f:facet name="header"> -->
+			<!-- 								<h:outputText value="ASK" /> -->
+			<!-- 							</f:facet> -->
+			<!-- 							<h:outputText value="#{quote.ask}" /> -->
+			<!-- 						</h:column> -->
+			<!-- 						<h:column> -->
+			<!-- 							<f:facet name="header"> -->
+			<!-- 								<h:outputText value="VOLUME" /> -->
+			<!-- 							</f:facet> -->
+			<!-- 							<h:outputText value="#{quote.volume}" /> -->
+			<!-- 						</h:column> -->
+			<!-- 						<h:column> -->
+			<!-- 							<f:facet name="header"> -->
+			<!-- 								<h:outputText value="CHANGE" /> -->
+			<!-- 							</f:facet> -->
+			<!-- 							<h:outputText value="#{quote.change}" /> -->
+			<!-- 						</h:column> -->
+
+			<!-- 					</h:dataTable> -->
+			<!-- 				</h:form> -->
+			<!-- 			</div> -->
+			<!-- 			<div class="dashboard-div-wrapper bk-clr-three"> -->
+
+			<!-- 				<h:form id="form_2"> -->
+
+			<!-- 					<h:dataTable styleClass="table table-bordered" -->
+			<!-- 						value="#{mdBean.quotess}" var="quote"> -->
+			<!-- 						<h:column> -->
+			<!-- 							<f:facet name="header"> -->
+			<!-- 								<h:outputText value="COMPANY NAME" /> -->
+			<!-- 							</f:facet> -->
+			<!-- 							<h:outputText value="#{quote.name}" /> -->
+			<!-- 						</h:column> -->
+			<!-- 						<h:column> -->
+			<!-- 							<f:facet name="header"> -->
+			<!-- 								<h:outputText value="ASK" /> -->
+			<!-- 							</f:facet> -->
+			<!-- 							<h:outputText value="#{quote.ask}" /> -->
+			<!-- 						</h:column> -->
+			<!-- 						<h:column> -->
+			<!-- 							<f:facet name="header"> -->
+			<!-- 								<h:outputText value="VOLUME" /> -->
+			<!-- 							</f:facet> -->
+			<!-- 							<h:outputText value="#{quote.volume}" /> -->
+			<!-- 						</h:column> -->
+			<!-- 						<h:column> -->
+			<!-- 							<f:facet name="header"> -->
+			<!-- 								<h:outputText value="CHANGE" /> -->
+			<!-- 							</f:facet> -->
+			<!-- 							<h:outputText value="#{quote.change}" /> -->
+
+			<!-- 						</h:column> -->
+
+
+
+			<!-- 					</h:dataTable> -->
+			<!-- 				</h:form> -->
+			<!-- 			</div> -->
+			<!-- 		</div> -->
+			<!-- 		<div class="col-md-6"> -->
+
+			<!-- 			<div class="dashboard-div-wrapper bk-clr-one"> -->
+
+			<!-- 				<h:form id="form_3"> -->
+
+			<!-- 					<h:dataTable value="#{mdBean.quotesss}" var="quote" -->
+			<!-- 						styleClass="table table-bordered"> -->
+			<!-- 						<h:column> -->
+			<!-- 							<f:facet name="header"> -->
+			<!-- 								<h:outputText value="COMPANY NAME" /> -->
+			<!-- 							</f:facet> -->
+			<!-- 							<h:outputText value="#{quote.name}" /> -->
+			<!-- 						</h:column> -->
+			<!-- 						<h:column> -->
+			<!-- 							<f:facet name="header"> -->
+			<!-- 								<h:outputText value="ASK" /> -->
+			<!-- 							</f:facet> -->
+			<!-- 							<h:outputText value="#{quote.ask}" /> -->
+			<!-- 						</h:column> -->
+			<!-- 						<h:column> -->
+			<!-- 							<f:facet name="header"> -->
+			<!-- 								<h:outputText value="VOLUME" /> -->
+			<!-- 							</f:facet> -->
+			<!-- 							<h:outputText value="#{quote.volume}" /> -->
+			<!-- 						</h:column> -->
+			<!-- 						<h:column> -->
+			<!-- 							<f:facet name="header"> -->
+			<!-- 								<h:outputText value="CHANGE" /> -->
+			<!-- 							</f:facet> -->
+			<!-- 							<h:outputText value="#{quote.change}" /> -->
+			<!-- 						</h:column> -->
+
+			<!-- 						 <p:poll interval="5" listener="#{mdBean.quoteLocal.initializeQuotes2()}" update="txt_count" /> -->
+
+
+
+			<!-- 					</h:dataTable> -->
+			<!-- 				</h:form> -->
+			<!-- 			</div> -->
+			<!-- 			<div class="dashboard-div-wrapper bk-clr-one"> -->
+
+			<!-- 				<h:form id="form_4"> -->
+
+			<!-- 					<h:dataTable value="#{mdBean.quotessss}" var="quote" -->
+			<!-- 						styleClass="table table-bordered"> -->
+			<!-- 						<h:column> -->
+			<!-- 							<f:facet name="header"> -->
+			<!-- 								<h:outputText value="COMPANY NAME" /> -->
+			<!-- 							</f:facet> -->
+			<!-- 							<h:outputText value="#{quote.name}" /> -->
+			<!-- 						</h:column> -->
+			<!-- 						<h:column> -->
+			<!-- 							<f:facet name="header"> -->
+			<!-- 								<h:outputText value="ASK" /> -->
+			<!-- 							</f:facet> -->
+			<!-- 							<h:outputText value="#{quote.ask}" /> -->
+			<!-- 						</h:column> -->
+			<!-- 						<h:column> -->
+			<!-- 							<f:facet name="header"> -->
+			<!-- 								<h:outputText value="VOLUME" /> -->
+			<!-- 							</f:facet> -->
+			<!-- 							<h:outputText value="#{quote.volume}" /> -->
+			<!-- 						</h:column> -->
+			<!-- 						<h:column> -->
+			<!-- 							<f:facet name="header"> -->
+			<!-- 								<h:outputText value="CHANGE" /> -->
+			<!-- 							</f:facet> -->
+			<!-- 							<h:outputText value="#{quote.change}" /> -->
+			<!-- 						</h:column> -->
+
+			<!-- 						 <p:poll interval="5" listener="#{mdBean.quoteLocal.initializeQuotes2()}" update="txt_count" /> -->
+
+
+
+			<!-- 					</h:dataTable> -->
+			<!-- 				</h:form> -->
+			<!-- 			</div> -->
+			<!-- 		</div> -->
+>>>>>>> branch 'master' of https://github.com/gharbimeda/ideca2.git
+
+			<!-- PIE Chart -->
+			<div class="row">
+				<canvas id="areaChart"></canvas>
+				<div class="box box-danger">
+					<div class="box-header with-border">
+						<h3 class="box-title">SETTLEMENT CHART</h3>
+						<div class="box-tools pull-right">
+							<button class="btn btn-box-tool" data-widget="collapse">
+								<i class="fa fa-minus"></i>
+							</button>
+							<button class="btn btn-box-tool" data-widget="remove">
+								<i class="fa fa-times"></i>
+							</button>
+						</div>
 					</div>
+					<div class="box-body">
+						<canvas data-key="#{settlementBean.tradeSettled}"
+							data-key1="#{settlementBean.tradeUnsettled}" id="pieChart"
+							style="height:250px">#{claimBean.claimsReplied.size()}</canvas>
+					</div>
+					<!-- /.box-body -->
 				</div>
-				<div class="box-body">
-					<canvas data-key="#{settlementBean.tradeSettled}"
-						data-key1="#{settlementBean.tradeUnsettled}" id="pieChart"
-						style="height:250px">#{claimBean.claimsReplied.size()}</canvas>
-				</div>
-				<!-- /.box-body -->
+				<!-- /.box -->
 			</div>
-			<!-- /.box -->
-		</div>
-		<!-- jQuery 2.1.4 -->
-		<script src="../../plugins/jQuery/jQuery-2.1.4.min.js"></script>
-		<!-- Bootstrap 3.3.5 -->
-		<script src="../../bootstrap/js/bootstrap.min.js"></script>
-		<!-- ChartJS 1.0.1 -->
-		<script src="../../plugins/chartjs/Chart.min.js"></script>
-		<!-- FastClick -->
-		<script src="../../plugins/fastclick/fastclick.min.js"></script>
-		<!-- AdminLTE App -->
-		<script src="../../dist/js/app.min.js"></script>
-		<!-- AdminLTE for demo purposes -->
-		<script src="../../dist/js/demo.js"></script>
-		<!-- page script -->
-		<script>
+			<!-- jQuery 2.1.4 -->
+			<script src="../../plugins/jQuery/jQuery-2.1.4.min.js"></script>
+			<!-- Bootstrap 3.3.5 -->
+			<script src="../../bootstrap/js/bootstrap.min.js"></script>
+			<!-- ChartJS 1.0.1 -->
+			<script src="../../plugins/chartjs/Chart.min.js"></script>
+			<!-- FastClick -->
+			<script src="../../plugins/fastclick/fastclick.min.js"></script>
+			<!-- AdminLTE App -->
+			<script src="../../dist/js/app.min.js"></script>
+			<!-- AdminLTE for demo purposes -->
+			<script src="../../dist/js/demo.js"></script>
+			<!-- page script -->
+			<script>
       $(function () {
         /* ChartJS
          * -------
          * Here we will create a few charts using ChartJS
          */
-
         //--------------
         //- AREA CHART -
         //--------------
-
         // Get context with jQuery - using jQuery's .get() method.
         var areaChartCanvas = $("#areaChart").get(0).getContext("2d");
         // This will get the first returned node in the jQuery collection.
         var areaChart = new Chart(areaChartCanvas);
-
         var areaChartData = {};
-
         var areaChartOptions = {};
-
         var key = $("#pieChart").data('key');
         var key1 = $("#pieChart").data('key1');
         
-
         //Create the line chart
         areaChart.Line(areaChartData, areaChartOptions);
-
-
         //-------------
         //- PIE CHART -
         //-------------
@@ -373,9 +519,8 @@
         pieChart.Doughnut(PieData, pieOptions);
       });
     </script>
-		<!-- Pie Chart End-->
-
-
+			<!-- Pie Chart End-->
+		</div>
 	</ui:define>
 	<ui:define name="ScriptAdd">
 		<!-- Mine -->

@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/WEB-INF/templates/backTemplate/newBouTemp.xhtml"
+	xmlns:p="http://primefaces.org/ui">
+	<ui:define name="titleName"> Forward Swap Pricing </ui:define>
+	<ui:define name="pageContent">
+		<h:form>
+			<h:panelGrid columns="2">
+				<h:outputText value="Strike Rate" />
+				<h:inputText value="#{fsbean.strikeRate}" />
+				<h:outputText value="Rate" />
+				<h:inputText value="#{fsbean.rate}" />
+				<h:outputText value="Notional" />
+				<h:inputText value="#{fsbean.notional}" />
+				<h:outputText value="Period" />
+				<h:inputText value="#{fsbean.period}" />
+				<h:outputText value="Expiry Time" />
+				<h:inputText value="#{fsbean.expiryTime}" />
+				<h:outputText value="Volatility" />
+				<h:inputText value="#{fsbean.volatility}" />
+				<h:commandButton class="btn btn-primary btn-sm"
+					action="#{fsbean.doPrice()}" value="Price" />
+			</h:panelGrid>
+			<h:panelGroup layout="block">
+				<h:outputText value="Result" rendered="#{fsbean.rend}" />
+				<h:inputText value="#{fsbean.result}" rendered="#{fsbean.rend}"
+					readonly="true" />
+			</h:panelGroup>
+		</h:form>
+	</ui:define>
+</ui:composition>
