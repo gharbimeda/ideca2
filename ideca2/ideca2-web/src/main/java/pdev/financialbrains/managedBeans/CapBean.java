@@ -50,7 +50,7 @@ public class CapBean {
 	private Float yield;
 	private Integer putCall;
 	private Integer nd;
-	private Integer i=15;
+	private Integer i=12;
 	private List<CapFloorTable> resulats;
 	private List<Trade> trades;
 	private List<Trade> caps;
