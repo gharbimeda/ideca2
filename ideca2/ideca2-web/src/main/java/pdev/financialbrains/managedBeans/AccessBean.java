@@ -38,7 +38,7 @@ public class AccessBean {
 				Trader foundTrader = (Trader) authan.authentification(login, password);
 				identityBean.setUtilisateur(foundTrader);
 				identityBean.setRole("trader");
-				navigateTo = "/pages/trader/home?faces-redirect=true";
+				navigateTo = "/pages/trader/messages?faces-redirect=true";
 			} else if (found instanceof BackOfficeUser) {
 				BackOfficeUser foundBackOffUser = (BackOfficeUser) authan.authentification(login, password);
 				identityBean.setUtilisateur(foundBackOffUser);

@@ -8,6 +8,7 @@ import javax.faces.bean.ViewScoped;
 
 import pdev.financialbrains.ejb.contracts.IForwardSwapCrudServicesLocal;
 import pdev.financialbrains.ejb.contracts.ITradeCrudServiceLocal;
+import pdev.financialbrains.ejb.entities.BackOfficeUser;
 import pdev.financialbrains.ejb.entities.ForwardSwap;
 import pdev.financialbrains.ejb.entities.Trade;
 import pdev.financialbrains.ejb.entities.TradePK;
@@ -35,6 +36,7 @@ public class ForwardSwapBean {
 	@ManagedProperty("#{identityBean}")
 	private IdentityBean identityBean;
 	private Trader trader;
+	private BackOfficeUser backOffice; 
 	private boolean showForm = false;
 
 	public boolean isShowForm() {
@@ -157,6 +159,14 @@ public class ForwardSwapBean {
 		this.trader = trader;
 	}
 
+	public BackOfficeUser getBackOffice() {
+		return backOffice;
+	}
+
+	public void setBackOffice(BackOfficeUser backOffice) {
+		this.backOffice = backOffice;
+	}
+
 	@PostConstruct
 	public void init() {
 		strikeRate = new Float(0);
@@ -169,8 +179,13 @@ public class ForwardSwapBean {
 		trade = new Trade();
 		tradePk = new TradePK();
 		forSwap = new ForwardSwap();
-		trader = new Trader();
-		trader = (Trader) identityBean.getUtilisateur();
+		if (identityBean.hasRole("trader")) {
+			trader = new Trader();
+			trader = (Trader) identityBean.getUtilisateur();
+		} else if (identityBean.hasRole("backoffuser")) {
+			backOffice = new BackOfficeUser();
+			backOffice = (BackOfficeUser) identityBean.getUtilisateur();
+		}
 	}
 
 	public String doPrice() {

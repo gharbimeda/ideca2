@@ -9,7 +9,9 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
 import pdev.financialbrains.ejb.contracts.IComplaintsCrudServicesLocal;
+import pdev.financialbrains.ejb.contracts.IUserCrudServiceLocal;
 import pdev.financialbrains.ejb.entities.Complaint;
+import pdev.financialbrains.ejb.entities.Message;
 
 @ManagedBean
 @ViewScoped
@@ -22,6 +24,8 @@ public class ClaimsBean {
 	private Date date;
 	private String user;
 	private List<Complaint> claims;
+	private IUserCrudServiceLocal userLocal;
+	private Message message;
 
 	public IComplaintsCrudServicesLocal getClaimLocal() {
 		return claimLocal;
@@ -71,9 +75,26 @@ public class ClaimsBean {
 		this.claims = claims;
 	}
 
+	public IUserCrudServiceLocal getUserLocal() {
+		return userLocal;
+	}
+
+	public void setUserLocal(IUserCrudServiceLocal userLocal) {
+		this.userLocal = userLocal;
+	}
+
+	public Message getMessage() {
+		return message;
+	}
+
+	public void setMessage(Message message) {
+		this.message = message;
+	}
+
 	@PostConstruct
 	public void init() {
 		claims = claimLocal.readAll();
+		message = new Message();
 		object = new String();
 		text = new String();
 		date = new Date();
@@ -81,6 +102,9 @@ public class ClaimsBean {
 	}
 
 	public String doReply() {
+//		message.setUserSource();
+		message.setUserDest(userLocal.readByLogin(user));
+//		message.setTexte(texte);
 		return null;
 	}
 
