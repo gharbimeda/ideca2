@@ -50,15 +50,20 @@
 							<f:facet name="header">Details</f:facet>
 							<h:commandButton action=" "
 								value="Show" styleClass="btn btn-info btn-xs">
+								<f:setPropertyActionListener value="#{trade}"
+										target="#{tradeBean.trade}" />
 							</h:commandButton>
 						</h:column>
 
 					</h:dataTable>
-					<p:poll interval="60" listener="#{mdBean.refresh()}"
-						update="global" />
+					<!--  <p:poll interval="60" listener="#{mdBean.refresh()}"
+						update="global" /> -->
 
 				</h:form>
 			</div>
+		</div>
+		<div class="col-md-6">
+		
 		</div>
 	</ui:define>
 </ui:composition>
