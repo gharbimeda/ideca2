@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+
+<ui:composition
+	template="/WEB-INF/templates/adminTemplate/adminTemp.xhtml">
+	<ui:define name="PageContents">
+		<h:head></h:head>
+		<body>
+			<h:form>
+				<h:outputText value="header" />
+				<h:inputText value="#{a.header}" />
+				<h:outputText value="address" />
+				<h:inputText value="#{a.mailAddress}" />
+				<h:outputText value="name" />
+				<h:inputText value="#{a.name}" />
+				<br> </br>
+
+
+
+				<div class="row">
+					<div class="col-xs-4">
+						<h:commandButton action="#{a.send()}" value="Send Email"
+							styleClass="btn btn-primary btn-block btn-flat" />
+
+
+					</div>
+				</div>
+
+
+			</h:form>
+		</body>
+	</ui:define>
+</ui:composition>
+</html>
