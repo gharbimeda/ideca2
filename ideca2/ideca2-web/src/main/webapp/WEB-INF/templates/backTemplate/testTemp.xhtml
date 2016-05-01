@@ -71,23 +71,39 @@
               <ul class="nav side-menu">
                 <li><a><i class="fa fa-home"></i> Dashbord </a>
                 </li>
-                <li><a><i class="fa fa-users"></i> Account Management <span class="fa fa-chevron-down"></span></a>
+                <li><a><i class="fa fa-bank"></i> Market Data <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu" style="display: none">
-                    <li><a href="#{request.contextPath}/pages/back/BondManually.xhtml">Accounts</a>
+                    <li><a href="#{request.contextPath}/pages/back/BondManually.xhtml">Bonds</a>
                     </li>
-                    <li><a href="#{request.contextPath}/pages/back/CurrencyManually.xhtml">Request</a>
+                    <li><a href="#{request.contextPath}/pages/back/CurrencyManually.xhtml">Currencies</a>
                     </li>
-                   
+                    <li><a href="#{request.contextPath}/pages/back/StockManually.xhtml">Stocks</a>
+                    </li>
                   </ul>
                 </li>
-                <li><a href="#{request.contextPath}/pages/admin/articleManagement.xhtml"><i class="fa fa-newspaper-o"></i> Article Management </a>
+                <li><a href="#{request.contextPath}/pages/back/trades.xhtml"><i class="fa fa-money"></i> Trades </a>
                 </li>
-
-                <li><a href="#{request.contextPath}/pages/admin/claimsManagement.xhtml"><i class="fa fa-envelope-o"></i> Complaint Management </a>
+                <li><a><i class="fa fa-file-o"></i> Settlements <span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu" style="display: none">
+                    <li><a href="#{request.contextPath}/pages/back/Settlement.xhtml">Show all settlements </a>
+                    </li>
+                  </ul>
                 </li>
-                
-                <li><a  href="#{request.contextPath}/pages/public/login.xhtml"><i class="fa fa-user"></i> Logout </a>
-
+                <li><a><i class="fa fa-comment"></i> Messages <span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu" style="display: none">
+                    <li><a href="#{request.contextPath}/pages/back/MessageBack.xhtml">My Inbox</a>
+                    </li>
+                    <li><a href="#{request.contextPath}/pages/back/sendMessages.xhtml">New Message</a>
+                    </li>
+                  </ul>
+                </li>
+                <li><a><i class="fa fa-user"></i> Profil <span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu" style="display: none">
+                    <li><a href="#{request.contextPath}/pages/back/myAccount.xhtml">My profil</a>
+                    </li>
+                    <li><a href="#{request.contextPath}/pages/public/login.xhtml">Logout</a>
+                    </li>
+                  </ul>
                 </li>
               </ul>
             </div>

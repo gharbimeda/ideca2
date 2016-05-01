@@ -13,7 +13,9 @@ import pdev.financialbrains.ejb.entities.Currency;
 import pdev.financialbrains.ejb.entities.Stock;
 
 
-
+/*
+ * Mariem
+ */
 @ManagedBean(name = "mdcurBean")
 @ViewScoped
 public class CurrencyManuallyBean {

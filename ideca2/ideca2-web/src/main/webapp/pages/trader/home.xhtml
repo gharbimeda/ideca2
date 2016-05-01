@@ -3,6 +3,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
 	template="/WEB-INF/templates/traderTemplate/traderTemplate.xhtml">
 	<ui:define name="titleName">HOME</ui:define>
 	<ui:define name="menuContent">
@@ -111,9 +112,16 @@
 			<i class="fa fa-chevron-right"></i>
 		</a> </section>
 	</ui:define>
-	<ui:define name="PageName">YAHOO FINANCE QUOTES
+	
+	<ui:define name="PageName">
+	<div>
+	<!--TICKER START -->
+<script type="text/javascript" src="http://forexminute.com/forexminutetools/fxticker.js" ></script>
+<center><div id="forex-widget" data-width="900" data-height="30" data-speed="1" ></div></center>
+<!-- TICKER -->
 	<br />
 		<br />
+	<h:form id="global">
 		<div class="col-md-12">
 			<div class="col-md-6">
 
@@ -268,6 +276,14 @@
 				</div>
 			</div>
 
+
+			
+		
+		</div>
+				   <p:poll interval="60" listener="#{mdBean.refresh()}" update="global" />
+		
+		</h:form>
+		
 			<!-- 			<div class="dashboard-div-wrapper bk-clr-three"> -->
 			<!-- 				<h:form id="form_1"> -->
 
@@ -418,6 +434,7 @@
 			<!-- 				</h:form> -->
 			<!-- 			</div> -->
 			<!-- 		</div> -->
+>>>>>>> branch 'master' of https://github.com/gharbimeda/ideca2.git
 
 			<!-- PIE Chart -->
 			<div class="row">

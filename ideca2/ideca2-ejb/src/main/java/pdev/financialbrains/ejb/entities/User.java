@@ -25,6 +25,7 @@ public class User implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int IdUser;
+	private Integer status;
 	private String login;
 	private String password;
 	@OneToMany(mappedBy = "user",fetch=FetchType.LAZY)
@@ -100,6 +101,30 @@ public class User implements Serializable {
 		IdUser = idUser;
 	}
 
+	public Integer getStatus() {
+		return status;
+	}
+
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
+
+	public List<Complaint> getComplaints() {
+		return complaints;
+	}
+
+	public void setComplaints(List<Complaint> complaints) {
+		this.complaints = complaints;
+	}
+
+	public List<Message> getMessages2() {
+		return messages2;
+	}
+
+	public void setMessages2(List<Message> messages2) {
+		this.messages2 = messages2;
+	}
+
 	public String toString1() {
 		return "User [IdUser=" + IdUser + ", login=" + login + ", password=" + password + "]";
 	}
@@ -107,4 +132,12 @@ public class User implements Serializable {
 	public String toString() {
 		return login;
 	}
+	
+	public String getStatusString() {
+		if (this.status == 0)
+			return "UNBLOCK";
+		else 
+			return "BLOCK";
+		
+		}
 }

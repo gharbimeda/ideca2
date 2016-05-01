@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/adminTemplate/adminTemp.xhtml">
+	<ui:define name="PageContent">
+
+
+		<h:form>
+			<p:dataTable value="#{userBean.traders}" var="trader">
+				<f:facet name="header">All Traders</f:facet>
+				<p:column>
+					<f:facet name="header">First Name</f:facet>
+					<h:outputText value="#{trader.firstName}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">Last Name</f:facet>
+					<h:outputText value="#{trader.lastName}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">CIN</f:facet>
+					<h:outputText value="#{trader.cin}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">Job</f:facet>
+					<h:outputText value="#{trader.job}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">Status</f:facet>
+					<h:outputText value="#{trader.status}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">Block</f:facet>
+					<h:commandButton action="#{userBean.doAccept(trader)}"
+						value="Accept" styleClass="btn btn-small btn-green" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">Unblock</f:facet>
+					<h:commandButton action="#{userBean.doDecline(trader)}"
+						value="Decline" styleClass="btn btn-small btn-red">
+					</h:commandButton>
+				</p:column>
+				<p:column>
+					<f:facet name="header">Delete</f:facet>
+					<h:commandButton action="#{userBean.doDelete(trader)}"
+						value="delete" class="btn btn-danger btn-sm">
+					</h:commandButton>
+				</p:column>
+
+
+			</p:dataTable>
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>
+
