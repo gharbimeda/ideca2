@@ -1,38 +1,42 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
+
+
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html">
-
-
-<ui:composition
+	xmlns:h="http://java.sun.com/jsf/html"
 	template="/WEB-INF/templates/adminTemplate/adminTemp.xhtml">
-	<ui:define name="PageContents">
-		<h:head></h:head>
-		<body>
-			<h:form>
-				<h:outputText value="header" />
-				<h:inputText value="#{a.header}" />
-				<h:outputText value="address" />
-				<h:inputText value="#{a.mailAddress}" />
-				<h:outputText value="name" />
-				<h:inputText value="#{a.name}" />
-				<br> </br>
+	<ui:define name="titleName"> Accounts</ui:define>
+	<ui:define name="pageContent">
+		<div class="x_panel">
+			<div class="x_content">
 
-
-
-				<div class="row">
-					<div class="col-xs-4">
-						<h:commandButton action="#{a.send()}" value="Send Email"
-							styleClass="btn btn-primary btn-block btn-flat" />
-
-
+				<h:form class="form-horizontal form-label-left">
+					<div class="form-group">
+						<h:outputText value="header" />
+						<h:inputText value="#{a.header}" />
 					</div>
-				</div>
+					<div class="form-group">
+						<h:outputText value="address" />
+						<h:inputText value="#{a.mailAddress}" />
+					</div>
+					<div class="form-group">
+						<h:outputText value="name" />
+						<h:inputText value="#{a.name}" />
+					</div>
+
+					<div class="ln_solid"></div>
 
 
-			</h:form>
-		</body>
+
+					<h:commandButton action="#{a.send()}" value="Send Email"
+						styleClass="btn btn-info" />
+
+				</h:form>
+			</div>
+		</div>
+
 	</ui:define>
 </ui:composition>
-</html>
+
