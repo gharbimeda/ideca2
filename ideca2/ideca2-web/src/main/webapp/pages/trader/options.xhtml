@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      
+      
+       template="/WEB-INF/templates/traderTemplate/traderTemplate.xhtml">
+      
+      <ui:define name="PageNames">EQUITY Option</ui:define>
+<ui:define name="PageContent"> 
+      
+
+<h:form>
+			   	<div class="cd-md-12">
+   	<div class="col-md-6">
+			<h:outputText value="Type" />
+			<h:inputText type="text" class="form-control" value ="#{pricingOptionBean.callPutFlag}"/> 
+				<h:outputText value="Stock Price" /> 
+			
+			<h:inputText type="text" class="form-control" value ="#{pricingOptionBean.s}" />
+			<hr />
+			</div>
+			   	
+   	<div class="col-md-6">
+           <label> Strike price : </label> 
+			
+			<h:inputText type="text" class="form-control" value ="#{pricingOptionBean.x}" /> 
+			<label> Date  : </label> 
+			
+			<h:inputText type="text" class="form-control" value ="#{pricingOptionBean.t}"/>
+			<hr />
+			</div>
+			   	
+   	<div class="col-md-6">
+			<label> Interest rate  : </label> 
+			
+			<h:inputText type="text" class="form-control" value ="#{pricingOptionBean.r }" /> 
+			<label> Volatility : </label> 
+			
+			<h:inputText type="text" class="form-control"  value ="#{pricingOptionBean.v }" />
+			<hr />
+			</div>
+			</div>
+				<div class="row">
+					<div class="col-xs-4">
+						<h:commandButton action="#{pricingOptionBean.doBlackScholes(pricingOptionBean.callPutFlag,pricingOptionBean.s,pricingOptionBean.x,pricingOptionBean.t,pricingOptionBean.r,pricingOptionBean.v)}" value="calculate"
+							styleClass="btn btn-primary btn-block btn-flat" />
+					</div>
+				</div>
+				
+				<label> result : </label> 
+				<h:inputText type="text" class="form-control"  value ="#{pricingOptionBean.resultat}"  /> 
+			
+			</h:form>
+			
+		<h:form>
+		
+		
+		<h3>Gamma :</h3>
+													<h:outputText value="#{pricingOptionBean.resultatmessageGamma}"
+														 />
+													<h3>Thetha :</h3>
+													<h:outputText value="#{pricingOptionBean.resultatmessagethehta}"></h:outputText>
+																											<h3>Vega :</h3>
+													<h:outputText value="#{pricingOptionBean.resultatmessageVega}"
+														 />
+													<h3>Delta :</h3>
+													<h:outputText value="#{pricingOptionBean.resultatmessagedelta}"></h:outputText>
+		<h3>Rho :</h3>
+													<h:outputText value="#{pricingOptionBean.resultatmessageRho}"
+														 />
+
+<h:commandButton
+														action="#{pricingOptionBean.doGreeks()}" value=" Greeks" />
+		
+		</h:form>
+			
+			
+		</ui:define>
+			
+ </ui:composition>
+
+
