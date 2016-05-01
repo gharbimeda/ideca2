@@ -4,14 +4,13 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui"
-	template="/WEB-INF/templates/backTemplate/newBouTemp.xhtml">
+	template="/WEB-INF/templates/backTemplate/dashBoard.xhtml">
 
 <ui:define name="titleName">ZCB Pricing</ui:define>
 	<ui:define name="pageContent">
 <center><h4>Zero coupon Bond pricing</h4></center>
 		<br />
-	<div class="col-md-12">
-			<div class="col-md-6">
+	
 				<div class="panel panel-default">
 					<h:form id="yield">
 
@@ -19,19 +18,19 @@
 
 							<label>Face Value </label>
 
-							<p:spacer width="10" height="25" />
+							<p:spacer width="10" height="40" />
 							<h:inputText value="#{mdfxincomeBean.faceValue}" />
-							<p:spacer width="10" height="25" />
+							<p:spacer width="10" height="40" />
 							  <label>Time To Maturity</label>
 
-							<p:spacer width="10" height="25" />
+							<p:spacer width="10" height="40" />
 							<h:inputText value="#{mdfxincomeBean.timeMaturity}" />
-							<p:spacer width="10" height="25" />
+							<p:spacer width="10" height="40" />
 							<label>Interest Rate On Bond</label>
 
-							<p:spacer width="10" height="25" />
+							<p:spacer width="10" height="40" />
 							<h:inputText value="#{mdfxincomeBean.couponRate}" />
-							<p:spacer width="10" height="25" />
+							<p:spacer width="10" height="40" />
 							<h:commandButton
 								action="#{mdfxincomeBean.dopriceZeroCouponBond(mdfxincomeBean.faceValue,mdfxincomeBean.timeMaturity,mdfxincomeBean.couponRate)}"
 								value="price" class="btn btn-primary btn-sm" />
@@ -39,16 +38,16 @@
 							<h:inputText value="#{mdfxincomeBean.bondPrice}"
 								styleClass="form-control input-rounded" />
 							
-							<p:spacer width="10" height="25" />
+							<p:spacer width="10" height="40" />
 							<label>Call/Put</label>
-<p:spacer width="10" height="10" />
+<p:spacer width="10" height="40" />
 							<p:panelGrid>
 								<p:selectOneMenu id="putCall" value="#{mdfxincomeBean.putCall}">
 									<f:selectItem itemLabel="put" itemValue="0" />
 									<f:selectItem itemLabel="call" itemValue="1" />
 								</p:selectOneMenu>
 							</p:panelGrid>
-							<p:spacer width="10" height="25" />
+							<p:spacer width="10" height="40" />
 
 							<p:commandButton class="btn btn-success btn-sm"
 								value="Save Pricing" action="#{mdfxincomeBean.doBookTradeZCB()}" />
@@ -56,9 +55,8 @@
 
 					</h:form>
 				</div>
-			</div>
-		</div>
-
+				
+		
 	</ui:define>
 					
 
