@@ -1,10 +1,137 @@
+<!DOCTYPE html >
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html"
-	template="/WEB-INF/templates/adminTemplate/adminTemp.xhtml">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/adminTemplate/adminTemp.xhtml" >
 	<ui:define name="pageContent">
-		<h1>TEST</h1>
-	</ui:define>
+	
+	<h:head> </h:head>
+    
+    <body>
+    <div style="display:flex; width:100%;margin: 20px" class="row">
+    
+    	<div style=" width: 800px;">
+    	
+		<div class="container">
+		<div class="panel-heading"> <h1 style="color: #330099">ADD ARTICLE</h1> </div>
 
-</ui:composition>
+
+		<h:form>
+			<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+		</h:form>
+		<!-- form begin -->
+		<div class="col-md-6">
+		<h:form>
+		
+		<div style="margin-top: 10px;">				
+		<p:outputLabel value="Author"  />
+		</div>
+		<h:inputText  value="#{articleBean.article.author}" class="form-control" required="true" requiredMessage="Author name Required" style="width: 300px"/>
+	
+		<br />
+		<div style="margin-top: 10px;">
+		<p:outputLabel value="Date" />
+		</div>
+		<p:calendar value="#{articleBean.article.date}" converterMessage= " please enter a valid date" required="true" requiredMessage="please enter a valid date" style="width: 300px"></p:calendar>
+	
+	    <br />
+	    <div style="margin-top: 10px;">
+		<p:outputLabel value="title" />
+		</div>
+		<h:inputText style="width: 300px" value="#{articleBean.article.title}" class="form-control" required="true" requiredMessage="Title required" />
+		
+		<br />
+		<div style="margin-top: 10px;">
+		<p:outputLabel value="Article" />
+		</div>
+		<h:inputTextarea style="width: 300px" value="#{articleBean.article.text}" class="form-control" required="true" requiredMessage="Article Required"/>
+		
+		<br />
+		<div style="margin-top: 10px;">
+		<p:outputLabel value="Link" />
+		</div>
+		<h:inputText style="width: 300px"  value="#{articleBean.article.url}" class="form-control" required="true" requiredMessage="Link Required"/>
+		
+		
+		
+		<br />
+		<h:commandButton class="btn btn-success btn-md" action="#{articleBean.doAdd()}" value="ADD"  />
+		
+		
+		</h:form>
+		<!-- form end -->
+	</div>	
+	</div>
+	</div>
+    	 <div style="width:30%;height:300%">
+      				 <h:form id="contact-form" class="styled-form" action=""
+					method="post" accept-charset="utf-8">
+					<div style="display: none">
+						<input type="hidden" name="csrfmiddlewaretoken"
+							value="8ece95d139633656ad0371bf53c45b2d" />
+					</div>
+
+					<div class="alert alert-info">
+						<h4 class="pagetitle">Articles Online</h4>
+							<p>a wide range of online articles, including news from google finance , 
+							news from all over the world europe, asia, america ... </p>
+							<p> <a href="articles.xhtml">View more articles</a> </p>
+						<div class="note">
+							
+						</div>
+					</div>
+
+				</h:form>
+
+			</div>
+
+    </div>  
+			<br />
+			<br />
+			
+		<div class="panel-heading"> <h1 style="color: #330099">All The Articles</h1> </div>
+          <h:form id="table">
+			<h:dataTable styleClass="table table-bordered" value="#{articleBean.articles}" var="a">
+				<h:column>
+					<f:facet name="header">AUTHOR</f:facet>
+					<h:outputText value="#{a.author}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Date</f:facet>
+					<h:outputText value="#{a.date}" />
+
+				</h:column>
+				<h:column>
+					<f:facet name="header">TITLE</f:facet>
+					<h:outputText value="#{a.title}" />
+
+				</h:column>
+				<h:column>
+					<f:facet name="header">ARTICLE</f:facet>
+					<h:outputText id="text" value="#{a.text}" />
+
+				</h:column>
+				<h:column>
+					<f:facet name="header">LINK</f:facet>
+					<h:outputText value="#{a.url}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Delete</f:facet>
+					<h:commandButton styleClass="btn btn-danger btn-block btn-flat"
+						action="#{articleBean.doDelete(a)}" value="Delete" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Update</f:facet>
+					<h:commandButton styleClass="btn btn-primary btn-block btn-flat" action=" " value="Update">
+					<f:setPropertyActionListener value="#{a}" target="#{articleBean.article}" />					
+					</h:commandButton>
+				</h:column>
+				
+   			
+			</h:dataTable>
+		</h:form>
+  </body>
+	</ui:define>
+	</ui:composition>
