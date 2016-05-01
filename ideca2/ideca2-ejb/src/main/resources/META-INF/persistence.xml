@@ -42,6 +42,7 @@
 		<class>pdev.financialbrains.ejb.entities.Stock</class>
 		<class>pdev.financialbrains.ejb.entities.Bond</class>
 		<class>pdev.financialbrains.ejb.entities.Quote</class>
+				<class>pdev.financialbrains.ejb.entities.MdBond</class>
 		
 		<properties>
 			<property name="hibernate.hbm2ddl.auto" value="update" />

@@ -149,12 +149,12 @@ public class MarketDataBean {
 	public void init() {
 
 		try {
-			quotes = quoteLocal.initializeQuotes2("AAPL");
+			quotes = quoteLocal.initializeQuotes2("MU");
 			quotess = quoteLocal.initializeQuotes2("YHOO");
 			quotesss = quoteLocal.initializeQuotes2("GOOG");
-			quotessss = quoteLocal.initializeQuotes2("MSFT");
-			quotes1 = quoteLocal.initializeQuotes2("NFLX");
-			quotes2 = quoteLocal.initializeQuotes2("INTC");//
+			quotessss = quoteLocal.initializeQuotes2("GOLD");
+			quotes1 = quoteLocal.initializeQuotes2("AMAT");
+			quotes2 = quoteLocal.initializeQuotes2("SIRI");//
 			quotes3 = quoteLocal.initializeQuotes2("SGF");
 			quotes4 = quoteLocal.initializeQuotes2("FB");
            rates = quoteLocal.initializeQuotes4("USDEUR");
@@ -183,4 +183,29 @@ public class MarketDataBean {
 	public void setQuotes4(List<Quote> quotes4) {
 		this.quotes4 = quotes4;
 	}
+	public void Temps() throws IOException {
+		quoteLocal.initializeQuotes("AAPL");
+		
+		try {
+			quoteLocal.Timer();
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	public void refresh() throws IOException
+	{
+		quotes = quoteLocal.initializeQuotes2("AAPL");
+		quotess = quoteLocal.initializeQuotes2("YHOO");
+		quotesss = quoteLocal.initializeQuotes2("GOOG");
+		quotessss = quoteLocal.initializeQuotes2("GOLD");
+		quotes1 = quoteLocal.initializeQuotes2("AMAT");
+		quotes2 = quoteLocal.initializeQuotes2("INTC");//
+		quotes3 = quoteLocal.initializeQuotes2("SGF");
+		quotes4 = quoteLocal.initializeQuotes2("FB");
+       rates = quoteLocal.initializeQuotes4("USDEUR");
+       ratess = quoteLocal.initializeQuotes4("USDJPY");
+       ratesss = quoteLocal.initializeQuotes4("USDDKK");
+	}
+	
 }

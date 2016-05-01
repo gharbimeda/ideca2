@@ -22,8 +22,8 @@ public interface IFixedIncomeSecurityRemote {
 	
 
 	List<FixedIncomeSecuritie> readAll();
-  Float priceZeroCouponBond(Float faceValue,Integer timeMaturity,Float currentYield);
-  Float priceTreasuryBond(Float faceValue,Integer timeMaturity, Float currentYield,Integer frequency,Float couponRate);
- Float priceCorpBond(Float faceValue,Integer timeMaturity, Float currentYield,Integer frequency,Float couponRate,Integer months);
+  Float priceZeroCouponBond(Float faceValue,Float timeMaturity,Float currentYield);
+  Float priceTreasuryBond(Float faceValue,Float timeMaturity, Float currentYield,Integer frequency,Float couponRate);
+ Float priceCorpBond(Float faceValue,Float timeMaturity, Float currentYield,Integer frequency,Float couponRate,Integer months);
 
 }

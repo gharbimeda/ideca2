@@ -12,11 +12,12 @@ import pdev.financialbrains.ejb.entities.Rate;
 public interface IParsingQuoteServiceLocal {
 
 	void initializeQuotes(String ticker) throws IOException;
-	public List initializeQuotes2(String ticker) throws IOException;
+	public List<Quote> initializeQuotes2(String ticker) throws IOException;
 
 	public List<Quote> initializeQuotes3(String ticker) throws IOException;
     public List<Rate> initializeQuotes4(String ticker) throws IOException;
-   
-
+	public Quote parseQuote(String ticker) throws IOException ;
+	public List<Quote> initializeQuotes5() throws IOException ;
+    public void Timer() throws IOException;
 	
 }

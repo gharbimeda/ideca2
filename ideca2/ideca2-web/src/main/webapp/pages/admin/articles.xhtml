@@ -1,0 +1,195 @@
+<!DOCTYPE html >
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/adminTemplate/adminTemp.xhtml" >
+	<ui:define name="pageContent">
+	
+	<h:head> </h:head>
+    
+    <body>
+    <h:form>
+			<p:growl id="msgs" showDetail="true"></p:growl>
+
+			<h3 style="margin-top: 0">NEWS</h3>
+			<p:accordionPanel>
+				<p:tab title="WORLD'S NEWS">
+					<h:panelGrid columns="2" cellpadding="10">
+						<img
+							src="#{request.contextPath}/resources/traderResources/img/world.jpg" />
+						<div class="row">
+
+							<h2>WORLD'S NEWS</h2>
+							<div class="table-responsive">
+								<table class="table table-bordered table-hover tablesorter">
+									<thead>
+										<tr>
+
+											<th colspan="80">News <i class="fa fa-sort"></i></th>
+											<th colspan="20">Link <i class="fa fa-sort"></i></th>
+
+										</tr>
+									</thead>
+									<tbody>
+										<ui:repeat var="c" value="#{newsBean.addnewsWORLD()}">
+											<tr>
+												<td colspan="80" class="success">#{c.contenu}</td>
+												<td colspan="20" class="success"><a href="#{c.url}">Link</a></td>
+
+
+											</tr>
+										</ui:repeat>
+									</tbody>
+								</table>
+
+							</div>
+						</div>
+
+					</h:panelGrid>
+				</p:tab>
+				<p:tab title="GOOGLE FINANCE NEWS ">
+
+					<h:panelGrid columns="2" cellpadding="10">
+						<img
+							src="#{request.contextPath}/resources/traderResources/img/google-news.jpg" />
+						<div class="row">
+
+							<h2>GOOGLE FINANCE NEWS</h2>
+							<div class="table-responsive">
+								<table class="table table-bordered table-hover tablesorter">
+									<thead>
+										<tr>
+
+											<th colspan="80">News <i class="fa fa-sort"></i></th>
+											<th colspan="20">Link <i class="fa fa-sort"></i></th>
+
+										</tr>
+									</thead>
+									<tbody>
+										<ui:repeat var="c" value="#{newsBean.addGoogle()}">
+											<tr>
+												<td colspan="80" class="success">#{c.contenu}</td>
+												<td colspan="20" class="success"><a href="#{c.url}">Link</a></td>
+
+
+											</tr>
+										</ui:repeat>
+									</tbody>
+								</table>
+							</div>
+						</div>
+
+					</h:panelGrid>
+				</p:tab>
+
+				<p:tab title="EUROPE'S NEWS">
+					<h:panelGrid columns="2" cellpadding="10">
+						<img
+							src="#{request.contextPath}/resources/traderResources/img/bloomberg europ.png" />
+						<div class="row">
+
+							<h2>EUROPE NEWS</h2>
+							<div class="table-responsive">
+								<table class="table table-bordered table-hover tablesorter">
+									<thead>
+										<tr>
+
+											<th colspan="80">News <i class="fa fa-sort"></i></th>
+											<th colspan="20">Link <i class="fa fa-sort"></i></th>
+
+										</tr>
+									</thead>
+									<tbody>
+										<ui:repeat var="c" value="#{newsBean.addneweurope()}">
+											<tr>
+												<td colspan="80" class="success">#{c.contenu}</td>
+												<td colspan="20" class="success"><a href="#{c.url}">Link</a></td>
+
+
+											</tr>
+										</ui:repeat>
+									</tbody>
+								</table>
+							</div>
+						</div>
+
+					</h:panelGrid>
+				</p:tab>
+				<p:tab title="ASIA'S NEWS">
+
+					<h:panelGrid columns="2" cellpadding="10">
+						<img
+							src="#{request.contextPath}/resources/traderResources/img/download.jpg" />
+						<div class="row">
+
+							<h2>ASIA NEWS</h2>
+							<div class="table-responsive">
+								<table class="table table-bordered table-hover tablesorter">
+									<thead>
+										<tr>
+
+											<th colspan="80">News <i class="fa fa-sort"></i></th>
+											<th colspan="20">Link <i class="fa fa-sort"></i></th>
+
+										</tr>
+									</thead>
+									<tbody>
+										<ui:repeat var="c" value="#{newsBean.addnewsasia()}">
+											<tr>
+												<td colspan="80" class="success">#{c.contenu}</td>
+												<td colspan="20" class="success"><a href="#{c.url}">Link</a></td>
+
+
+											</tr>
+										</ui:repeat>
+									</tbody>
+								</table>
+
+							</div>
+						</div>
+					</h:panelGrid>
+				</p:tab>
+				<p:tab title=" AMERICA'S NEWS">
+
+					<h:panelGrid columns="2" cellpadding="10">
+						<img
+							src="#{request.contextPath}/resources/traderResources/img/Bloomberg-News-logo.png" />
+						<div class="row">
+
+							<h2>USA NEWS</h2>
+							<div class="table-responsive">
+								<table class="table table-bordered table-hover tablesorter">
+									<thead>
+										<tr>
+
+											<th colspan="80">News <i class="fa fa-sort"></i></th>
+											<th colspan="20">Link <i class="fa fa-sort"></i></th>
+
+										</tr>
+									</thead>
+									<tbody>
+										<ui:repeat var="c" value="#{newsBean.addnewamerica()}">
+											<tr>
+												<td colspan="80" class="success">#{c.contenu}</td>
+												<td colspan="20" class="success"><a href="#{c.url}">Link</a></td>
+
+
+											</tr>
+										</ui:repeat>
+									</tbody>
+								</table>
+							</div>
+						</div>
+
+					</h:panelGrid>
+				</p:tab>
+
+
+			</p:accordionPanel>
+
+		</h:form>
+		</body>
+	</ui:define>
+	</ui:composition>

@@ -1,0 +1,70 @@
+<!DOCTYPE html >
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/backTemplate/backOfficeUserTemp.xhtml">
+
+	<ui:define name="titleName"> FX Pricing</ui:define>
+	<ui:define name="pageLocalisation"> / </ui:define>
+	<ui:define name="pageActive"> foreign option pricing</ui:define>
+	<ui:define name="pageDefinition">
+		<h2 class="page-title">
+			<i class="fontello-icon-money"></i> Foreign option pricing
+		</h2>
+		<div class="page-bar"></div>
+	</ui:define>
+	<ui:define name="pageContent">
+	
+	<body> 
+	<div>
+	<div  >
+	<h4 class="pagetitle"> Live Currency Cross Rates Widget </h4>
+	<iframe frameborder="0" scrolling="no" height="215" width="453" allowtransparency="true" marginwidth="0" marginheight="0" src="http://fxrates.investing.com/index.php?force_lang=1&amp;pairs_ids=1;3;2;4;7;5;8;6;&amp;header-text-color=%23FFFFFF&amp;curr-name-color=%230059b0&amp;inner-text-color=%23000000&amp;green-text-color=%232A8215&amp;green-background=%23B7F4C2&amp;red-text-color=%23DC0001&amp;red-background=%23FFE2E2&amp;inner-border-color=%23CBCBCB&amp;border-color=%23cbcbcb&amp;bg1=%23F6F6F6&amp;bg2=%23ffffff&amp;bid=show&amp;ask=show&amp;last=hide&amp;change=hide&amp;last_update=hide"></iframe>
+	<br />
+	</div>
+    <div>
+	<h4 class="pagetitle">Live Foreign Exchange Rates Table With Charts Widget</h4>
+	<!-- EXCHANGERATES.ORG.UK LIVE FOREX RATES TABLE START -->
+	<div style="width:500px;margin:0;padding:0;border:1px solid #cbcbcb;background:#fff;">
+	<div style="width:500px;text-align:center;padding:2px 0px;vertical-align:middle;color:#003366;font-family:arial;font-size:11px;font-weight:bold;">
+		<a style="color:#003366;text-decoration:none;text-transform:uppercase;font-family:arial;font-size:11px;font-weight:bold;" href="http://www.exchangerates.org.uk" target="_new">Live Exchange Rates</a>
+	</div>
+		<div style="padding:0px;text-align:center;">
+		<script type="text/javascript">	
+		var tz = '0';
+		var mc = 'GBP';
+		var nb = '10';
+		var c1 = 'USD';
+		var c2 = 'EUR';
+		var c3 = 'AUD';
+		var c4 = 'JPY';
+		var c5 = 'INR';
+		var c6 = 'CAD';
+		var c7 = 'ZAR';
+		var c8 = 'NZD';
+		var c9 = 'SGD';
+		var c10 = 'CNY';
+		var bc = 'Base Currency';
+		var lc = '003366';
+		var bdrc = 'cbcbcb';
+		
+		</script>
+		<script type="text/javascript" src="http://www.currency.me.uk/remote/FE-FERT-1.php"></script>
+		</div>
+		</div>
+		</div>
+<!-- EXCHANGERATES.ORG.UK LIVE FOREX RATES TABLE END -->
+</div>
+<br/>
+<h4 class="pagetitle">Forex Charts Widget</h4>
+<iframe frameborder="0" scrolling="no" height="355" width="430" allowtransparency="true" marginwidth="0" marginheight="0" src="http://charts.investing.com/index.php?pair_ID=1&amp;timescale=300&amp;candles=50&amp;style=candles"></iframe>
+<br />
+
+</body> 
+	
+	
+	
+	</ui:define>
+    </ui:composition>

@@ -3,6 +3,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
 	template="/WEB-INF/templates/traderTemplate/publicTemplate.xhtml">
 	<ui:define name="titleName">HOME</ui:define>
 	<ui:define name="menuContent">
@@ -110,159 +111,180 @@
 	</ui:define>
 	<ui:define name="PageName"></ui:define>
 	<ui:define name="PageContent">
-			<br />
-		<br/>
-	<div class="col-md-12">
+		<!--TICKER START -->
+<center><iframe frameborder="0" scrolling="no" height="62" width="860" allowtransparency="true" 
+marginwidth="0" marginheight="0" src="http://tools.investing.com/quotes_bar.php?tab_1=1,2,3,5,7&amp;tab_2=8830,8831,8836,8849,8862&amp;tab_3=166,172,27&amp;curr-name-color=%230059B0&amp;inner-text-color=%23666666&amp;green-text-color=%23008000&amp;red-text-color=%23FF0000"></iframe><br /><div style="width:860"><span style="float:left">
+<span style="font-size: 11px;color: #333333;text-decoration: none;"><a href="http://www.investing.com/" rel="nofollow" target="_blank" style="font-size: 11px;color: #06529D; font-weight: bold;" class="underline_link"></a></span></span></div></center>
+<!-- TICKER -->
+	<ui:define name="PageName">YAHOO FINANCE QUOTES</ui:define>
+	<br />
+		<br />
+	<h:form id="global">
+		<div class="col-md-12">
 			<div class="col-md-6">
+
+				<div class="dashboard-div-wrapper bk-clr-three">
 				
-	 <div class="dashboard-div-wrapper bk-clr-three">
-		<h:form id="form_1">
+					<h:form id="form_1">
+
+						<h:dataTable value="#{mdBean.quotes}" var="quote"
+							styleClass="table">
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="COMPANY NAME" />
+								</f:facet>
+								<h:outputText value="#{quote.name}" />
+							</h:column>
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="ASK" />
+								</f:facet>
+								<h:outputText value="#{quote.ask}" />
+							</h:column>
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="VOLUME" />
+								</f:facet>
+								<h:outputText value="#{quote.volume}" />
+							</h:column>
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="CHANGE" />
+								</f:facet>
+								<h:outputText value="#{quote.change}" />
+							</h:column>
+
+						</h:dataTable>
+					</h:form>
+				</div>
+				<div class="dashboard-div-wrapper bk-clr-three">
+
+					<h:form id="form_2">
+
+						<h:dataTable styleClass="table" value="#{mdBean.quotess}"
+							var="quote">
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="COMPANY NAME" />
+								</f:facet>
+								<h:outputText value="#{quote.name}" />
+							</h:column>
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="ASK" />
+								</f:facet>
+								<h:outputText value="#{quote.ask}" />
+							</h:column>
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="VOLUME" />
+								</f:facet>
+								<h:outputText value="#{quote.volume}" />
+							</h:column>
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="CHANGE" />
+								</f:facet>
+								<h:outputText value="#{quote.change}" />
+
+							</h:column>
+
+
+
+						</h:dataTable>
+					</h:form>
+				</div>
+			</div>
+			<div class="col-md-6">
+
+				<div class="dashboard-div-wrapper bk-clr-one">
+
+					<h:form id="form_3">
+
+						<h:dataTable value="#{mdBean.quotesss}" var="quote"
+							styleClass="table">
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="COMPANY NAME" />
+								</f:facet>
+								<h:outputText value="#{quote.name}" />
+							</h:column>
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="ASK" />
+								</f:facet>
+								<h:outputText value="#{quote.ask}" />
+							</h:column>
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="VOLUME" />
+								</f:facet>
+								<h:outputText value="#{quote.volume}" />
+							</h:column>
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="CHANGE" />
+								</f:facet>
+								<h:outputText value="#{quote.change}" />
+							</h:column>
+
+							<!--  <p:poll interval="5" listener="#{mdBean.quoteLocal.initializeQuotes2()}" update="txt_count" />-->
+
+
+
+						</h:dataTable>
+					</h:form>
+				</div>
+				<div class="dashboard-div-wrapper bk-clr-one">
+
+					<h:form id="form_4">
+
+						<h:dataTable value="#{mdBean.quotes4}" var="quote"
+							styleClass="table">
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="COMPANY NAME" />
+								</f:facet>
+								<h:outputText value="#{quote.name}" />
+							</h:column>
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="ASK" />
+								</f:facet>
+								<h:outputText value="#{quote.ask}" />
+							</h:column>
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="VOLUME" />
+								</f:facet>
+								<h:outputText value="#{quote.volume}" />
+							</h:column>
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="CHANGE" />
+								</f:facet>
+								<h:outputText value="#{quote.change}" />
+							</h:column>
+
+
+
+
+						</h:dataTable>
+					</h:form>
+									   <p:poll interval="60" listener="#{mdBean.refresh()}" update="global" />
+					
+					
+					
+				</div>
+			</div>
+
 		
-			<h:dataTable value="#{mdBean.quotes}" var="quote" styleClass="table table-bordered">
-					<h:column>
-				<f:facet name="header">
-						<h:outputText value="COMPANY NAME" />
-					</f:facet>
-					<h:outputText value="#{quote.name}" />
-				</h:column>
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="ASK" />
-					</f:facet>
-					<h:outputText value="#{quote.ask}" />
-				</h:column>
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="VOLUME" />
-					</f:facet>
-					<h:outputText value="#{quote.volume}" />
-				</h:column>
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="CHANGE" />
-					</f:facet>
-					<h:outputText value="#{quote.change}" />
-				</h:column>
-				
-			</h:dataTable>
-		</h:form>
-		</div>
-			 <div class="dashboard-div-wrapper bk-clr-three">
 		
-		<h:form id="form_2" >
-			
-			<h:dataTable styleClass="table table-bordered"  value="#{mdBean.quotess}" var="quote">
-			<h:column>
-					<f:facet name="header">
-						<h:outputText value="COMPANY NAME" />
-					</f:facet>
-					<h:outputText value="#{quote.name}" />
-				</h:column>
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="ASK" />
-					</f:facet>
-					<h:outputText value="#{quote.ask}" />
-					</h:column>
-					<h:column>
-					<f:facet name="header">
-						<h:outputText value="VOLUME" />
-					</f:facet>
-					<h:outputText value="#{quote.volume}" />
-				</h:column>
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="CHANGE" />
-					</f:facet>
-					<h:outputText value="#{quote.change}" />
-				
-				</h:column>
-			
-			
-				
-			</h:dataTable>
-		</h:form>
-		</div>
-		</div>
-					<div class="col-md-6">
 		
-			 <div class="dashboard-div-wrapper bk-clr-one">
 		
-				<h:form id="form_3">
-			
-			<h:dataTable value="#{mdBean.quotesss}" var="quote" styleClass="table table-bordered" >
-			<h:column>
-					<f:facet name="header">
-						<h:outputText value="COMPANY NAME" />
-					</f:facet>
-					<h:outputText value="#{quote.name}" />
-				</h:column>
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="ASK" />
-					</f:facet>
-					<h:outputText value="#{quote.ask}" />
-					</h:column>
-					<h:column>
-					<f:facet name="header">
-						<h:outputText value="VOLUME" />
-					</f:facet>
-					<h:outputText value="#{quote.volume}" />
-				</h:column>
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="CHANGE" />
-					</f:facet>
-					<h:outputText value="#{quote.change}" />
-				</h:column>
-				
-	<!--  <p:poll interval="5" listener="#{mdBean.quoteLocal.initializeQuotes2()}" update="txt_count" />-->
-				
-				
-				
-			</h:dataTable>
-		</h:form>
-</div>
-<div class="dashboard-div-wrapper bk-clr-one">
-		
-				<h:form id="form_4">
-			
-			<h:dataTable value="#{mdBean.quotessss}" var="quote" styleClass="table table-bordered" >
-			<h:column>
-					<f:facet name="header">
-						<h:outputText value="COMPANY NAME" />
-					</f:facet>
-					<h:outputText value="#{quote.name}" />
-				</h:column>
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="ASK" />
-					</f:facet>
-					<h:outputText value="#{quote.ask}" />
-					</h:column>
-					<h:column>
-					<f:facet name="header">
-						<h:outputText value="VOLUME" />
-					</f:facet>
-					<h:outputText value="#{quote.volume}" />
-				</h:column>
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="CHANGE" />
-					</f:facet>
-					<h:outputText value="#{quote.change}" />
-				</h:column>
-				
-	<!--  <p:poll interval="5" listener="#{mdBean.quoteLocal.initializeQuotes2()}" update="txt_count" />-->
-				
-				
-				
-			</h:dataTable>
-		</h:form>
-</div>
-</div>
 
 	</div>
+		</h:form>
 	</ui:define>
 	<ui:define name="ScriptAdd">
 		<!-- Mine -->
@@ -325,6 +347,6 @@
 		<script
 			src="#{request.contextPath}/resources/traderResources/jsMine/jquery.touchSwipe.min.js"></script>
 		<!-- end mine -->
-	</ui:define>
-
+	
+</ui:define>
 </ui:composition>

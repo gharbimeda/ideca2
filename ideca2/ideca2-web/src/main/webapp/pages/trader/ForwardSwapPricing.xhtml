@@ -24,17 +24,17 @@
 		<h:form>
 			<h:panelGrid columns="2">
 				<h:outputText value="Strike Rate" />
-				<p:inputText value="#{fsbean.strikeRate}" />
+				<p:inputMask value="#{fsbean.strikeRate}" />
 				<h:outputText value="Rate" />
-				<p:inputText value="#{fsbean.rate}" />
+				<p:inputMask value="#{fsbean.rate}" />
 				<h:outputText value="Notional" />
-				<p:inputText value="#{fsbean.notional}" />
+				<p:inputMask value="#{fsbean.notional}" />
 				<h:outputText value="Period" />
-				<p:inputText value="#{fsbean.period}" />
+				<p:inputMask value="#{fsbean.period}" />
 				<h:outputText value="Expiry Time" />
-				<p:inputText value="#{fsbean.expiryTime}" />
+				<p:inputMask value="#{fsbean.expiryTime}" />
 				<h:outputText value="Volatility" />
-				<p:inputText value="#{fsbean.volatility}" />
+				<p:inputMask value="#{fsbean.volatility}" />
 				<h:commandButton class="btn btn-primary btn-sm"
 					action="#{fsbean.doPrice()}" value="Price" />
 			</h:panelGrid>
@@ -42,8 +42,8 @@
 				<h:outputText value="Result" rendered="#{fsbean.rend}" />
 				<h:inputText value="#{fsbean.result}" rendered="#{fsbean.rend}"
 					readonly="true" />
-				<h:commandButton class="btn btn-success btn-sm" action="#{fsbean.doBook()}"
-					value="Book" rendered="#{fsbean.rend}" />
+				<h:commandButton class="btn btn-success btn-sm"
+					action="#{fsbean.doBook()}" value="Book" rendered="#{fsbean.rend}" />
 			</h:panelGroup>
 		</h:form>
 	</ui:define>

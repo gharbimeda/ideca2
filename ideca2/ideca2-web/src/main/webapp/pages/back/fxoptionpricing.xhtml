@@ -1,0 +1,119 @@
+<!DOCTYPE html >
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/backTemplate/backOfficeUserTemp.xhtml">
+
+	<ui:define name="titleName"> FX Pricing</ui:define>
+	<ui:define name="pageLocalisation"> / </ui:define>
+	<ui:define name="pageActive"> foreign option pricing</ui:define>
+	<ui:define name="pageDefinition">
+		<h2 class="page-title">
+			<i class="fontello-icon-money"></i> Foreign option pricing
+		</h2>
+		<div class="page-bar"></div>
+	</ui:define>
+	<ui:define name="pageContent">
+
+		<nav>
+	
+			<a class="btn btn-well btn-glyph" href="#" style="width: 80px" data-toggle="modal">
+			<i class="fontello-icon-money f30"></i>
+			<span class="block">FX Option</span>
+			</a>
+			
+		    <hr class="margin-0x" />
+		</nav>
+		
+		<div style="display:flex; width:100%;margin: 20px" class="row">
+
+<div style=" width: 800px;">
+
+		<div class="container">
+		<div class="row">
+		<div class="col-xs-12 col-sm-6 col-md-5 col-lg-4 col-lg-offset-1">
+		<!-- form begin -->
+		<h:form>
+		
+		<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+		
+		</h:form>
+		<h:form>
+		
+		<div style="margin-top: 10px;font-size:14px; ">			
+		<h:outputText value="call 0 /put 1" /></div>
+		<h:inputText  converterMessage= " call / put must be a number" value="#{fxOptionBean.callPut}" class="form-control" required="true" requiredMessage="call/put Required"/>
+		
+		<div style="margin-top: 10px;">
+		<h:outputText value="Current Spot Rate" /></div>
+		<h:inputText converterMessage= " Current Spot Rate must be a number" value="#{fxOptionBean.currentSpotPrice}" class="form-control" required="true" requiredMessage="Current Spot Rate Required"/>
+		
+		<div style="margin-top: 10px;">
+		<h:outputText value="Domestic Risk Free" /></div>
+		<h:inputText converterMessage= " Domestic Risk Free must be a number" value="#{fxOptionBean.dRisk}"  class="form-control" required="true" requiredMessage="Domestic Risk Free Required"/>
+	
+		<div style="margin-top: 10px;">
+		<h:outputText value="Foreign Risk Free" /></div>
+		<h:inputText converterMessage= " Foreign Risk Free must be a number" value="#{fxOptionBean.fRisk}" class="form-control" required="true" requiredMessage="Foreign Risk Required"/>
+		
+		<div style="margin-top: 10px;">
+		<h:outputText value="Maturity Date" /> </div>
+		<h:inputText converterMessage= " Maturity Date must be a number" value="#{fxOptionBean.time}" class="form-control" required="true" requiredMessage="Maturity date Required"/>
+		
+		<div style="margin-top: 10px;">
+		<h:outputText value="Strike Price" /></div>
+		<h:inputText converterMessage= " Strike Price must be a number" value="#{fxOptionBean.strikePrice}" class="form-control" required="true" requiredMessage="Strike price Required"/>
+		
+		<div style="margin-top: 10px;">
+		<h:outputText value="volatility" /></div>
+		<h:inputText converterMessage= " volatility must be a number" value="#{fxOptionBean.volatilite}" class="form-control" required="true" requiredMessage="Volatility Required"/>
+		<br/>
+		<div style="margin-top: 10px;">
+		<h:commandButton class="btn btn-success btn-md" action="#{fxOptionBean.Pricing(fxOptionBean.callPut,fxOptionBean.currentSpotPrice,fxOptionBean.dRisk,fxOptionBean.fRisk,fxOptionBean.time,fxOptionBean.strikePrice,fxOptionBean.volatilite)}" value="Price" /></div>
+		<h:outputText value="#{fxOptionBean.price}" />
+		<br />
+		<h:form>
+		<div style="margin-top: 10px;">
+		<h:commandButton  class="btn btn-primary" action="#{fxOptionBean.doAdd()}" value="Add" />
+		<!-- &nbsp;-->
+		<h:commandButton  class="btn btn-danger" action="#{fxOptionBean.doDelete(fxOptionBean.foreignExchangeOption)}" value="Delete" />
+		</div>
+		</h:form>
+		</h:form>
+		 
+		<!-- form end -->
+		</div>
+		</div>
+		</div>
+	</div> 
+
+	<div style="width:30%">
+		<div class="alert alert-info">
+		
+		<h4 class="pagetitle">
+		<a href="#" style="color: #334458">Currency Converter</a>
+		</h4>
+		</div>
+		<iframe frameborder="0" scrolling="no" height="375" width="197" allowtransparency="true" marginwidth="0" marginheight="0" src="http://tools.investing.com/currency-converter/index.php?from=17&amp;to=12" ></iframe>
+		<br />
+		<table width="197">
+		<tr>
+		<td>
+		</td>
+		</tr>
+		</table>
+		
+		<a href="fxtrading.xhtml">
+		<h4 class="pagetitle"> For more Currency Trading Tools and Techniques  </h4>
+		</a>
+		
+</div>
+</div>
+		<br />
+		
+		
+		
+	</ui:define>
+</ui:composition>

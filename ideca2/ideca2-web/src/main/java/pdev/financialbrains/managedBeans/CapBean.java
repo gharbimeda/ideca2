@@ -54,7 +54,7 @@ public class CapBean {
 	private List<CapFloorTable> resulats;
 	private List<Trade> trades;
 	private List<Trade> caps;
-	private boolean showForm;
+	private boolean showForm=false;
 	private Trade t = new Trade();
 	
 	@PostConstruct
@@ -91,27 +91,34 @@ public class CapBean {
 		showForm=true;
 		SimpleDateFormat formater = null;
 		formater = new SimpleDateFormat("dd/MM/yyyy");
+		
 		nd = this.nDays();
-		Calendar date1 = null, date2 = null;
+		System.out.println(nd);
+		System.out.println(c.getStartDate().getDate());
+
+		Calendar date1 = Calendar.getInstance(), date2 = Calendar.getInstance();
 		date1.setTime(c.getStartDate());
 		date2.setTime(c.getEndDate());
-
 		Integer n = 0;
 		Double somme = 0.0;
-		String f = c.getRiskFree() + "";
+		
 		List<CapFloorTable> capFloorTables = new ArrayList<>();
 		for (int i = 1; i <= nbPeriode(); i++) {
 			CapFloorTable capFloorTable = new CapFloorTable();
 			capFloorTable.setStartDate(formater.format(date1.getTime()));
-			date1.add(date1.DATE, nd);
+			date1.add(Calendar.DATE, nd);
+			System.out.println(date1);
 			capFloorTable.setEndDate(formater.format(date1.getTime()));
 			capFloorTable.setPeriod(i);
 			n = Math.abs((date2.getTime().getYear() - date1.getTime().getYear()) * 12
 					+ (date2.getTime().getMonth() - date1.getTime().getMonth()));
-			//capFloorTable.setMaturity(n / 365.0);
-			//capFloorTable.setCap(capService.pricingCapFloor(c.getNotionalAmount(), c.getCapFloorString(), nd, i, 360,:
-			//		risk, c.getStrikePrice(), c.getVolatility(), capFloorTable.getMaturity(), Double.parseDouble(f)));
+			capFloorTable.setMaturity(n / 365.0);
+			System.out.println(capFloorTable.getMaturity());
+			capFloorTable.setCap(capService.pricingCapFloor(c.getNotionalAmount(), c.getCapFloorString(), nd, i, 360,
+					risk, c.getStrikePrice(), c.getVolatility(), capFloorTable.getMaturity(), c.getRiskFree()));
+			System.out.println(capFloorTable.getCap());
 			capFloorTables.add(capFloorTable);
+			
 			somme += capFloorTable.getCap();
 		}
 		resulats = capFloorTables;

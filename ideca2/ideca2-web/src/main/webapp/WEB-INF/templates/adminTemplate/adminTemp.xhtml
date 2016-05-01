@@ -1,29 +1,45 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+
 
 <h:head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <!-- Meta, title, CSS, favicons, etc. -->
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-  <title>INTELLIXX | <ui:insert name="titleName"></ui:insert></title>
+  <title>IDECA 2.0  | <ui:insert name="titleName"></ui:insert> </title>
 
   <!-- Bootstrap core CSS -->
 
-  <link href="#{request.contextPath}/resources/adminResources/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="#{request.contextPath}/resources/adminResources/fonts/css/font-awesome.min.css" rel="stylesheet" />
+  <link href="#{request.contextPath}/resources/adminResources/css/bootstrap.min.css" rel="stylesheet"/>
+
+  <link href="#{request.contextPath}/resources/adminResources/fonts/css/font-awesome.min.css" rel="stylesheet"/>
   <link href="#{request.contextPath}/resources/adminResources/css/animate.min.css" rel="stylesheet"/>
+
+  <!-- Custom styling plus plugins -->
   <link href="#{request.contextPath}/resources/adminResources/css/custom.css" rel="stylesheet"/>
   <link rel="stylesheet" type="text/css" href="#{request.contextPath}/resources/adminResources/css/maps/jquery-jvectormap-2.0.3.css" />
   <link href="#{request.contextPath}/resources/adminResources/css/icheck/flat/green.css" rel="stylesheet" />
   <link href="#{request.contextPath}/resources/adminResources/css/floatexamples.css" rel="stylesheet" type="text/css" />
+
   <script src="#{request.contextPath}/resources/adminResources/js/jquery.min.js"></script>
   <script src="#{request.contextPath}/resources/adminResources/js/nprogress.js"></script>
 
+  <!--[if lt IE 9]>
+        <script src="../assets/js/ie8-responsive-file-warning.js"></script>
+        <![endif]-->
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
 
 </h:head>
 
@@ -39,7 +55,7 @@
         <div class="left_col scroll-view">
 
           <div class="navbar nav_title" style="border: 0;">
-            <a href="index.html" class="site_title">  <img src="#{request.contextPath}/resources/adminResources/images/Intellixx.png" alt="" /> </a>
+            <a href="index.html" class="site_title"><img src="#{request.contextPath}/resources/adminResources/images/Intellixx.png" alt="" /></a>
           </div>
           <div class="clearfix"></div>
 
@@ -50,16 +66,28 @@
           <!-- sidebar menu -->
           <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
 
-            <div class="menu_section">
-             
+           <div class="menu_section">
+              
               <ul class="nav side-menu">
-                <li><a href=""><i class="fa fa-home"></i> Dashboard </a>
+                <li><a><i class="fa fa-home"></i> Dashbord </a>
                 </li>
-                <li><a href="index.html"><i class="fa fa-users"></i> Account Management </a>
+                <li><a><i class="fa fa-users"></i> Account Management <span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu" style="display: none">
+                    <li><a href="#{request.contextPath}/pages/admin/Act.xhtml">Accounts</a>
+                    </li>
+                    <li><a href="#{request.contextPath}/pages/admin/Request.xhtml">Request</a>
+                    </li>
+                   
+                  </ul>
                 </li>
-                <li><a href=""><i class="fa fa-newspaper-o"></i> Articles Management </a>
+                <li><a href="#{request.contextPath}/pages/admin/articleManagement.xhtml"><i class="fa fa-newspaper-o"></i> Article Management </a>
                 </li>
-                <li><a href=""><i class="fa fa-envelope"></i> Complaint Management </a>
+
+                <li><a href="#{request.contextPath}/pages/admin/claimsManagement.xhtml"><i class="fa fa-envelope-o"></i> Complaint Management </a>
+                </li>
+                
+                <li><a  href="#{request.contextPath}/pages/public/login.xhtml"><i class="fa fa-user"></i> Logout </a>
+
                 </li>
               </ul>
             </div>
@@ -97,10 +125,11 @@
             <ul class="nav navbar-nav navbar-right">
               <li class="">
                 <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                 <!--   <img src="#{request.contextPath}/resources/adminResources/images/img.jpg" alt="" /> -->Admin <span class=" fa fa-angle-down"></span>
+                  <img src="#{request.contextPath}/resources/adminResources/images/img.jpg" alt=""/><ui:insert name="userConnecte"></ui:insert>
+                  <span class=" fa fa-angle-down"></span>
                 </a>
                 <ul class="dropdown-menu dropdown-usermenu pull-right">
-                  <!--  <li><a href="javascript:;">  Profile</a></li>-->
+                  <li><a href="javascript:;">  Profile</a></li>
                   <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
                   </li>
                 </ul>
@@ -126,18 +155,10 @@
        
 
         <div class="row">
-          
           <ui:insert name="pageContent"></ui:insert>
         </div>
 
-        <!-- footer content -->
-        <footer>
-          <div class="pull-right">
-            IDECA 2.0 -  INTELLIXX| FINANCIAL BRAINS 
-          </div>
-          <div class="clearfix"></div>
-        </footer>
-        <!-- /footer content -->
+        
       </div>
       <!-- /page content -->
     </div>
@@ -151,7 +172,7 @@
     <div id="notif-group" class="tabbed_notifications"></div>
   </div>
 
-  <script src="#{request.contextPath}/resources/adminResources/js/bootstrap.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
 
   <!-- gauge js -->
   <script type="text/javascript" src="#{request.contextPath}/resources/adminResources/js/gauge/gauge.min.js"></script>
@@ -179,8 +200,7 @@
   <script type="text/javascript" src="#{request.contextPath}/resources/adminResources/js/flot/jquery.flot.stack.js"></script>
   <script type="text/javascript" src="#{request.contextPath}/resources/adminResources/js/flot/curvedLines.js"></script>
   <script type="text/javascript" src="#{request.contextPath}/resources/adminResources/js/flot/jquery.flot.resize.js"></script>
-
-  <!-- worldmap -->
+   <!-- worldmap -->
   <script type="text/javascript" src="#{request.contextPath}/resources/adminResources/js/maps/jquery-jvectormap-2.0.3.min.js"></script>
   <script type="text/javascript" src="#{request.contextPath}/resources/adminResources/js/maps/gdp-data.js"></script>
   <script type="text/javascript" src="#{request.contextPath}/resources/adminResources/js/maps/jquery-jvectormap-world-mill-en.js"></script>
@@ -207,7 +227,7 @@
     });
   </script>
   <!-- skycons -->
-  <script src="js/skycons/skycons.min.js"></script>
+  <script src="#{request.contextPath}/resources/adminResources/js/skycons/skycons.min.js"></script>
   <script>
     var icons = new Skycons({
         "color": "#73879C"
@@ -345,5 +365,6 @@
   <!-- /datepicker -->
   <!-- /footer content -->
 </body>
+
 
 </html>

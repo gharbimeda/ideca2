@@ -13,6 +13,12 @@
 
 
 	<dependencies>
+	<dependency>
+	<groupId>org.highfaces</groupId>
+	<artifactId>highfaces</artifactId>
+	<version>1.0</version>
+</dependency>
+	
 		<dependency>
 			<groupId>javax</groupId>
 			<artifactId>javaee-api</artifactId>

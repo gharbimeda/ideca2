@@ -1,0 +1,49 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+     
+	       
+	        <ui:composition  template="/WEB-INF/templates/adminTemplate/adminTemp.xhtml">
+
+
+<ui:define name="titleName"> Accounts</ui:define>
+
+<ui:define name="pageContent"> 
+
+
+<h:form>
+<h:dataTable var="r" value="#{requestBean.requests}">
+   
+   
+     
+     <h:column headerText="Company">
+        <h:outputText value="#{r.company}" />
+    </h:column>
+     <h:column headerText="Email">
+        <h:outputText value="#{r.mail}" />
+    </h:column>
+     <h:column headerText="Job">
+        <h:outputText value="#{r.job}" />
+    </h:column>
+    
+   
+      
+</h:dataTable>
+
+	
+			
+				
+				<br />
+				<a href="#{request.contextPath}/pages/admin/Account.xhtml"
+				class="btn btn-info"> Add an Account </a>
+
+		
+
+  </h:form>
+</ui:define>
+
+
+
+ </ui:composition> 
+</html>

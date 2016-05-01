@@ -48,12 +48,12 @@ public class FixedIncomeSecurityBean {
 	private DerivativeInstrument fixedincome = new FixedIncomeSecuritie();
 
 	private FixedIncomeSecuritie fx = new FixedIncomeSecuritie();
-	private Integer timeMaturity;
+	private Float timeMaturity;
 	private Integer frequency;
-
+private String curYield;
 	private Float faceValue;
 	private int months;
-
+    private String maturity;
 	private Float couponRate;
 	private Float yield;
 	private Float currentYield;
@@ -111,11 +111,13 @@ public class FixedIncomeSecurityBean {
 		this.currentYield = currentYield;
 	}
 
-	public Integer getTimeMaturity() {
+	
+
+	public Float getTimeMaturity() {
 		return timeMaturity;
 	}
 
-	public void setTimeMaturity(Integer timeMaturity) {
+	public void setTimeMaturity(Float timeMaturity) {
 		this.timeMaturity = timeMaturity;
 	}
 
@@ -193,7 +195,7 @@ public class FixedIncomeSecurityBean {
 		return null;
 	}
 
-	public String dopriceZeroCouponBond(Float faceValue, Integer timeMaturity,
+	public String dopriceZeroCouponBond(Float faceValue, Float timeMaturity,
 			Float currentYield) {
 		String nav;
 		this.bondPrice = fxlocal.priceZeroCouponBond(faceValue, timeMaturity,
@@ -205,7 +207,7 @@ public class FixedIncomeSecurityBean {
 
 	}
 
-	public String dopriceTreasuryBond(Float faceValue, Integer timeMaturity,
+	public String dopriceTreasuryBond(Float faceValue, Float timeMaturity,
 			Float currentYield, Integer frequency, Float couponRate) {
 
 		this.bondPrice = fxlocal.priceTreasuryBond(faceValue, timeMaturity,
@@ -215,7 +217,7 @@ public class FixedIncomeSecurityBean {
 		return "Prcing done!!";
 	}
 
-	public String dopricecorpBond(Float faceValue, Integer timeMaturity,
+	public String dopricecorpBond(Float faceValue, Float timeMaturity,
 			Float currentYield, Integer frequency, Float couponRate,
 			Integer months) {
 		this.bondPrice = fxlocal.priceCorpBond(faceValue, timeMaturity,
@@ -256,7 +258,7 @@ public class FixedIncomeSecurityBean {
 		return navTo;
 	}
 
-	public void doBookTrade() {
+	public void doBookTradeZCB() {
 		Trade t = new Trade();
 		TradePK pk = new TradePK();
 		pk.setIdUser(1);
@@ -266,7 +268,36 @@ public class FixedIncomeSecurityBean {
 		 t.setPk(pk);
 		 t.setPutcall(putCall);
 		 t.setStatus(2);
-		 t.setName(fx.getbdString());
+		 t.setName("ZCB");
+		 t.setValue(bondPrice);
+		 tradeServices.update(t);
+	}
+
+	public void doBookTradeTreausy() {
+		Trade t = new Trade();
+		TradePK pk = new TradePK();
+		pk.setIdUser(1);
+		 pk.setId(i);
+		i++;
+		pk.setDate(new Date());
+		 t.setPk(pk);
+		 t.setPutcall(putCall);
+		 t.setStatus(2);
+		 t.setName("Treasury Bond");
+		 t.setValue(bondPrice);
+		 tradeServices.update(t);
+	}
+	public void doBookTradeCorporate() {
+		Trade t = new Trade();
+		TradePK pk = new TradePK();
+		pk.setIdUser(1);
+		 pk.setId(i);
+		i++;
+		pk.setDate(new Date());
+		 t.setPk(pk);
+		 t.setPutcall(putCall);
+		 t.setStatus(2);
+		 t.setName("Corporate ");
 		 t.setValue(bondPrice);
 		 tradeServices.update(t);
 	}
@@ -331,5 +362,78 @@ public class FixedIncomeSecurityBean {
 
 	public void setFixes(List<Trade> fixes) {
 		this.fixes = fixes;
+	}
+	public void handleChange(){  
+		System.out.println(maturity);
+	    if(timeMaturity.equals("3 Month"))
+	    {
+	    	timeMaturity=0.25f;
+	    	currentYield=Bond2Bean.Yield1Today();
+	    	yield=Bond2Bean.Yield1Today();
+	    	System.out.println(currentYield);
+	    }
+	    else if(maturity.equals("6 Month"))
+	    {
+	    	timeMaturity=0.5f;
+	    	currentYield=Bond2Bean.Yield2Today();
+	    	yield=Bond2Bean.Yield2Today();
+	    	System.out.println(currentYield);
+	    }
+	    else if(maturity.equals("2 Year"))
+	    {
+	    	timeMaturity=2f;
+	    	currentYield=Bond2Bean.Yield3Today();
+	    	yield=Bond2Bean.Yield3Today();
+	    	System.out.println(currentYield);
+	    }
+	    else if(maturity.equals("3 Year"))
+	    {
+	    	timeMaturity=3f;
+	    	currentYield=Bond2Bean.Yield4Today();
+	    	yield=Bond2Bean.Yield4Today();
+	    	System.out.println(currentYield);
+	    }
+	    else if(maturity.equals("5 Year"))
+	    {
+	    	timeMaturity=5f;
+	    	currentYield=Bond2Bean.Yield5Today();
+	    	yield=Bond2Bean.Yield5Today();
+	    	System.out.println(currentYield);
+	    	
+	    }
+	    else if(maturity.equals("10 Year"))
+	    {
+	    	timeMaturity=10f;
+	    	currentYield=Bond2Bean.Yield6Today();
+	    	yield=Bond2Bean.Yield6Today();
+	    	System.out.println(currentYield);
+	    }
+	    else if(maturity.equals("30 Year"))
+	    {
+	    	timeMaturity=30f;
+	    	currentYield=Bond2Bean.Yield7Today();
+	    	yield=Bond2Bean.Yield7Today();
+	    	System.out.println(currentYield);
+	    }
+	}
+	public List<String> list_maturity()
+	{
+		List<String> list = new ArrayList<>();
+		list.add("3 Month");
+		list.add("6 Month");
+		list.add("2 Year");
+		list.add("3 Year");
+		list.add("5 Year");
+		list.add("10 Year");
+		list.add("30 Year");
+		return list;
+	}
+
+	public String getMaturity() {
+		return maturity;
+	}
+
+	public void setMaturity(String maturity) {
+		this.maturity = maturity;
 	}
 }

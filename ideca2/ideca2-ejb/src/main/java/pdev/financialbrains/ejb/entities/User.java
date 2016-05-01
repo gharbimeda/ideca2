@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -17,12 +18,15 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "t_user")
 @DiscriminatorColumn(name = "DTYPE")
+@DiscriminatorValue(value="user")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class User implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int IdUser;
+	private Integer status;
+	private Double limite;
 	private String login;
 	private String password;
 	@OneToMany(mappedBy = "user",fetch=FetchType.LAZY)
@@ -98,11 +102,51 @@ public class User implements Serializable {
 		IdUser = idUser;
 	}
 
+	public Integer getStatus() {
+		return status;
+	}
+
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
+
+	public List<Complaint> getComplaints() {
+		return complaints;
+	}
+
+	public void setComplaints(List<Complaint> complaints) {
+		this.complaints = complaints;
+	}
+
+	public List<Message> getMessages2() {
+		return messages2;
+	}
+
+	public void setMessages2(List<Message> messages2) {
+		this.messages2 = messages2;
+	}
+
 	public String toString1() {
 		return "User [IdUser=" + IdUser + ", login=" + login + ", password=" + password + "]";
 	}
 
 	public String toString() {
 		return login;
+	}
+	
+	public String getStatusString() {
+		if (this.status == 0)
+			return "UNBLOCK";
+		else 
+			return "BLOCK";
+		
+		}
+
+	public Double getLimite() {
+		return limite;
+	}
+
+	public void setLimite(Double limite) {
+		this.limite = limite;
 	}
 }

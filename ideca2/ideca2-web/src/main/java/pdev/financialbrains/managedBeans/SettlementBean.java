@@ -115,8 +115,6 @@ public class SettlementBean {
 		message.setUserDest(trade.getTrader());
 		message.setDate(new Date());
 		messageLocal.create(message);
-		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "What we do in life", "Echoes in eternity.");        
-        RequestContext.getCurrentInstance().showMessageInDialog(message);
 		init();
 		return null;		
 	}
