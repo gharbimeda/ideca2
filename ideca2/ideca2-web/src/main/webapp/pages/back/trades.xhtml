@@ -45,7 +45,7 @@
 		<hr class="margin-0x" />
 		</nav>
 		<br />
-		<h:form>
+		<h:form id="global">
 			<p:dataTable value="#{tradeBean.trades}" var="trade">
 				<f:facet name="header">All Trades</f:facet>
 				<p:column>
@@ -81,6 +81,8 @@
 				</p:column>
 				
 			</p:dataTable>
+							   <p:poll interval="60" listener="#{mdBean.refresh()}" update="global" />
+			
 		</h:form>
 		
 		

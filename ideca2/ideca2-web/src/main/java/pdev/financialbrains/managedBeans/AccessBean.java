@@ -33,26 +33,31 @@ public class AccessBean {
 		String navigateTo = null;
 		User found = authan.authentification(login, password);
 
-		// Util.userConnect = authan.authentification(login, password);
 		if (found != null) {
 			if (found instanceof Trader) {
-				//Trader foundTrader = (Trader) authan.authentification(login, password);
-				//identityBean.setUtilisateur(foundTrader);
-				//identityBean.setRole("trader");
-				navigateTo = "/pages/trader/home?faces-redirect=true";
+				Trader foundTrader = (Trader) authan.authentification(login, password);
+				identityBean.setUtilisateur(foundTrader);
+				identityBean.setRole("trader");
+				navigateTo = "/pages/trader/messages?faces-redirect=true";
 			} else if (found instanceof BackOfficeUser) {
-				//BackOfficeUser foundBackOffUser = (BackOfficeUser) authan.authentification(login, password);
-				//identityBean.setUtilisateur(foundBackOffUser);
-				//identityBean.setRole("backoffuser");
+				BackOfficeUser foundBackOffUser = (BackOfficeUser) authan.authentification(login, password);
+				identityBean.setUtilisateur(foundBackOffUser);
+				identityBean.setRole("backoffuser");
 				navigateTo = "/pages/back/backHome?faces-redirect=true";
+			} else {
+				User foundAdmin = (User) authan.authentification(login, password);
+				identityBean.setUtilisateur(foundAdmin);
+				identityBean.setRole("admin");
+				navigateTo = "/pages/admin/claimsManagement?faces-redirect=true";
 			}
 
-		} else {
-			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage(FacesMessage.SEVERITY_ERROR, "NON AUTORISE", null
-
-			));
 		}
+		// else {
+		// FacesContext.getCurrentInstance().addMessage(null,
+		// new FacesMessage(FacesMessage.SEVERITY_ERROR, "NON AUTORISE", null
+		//
+		// ));
+		// }
 		return navigateTo;
 	}
 
