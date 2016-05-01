@@ -4,87 +4,61 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui"
-	template="/WEB-INF/templates/backTemplate/backOfficeUserTemp.xhtml">
+	template="/WEB-INF/templates/backTemplate/testTemp.xhtml">
 
 	<ui:define name="titleName"> TRADES</ui:define>
-	<ui:define name="pageLocalisation"> / </ui:define>
-	<ui:define name="pageActive"> Trades</ui:define>
-	<ui:define name="pageDefinition">
-		<h2 class="page-title">
-			<i class="fontello-icon-money"></i> Trades
-		</h2>
-		<div class="page-bar"></div>
-	</ui:define>
-	<ui:define name="pageContent">
 
-		<nav>
-		<ul class="btn-toolbar page-nav margin-btn">
-			<li><a class="btn btn-well btn-glyph"
-				href="#" style="width: 80px"><i
-					class="fontello-icon-money f30"></i><span class="block">Z C B P</span></a></li>
-			<li><a class="btn btn-well btn-glyph"
-				href="#" style="width: 80px"><i
-					class="fontello-icon-money f30"></i><span class="block">Treasury BP</span></a></li>
-			<li><a class="btn btn-well btn-glyph"
-				href="#" style="width: 80px"><i
-					class="fontello-icon-money f30"></i><span class="block">Corporate BP</span></a></li>
-			<li><a class="btn btn-well btn-glyph" 
-			href="#" style="width: 80px" data-toggle="modal"><i
-					class="fontello-icon-money f30"></i><span class="block">FR Swap</span></a></li>
-			<li><a class="btn btn-well btn-glyph" href="#"
-				style="width: 80px" data-toggle="modal"><i
-					class="fontello-icon-money f30"></i><span class="block">Equity O</span></a></li>
-			<li><a class="btn btn-well btn-glyph" href="#"
-				style="width: 80px" data-toggle="modal"><i
-					class="fontello-icon-money f30"></i><span class="block">FX Option</span></a></li>
-			<li><a class="btn btn-well btn-glyph" href="#"
-				style="width: 80px" data-toggle="modal"><i
-					class="fontello-icon-money f30"></i><span class="block">CAP FLOOR</span></a></li>
-			
-		</ul>
-		<hr class="margin-0x" />
-		</nav>
-		<br />
-		<h:form id="global">
-			<p:dataTable value="#{tradeBean.trades}" var="trade">
-				<f:facet name="header">All Trades</f:facet>
-				<p:column>
-					<f:facet name="header">Trader</f:facet>
-					<h:outputText value="#{trade.trader.login}" />
-				</p:column>
-				<p:column>
-					<f:facet name="header">Financial Product</f:facet>
-					<h:outputText value="#{trade.name}" />
-				</p:column>
-				<p:column>
-					<f:facet name="header">Date</f:facet>
-					<h:outputText value="#{trade.pk.date}" />
-				</p:column>
-				<p:column>
-					<f:facet name="header">Put/Call</f:facet>
-					<h:outputText value="#{trade.putcallString}" />
-				</p:column>
-				<p:column>
-					<f:facet name="header">Status</f:facet>
-					<h:outputText value="#{trade.statusString}" />
-				</p:column>
-				<p:column>
-					<f:facet name="header">Accept</f:facet>
-					<h:commandButton  action="#{tradeBean.doAccept(trade)}" value="Accept"
-						styleClass="btn btn-small btn-green" />
-				</p:column>
-				<p:column>
-					<f:facet name="header">Decline</f:facet>
-					<h:commandButton action="#{tradeBean.doDecline(trade)}" value="Decline"
-						styleClass="btn btn-small btn-red" >
-					</h:commandButton>
-				</p:column>
-				
-			</p:dataTable>
-							   <p:poll interval="60" listener="#{mdBean.refresh()}" update="global" />
-			
-		</h:form>
-		
-		
+	<ui:define name="pageContent">
+		<div class="x_panel">
+			<div class="x_content">
+
+				<h:form id="global">
+					<h:dataTable value="#{tradeBean.trades}" var="trade" class="table">
+						<f:facet name="header">All Trades</f:facet>
+						<h:column>
+							<f:facet name="header">Trader</f:facet>
+							<h:outputText value="#{trade.trader.login}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">Financial Product</f:facet>
+							<h:outputText value="#{trade.name}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">Date</f:facet>
+							<h:outputText value="#{trade.pk.date}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">Put/Call</f:facet>
+							<h:outputText value="#{trade.putcallString}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">Status</f:facet>
+							<h:outputText value="#{trade.statusString}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">Accept</f:facet>
+							<h:commandButton action="#{tradeBean.doAccept(trade)}"
+								value="Accept" styleClass="btn  btn-success btn-xs" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">Decline</f:facet>
+							<h:commandButton action="#{tradeBean.doDecline(trade)}"
+								value="Decline" styleClass="btn btn-danger btn-xs">
+							</h:commandButton>
+						</h:column>
+						<h:column>
+							<f:facet name="header">Details</f:facet>
+							<h:commandButton action=" "
+								value="Show" styleClass="btn btn-info btn-xs">
+							</h:commandButton>
+						</h:column>
+
+					</h:dataTable>
+					<p:poll interval="60" listener="#{mdBean.refresh()}"
+						update="global" />
+
+				</h:form>
+			</div>
+		</div>
 	</ui:define>
 </ui:composition>

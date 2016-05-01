@@ -70,8 +70,9 @@
 			</div>
 		</h:form>
 		<hr />
-		<h:form>
+		
 			<div class="col-md-12">
+			<h:form>
 				<div class="col-md-6">
 					<div class="panel panel-default">
 						<div class="panel-heading">
@@ -94,12 +95,15 @@
 							</h:selectOneMenu>
 							<!-- ****************************************************** -->
 							<label>Start Date : </label> <br />
-							<p:calendar value="#{capbean.c.startDate}" >
-							<f:convertDateTime />							</p:calendar>
+							<p:calendar value="#{capbean.c.startDate}">
+								<f:convertDateTime pattern="dd/mm/yyyy" />
+							</p:calendar>
 							<br />
 							<!-- ****************************************************** -->
 							<label>End Date : </label> <br />
-							<p:calendar value="#{capbean.c.endDate}" />
+							<p:calendar value="#{capbean.c.endDate}">
+								<f:convertDateTime pattern="dd/mm/yyyy" />
+							</p:calendar>
 							<br />
 							<!-- ****************************************************** -->
 							<label>Convention Day : </label>
@@ -158,7 +162,7 @@
 							<div class="table-responsive">
 
 								<h:dataTable value="#{capbean.resulats}" var="res"
-									class="table table-striped">
+									class="table table-striped" rendered="#{capbean.showForm}">
 
 									<h:column>
 										<f:facet name="header">Start Date</f:facet>
@@ -187,8 +191,9 @@
 						</div>
 					</div>
 				</div>
+				</h:form>
 			</div>
-		</h:form>
+		
 	</ui:define>
 
 

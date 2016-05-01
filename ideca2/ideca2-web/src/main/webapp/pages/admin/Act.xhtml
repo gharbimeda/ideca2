@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/WEB-INF/templates/adminTemplate/adminTemp.xhtml">
+
+	<ui:define name="titleName"> Accounts</ui:define>
+
+	<ui:define name="pageContent">
+
+		<div class="x_panel">
+			<div class="x_content">
+
+				<h:form>
+					<h:dataTable value="#{userBean.traders}" var="trader" class="table">
+						<f:facet name="header">All Traders</f:facet>
+						<h:column>
+							<f:facet name="header">First Name</f:facet>
+							<h:outputText value="#{trader.firstName}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">Last Name</f:facet>
+							<h:outputText value="#{trader.lastName}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">CIN</f:facet>
+							<h:outputText value="#{trader.cin}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">Job</f:facet>
+							<h:outputText value="#{trader.job}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">Status</f:facet>
+							<h:outputText value="#{trader.status}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">Unlock</f:facet>
+							<h:commandButton action="#{userBean.doAccept(trader)}"
+								value="Unblock" styleClass="btn btn-xs btn-success" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">Block</f:facet>
+							<h:commandButton action="#{userBean.doDecline(trader)}"
+								value="Block" styleClass="btn btn-xs btn-warning">
+							</h:commandButton>
+						</h:column>
+						<h:column>
+							<f:facet name="header">Delete</f:facet>
+							<h:commandButton action="#{userBean.doDelete(trader)}"
+								value="Delete" class="btn btn-danger btn-xs">
+							</h:commandButton>
+						</h:column>
+
+
+					</h:dataTable>
+				</h:form>
+			</div>
+		</div>
+
+	</ui:define>
+
+</ui:composition>
+

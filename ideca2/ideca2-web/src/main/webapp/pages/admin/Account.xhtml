@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/WEB-INF/templates/adminTemplate/adminTemp.xhtml">
+
+
+	<ui:define name="titleName"> Accounts</ui:define>
+
+	<ui:define name="pageContent">
+
+		<div class="x_panel">
+			<div class="x_content">
+				<h:form>
+					<h:dataTable var="r" value="#{userBean.traders}" class="table">
+						<h:column headerText="First Name">
+							<h:outputText value="#{r.firstName}" />
+						</h:column>
+						<h:column headerText="Last Name">
+							<h:outputText value="#{r.lastName}" />
+						</h:column>
+
+						<h:column headerText="Cin">
+							<h:outputText value="#{r.cin}" />
+						</h:column>
+
+
+						<h:column headerText="Job">
+							<h:outputText value="#{r.job}" />
+						</h:column>
+						<h:column headerText="Phone number">
+							<h:outputText value="#{r.phoneNumber}" />
+						</h:column>
+						<h:column headerText="Adress">
+							<h:outputText value="#{r.adress}" />
+						</h:column>
+						<h:column headerText="company">
+						</h:column>
+						<h:outputText value="#{r.company}" />
+						<h:column headerText="Login">
+							<h:outputText value="#{r.login}" />
+						</h:column>
+
+						<h:column headerText="Nationality">
+							<h:outputText value="#{r.nationality}" />
+						</h:column>
+
+
+
+
+
+					</h:dataTable>
+
+				</h:form>
+
+			</div>
+		</div>
+
+		<div class="x_panel">
+			<div class="x_content">
+
+				<h:form class="form-horizontal form-label-left">
+					<div class="form-group">
+						<h:outputText value="login" />
+						<h:inputText value="#{userBean.trader.login}" />
+					</div>
+					<div class="form-group">
+						<h:outputText value="password" />
+						<h:inputText value="#{userBean.trader.password	}" />
+
+					</div>
+					<div class="ln_solid"></div>
+					<h:commandButton action="#{userBean.doAdd()}" value="Add" />
+
+
+
+					<h:form>
+
+						<div class="col-md-6">
+
+
+
+							<br /> <a href="#{request.contextPath}/pages/admin/Maill.xhtml"
+								class="btn btn-info"> &nbsp;Send an Email to the new trader
+							</a>&nbsp;
+
+						</div>
+
+
+					</h:form>
+				</h:form>
+			</div>
+		</div>
+	</ui:define>
+
+
+
+</ui:composition>
+
