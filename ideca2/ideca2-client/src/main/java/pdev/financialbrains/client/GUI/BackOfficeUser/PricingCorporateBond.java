@@ -114,7 +114,7 @@ public class PricingCorporateBond extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 			//	FixedIncomeSecuritie f = new FixedIncomeSecuritie();
 				Float FaceValue = Float.parseFloat(tf_faceValue.getText());
-				Integer TimeToMaturity = Integer.parseInt(tf_time.getText());
+				Float TimeToMaturity = Float.parseFloat(tf_time.getText());
 				Float CouponRate = Float.parseFloat(tf_couponRate.getText());
 				Float InterestRate = Float.parseFloat(tf_interest.getText());
 				Integer Frequency = Integer.parseInt(tf_frequency.getText());

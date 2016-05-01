@@ -3,6 +3,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
 	template="/WEB-INF/templates/traderTemplate/publicTemplate.xhtml">
 	<ui:define name="titleName">HOME</ui:define>
 	<ui:define name="menuContent">
@@ -111,10 +112,11 @@
 	<ui:define name="PageName"></ui:define>
 	<ui:define name="PageContent">
 		<!--TICKER START -->
-<script type="text/javascript" src="http://forexminute.com/forexminutetools/fxticker.js" ></script>
-<div id="forex-widget" data-width="900" data-height="30" data-speed="1" ></div>
+<center><iframe frameborder="0" scrolling="no" height="62" width="860" allowtransparency="true" 
+marginwidth="0" marginheight="0" src="http://tools.investing.com/quotes_bar.php?tab_1=1,2,3,5,7&amp;tab_2=8830,8831,8836,8849,8862&amp;tab_3=166,172,27&amp;curr-name-color=%230059B0&amp;inner-text-color=%23666666&amp;green-text-color=%23008000&amp;red-text-color=%23FF0000"></iframe><br /><div style="width:860"><span style="float:left">
+<span style="font-size: 11px;color: #333333;text-decoration: none;"><a href="http://www.investing.com/" rel="nofollow" target="_blank" style="font-size: 11px;color: #06529D; font-weight: bold;" class="underline_link"></a></span></span></div></center>
 <!-- TICKER -->
-	<ui:define name="PageName">YAHOO FINANCE QUOTES
+	<ui:define name="PageName">YAHOO FINANCE QUOTES</ui:define>
 	<br />
 		<br />
 	<h:form id="global">
@@ -345,6 +347,6 @@
 		<script
 			src="#{request.contextPath}/resources/traderResources/jsMine/jquery.touchSwipe.min.js"></script>
 		<!-- end mine -->
-	</ui:define>
+	
 </ui:define>
 </ui:composition>

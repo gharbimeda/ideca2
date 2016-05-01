@@ -119,7 +119,7 @@ public class TreasuryBondPricing extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Float FaceValue = Float.parseFloat(tf_faceValue.getText());
-				Integer TimeToMaturity = Integer.parseInt(tf_time.getText());
+				Float TimeToMaturity = Float.parseFloat(tf_time.getText());
 				Float CouponRate= Float.parseFloat(tf_coupon.getText());
 				Float CurrentYield=Float.parseFloat(tf_yield.getText());
 				Integer Frequency=Integer.parseInt(tf_freq.getText());

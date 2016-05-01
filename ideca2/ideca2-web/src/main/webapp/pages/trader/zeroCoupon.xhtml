@@ -61,17 +61,12 @@
 							<h:commandButton
 								action="#{mdfxincomeBean.dopriceZeroCouponBond(mdfxincomeBean.faceValue,mdfxincomeBean.timeMaturity,mdfxincomeBean.couponRate)}"
 								value="price" class="btn btn-primary btn-sm" />
-
+<p:panelGrid>
 							<h:inputText value="#{mdfxincomeBean.bondPrice}"
 								styleClass="form-control input-rounded" />
+								</p:panelGrid>
 							<br />
-							<label>Type </label>
-							<p:panelGrid>
-								<p:selectOneMenu id="fxincome" value="#{mdfxincomeBean.fx.bd}">
-									<f:selectItem itemLabel="zcb" itemValue="0" />
-
-								</p:selectOneMenu>
-							</p:panelGrid>
+							
 							<p:spacer width="10" height="10" />
 							<label>Call/Put</label>
 
@@ -84,7 +79,7 @@
 							<p:spacer width="10" height="10" />
 
 							<p:commandButton class="btn btn-success btn-sm"
-								value="Save Pricing" action="#{mdfxincomeBean.doBookTrade()}" />
+								value="Save Pricing" action="#{mdfxincomeBean.doBookTradeZCB()}" />
 						</h:panelGrid>
 
 					</h:form>

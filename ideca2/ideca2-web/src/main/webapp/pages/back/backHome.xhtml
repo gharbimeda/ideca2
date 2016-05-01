@@ -6,17 +6,18 @@
 	xmlns:p="http://primefaces.org/ui"
 	template="/WEB-INF/templates/backTemplate/newBouTemp.xhtml">
 
-<ui:define name="titleName">Home</ui:define>
+<ui:define name="titleName">BackOfficeUser Home</ui:define>
 	<ui:define name="pageContent">
 
 		<script
 			src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 		<script src="https://code.highcharts.com/stock/highstock.js"></script>
 		<script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
-
-		
-
-		<br />
+	<!--TICKER START -->
+<script type="text/javascript" src="http://forexminute.com/forexminutetools/fxticker.js" ></script>
+<center><div id="forex-widget" data-width="900" data-height="30" data-speed="1" ></div></center>
+<!-- TICKER -->
+	
 		  <div class="row top_tiles">
 		  <h:form>
 		<div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
@@ -133,10 +134,7 @@
 </div>
 
 
-	<!--TICKER START -->
-<script type="text/javascript" src="http://forexminute.com/forexminutetools/fxticker.js" ></script>
-<center><div id="forex-widget" data-width="900" data-height="30" data-speed="1" ></div></center>
-<!-- TICKER -->
+
 		
 	<!-- Chart -->
 	<div id="chart" style="height: 300px; min-width: 300px">
@@ -146,7 +144,7 @@
 	<!-- End Chart -->	
 	<br/>
 	<div id="page-content" class="page-content">
-	                  
+	               <center><h4>US BONDS</h4>  </center> 
 	
 				<h:form id="form_Bond">
 
@@ -188,10 +186,12 @@
 				</h:dataTable>
 				</h:form>
 				</div>
-											
+						
+						<br/>				
 
-	</ui:define>
 
+ <p:chart type="line" model="#{yieldBean.lineModel1}" style="height:300px;"/>
 
+</ui:define>
 
 </ui:composition>

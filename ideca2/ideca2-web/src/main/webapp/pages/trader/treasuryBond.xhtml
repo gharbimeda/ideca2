@@ -74,14 +74,6 @@
 						styleClass="form-control input-rounded" />
 						<br/>
 
-					<label>Type </label>
-
-					<p:panelGrid>
-						<p:selectOneMenu id="fxincome" value="#{mdfxincomeBean.fx.bd}">
-
-							<f:selectItem itemLabel="treasury" itemValue="1" />
-						</p:selectOneMenu>
-					</p:panelGrid>
 					<p:spacer width="10" height="10" />
 									<label >Call/Put</label>
 
@@ -93,7 +85,7 @@
 					</p:panelGrid>
 					<p:spacer width="10" height="10" />
 					<p:commandButton class="btn btn-success btn-sm"
-						value="Save Pricing" action="#{mdfxincomeBean.doBookTrade()}" />
+						value="Save Pricing" action="#{mdfxincomeBean.doBookTradeTreausy()()}" />
 				</h:panelGrid>
 
 			</h:form>

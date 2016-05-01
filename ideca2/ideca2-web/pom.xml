@@ -34,6 +34,12 @@
 			<type>ejb</type>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+	<groupId>org.highfaces</groupId>
+	<artifactId>highfaces</artifactId>
+	<version>1.0</version>
+</dependency>
+		
 	</dependencies>
 
 	<build>

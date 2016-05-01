@@ -61,14 +61,14 @@ public class FixedIncomeSecurityCrudServices implements IFixedIncomeSecurityRemo
 	}
 
 	@Override
-	public Float priceZeroCouponBond(Float faceValue, Integer timeMaturity, Float currentYield) {
+	public Float priceZeroCouponBond(Float faceValue, Float timeMaturity, Float currentYield) {
 		// TODO Auto-generated method stub
 		Float  Price;
 		return Price = (float) (faceValue/(Math.pow(1+currentYield, timeMaturity)));
 	}
 
 	@Override
-	public Float priceTreasuryBond(Float faceValue, Integer timeMaturity, Float currentYield, Integer frequency,
+	public Float priceTreasuryBond(Float faceValue, Float timeMaturity, Float currentYield, Integer frequency,
 			Float couponRate) {
 		Float Price ; 
 		return Price = (float) (couponRate*(faceValue/frequency)*
@@ -83,7 +83,7 @@ public class FixedIncomeSecurityCrudServices implements IFixedIncomeSecurityRemo
 		
 	}
 	@Override
-	public Float priceCorpBond(Float faceValue, Integer timeMaturity, Float currentYield, Integer frequency,
+	public Float priceCorpBond(Float faceValue, Float timeMaturity, Float currentYield, Integer frequency,
 			Float couponRate, Integer months) {
 		Float Price;
 		

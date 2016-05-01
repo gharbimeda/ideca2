@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.view.ViewScoped;
 
@@ -12,6 +13,7 @@ import org.primefaces.model.chart.AxisType;
 import org.primefaces.model.chart.LineChartModel;
 import org.primefaces.model.chart.LineChartSeries;
 
+import pdev.financialbrains.ejb.contracts.IMDBondCrudServiceLocal;
 import pdev.financialbrains.ejb.entities.MdBond;
 
 
@@ -28,6 +30,9 @@ public class YieldCurve implements Serializable{
 	private LineChartModel yieldCurve;
 	private MdBond md = new MdBond();
 	private List<MdBond> bonds;
+	
+	@EJB
+	private IMDBondCrudServiceLocal mdlocal;
 
 	private LineChartModel lineModel1;
     private LineChartModel lineModel2;
@@ -35,6 +40,7 @@ public class YieldCurve implements Serializable{
     @PostConstruct
     public void init() {
         createLineModels();
+        initLinearModel();
     }
  
     public LineChartModel getLineModel1() {
@@ -47,7 +53,7 @@ public class YieldCurve implements Serializable{
      
     private void createLineModels() {
         lineModel1 = initLinearModel();
-        lineModel1.setTitle("Linear Chart");
+        lineModel1.setTitle("Yield Curve");
         lineModel1.setLegendPosition("e");
         Axis yAxis = lineModel1.getAxis(AxisType.Y);
         yAxis.setMin(0);
@@ -56,32 +62,65 @@ public class YieldCurve implements Serializable{
         
     }
      
+    
     private LineChartModel initLinearModel() {
-        LineChartModel model = new LineChartModel();
- 
-        LineChartSeries series1 = new LineChartSeries();
-        series1.setLabel("Series 1");
- 
-        series1.set(1, 2);
-        series1.set(2, 1);
-        series1.set(3, 3);
-        series1.set(4, 6);
-        series1.set(5, 8);
- 
-        LineChartSeries series2 = new LineChartSeries();
-        series2.setLabel("Series 2");
- 
-        series2.set(1, 6);
-        series2.set(2, 3);
-        series2.set(3, 2);
-        series2.set(4, 7);
-        series2.set(5, 9);
- 
-        model.addSeries(series1);
-        model.addSeries(series2);
-         
-        return model;
-    }
+    		LineChartModel model = new LineChartModel();
+
+    		LineChartSeries series1 = new LineChartSeries();
+    		series1.setLabel("Yield Curve");
+    		
+    		 bonds = mdlocal.readAll();
+
+    		for (MdBond md : bonds) {
+
+    			series1.set(md.getYield(),md.getYesterday());
+
+    		}
+
+    		model.addSeries(series1);
+
+    		return model;
+    	}
+
+	public LineChartModel getYieldCurve() {
+		return yieldCurve;
+	}
+
+	public void setYieldCurve(LineChartModel yieldCurve) {
+		this.yieldCurve = yieldCurve;
+	}
+
+	public MdBond getMd() {
+		return md;
+	}
+
+	public void setMd(MdBond md) {
+		this.md = md;
+	}
+
+	public List<MdBond> getBonds() {
+		return bonds;
+	}
+
+	public void setBonds(List<MdBond> bonds) {
+		this.bonds = bonds;
+	}
+
+	public IMDBondCrudServiceLocal getMdlocal() {
+		return mdlocal;
+	}
+
+	public void setMdlocal(IMDBondCrudServiceLocal mdlocal) {
+		this.mdlocal = mdlocal;
+	}
+
+	public void setLineModel1(LineChartModel lineModel1) {
+		this.lineModel1 = lineModel1;
+	}
+
+	public void setLineModel2(LineChartModel lineModel2) {
+		this.lineModel2 = lineModel2;
+	}
      
 
  
