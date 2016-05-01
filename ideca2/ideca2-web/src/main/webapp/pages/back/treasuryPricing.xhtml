@@ -48,24 +48,23 @@
 		//Float couponRate -->
 <p:spacer width="10" height="10" />
 					<h:inputText value="#{mdfxincomeBean.bondPrice}"
-						styleClass="form-control input-rounded" />
-						
-				
-					<p:spacer width="10" height="10" />
-									<label >Call/Put</label>
-<p:spacer width="10" height="25" />
-					<p:panelGrid>
-						<p:selectOneMenu id="putCall" value="#{mdfxincomeBean.putCall}">
-							<f:selectItem itemLabel="put" itemValue="0" />
-							<f:selectItem itemLabel="call" itemValue="1" />
-						</p:selectOneMenu>
-					</p:panelGrid>
-					<p:spacer width="10" height="25" />
-					<p:commandButton class="btn btn-success btn-sm"
-						value="Save Pricing" action="#{mdfxincomeBean.doBookTradeTreausy()}" />
-				</h:panelGrid>
+								styleClass="form-control input-rounded" />
+							
+							<p:spacer width="10" height="25" />
+							<label>Call/Put</label>
+<p:spacer width="10" height="10" />
+							<p:panelGrid>
+								<p:selectOneMenu id="putCall" value="#{mdfxincomeBean.putCall}">
+									<f:selectItem itemLabel="put" itemValue="0" />
+									<f:selectItem itemLabel="call" itemValue="1" />
+								</p:selectOneMenu>
+							</p:panelGrid>
+							<p:spacer width="10" height="25" />
 
-			</h:form>
+							<p:commandButton class="btn btn-success btn-sm"
+								value="Save Pricing" action="#{mdfxincomeBean.doBookTradeTreausy()()}" />
+						</h:panelGrid>
+</h:form>
 			</div>
 			</div>
 			</div>
