@@ -8,16 +8,10 @@
 	<ui:define name="titleName"> New Product </ui:define>
 	<ui:define name="pageContent">
 		<h:form>
-			<h:panelGrid columns="2">
-				<h:outputText value="Destination" />
-				<h:selectOneMenu id="txt3" value="#{messageBean.traderDest}">
-					<f:selectItems value="#{messageBean.tradersNames}" />
-				</h:selectOneMenu>
-				<h:outputText value="Message" />
-				<p:inputTextarea value="#{messageBean.text}" />
+			<h:panelGrid binding=""
+				columns="3">
+
 			</h:panelGrid>
-			<h:commandButton class="btn btn-primary btn-sm"
-				action="#{messageBean.doSend()}" value="Send" />
 		</h:form>
 	</ui:define>
 </ui:composition>
