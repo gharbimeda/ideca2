@@ -10,7 +10,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-	<title>INTELLIXX | <ui:insert name="titleName"></ui:insert></title>
+	<title>IDECA 2.0 | <ui:insert name="titleName"></ui:insert></title>
 
 	<!-- Bootstrap core CSS -->
 
@@ -73,7 +73,8 @@
 
 							<ul class="nav side-menu">
 								<li><a href=""><i class="fa fa-home"></i> Dashboard </a></li>
-								<li><a><i class="fa fa-database"></i> Market Data </a>
+								<li><a><i class="fa fa-bank"></i> Market Data <span
+										class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu" style="display: none">
 										<li><a
 											href="#{request.contextPath}/pages/back/BondManually.xhtml">
@@ -92,13 +93,15 @@
 								<li><a
 									href="#{request.contextPath}/pages/back/trades.xhtml"><i
 										class="fa fa-money"></i> Trades </a></li>
-								<li><a><i class="fa fa-file-o"></i>Settlements</a>
+								<li><a><i class="fa fa-file-o"></i>Settlements<span
+										class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu" style="display: none">
 										<li><a
 											href="#{request.contextPath}/pages/back/Settlement.xhtml">
 												Show All Settlement</a></li>
 									</ul></li>
-								<li><a><i class="fa fa-comment"></i>Messages</a>
+								<li><a><i class="fa fa-comment"></i>Messages<span
+										class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu" style="display: none">
 										<li><a
 											href="#{request.contextPath}/pages/back/MessageBack.xhtml">
@@ -108,20 +111,21 @@
 												Send a Message</a></li>
 
 									</ul></li>
-								<li><a><i class="fa fa-user"></i>Account</a>
+								<li><a><i class="fa fa-user"></i> Profil <span
+										class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu" style="display: none">
 										<li><a
-											href="#{request.contextPath}/pages/back/myAccount.xhtml">
-												Show My Account</a></li>
+											href="#{request.contextPath}/pages/back/myAccount.xhtml">My
+												profil</a></li>
 										<li><a
-											href="#{request.contextPath}/pages/public/login.xhtml">
-												LogOut</a></li>
-
+											href="#{request.contextPath}/pages/public/login.xhtml">Logout</a>
+										</li>
 									</ul></li>
 								<li><a
 									href="#{request.contextPath}/pages/back/NewProduct.xhtml"><i
 										class="fa fa-money"></i> Add New Product </a></li>
-								<li><a><i class="fa fa-comment"></i>Financial Products</a>
+								<li><a><i class="fa fa-money"></i>Financial Products<span
+										class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu" style="display: none">
 										<li><a
 											href="#{request.contextPath}/pages/back/forwardSwapPricing.xhtml">
@@ -169,7 +173,7 @@
 						<ul class="nav navbar-nav navbar-right">
 							<li class=""><a href="javascript:;"
 								class="user-profile dropdown-toggle" data-toggle="dropdown"
-								aria-expanded="false"> <!--   <img src="#{request.contextPath}/resources/adminResources/images/img.jpg" alt="" /> -->Admin
+								aria-expanded="false"> <img src="#{request.contextPath}/resources/adminResources/images/img.jpg" alt="" /> 
 									<span class=" fa fa-angle-down"></span>
 							</a>
 								<ul class="dropdown-menu dropdown-usermenu pull-right">

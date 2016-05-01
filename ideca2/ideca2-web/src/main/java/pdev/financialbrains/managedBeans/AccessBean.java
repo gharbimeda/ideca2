@@ -43,7 +43,7 @@ public class AccessBean {
 				BackOfficeUser foundBackOffUser = (BackOfficeUser) authan.authentification(login, password);
 				identityBean.setUtilisateur(foundBackOffUser);
 				identityBean.setRole("backoffuser");
-				navigateTo = "/pages/back/backHome?faces-redirect=true";
+				navigateTo = "/pages/back/testHome?faces-redirect=true";
 			} else {
 				User foundAdmin = (User) authan.authentification(login, password);
 				identityBean.setUtilisateur(foundAdmin);
