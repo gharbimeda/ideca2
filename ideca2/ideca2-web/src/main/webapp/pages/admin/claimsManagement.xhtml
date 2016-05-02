@@ -2,37 +2,37 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	template="/WEB-INF/templates/adminTemplate/adminTemp.xhtml"
-	xmlns:p="http://primefaces.org/ui">
+	template="/WEB-INF/templates/adminTemplate/adminTemp.xhtml">
 
-	<!-- 	<ui:define name="PageName">CLAIMS MENAGEMENT</ui:define> -->
+<ui:define name="titleName"> Claims Management </ui:define>
 
 	<ui:define name="pageContent">
-		<h1>CLAIMS MENAGEMENT</h1>
+		<h1>CLAIMS MANAGEMENT</h1>
 		<h:form>
-			<p:dataTable styleClass="table table-bordered"
+			<h:dataTable
+				styleClass="table table-striped responsive-utilities jambo_table bulk_action"
 				value="#{claimsBean.claims}" var="c">
-				<p:column>
+				<h:column>
 					<f:facet name="header">Date</f:facet>
 					<h:outputText value="#{c.date}" />
-				</p:column>
-				<p:column>
+				</h:column>
+				<h:column>
 					<f:facet name="header">Object</f:facet>
 					<h:outputText value="#{c.object}" />
-				</p:column>
-				<p:column>
+				</h:column>
+				<h:column>
 					<f:facet name="header">Text</f:facet>
 					<h:outputText value="#{c.text}" />
-				</p:column>
-				<p:column>
+				</h:column>
+				<h:column>
 					<f:facet name="header">Sender</f:facet>
 					<h:outputText value="#{c.user.login}" />
-				</p:column>
-				<p:column>
+				</h:column>
+				<h:column>
 					<f:facet name="header">Reply</f:facet>
 					<h:commandButton action="#{claimsBean.doReply()}" value="Reply" />
-				</p:column>
-			</p:dataTable>
+				</h:column>
+			</h:dataTable>
 		</h:form>
 	</ui:define>
 
