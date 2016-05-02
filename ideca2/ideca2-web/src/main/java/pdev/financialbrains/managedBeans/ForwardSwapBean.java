@@ -208,6 +208,7 @@ public class ForwardSwapBean {
 //		trade.setTrader(trader);
 		trade.setValue(Float.parseFloat(result.toString()));
 		trade.setPutcall(0);
+		trade.setName("ForwardSwap");
 		tradeLocal.create(trade);
 		return null;
 	}
