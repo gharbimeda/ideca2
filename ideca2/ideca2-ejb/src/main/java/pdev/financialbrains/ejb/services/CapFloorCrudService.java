@@ -129,9 +129,9 @@ public class CapFloorCrudService implements ICapFloorServiceLocal, ICapFloorServ
 	}
 
 	@Override
-	public double pricingCapFloor(Double amount, String cap_floor, Integer nDays, Integer period, Integer daysYear, Double f_rate,
-			Float strike, Float vol, Double maturity, Double rfr) {
-		Double a = (amount*nDays*period/daysYear)/(1+f_rate*nDays*period/daysYear);
+	public double pricingCapFloor(Float float1, String cap_floor, Integer nDays, Integer period, Integer daysYear, Double f_rate,
+			Float strike, Float vol, Double maturity, Integer rfr) {
+		Double a = (float1*nDays*period/daysYear)/(1+f_rate*nDays*period/daysYear);
 		Double b,c,result=0.0;
 		if (cap_floor.equals("cap")){
 			b=CNDF(((Math.log(f_rate/strike)+(0.5 * Math.pow(vol, 2)*maturity))/(vol*Math.sqrt(maturity)))-(vol*Math.sqrt(maturity)));

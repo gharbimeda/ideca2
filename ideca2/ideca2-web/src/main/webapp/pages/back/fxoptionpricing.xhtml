@@ -1,32 +1,33 @@
 <!DOCTYPE html >
-
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	template="/WEB-INF/templates/traderTemplate/traderTemplate.xhtml"
-                xmlns:p="http://primefaces.org/ui">
-                
-	<ui:define name="titleName"></ui:define>
-	<ui:define name="menuContent">
-		<li><a href="#{request.contextPath}/pages/trader/home.xhtml"><i
-				class="fa fa-home" /> HOME</a></li>
-		<li><a
-			href="#{request.contextPath}/pages/trader/menuProduct.xhtml"><i
-				class="fa fa-money" /> FINANCIAL PRODUCTS</a></li>
-		<li><a href="#{request.contextPath}/pages/trader/trades.xhtml"><i
-				class="fa fa-shopping-cart" /> MY TRADES</a></li>
-		<li><a href="#{request.contextPath}/pages/trader/messages.xhtml"><i
-				class="fa fa-wechat" /> MESSAGES</a></li>
-		<li><a class="menu-top-active"
-			href="#{request.contextPath}/pages/trader/contactUs.xhtml"><i
-				class="fa fa-inbox" /> CONTACT US</a></li>
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/backTemplate/backOfficeUserTemp.xhtml">
+
+	<ui:define name="titleName"> FX Pricing</ui:define>
+	<ui:define name="pageLocalisation"> / </ui:define>
+	<ui:define name="pageActive"> foreign option pricing</ui:define>
+	<ui:define name="pageDefinition">
+		<h2 class="page-title">
+			<i class="fontello-icon-money"></i> Foreign option pricing
+		</h2>
+		<div class="page-bar"></div>
 	</ui:define>
+	<ui:define name="pageContent">
+
+		<nav>
 	
-	<ui:define name="PageName">FX Option Pricing</ui:define>
-	<ui:define name="PageContent">
-<body>
-<div style="display:flex; width:100%;margin: 20px" class="row">
+			<a class="btn btn-well btn-glyph" href="#" style="width: 80px" data-toggle="modal">
+			<i class="fontello-icon-money f30"></i>
+			<span class="block">FX Option</span>
+			</a>
+			
+		    <hr class="margin-0x" />
+		</nav>
+		
+		<div style="display:flex; width:100%;margin: 20px" class="row">
 
 <div style=" width: 800px;">
 
@@ -46,13 +47,13 @@
 		<h:inputText  converterMessage= " call / put must be a number" value="#{fxOptionBean.callPut}" class="form-control" required="true" requiredMessage="call/put Required"/>
 		
 		<div style="margin-top: 10px;">
-		<h:outputText value="Current Spot Rate" />
+		<h:outputText value="Current Spot Rate" /></div>
 		<h:inputText converterMessage= " Current Spot Rate must be a number" value="#{fxOptionBean.currentSpotPrice}" class="form-control" required="true" requiredMessage="Current Spot Rate Required"/>
-		</div>
+		
 		<div style="margin-top: 10px;">
-		<h:outputText value="Domestic Risk Free" />
+		<h:outputText value="Domestic Risk Free" /></div>
 		<h:inputText converterMessage= " Domestic Risk Free must be a number" value="#{fxOptionBean.dRisk}"  class="form-control" required="true" requiredMessage="Domestic Risk Free Required"/>
-		</div>
+	
 		<div style="margin-top: 10px;">
 		<h:outputText value="Foreign Risk Free" /></div>
 		<h:inputText converterMessage= " Foreign Risk Free must be a number" value="#{fxOptionBean.fRisk}" class="form-control" required="true" requiredMessage="Foreign Risk Required"/>
@@ -86,9 +87,9 @@
 		</div>
 		</div>
 		</div>
-</div> 
+	</div> 
 
-<div style="width:30%">
+	<div style="width:30%">
 		<div class="alert alert-info">
 		
 		<h4 class="pagetitle">
@@ -104,14 +105,15 @@
 		</tr>
 		</table>
 		
-		<a href="FxTrading.xhtml">
-		<h4 class="pagetitle">For more Currency Trading Tools and Techniques  </h4>
+		<a href="fxtrading.xhtml">
+		<h4 class="pagetitle"> For more Currency Trading Tools and Techniques  </h4>
 		</a>
 		
 </div>
 </div>
-</body>
-</ui:define>
+		<br />
+		
+		
+		
+	</ui:define>
 </ui:composition>
-
-

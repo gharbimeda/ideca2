@@ -4,11 +4,17 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui"
+		template="/WEB-INF/templates/backTemplate/dashBoard.xhtml"
 	>
 
-<ui:define name="pageContent">
- 	<h:panelGrid columns="2" columnClasses="left,right" style="width:100%">
-<p:chart type="line" model="#{chartView.lineModel1}" style="height:300px;"/>                                      </h:panelGrid>
+<ui:define name="titleName">chart</ui:define>
+	<ui:define name="pageContent">
+	<br/>
+					<p:spacer width="10" height="150" />
+	
+	
+ <p:chart type="line" model="#{yieldBean.lineModel1}" style="height:400px;"/>
+ 
 </ui:define>
 
 </ui:composition>

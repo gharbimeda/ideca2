@@ -33,34 +33,37 @@
 
 	<ui:define name="PageName">FINANCIAL PRODUCTS</ui:define>
 	<ui:define name="PageContent">
-		<h:form>
-			<h4>Treasury Bond pricing</h4>
+		
+			<center><h4>Treasury Bond pricing</h4></center>
 			<br />
+		<div class="col-md-12">
+			<div class="col-md-6">
+				<div class="panel panel-default">
 			<h:form>
 
 				<h:panelGrid columns="2">
 <label>Face Value </label>
 					
-					<p:spacer width="10" height="10" />
+					<p:spacer width="10" height="25" />
 					<h:inputText value="#{mdfxincomeBean.faceValue}" />
-					<p:spacer width="10" height="10" />
+					<p:spacer width="10" height="25" />
 					<label>Time To Maturiy </label>
-					<p:spacer width="10" height="10" />
+					<p:spacer width="10" height="25" />
 					<h:inputText value="#{mdfxincomeBean.timeMaturity}" />
-					<p:spacer width="10" height="10" />
+					<p:spacer width="10" height="25" />
 					<label>Current Yield"</label>
-					<p:spacer width="10" height="10" />
+					<p:spacer width="10" height="25" />
 					<h:inputText value="#{mdfxincomeBean.currentYield}" />
-					<p:spacer width="10" height="10" />
+					<p:spacer width="10" height="25" />
 											<label>Frequency</label>
-								<p:spacer width="10" height="10" />
+								<p:spacer width="10" height="25" />
 					<h:inputText value="#{mdfxincomeBean.frequency}" />
 					<p:spacer width="10" height="10" />
 								<label>Coupon Rate</label>
 				
-					<p:spacer width="10" height="10" />
+					<p:spacer width="10" height="25" />
 					<h:inputText value="#{mdfxincomeBean.couponRate}" />
-					<p:spacer width="10" height="10" />
+					<p:spacer width="10" height="25" />
 
 
 					<h:commandButton
@@ -69,36 +72,29 @@
 						class="btn btn-primary btn-sm" value="price" />
 					<!-- //(Float faceValue, Integer timeMaturity, Float currentYield, Integer frequency,
 		//Float couponRate -->
-
+<p:spacer width="10" height="10" />
 					<h:inputText value="#{mdfxincomeBean.bondPrice}"
-						styleClass="form-control input-rounded" />
-						<br/>
+								styleClass="form-control input-rounded" />
+							
+							<p:spacer width="10" height="25" />
+							<label>Call/Put</label>
+<p:spacer width="10" height="10" />
+							<p:panelGrid>
+								<p:selectOneMenu id="putCall" value="#{mdfxincomeBean.putCall}">
+									<f:selectItem itemLabel="put" itemValue="0" />
+									<f:selectItem itemLabel="call" itemValue="1" />
+								</p:selectOneMenu>
+							</p:panelGrid>
+							<p:spacer width="10" height="25" />
 
-					<label>Type </label>
-
-					<p:panelGrid>
-						<p:selectOneMenu id="fxincome" value="#{mdfxincomeBean.fx.bd}">
-
-							<f:selectItem itemLabel="treasury" itemValue="1" />
-						</p:selectOneMenu>
-					</p:panelGrid>
-					<p:spacer width="10" height="10" />
-									<label >Call/Put</label>
-
-					<p:panelGrid>
-						<p:selectOneMenu id="putCall" value="#{mdfxincomeBean.putCall}">
-							<f:selectItem itemLabel="put" itemValue="0" />
-							<f:selectItem itemLabel="call" itemValue="1" />
-						</p:selectOneMenu>
-					</p:panelGrid>
-					<p:spacer width="10" height="10" />
-					<p:commandButton class="btn btn-success btn-sm"
-						value="Save Pricing" action="#{mdfxincomeBean.doBookTrade()}" />
-				</h:panelGrid>
-
-			</h:form>
-
-		</h:form>
+							<p:commandButton class="btn btn-success btn-sm"
+								value="Save Pricing" action="#{mdfxincomeBean.doBookTradeTreausy()()}" />
+						</h:panelGrid>
+</h:form>
+</div>
+</div>
+</div>
+		
 	</ui:define>
 </ui:composition>
 

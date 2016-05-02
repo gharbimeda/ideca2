@@ -26,6 +26,7 @@ public class User implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int IdUser;
 	private Integer status;
+	private Double limite;
 	private String login;
 	private String password;
 	@OneToMany(mappedBy = "user",fetch=FetchType.LAZY)
@@ -140,4 +141,12 @@ public class User implements Serializable {
 			return "BLOCK";
 		
 		}
+
+	public Double getLimite() {
+		return limite;
+	}
+
+	public void setLimite(Double limite) {
+		this.limite = limite;
+	}
 }

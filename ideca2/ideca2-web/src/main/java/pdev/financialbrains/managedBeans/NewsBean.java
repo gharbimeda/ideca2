@@ -312,4 +312,30 @@ public void init(){
 	}
 	return news2;
 }*/
+	public List<News> fxnews() {
+		Document doc = null;
+		Elements news = null;
+		List<String> listUrls = new ArrayList<>();
+		List<News> news2 = new ArrayList<News>();
+		News temp = null;
+		try {
+			doc = Jsoup.connect("http://www.investing.com/news/forex-news").get();
+			news = doc.getElementsByClass("articleItem");
+			System.out.println(news.size());
+
+			for (int i = 0; i < news.size(); i++) {
+				temp = new News();
+
+				temp.setContenu(news.get(i).text());
+				temp.setUrl("http://www.investing.com/news/forex-news"
+						+ news.get(i).attr("href"));
+				news2.add(temp);
+				// service.createNews(news3);
+			}
+			System.out.println(listUrls.size());
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return news2;
+	}
 }

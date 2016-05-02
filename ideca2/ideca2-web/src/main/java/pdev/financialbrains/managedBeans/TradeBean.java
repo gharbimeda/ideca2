@@ -17,7 +17,7 @@ import pdev.financialbrains.ejb.services.UserCrudServices;
 import pdev.financialbrains.util.Util;
 
 @ManagedBean(name = "tradeBean")
-@RequestScoped
+@ViewScoped
 public class TradeBean {
 
 	@EJB
@@ -25,7 +25,7 @@ public class TradeBean {
 
 	private List<Trade> trades;
 	
-	
+	private Trade trade;
 	
 	private Boolean show;
 
@@ -64,6 +64,14 @@ public class TradeBean {
 
 	public void setTrades(List<Trade> trades) {
 		this.trades = trades;
+	}
+
+	public Trade getTrade() {
+		return trade;
+	}
+
+	public void setTrade(Trade trade) {
+		this.trade = trade;
 	}
 
 

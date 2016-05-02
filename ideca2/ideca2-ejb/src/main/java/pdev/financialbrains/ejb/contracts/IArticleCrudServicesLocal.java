@@ -20,4 +20,6 @@ public interface IArticleCrudServicesLocal {
 	List<Article> read (Date date);
 	
 	List<Article> readAll();
+
+	Boolean delete1(Article a);
 }

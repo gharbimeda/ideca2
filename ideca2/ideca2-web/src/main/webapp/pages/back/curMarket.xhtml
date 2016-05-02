@@ -4,20 +4,11 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui"
-	template="/WEB-INF/templates/backTemplate/backOfficeUserTemp.xhtml">
+	template="/WEB-INF/templates/backTemplate/newBouTemp.xhtml">
 
-	<ui:define name="titleName"> Yahoo Finance Market Data </ui:define>
-	<ui:define name="pageLocalisation"> / Market Data </ui:define>
-	<ui:define name="pageActive"> Stocks</ui:define>
-	<ui:define name="pageDefinition">
-		<h2 class="page-title">
-			<i class="fontello-icon-database"></i> Market Data
-		</h2>
-		<div class="page-bar"></div>
-	</ui:define>
-
+<ui:define name="titleName">Currency Market</ui:define>
 	<ui:define name="pageContent">
-	<br/>
+<br/>
 		<h:form id="form_1">
 		
 			<h:dataTable value="#{mdBean.cur}" var="quote" styleClass="table table-bordered">
@@ -48,8 +39,10 @@
 			</h:dataTable>
 		</h:form>
 
-		
-		
+								
 
 	</ui:define>
+
+
+
 </ui:composition>

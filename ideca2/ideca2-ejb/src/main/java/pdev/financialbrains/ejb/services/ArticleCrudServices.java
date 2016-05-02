@@ -12,6 +12,7 @@ import javax.persistence.Query;
 import pdev.financialbrains.ejb.contracts.IArticleCrudServicesLocal;
 import pdev.financialbrains.ejb.contracts.IArticleCrudServicesRemote;
 import pdev.financialbrains.ejb.entities.Article;
+import pdev.financialbrains.ejb.entities.Currency;
 
 @Stateless
 @LocalBean
@@ -72,5 +73,14 @@ public class ArticleCrudServices implements IArticleCrudServicesLocal, IArticleC
 
 		return entityManager.createQuery("select a from Article a", Article.class).getResultList();
 	}
-
+	@Override
+	public Boolean delete1(Article a) {
+		try {
+			entityManager.remove(entityManager.find(Article.class, a.getId()));
+			return true;
+		} catch (Exception e) {
+			System.err.println("doesn't exist");
+		}
+		return false;
+	}
 }

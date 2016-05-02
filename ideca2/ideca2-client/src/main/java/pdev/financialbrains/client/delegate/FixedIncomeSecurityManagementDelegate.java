@@ -50,15 +50,15 @@ public class FixedIncomeSecurityManagementDelegate {
 	public static List<FixedIncomeSecuritie> doRead (){
 		return getProxy().readAll();
 	}
-	public static Float doPriceZeroCouponBond(Float faceValue,Integer timeMaturity, Float currentYield)
+	public static Float doPriceZeroCouponBond(Float faceValue,Float timeMaturity, Float currentYield)
 	{
 		return getProxy().priceZeroCouponBond(faceValue, timeMaturity, currentYield);
 	}
-	public static Float doPriceTtreasuryBond(Float faceValue,Integer timeMaturity, Float currentYield,Integer frequency,Float couponRate)
+	public static Float doPriceTtreasuryBond(Float faceValue,Float timeMaturity, Float currentYield,Integer frequency,Float couponRate)
 	{
 		return getProxy().priceTreasuryBond(faceValue, timeMaturity, currentYield, frequency, couponRate);
 	}
-	public static Float doPriceCorpBond(Float faceValue,Integer timeMaturity, Float currentYield,Integer frequency,Float couponRate,Integer months)
+	public static Float doPriceCorpBond(Float faceValue,Float timeMaturity, Float currentYield,Integer frequency,Float couponRate,Integer months)
 	{
 		return getProxy().priceCorpBond(faceValue, timeMaturity, currentYield, frequency, couponRate, months);
 

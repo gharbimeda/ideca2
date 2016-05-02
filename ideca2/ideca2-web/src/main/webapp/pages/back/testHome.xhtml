@@ -4,9 +4,9 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui"
-	template="/WEB-INF/templates/backTemplate/newBouTemp.xhtml">
+	template="/WEB-INF/templates/backTemplate/dashBoard.xhtml">
 
-<ui:define name="titleName">Home</ui:define>
+<ui:define name="titleName">Dashbord</ui:define>
 	<ui:define name="pageContent">
 
 		<script
@@ -16,7 +16,10 @@
 
 		
 
-		<br />
+			<!--TICKER START -->
+<script type="text/javascript" src="http://forexminute.com/forexminutetools/fxticker.js" ></script>
+<center><div id="forex-widget" data-width="900" data-height="30" data-speed="1" ></div></center>
+<!-- TICKER -->
 		  <div class="row top_tiles">
 		  <h:form>
 		<div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
@@ -133,10 +136,7 @@
 </div>
 
 
-	<!--TICKER START -->
-<script type="text/javascript" src="http://forexminute.com/forexminutetools/fxticker.js" ></script>
-<center><div id="forex-widget" data-width="900" data-height="30" data-speed="1" ></div></center>
-<!-- TICKER -->
+
 		
 	<!-- Chart -->
 	<div id="chart" style="height: 300px; min-width: 300px">

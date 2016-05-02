@@ -32,7 +32,7 @@ public class MailBean implements Serializable {
 		+ "Password :"
 		+name
 		+  "Welcome To Ideca :)";
-			if (EmailSender.sendEmail("Intellixx@gmail.com", "98238622",
+			if (EmailSender.sendEmail("create.money.differently@gmail.com", "98238622",
 					Email_Body, to)) {
 				System.out.println("email sent successfully");
 				
