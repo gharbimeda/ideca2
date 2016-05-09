@@ -60,9 +60,11 @@
 				<p:spacer width="10" height="40" />
 
 				<p:commandButton class="btn btn-success btn-sm" value="Save Pricing"
-					action="#{mdfxincomeBean.doBookTradeTreausy()}" />
+					action="#{mdfxincomeBean.doBookTradeTreausy()}" onclick="PF('dlg3').show();"/>
 			</h:panelGrid>
-
+<p:dialog header="Congrats" widgetVar="dlg3" showEffect="explode" hideEffect="bounce" height="100">
+    <h:outputText value="This product has been saved with success " />
+</p:dialog>
 		</h:form>
 </div>
 			
