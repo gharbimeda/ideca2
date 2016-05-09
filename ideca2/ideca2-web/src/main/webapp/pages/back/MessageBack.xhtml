@@ -3,40 +3,26 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui"
-	template="/WEB-INF/templates/backTemplate/newBouTemp.xhtml">
+	template="/WEB-INF/templates/backTemplate/testTemp.xhtml">
 
 	<ui:define name="titleName"> Messages Inbox </ui:define>
-<!-- 	<ui:define name="pageLocalisation"> / Messages /</ui:define> -->
-<!-- 	<ui:define name="pageActive"> Show all Messages</ui:define> -->
-<!-- 	<ui:define name="pageDefinition"> -->
-<!-- 		<h2 class="page-title"> -->
-<!-- 			<i class="fontello-icon-database"></i> Messages : Inbox -->
-<!-- 		</h2> -->
-<!-- 		<div class="page-bar"></div> -->
-<!-- 	</ui:define> -->
 	<ui:define name="pageContent">
-		<br />
 		<h:form>
-			<p:dataTable styleClass="table table-bordered"
+			<h:dataTable styleClass="table table-striped responsive-utilities jambo_table bulk_action"
 				value="#{messageBean.messages}" var="m">
-<!-- 				<p:column> -->
-<!-- 					<f:facet name="header">ID Message</f:facet> -->
-<!-- 					<h:outputText value="#{m.id}" /> -->
-<!-- 				</p:column> -->
-				<p:column>
+				<h:column>
 					<f:facet name="header">Date</f:facet>
 					<h:outputText value="#{m.date}" />
-				</p:column>
-				<p:column>
+				</h:column>
+				<h:column>
 					<f:facet name="header">Text</f:facet>
 					<h:outputText value="#{m.texte}" />
-				</p:column>
-				<p:column>
+				</h:column>
+				<h:column>
 					<f:facet name="header">Sender</f:facet>
 					<h:outputText value="#{m.userSource.login}" />
-				</p:column>
-			</p:dataTable>
+				</h:column>
+			</h:dataTable>
 		</h:form>
 	</ui:define>
 </ui:composition>

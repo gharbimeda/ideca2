@@ -35,10 +35,6 @@
 						<h:dataTable class="table table-striped"
 							value="#{messageBean.messages}" var="m">
 							<h:column>
-								<f:facet name="header">ID Message</f:facet>
-								<h:outputText value="#{m.id}" />
-							</h:column>
-							<h:column>
 								<f:facet name="header">Date</f:facet>
 								<h:outputText value="#{m.date}" />
 							</h:column>
