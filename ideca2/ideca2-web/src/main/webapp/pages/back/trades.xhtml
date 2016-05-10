@@ -130,82 +130,93 @@
 						<div class="x_title">Financial Instrument</div>
 						<div class="x_content">
 
-							<label class="control-label col-md-3 col-sm-3 col-xs-12">Cap/Floor
-								: </label>
-							<h:selectOneMenu id="capfloor" value="#{capbean.c.capFloor}"
-								class="form-control">
-								<f:selectItem itemLabel="cap" itemValue="0" />
-								<f:selectItem itemLabel="floor" itemValue="1" />
-							</h:selectOneMenu>
+							<div class="form-group">
+								<label class="control-label col-md-3 col-sm-3 col-xs-12">Cap/Floor
+									: </label>
+								<h:selectOneMenu id="capfloor"
+									value="#{tradeBean.capFloor.capFloor}" class="form-control">
+									<f:selectItem itemLabel="cap" itemValue="0" />
+									<f:selectItem itemLabel="floor" itemValue="1" />
+								</h:selectOneMenu>
+							</div>
 							<!-- ****************************************************** -->
-							<label class="control-label col-md-3 col-sm-3 col-xs-12">Put/Call
-								: </label>
-							<h:selectOneMenu id="putCall" value="#{capbean.putCall}"
-								class="form-control">
-								<f:selectItem itemLabel="put" itemValue="0" />
-								<f:selectItem itemLabel="call" itemValue="1" />
-							</h:selectOneMenu>
+							<div class="form-group">
+								<label class="control-label col-md-3 col-sm-3 col-xs-12">Put/Call
+									: </label>
+								<h:selectOneMenu id="putCall" value="#{capbean.putCall}"
+									class="form-control">
+									<f:selectItem itemLabel="put" itemValue="0" />
+									<f:selectItem itemLabel="call" itemValue="1" />
+								</h:selectOneMenu>
+							</div>
 							<!-- ****************************************************** -->
-							<label class="control-label col-md-3 col-sm-3 col-xs-12">Start
-								Date : </label> <br />
-							<p:calendar value="#{capbean.c.startDate}">
-								<f:convertDateTime pattern="dd/mm/yyyy" />
-							</p:calendar>
+							<div class="form-group">
+								<label class="control-label col-md-3 col-sm-3 col-xs-12">Start
+									Date : </label> <br />
+								<p:calendar value="#{tradeBean.capFloor.startDate}">
+									<f:convertDateTime pattern="dd/mm/yyyy" />
+								</p:calendar>
+								<br />
+							</div>
+							<!-- ****************************************************** -->
+							<div class="form-group">
+								<label class="control-label col-md-3 col-sm-3 col-xs-12">End
+									Date : </label> <br />
+								<p:calendar value="#{tradeBean.capFloor.endDate}">
+									<f:convertDateTime pattern="dd/mm/yyyy" />
+								</p:calendar>
+							</div>
 							<br />
+
 							<!-- ****************************************************** -->
-							<label class="control-label col-md-3 col-sm-3 col-xs-12">End
-								Date : </label> <br />
-							<p:calendar value="#{capbean.c.endDate}">
-								<f:convertDateTime pattern="dd/mm/yyyy" />
-							</p:calendar>
-							<br />
+							<div class="form-group">
+								<label class="control-label col-md-3 col-sm-3 col-xs-12">Tenor
+									: </label>
+								<h:selectOneMenu id="tenor" value="#{tradeBean.capFloor.tenor}"
+									class="form-control">
+									<f:selectItem itemLabel="3" itemValue="3" />
+									<f:selectItem itemLabel="6" itemValue="6" />
+									<f:selectItem itemLabel="12" itemValue="12" />
+								</h:selectOneMenu>
+							</div>
 							<!-- ****************************************************** -->
-							<label class="control-label col-md-3 col-sm-3 col-xs-12">Convention
-								Day : </label>
-							<h:selectOneMenu id="convention" value=" " class="form-control">
-								<f:selectItem itemLabel="act/360" itemValue="act/360" />
-								<f:selectItem itemLabel="act/365" itemValue="act/365" />
-							</h:selectOneMenu>
+							<div class="form-group">
+								<label class="control-label col-md-3 col-sm-3 col-xs-12">Valuation
+									Date : </label> <br />
+								<p:calendar value="#{tradeBean.capFloor.expiration}" />
+								<br />
+							</div>
 							<!-- ****************************************************** -->
-							<label class="control-label col-md-3 col-sm-3 col-xs-12">Tenor
-								: </label>
-							<h:selectOneMenu id="tenor" value="#{capbean.c.tenor}"
-								class="form-control">
-								<f:selectItem itemLabel="3" itemValue="3" />
-								<f:selectItem itemLabel="6" itemValue="6" />
-								<f:selectItem itemLabel="12" itemValue="12" />
-							</h:selectOneMenu>
+							<div class="form-group">
+								<label class="control-label col-md-3 col-sm-3 col-xs-12">
+									Notional amount :</label>
+								<p:inputText class="form-control"
+									value="#{tradeBean.capFloor.notionalAmount}" />
+							</div>
 							<!-- ****************************************************** -->
-							<label class="control-label col-md-3 col-sm-3 col-xs-12">Valuation
-								Date : </label> <br />
-							<p:calendar value="#{capbean.c.expiration}" />
-							<br />
+							<div class="form-group">
+								<label class="control-label col-md-3 col-sm-3 col-xs-12">Reference
+									Index: LIBOR</label> <br />
+							</div>
 							<!-- ****************************************************** -->
-							<label class="control-label col-md-3 col-sm-3 col-xs-12">
-								Notional amount :</label>
-							<p:inputText class="form-control"
-								value="#{capbean.c.notionalAmount}" />
+							<div class="form-group">
+								<label class="control-label col-md-3 col-sm-3 col-xs-12">Volatility
+									: </label>
+								<div class="col-md-6 col-sm-6 col-xs-12">
+									<p:inputText class="form-control"
+										value="#{tradeBean.capFloor.volatility}" />
+								</div>s
+							</div>
 							<!-- ****************************************************** -->
-							<label class="control-label col-md-3 col-sm-3 col-xs-12">Risk
-								free Rate :</label>
-							<p:inputText class="form-control" value="#{capbean.risk}" />
-							<!-- ****************************************************** -->
-							<label class="control-label col-md-3 col-sm-3 col-xs-12">1.0
-								Year forward rate :</label>
-							<p:inputText class="form-control" value="#{capbean.yield}" />
-							<!-- ****************************************************** -->
-							<label class="control-label col-md-3 col-sm-3 col-xs-12">Reference
-								Index: LIBOR</label> <br />
-							<!-- ****************************************************** -->
-							<label class="control-label col-md-3 col-sm-3 col-xs-12">Volatility
-								: </label>
-							<p:inputText class="form-control" value="#{capbean.c.volatility}" />
-							<!-- ****************************************************** -->
-							<label class="control-label col-md-3 col-sm-3 col-xs-12">Strike
-								Price : </label>
-							<p:inputText class="form-control"
-								value="#{capbean.c.strikePrice}" />
-							<hr />
+							<div class="form-group">
+								<label class="control-label col-md-3 col-sm-3 col-xs-12">Strike
+									Price : </label>
+								<div class="col-md-6 col-sm-6 col-xs-12">
+									<p:inputText class="form-control"
+										value="#{tradeBean.capFloor.strikePrice}" />
+								</div>
+
+							</div>
 							<p:commandButton class="btn btn-primary btn-sm" value="Pricing"
 								action="#{capbean.doPricing()}" />
 
@@ -220,34 +231,41 @@
 						<div class="x_title">Financial Instrument</div>
 						<div class="x_content">
 							<h:panelGrid columns="2">
-							<div class="form-group">
-								<h:outputText class="control-label col-md-3 col-sm-3 col-xs-12" value="Strike Rate" />
-								<div class="col-md-6 col-sm-6 col-xs-12">
-								<h:inputText value="#{tradeBean.forwardSwap.fixedRate}" class="form-control col-md-7 col-xs-12"/>
-								</div>
+								<div class="form-group">
+									<h:outputText class="control-label col-md-3 col-sm-3 col-xs-12"
+										value="Strike Rate" />
+									<div class="col-md-6 col-sm-6 col-xs-12">
+										<h:inputText value="#{tradeBean.forwardSwap.fixedRate}"
+											class="form-control col-md-7 col-xs-12" />
+									</div>
 								</div>
 								<div class="form-group">
-								<h:outputText class="control-label col-md-3 col-sm-3 col-xs-12" value="Rate" />
-								<div class="col-md-6 col-sm-6 col-xs-12">
-								<h:inputText value="#{tradeBean.forwardSwap.fixedRate}" class="form-control col-md-7 col-xs-12"/>
-								</div>
-								</div>
-								<div class="form-group">
-								<h:outputText class="control-label col-md-3 col-sm-3 col-xs-12"  value="Notional" />
-								<div class="col-md-6 col-sm-6 col-xs-12">
-								<h:inputText value="#{tradeBean.forwardSwap.currentPrice}" class="form-control col-md-7 col-xs-12"/>
-								</div>
+									<h:outputText class="control-label col-md-3 col-sm-3 col-xs-12"
+										value="Rate" />
+									<div class="col-md-6 col-sm-6 col-xs-12">
+										<h:inputText value="#{tradeBean.forwardSwap.fixedRate}"
+											class="form-control col-md-7 col-xs-12" />
+									</div>
 								</div>
 								<div class="form-group">
-								<h:outputText class="control-label col-md-3 col-sm-3 col-xs-12" value="Volatility" />
-								<div class="col-md-6 col-sm-6 col-xs-12">
-								<h:inputText value="#{tradeBean.forwardSwap.volatility}" class="form-control col-md-7 col-xs-12"/>
+									<h:outputText class="control-label col-md-3 col-sm-3 col-xs-12"
+										value="Notional" />
+									<div class="col-md-6 col-sm-6 col-xs-12">
+										<h:inputText value="#{tradeBean.forwardSwap.currentPrice}"
+											class="form-control col-md-7 col-xs-12" />
+									</div>
 								</div>
+								<div class="form-group">
+									<h:outputText class="control-label col-md-3 col-sm-3 col-xs-12"
+										value="Volatility" />
+									<div class="col-md-6 col-sm-6 col-xs-12">
+										<h:inputText value="#{tradeBean.forwardSwap.volatility}"
+											class="form-control col-md-7 col-xs-12" />
+									</div>
 								</div>
-								<h:commandButton class="btn btn-black "
-									action=" " value="Price" />
+								<h:commandButton class="btn btn-black " action=" " value="Price" />
 							</h:panelGrid>
-							
+
 						</div>
 					</div>
 				</div>

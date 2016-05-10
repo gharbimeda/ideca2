@@ -65,6 +65,7 @@ public class UserBean  implements Serializable{
 	
 	
 	public String doAdd() {
+		trader.setLimite(100000.0);
 		aclo.create(trader);
 		
 		

@@ -30,6 +30,16 @@ public class TradeBean {
 	private Trade trade;
 	
 	private ForwardSwap forwardSwap = new ForwardSwap();
+	
+	private CapFloor capFloor = new CapFloor();
+
+	public CapFloor getCapFloor() {
+		return capFloor;
+	}
+
+	public void setCapFloor(CapFloor capFloor) {
+		this.capFloor = capFloor;
+	}
 
 	private Boolean show, showCap=false,showSwap=false;
 	
@@ -43,7 +53,7 @@ public class TradeBean {
 	public void doShow() {
 		if(trade!=null){
 			if(trade.getName().equalsIgnoreCase("cap")||trade.getName().equalsIgnoreCase("floor")){
-				trade.setFi((CapFloor)trade.getFi());
+				capFloor=(CapFloor)trade.getFi();
 				showCap=true;
 			}
 			if(trade.getName().equalsIgnoreCase("forwardSwap")){
