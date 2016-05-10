@@ -24,12 +24,25 @@ public class TradeBean {
 
 	@EJB
 	ITradeCrudServiceLocal services;
+	
+	@EJB
+	UserCrudServices userService;
 
 	private List<Trade> trades;
 
 	private Trade trade;
 	
 	private ForwardSwap forwardSwap = new ForwardSwap();
+	
+	private CapFloor capFloor = new CapFloor();
+
+	public CapFloor getCapFloor() {
+		return capFloor;
+	}
+
+	public void setCapFloor(CapFloor capFloor) {
+		this.capFloor = capFloor;
+	}
 
 	private Boolean show, showCap=false,showSwap=false;
 	
@@ -43,7 +56,7 @@ public class TradeBean {
 	public void doShow() {
 		if(trade!=null){
 			if(trade.getName().equalsIgnoreCase("cap")||trade.getName().equalsIgnoreCase("floor")){
-				trade.setFi((CapFloor)trade.getFi());
+				capFloor=(CapFloor)trade.getFi();
 				showCap=true;
 			}
 			if(trade.getName().equalsIgnoreCase("forwardSwap")){
@@ -63,6 +76,8 @@ public class TradeBean {
 	}
 
 	public String doAccept(Trade t) {
+		t.getTrader().setLimite(t.getTrader().getLimite()-t.getValue());
+		userService.update(t.getTrader());
 		t.setStatus(1);
 		services.update(t);
 		return "trades?faces-redirect=true";

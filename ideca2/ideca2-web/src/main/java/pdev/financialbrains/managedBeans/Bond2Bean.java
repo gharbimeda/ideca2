@@ -5,17 +5,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import pdev.financialbrains.ejb.entities.Bond;
-
+@ManagedBean(name="bond")
 public class Bond2Bean {
 	
 	public static List<Float> BondYieldToday;
+	public String maturity;
 
 	public static List<Float> getBondYieldToday() {
 		return BondYieldToday;
@@ -35,6 +36,7 @@ public class Bond2Bean {
 		BondYieldToday =list_bond_yield_today();
 
 	}
+	
 	
 	
 	
@@ -100,6 +102,20 @@ public class Bond2Bean {
 					}
 		return bondYieldFinal;
 	}
+	
+	public List<String> listMaturity()
+	{
+		List<String> list = new ArrayList<>();
+		list.add("3 Month");
+		list.add("6 Month");
+		list.add("2 Year");
+		list.add("3 Year");
+		list.add("5 Year");
+		list.add("10 Year");
+		list.add("30 Year");
+		return list;
+	}
+	
 	public static Float Yield1Today()
 	{
 		return BondYieldToday.get(0);
@@ -211,6 +227,18 @@ public class Bond2Bean {
 	public static Float Yield7LastMonth()
 	{
 		return BondYieldToday.get(27);
+	}
+
+
+
+	public String getMaturity() {
+		return maturity;
+	}
+
+
+
+	public void setMaturity(String maturity) {
+		this.maturity = maturity;
 	}
 	
 }
