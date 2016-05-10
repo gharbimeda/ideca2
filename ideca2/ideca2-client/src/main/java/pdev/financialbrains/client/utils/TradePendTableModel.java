@@ -1,9 +1,7 @@
 package pdev.financialbrains.client.utils;
 
 import java.util.List;
-
 import javax.swing.table.AbstractTableModel;
-
 import pdev.financialbrains.client.delegate.TradeManagementDelegate;
 import pdev.financialbrains.ejb.entities.Trade;
 

@@ -57,7 +57,7 @@ public class Authentification extends JFrame {
 		lblNewLabel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				User user = UserManagementDelegate.doAuthentification(tf_login.getText(),String.valueOf(tf_password.getPassword()));
+				User user = UserManagementDelegate.doAuthentification(tf_login.getText(),tf_password.getText());
 				if (user instanceof BackOfficeUser) {
 					Util.userConnect = user;
 					new BackHome().setVisible(true);
