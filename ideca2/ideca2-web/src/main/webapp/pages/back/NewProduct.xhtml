@@ -3,21 +3,29 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	template="/WEB-INF/templates/backTemplate/newBouTemp.xhtml"
+	template="/WEB-INF/templates/backTemplate/testTemp.xhtml"
 	xmlns:p="http://primefaces.org/ui">
 	<ui:define name="titleName"> New Product </ui:define>
 	<ui:define name="pageContent">
-		<h:form>
-			<h:panelGrid columns="2">
-				<h:outputText value="Destination" />
-				<h:selectOneMenu id="txt3" value="#{messageBean.traderDest}">
-					<f:selectItems value="#{messageBean.tradersNames}" />
-				</h:selectOneMenu>
-				<h:outputText value="Message" />
-				<p:inputTextarea value="#{messageBean.text}" />
-			</h:panelGrid>
-			<h:commandButton class="btn btn-primary btn-sm"
-				action="#{messageBean.doSend()}" value="Send" />
-		</h:form>
+		<center>
+			<div class="x_panel">
+				<h:form>
+					<h:panelGrid columns="2">
+						<h:outputText value="Current Price :" />
+						<h:inputText value="#{newProductBean.currentPrice}" />
+						<h:outputText value="Volatility :" />
+						<h:inputText value="#{newProductBean.volatility}" />
+					</h:panelGrid>
+					<br />
+					<h:panelGrid columns="3"
+						binding="#{newProductBean.containerComponent}">
+					</h:panelGrid>
+					<h:commandButton class="btn btn-primary btn-sm"
+						action="#{newProductBean.addComponent()}" value="Add" />
+					<h:commandButton class="btn btn-primary btn-sm"
+						action="#{newProductBean.doSave()}" value="Save" />
+				</h:form>
+			</div>
+		</center>
 	</ui:define>
 </ui:composition>

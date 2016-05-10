@@ -3,7 +3,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	template="/WEB-INF/templates/backTemplate/backOfficeUserTemp.xhtml">
+	template="/WEB-INF/templates/backTemplate/testTemp.xhtml">
 
 	<ui:define name="titleName"> Settlements </ui:define>
 	<ui:define name="pageLocalisation"> / Settlements </ui:define>
@@ -16,7 +16,7 @@
 	</ui:define>
 	<ui:define name="pageContent">
 		<h:form>
-			<h:dataTable styleClass="table table-bordered"
+			<h:dataTable styleClass="table table-striped responsive-utilities jambo_table bulk_action"
 				value="#{settlementBean.trades}" var="t">
 				<h:column>
 					<f:facet name="header">Trader</f:facet>

@@ -24,6 +24,7 @@ public class Complaint implements Serializable {
 		private Date date=new Date();
 		@ManyToOne
 		private User user;
+		private String response;
 	
 	
 	public User getUser() {
@@ -86,6 +87,14 @@ public class Complaint implements Serializable {
 
 	public void setDate(Date date) {
 		this.date = date;
+	}
+
+	public String getResponse() {
+		return response;
+	}
+
+	public void setResponse(String response) {
+		this.response = response;
 	}
 
 	@Override

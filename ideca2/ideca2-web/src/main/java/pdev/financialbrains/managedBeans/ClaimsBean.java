@@ -6,12 +6,16 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 
 import pdev.financialbrains.ejb.contracts.IComplaintsCrudServicesLocal;
+import pdev.financialbrains.ejb.contracts.IMessageCrudServicesLocal;
 import pdev.financialbrains.ejb.contracts.IUserCrudServiceLocal;
 import pdev.financialbrains.ejb.entities.Complaint;
 import pdev.financialbrains.ejb.entities.Message;
+import pdev.financialbrains.ejb.entities.Trader;
+import pdev.financialbrains.ejb.entities.User;
 
 @ManagedBean
 @ViewScoped
@@ -19,6 +23,8 @@ public class ClaimsBean {
 
 	@EJB
 	private IComplaintsCrudServicesLocal claimLocal;
+	@EJB
+	private IMessageCrudServicesLocal messageLocal;
 	private String object;
 	private String text;
 	private Date date;
@@ -26,6 +32,10 @@ public class ClaimsBean {
 	private List<Complaint> claims;
 	private IUserCrudServiceLocal userLocal;
 	private Message message;
+	@ManagedProperty("#{identityBean}")
+	private IdentityBean identityBean;
+	private User admin;
+	private String response; 
 
 	public IComplaintsCrudServicesLocal getClaimLocal() {
 		return claimLocal;
@@ -33,6 +43,14 @@ public class ClaimsBean {
 
 	public void setClaimLocal(IComplaintsCrudServicesLocal claimLocal) {
 		this.claimLocal = claimLocal;
+	}
+
+	public IMessageCrudServicesLocal getMessageLocal() {
+		return messageLocal;
+	}
+
+	public void setMessageLocal(IMessageCrudServicesLocal messageLocal) {
+		this.messageLocal = messageLocal;
 	}
 
 	public String getObject() {
@@ -91,6 +109,30 @@ public class ClaimsBean {
 		this.message = message;
 	}
 
+	public IdentityBean getIdentityBean() {
+		return identityBean;
+	}
+
+	public void setIdentityBean(IdentityBean identityBean) {
+		this.identityBean = identityBean;
+	}
+
+	public User getAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(User admin) {
+		this.admin = admin;
+	}
+
+	public String getResponse() {
+		return response;
+	}
+
+	public void setResponse(String response) {
+		this.response = response;
+	}
+
 	@PostConstruct
 	public void init() {
 		claims = claimLocal.readAll();
@@ -99,12 +141,19 @@ public class ClaimsBean {
 		text = new String();
 		date = new Date();
 		user = new String();
+		admin = new User();
+		admin = (User) identityBean.getUtilisateur();
+		response = new String();
+		
 	}
 
-	public String doReply() {
-//		message.setUserSource();
-		message.setUserDest(userLocal.readByLogin(user));
-//		message.setTexte(texte);
+	public String doReply(Trader trader,String rep) {
+		message.setUserSource(admin);
+		message.setUserDest(trader);
+		message.setTexte(rep);
+		message.setDate(new Date());
+		messageLocal.create(message);
+		init();
 		return null;
 	}
 

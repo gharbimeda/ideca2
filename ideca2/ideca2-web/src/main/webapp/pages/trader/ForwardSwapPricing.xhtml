@@ -21,30 +21,32 @@
 	</ui:define>
 	<ui:define name="PageName">FORWARD SWAP PRICING</ui:define>
 	<ui:define name="PageContent">
-		<h:form>
-			<h:panelGrid columns="2">
-				<h:outputText value="Strike Rate" />
-				<p:inputMask value="#{fsbean.strikeRate}" />
-				<h:outputText value="Rate" />
-				<p:inputMask value="#{fsbean.rate}" />
-				<h:outputText value="Notional" />
-				<p:inputMask value="#{fsbean.notional}" />
-				<h:outputText value="Period" />
-				<p:inputMask value="#{fsbean.period}" />
-				<h:outputText value="Expiry Time" />
-				<p:inputMask value="#{fsbean.expiryTime}" />
-				<h:outputText value="Volatility" />
-				<p:inputMask value="#{fsbean.volatility}" />
-				<h:commandButton class="btn btn-primary btn-sm"
-					action="#{fsbean.doPrice()}" value="Price" />
-			</h:panelGrid>
-			<h:panelGroup layout="block">
-				<h:outputText value="Result" rendered="#{fsbean.rend}" />
-				<h:inputText value="#{fsbean.result}" rendered="#{fsbean.rend}"
-					readonly="true" />
-				<h:commandButton class="btn btn-success btn-sm"
-					action="#{fsbean.doBook()}" value="Book" rendered="#{fsbean.rend}" />
-			</h:panelGroup>
-		</h:form>
+		<center>
+			<h:form>
+				<h:panelGrid columns="2">
+					<h:outputText value="Strike Rate" />
+					<p:inputMask value="#{fsbean.strikeRate}" />
+					<h:outputText value="Rate" />
+					<p:inputMask value="#{fsbean.rate}" />
+					<h:outputText value="Notional" />
+					<p:inputMask value="#{fsbean.notional}" />
+					<h:outputText value="Period" />
+					<p:inputMask value="#{fsbean.period}" />
+					<h:outputText value="Expiry Time" />
+					<p:inputMask value="#{fsbean.expiryTime}" />
+					<h:outputText value="Volatility" />
+					<p:inputMask value="#{fsbean.volatility}" />
+					<h:commandButton class="btn btn-primary btn-sm"
+						action="#{fsbean.doPrice()}" value="Price" />
+				</h:panelGrid>
+				<h:panelGroup layout="block">
+					<h:outputText value="Result" rendered="#{fsbean.rend}" />
+					<h:inputText value="#{fsbean.result}" rendered="#{fsbean.rend}"
+						readonly="true" />
+					<h:commandButton class="btn btn-success btn-sm"
+						action="#{fsbean.doBook()}" value="Book" rendered="#{fsbean.rend}" />
+				</h:panelGroup>
+			</h:form>
+		</center>
 	</ui:define>
 </ui:composition>
