@@ -10,6 +10,7 @@ import javax.persistence.Query;
 
 import pdev.financialbrains.ejb.contracts.IUserCrudServiceLocal;
 import pdev.financialbrains.ejb.contracts.IUserCrudServiceRemote;
+import pdev.financialbrains.ejb.entities.Article;
 import pdev.financialbrains.ejb.entities.User;
 
 @Stateless
@@ -75,6 +76,11 @@ public class UserCrudServices implements IUserCrudServiceLocal, IUserCrudService
 		Query query = entityManager.createQuery("select u from User u where u.login =:login");
 		query.setParameter("login", login);
 		return (User) query.getSingleResult();
+	}
+	
+	public void update(User user) {
+		entityManager.merge(user);
+
 	}
 
 }

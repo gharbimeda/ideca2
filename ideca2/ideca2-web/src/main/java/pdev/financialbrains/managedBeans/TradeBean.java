@@ -24,6 +24,9 @@ public class TradeBean {
 
 	@EJB
 	ITradeCrudServiceLocal services;
+	
+	@EJB
+	UserCrudServices userService;
 
 	private List<Trade> trades;
 
@@ -73,6 +76,8 @@ public class TradeBean {
 	}
 
 	public String doAccept(Trade t) {
+		t.getTrader().setLimite(t.getTrader().getLimite()-t.getValue());
+		userService.update(t.getTrader());
 		t.setStatus(1);
 		services.update(t);
 		return "trades?faces-redirect=true";
